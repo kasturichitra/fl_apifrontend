@@ -1,0 +1,225 @@
+.paymentRoutingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .formContainer {
+    width: 100%;
+    border-radius: 8px;
+    font-family: "Poppins";
+    text-align: left;
+  }
+  
+  .formContainer h2 {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .mainContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .inputAndDiv {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .inputAndDiv label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .inputField, .selectField {
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: "Poppins";
+    font-size: 13px;
+    background: none;
+    height: 36px;
+  }
+  
+  .selectField {
+    cursor: pointer;
+  }
+  
+  .saveButton {
+    margin-top: 24px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5423e7;
+    color: white;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-size: 14px;
+  }
+  
+  .saveButton:hover {
+    background-color: #451bc3;
+  }
+  
+  .servicesList {
+    width: 100%;
+    font-family: "Poppins";
+  }
+  
+  .servicesList h3 {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .serviceTrackTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .serviceTrackTable th,
+  .serviceTrackTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    font-size: 13px;
+  }
+  
+  .serviceTrackTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .serviceTrackTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .down-box-payment {
+    overflow-x: auto;
+    width: 100%;
+    margin: auto;
+    min-width: 180px;
+  }
+  
+  .truncated-text {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: max-width 0.3s ease;
+  }
+  
+  .truncated-text.expanded {
+    max-width: none;
+    white-space: normal;
+  }
+  
+  .tableTitl-pay {
+    display: block;
+    font-weight: 500;
+    color: #000;
+    text-align: left;
+  }
+  .inputAndDivContainer{
+    display: flex;
+    gap: 10px;
+  }
+  
+  .table-head-bg {
+    background-color: #5423e7;
+    color: white;
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: 500;
+  }
+  
+  .pay-tablehead {
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .truncated-text {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .mainContainer {
+      flex-direction: column;
+    }
+  
+    .inputField,
+    .selectField {
+      width: 100%;
+    }
+  
+    .serviceTrackTable th,
+    .serviceTrackTable td {
+      font-size: 12px;
+      padding: 6px;
+    }
+  
+    .saveButton {
+      width: 100%;
+      padding: 12px;
+    }
+    .inputAndDivContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .search_bar-operator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .inputAndDiv label {
+      font-size: 14px;
+    }
+  
+    .inputField,
+    .selectField {
+      width: 100%;
+      padding: 6px;
+      font-size: 14px;
+    }
+  
+    .serviceTrackTable th,
+    .serviceTrackTable td {
+      font-size: 12px;
+    }
+  
+    .paymentRoutingContainer {
+      padding: 20px 0px 20px 0px;
+    }
+    .inputField,
+    .selectField {
+      width: 100%;
+      max-width: 100%;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-family: "Poppins";
+      font-size: 13px;
+      background: none;
+    }
+  }
+  

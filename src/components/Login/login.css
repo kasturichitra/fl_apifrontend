@@ -1,0 +1,29 @@
+.LoginDiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/login_BG.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.password-field {
+    position: relative;
+}
+
+.show-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.show-password-btn:focus {
+    outline: none;
+}

@@ -1,0 +1,14 @@
+.otpDiv{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/login_BG.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.resend{
+    text-align: center;
+    margin: 15px;
+}

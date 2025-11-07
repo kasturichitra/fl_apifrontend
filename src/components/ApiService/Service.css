@@ -1,0 +1,40 @@
+/* .serviceDiv{
+    padding: 4%;
+}
+.serviceDiv p{
+    font-weight: 700;
+    font-size: larger;
+}
+.serviceFields{
+    display: flex;
+    justify-content: space-between;
+    margin: 3%;
+}
+.serviceFields input{
+    padding-inline: 10px;
+    padding-block: 12px;
+    border-radius: 12px;
+    width: 250px;
+}
+.serviceFields input::placeholder{
+    font-weight: bold;
+    font-size: 16px;
+}
+.serviceDiv button{
+    padding-inline: 18px;
+    padding-block: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: whitesmoke;
+    border: none;
+}
+.resDiv{
+    margin: 12px;
+    text-align: start;
+}
+.resDiv p{
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+} */

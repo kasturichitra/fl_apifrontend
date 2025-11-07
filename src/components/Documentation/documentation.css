@@ -1,0 +1,29 @@
+.codeBtn{
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+.title{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.Notverified{
+    color: rgb(255, 53, 53)
+}
+.verified{
+    color: green
+}
+.rule p{
+    margin-bottom: 0px;
+}
+.rule{
+    border-radius: 6px;
+}
+.rule input{
+    border-radius: 6px;
+    outline: none;
+    border: none;
+}
+.validation_details::before{
+    content: "➡️ ";
+}

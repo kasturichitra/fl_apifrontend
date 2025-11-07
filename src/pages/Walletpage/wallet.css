@@ -1,0 +1,19 @@
+.walletbody {
+    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(ellipse at bottom left, rgba(255, 255, 255, 0.2), transparent),
+        #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.glass-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+}

@@ -1,0 +1,61 @@
+/* .Registerdiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/login_BG.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+}
+.password-field {
+    position: relative;
+}
+.show-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #007BFF;
+}
+.show-password-btn:focus {
+    outline: none;
+} */
+
+
+
+.Registerdiv {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/login_BG.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.password-field {
+    position: relative;
+}
+.show-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #007BFF;
+}
+.show-password-btn:focus {
+    outline: none;
+}
+.text_div{
+    margin-bottom: 5rem;
+}
+.text_div{
+    margin-bottom: 5rem;
+}

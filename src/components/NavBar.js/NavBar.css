@@ -1,0 +1,112 @@
+/* .NavDiv{
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+}
+.titleDiv p{
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+   
+}
+.NavDiv div button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width:480px) {
+    .titleDiv p{
+        font-weight: bolder;
+        font-size: 12px;
+        display: flex;
+        justify-content: start;
+        background-color: aquamarine;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .NavDiv {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .NavDiv div {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .NavDiv div button {
+        margin: 5px 0;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+} */
+
+
+.NavDiv {
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Keeps it fixed within the viewport */
+    top: 0; /* Position it at the top of the viewport */
+    z-index: 10; /* Ensures it stays above other elements */
+}
+
+.titleDiv p {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.NavDiv div button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .NavDiv {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .NavDiv div {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .NavDiv div button {
+        margin: 5px 0;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+}

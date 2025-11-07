@@ -1,0 +1,25 @@
+/* .sidebar{
+    height: 92vh;
+    background-color: antiquewhite;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar li {
+    padding: 20px 10px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    color: #313131;
+    transition: background-color 0.3s, color 0.3s;
+}
+.sidebar li:hover {
+    background-color: #f0f0f0;
+}
+.sidebar li.active {
+    background-color: #007bff; 
+    color: white; 
+    font-weight: bold;
+} */

@@ -1,0 +1,176 @@
+.nominalChargesContainer {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-family: "Poppins";
+  }
+  
+  .title {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+  }
+  .nominalChargesForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .formRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .formLabel {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .formSelect,
+  .formInput {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: flex;
+    height: 40px;
+  }
+  
+  .submitButton-nominal {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5423e7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 40px;
+    margin-top: 28px !important;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+  }
+  
+  .savebutton {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5423e7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 41px;
+    margin-top: 30px;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+  }
+  
+  .submitButton-nominal:hover {
+    background-color: #0056b3;
+  }
+  
+  .tableContainer {
+    margin-top: 30px;
+  }
+  
+  .tableTitle {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #000;
+    text-align: left;
+  }
+  
+  .chargesTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .chargesTable th,
+  .chargesTable td {
+    padding: 8px;
+    border: 1px solid #b3b3b3;
+    text-align: left;
+    font-size: 13px;
+  }
+  
+  .chargesTable th {
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .chargesTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .down-box {
+    overflow-y: auto;
+    width: 100%;
+    margin: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .title {
+      font-size: 20px;
+    }
+  
+    .formRow {
+      flex-direction: column;
+    }
+  
+    .formLabel,
+    .formSelect,
+    .formInput {
+      width: 100%;
+    }
+  
+    .submitButton-nominal {
+      width: 100%;
+      padding: 12px;
+    }
+  
+    .chargesTable th,
+    .chargesTable td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 18px;
+    }
+  
+    .formLabel {
+      font-size: 0.9rem;
+    }
+  
+    .formSelect,
+    .formInput {
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+  
+    .submitButton-nominal {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  
+    .chargesTable th,
+    .chargesTable td {
+      font-size: 12px;
+      padding: 6px;
+    }
+  }
+  
