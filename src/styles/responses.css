@@ -1,0 +1,11 @@
+.tri_icon {
+  filter: invert(100%);
+  width: 10px;
+  position: relative;
+  height: 10px;
+  transition: all 200ms ease-in-out;
+}
+
+.tri_icon.rotate {
+  transform: rotate(90deg);
+}

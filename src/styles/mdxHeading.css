@@ -1,0 +1,22 @@
+.mdx_heading_wrapper {
+  margin-bottom: 2rem;
+}
+
+.mdx_heading_title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.mdx_heading_subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.mdx_heading_divider {
+  border: none;
+  border-top: 2px solid #eee;
+  margin-top: 0.5rem;
+}

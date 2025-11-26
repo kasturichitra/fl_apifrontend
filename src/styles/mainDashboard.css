@@ -1,0 +1,27 @@
+.main_dashboard {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(221, 39%, 11%);
+  /* overflow-y: auto; */
+  overflow: auto;
+  color: white;
+}
+
+.header_main_s {
+  flex-shrink: 0;
+  position: sticky; 
+  z-index: 10;
+  background-color: #242424;
+  border-bottom: 1px solid #333;
+}
+
+
+.main_outlet {
+  flex: 1;
+  /* overflow-y: hidden; */
+  padding: 0.5rem;
+  /* max-height: 100vh; */
+}
+
+
+
