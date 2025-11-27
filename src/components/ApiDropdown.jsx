@@ -73,26 +73,28 @@ const LinkComponent = ({
   return (
     <>
       {/* Main Item */}
-      <div
-        className={`api_nav_item cursor-pointer flex justify-between items-center w-full text-left ${
-          pageTitle === item?.title ? "active" : ""
-        }`}
-        onClick={toggleOpen}
-      >
-        <Link to={`/reference/${item.link}`} className="flex items-center gap-1">
-          {item?.title}
-          {item.methods?.length > 0 && (
-            <img
-              src="/images/arrow_icon_100.png"
-              alt="arrow"
-              className={`w-3 h-3 invert-100 transition-transform duration-200 ease-in-out ${
-                isOpen ? "rotate-90" : "rotate-0"
-              }`}
-              style={{ transformOrigin: "center" }}
-            />
-          )}
-        </Link>
-      </div>
+      <Link to={`/reference/${item.link}`}>
+        <div
+          className={`api_nav_item cursor-pointer flex justify-between items-center w-full text-left ${
+            pageTitle === item?.title ? "active" : ""
+          }`}
+          onClick={toggleOpen}
+        >
+          <div className="flex items-center gap-1">
+            {item?.title}
+            {item.methods?.length > 0 && (
+              <img
+                src="/images/arrow_icon_100.png"
+                alt="arrow"
+                className={`w-3 h-3 invert-100 transition-transform duration-200 ease-in-out ${
+                  isOpen ? "rotate-90" : "rotate-0"
+                }`}
+                style={{ transformOrigin: "center" }}
+              />
+            )}
+          </div>
+        </div>
+      </Link>
 
       {/* Methods Sublist */}
       <ul
@@ -121,5 +123,3 @@ const LinkComponent = ({
 };
 
 export default ApiDropdown;
-
-

@@ -77,7 +77,7 @@ const BankAccountPennyDropVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="http://localhost:7010/pan/panverifying"
+            link="account/pd/verifyBankAccount"
           />
           <p className="first_para">
             The Bank Account Verification API allows developers to verify users’

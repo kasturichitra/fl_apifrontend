@@ -91,7 +91,21 @@ const Header = () => {
         {/* --- Desktop Nav --- */}
         <div className="desktop_nav">
           <Link to="/">
-            <p className="main_title"><span className="fp">FLOW</span> <span className="sp">PIPE</span></p>
+            <div className="main_title">
+              <div>
+                <img
+                  src={"/images/flowpipe.png"}
+                  alt="fp"
+                  height={35}
+                  width={35}
+                />
+              </div>
+              <div className="title_name">
+                <span className="fp">FLOW</span>&nbsp;
+                <span className="sp">PIPE</span>&nbsp;
+                <span className="">API</span>
+              </div>
+            </div>
           </Link>
           <button className="header_lg_btn">Log In</button>
         </div>
@@ -209,7 +223,11 @@ const Header = () => {
             <ul>
               <li onClick={() => dispatch(setPageTitle("Guides"))}>
                 <Link to="/guides" className="hamburger_link">
-                  <img src={images?.bookIcon} className="invert-100 h-4" alt="" />
+                  <img
+                    src={images?.bookIcon}
+                    className="invert-100 h-4"
+                    alt=""
+                  />
                   <span className="text-white font-semibold">Guides</span>
                 </Link>
               </li>
@@ -221,7 +239,9 @@ const Header = () => {
                     className="invert-100 h-4"
                     alt=""
                   />
-                  <span className="text-white font-semibold">API Reference</span>
+                  <span className="text-white font-semibold">
+                    API Reference
+                  </span>
                 </Link>
               </li>
 

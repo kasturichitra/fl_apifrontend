@@ -154,13 +154,13 @@
 
 
 .api_nav_item {
-  padding: 0.25rem 0.5rem;   /* py-1 px-2 */
-  border-radius: 0.25rem;    /* rounded */
-  font-size: var(--font-medium);       /* text-sm */
-  display: flex;             /* flex */
-  justify-content: space-between; /* justify-between */
-  cursor: pointer;           /* cursor-pointer */
-  transition: background-color 0.2s ease; /* optional smooth hover */
+  padding: 0.25rem 0.5rem;   
+  border-radius: 0.25rem;   
+  font-size: var(--font-medium);       
+  display: flex;             
+  justify-content: space-between; 
+  cursor: pointer;           
+  transition: background-color 0.2s ease; 
 }
 
 .api_nav_item:hover {

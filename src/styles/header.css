@@ -12,6 +12,16 @@
   padding-right: 1.5rem;
 }
 
+.main_title{
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.title_name{
+  font-size: 20px;
+}
+
 .fp{
     color: red;
 }

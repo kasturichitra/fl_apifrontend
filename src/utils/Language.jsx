@@ -18,7 +18,7 @@ export const apiList = [
       panNumber: "IROPXXXXXX",
     },
   },
-   {
+  {
     key: "aadhaarInitiate",
     name: "AADHAARINITIATE",
     url: "aadhaar/initiate",
@@ -27,7 +27,7 @@ export const apiList = [
       callback_url: "",
     },
   },
-   {
+  {
     key: "aadhaarStatus",
     name: "AADHAARSTATUS",
     url: "aadhaar/status",
@@ -40,7 +40,7 @@ export const apiList = [
     name: "MOBILEOTPGENRATION",
     url: "mobileNumber/mobileOtp",
     params: {
-      mobileNumber: "7345XXXXXX"
+      mobileNumber: "7345XXXXXX",
     },
   },
   {
@@ -48,7 +48,7 @@ export const apiList = [
     name: "MOBILEOTPVERIFY",
     url: "mobileNumber/mobileotpVerify",
     params: {
-      submittedOtp: "12XX"
+      submittedOtp: "12XX",
     },
   },
   {
@@ -65,7 +65,7 @@ export const apiList = [
     url: "face/facematch",
     params: {
       userImage: "BASE 64",
-      aadhaarImage: "BASE 64"
+      aadhaarImage: "BASE 64",
     },
   },
   {
@@ -88,7 +88,7 @@ export const apiList = [
   {
     key: "bpl",
     name: "BPL",
-    url: "account/pennyLess/verifyBankAccount",
+    url: "account/pl/verifyBankAccount",
     params: {
       accountNumber: "123456789",
       ifsc: "ICIC0001234",
@@ -97,7 +97,7 @@ export const apiList = [
   {
     key: "bpd",
     name: "BPD",
-    url: "account/pennyDrop/verifyBankAccount",
+    url: "account/pd/verifyBankAccount",
     params: {
       accountNumber: "123456789",
       ifsc: "ICIC0001234",
@@ -126,7 +126,7 @@ const baseUrl = [
   }, {}),
 ];
 
-console.log("baseUrl ===>>", baseUrl)
+console.log("baseUrl ===>>", baseUrl);
 
 const languagesSupported = ["Node"];
 
@@ -199,7 +199,7 @@ const apiExamples = [
     ],
   },
   // name match
-   {
+  {
     name: "NM",
     examples: [
       {
@@ -217,7 +217,7 @@ const apiExamples = [
     ],
   },
   // full card verification
-    {
+  {
     name: "FCV",
     examples: [
       {
@@ -245,7 +245,7 @@ const apiExamples = [
     ],
   },
   // bin verification
-   {
+  {
     name: "BIN",
     examples: [
       {
@@ -254,15 +254,15 @@ const apiExamples = [
           success: true,
           message: "Valid",
           response: {
-              Brand: "visa",
-              Category: "platinum/Business",
-              CountryName: "India",
-              Issuer: "Sbi Cards And Payment Services, Ltd.",
-              IssuerPhone: "",
-              IssuerUrl: "",
-              Type: "Credit/Debit",
-              isoCode2: "In",
-              isoCode3: "Ind",
+            Brand: "visa",
+            Category: "platinum/Business",
+            CountryName: "India",
+            Issuer: "Sbi Cards And Payment Services, Ltd.",
+            IssuerPhone: "",
+            IssuerUrl: "",
+            Type: "Credit/Debit",
+            isoCode2: "In",
+            isoCode3: "Ind",
           },
         },
       },
@@ -288,7 +288,7 @@ const apiExamples = [
       },
     ],
   },
-    // aadhaar status
+  // aadhaar status
   {
     name: "AVS",
     examples: [
@@ -308,7 +308,7 @@ const apiExamples = [
       },
     ],
   },
-    // pan to aadhaar
+  // pan to aadhaar
   {
     name: "PTA",
     examples: [
@@ -437,6 +437,7 @@ const apiExamples = [
     ],
   },
   // Bank Acccount Verification
+  // bank penny drop
   {
     name: "BPD",
     examples: [
@@ -473,6 +474,38 @@ const apiExamples = [
             message: "Transaction Successful",
             account_no: "3864XXXXXXX",
             ifsc: "SBINXXXXXXX",
+          },
+        },
+      },
+    ],
+  },
+  // bank details with ifsc
+  {
+    name: "IFSC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            BRANCH: "PARXXXX",
+            ADDRESS: "DISTXXXXXXXX  ANXXXX XXXXXXX 52XXXX",
+            STATE: "ANXXXX XXXXXX",
+            MICR: null,
+            CONTACT: "",
+            UPI: true,
+            RTGS: true,
+            CITY: "PRAXXXXX",
+            CENTRE: "PARXXXXX",
+            DISTRICT: "PARXXXXX",
+            NEFT: true,
+            IMPS: true,
+            SWIFT: null,
+            ISO3166: "IN-AP",
+            BANK: "XXXXX Bank XX XXXX",
+            BANKCODE: "SBXX",
+            IFSC: "SBINXXXXXXX",
           },
         },
       },

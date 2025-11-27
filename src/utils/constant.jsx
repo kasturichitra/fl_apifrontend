@@ -95,12 +95,12 @@ export const ApiReferences = [
         link: "adhaar_otp_generation",
         methods: [
           {
-            title: "Adhaar Otp Generation",
+            title: "STEP 1 Aadhaar Initiation",
             type: "POST",
             link: "adhaar_otp_generation",
           },
           {
-            title: "Adhaar Otp Verification",
+            title: "STEP 2 Adhaar Status",
             type: "POST",
             link: "adhaar_otp_verification",
           },
@@ -111,12 +111,12 @@ export const ApiReferences = [
         link: "mobile_otp_generation",
         methods: [
           {
-            title: "Mobile Otp Generation",
+            title: "STEP 1 Mobile Otp Generation",
             type: "POST",
             link: "mobile_otp_generation",
           },
           {
-            title: "Mobile Otp Verification",
+            title: "STEP 2 Mobile Otp Verification",
             type: "POST",
             link: "mobile_otp_verification",
           },
@@ -135,7 +135,7 @@ export const ApiReferences = [
     items: [
       {
         title: "Bank Account Related Verification",
-        link: "bank_acc_verfication",
+        link: "bank_acc_penny_drop_verfication",
         methods: [
           {
             title: "Bank Account Verification(Penny Drop)",
