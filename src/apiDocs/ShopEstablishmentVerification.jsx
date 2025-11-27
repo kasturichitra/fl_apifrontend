@@ -66,7 +66,7 @@ export default function ShopVerification() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">Shop Establishment Verification</h1>
@@ -114,7 +114,7 @@ export default function ShopVerification() {
       </div>
 
       {/* SECOND CHILD (Codes Section) */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}

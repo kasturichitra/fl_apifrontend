@@ -4,8 +4,12 @@ import React, { useState } from "react";
 export default function BaseUrl({ data, service }) {
   const servers = data?.[0]?.[service] || [];
 
+  console.log("servers ====>>", servers)
+
   const [selectedServer, setSelectedServer] = useState(servers[0]);
   const [openDropdown, setOpenDropdown] = useState(false);
+
+    console.log("selectedServer ====>>", selectedServer)
 
   const handleServerSelection = (server) => {
     setSelectedServer(server);

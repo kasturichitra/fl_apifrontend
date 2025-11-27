@@ -66,7 +66,7 @@ export default function CinVerification() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">CIN Number Verification</h1>
@@ -114,7 +114,7 @@ export default function CinVerification() {
       </div>
 
       {/* SECOND CHILD - API CALL + CODE SECTION */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}

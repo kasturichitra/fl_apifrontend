@@ -3,7 +3,7 @@ import EndpointCard from "./EndpointCard";
 import "../../styles/responses.css";
 
 export default function ResponseComponent({dynamic200, otherData}) {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   const constructedData = [
     ...dynamic200,

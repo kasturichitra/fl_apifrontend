@@ -69,7 +69,7 @@ const IfscBankDetailsVerification = () => {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
           <h1 className="api_heading">Pan Number Verification</h1>
@@ -118,7 +118,7 @@ const IfscBankDetailsVerification = () => {
       </div>
 
       {/* Code / Example Section */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}

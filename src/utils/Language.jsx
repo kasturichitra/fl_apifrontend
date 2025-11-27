@@ -19,7 +19,7 @@ export const apiList = [
     },
   },
    {
-    key: "aadhaarIntiate",
+    key: "aadhaarInitiate",
     name: "AADHAARINITIATE",
     url: "aadhaar/initiate",
     params: {
@@ -36,6 +36,22 @@ export const apiList = [
     },
   },
   {
+    key: "mobileOtpGenration",
+    name: "MOBILEOTPGENRATION",
+    url: "mobileNumber/mobileOtp",
+    params: {
+      mobileNumber: "7345XXXXXX"
+    },
+  },
+  {
+    key: "mobileOtpVerify",
+    name: "MOBILEOTPVERIFY",
+    url: "mobileNumber/mobileotpVerify",
+    params: {
+      submittedOtp: "12XX"
+    },
+  },
+  {
     key: "gst",
     name: "GST",
     url: "gst/verify",
@@ -45,10 +61,11 @@ export const apiList = [
   },
   {
     key: "faceMatch",
-    name: "FaceMatch",
+    name: "FACEMATCH",
     url: "face/facematch",
     params: {
-      faceId: "FACE1234",
+      userImage: "BASE 64",
+      aadhaarImage: "BASE 64"
     },
   },
   {
@@ -109,6 +126,8 @@ const baseUrl = [
   }, {}),
 ];
 
+console.log("baseUrl ===>>", baseUrl)
+
 const languagesSupported = ["Node"];
 
 const languages = languagesSupported.map((lang) => {
@@ -160,6 +179,7 @@ const commonErrorExamples = [
 ];
 
 const apiExamples = [
+  // pan verification
   {
     name: "PAN",
     examples: [
@@ -178,6 +198,7 @@ const apiExamples = [
       },
     ],
   },
+  // name match
    {
     name: "NM",
     examples: [
@@ -195,6 +216,7 @@ const apiExamples = [
       },
     ],
   },
+  // full card verification
     {
     name: "FCV",
     examples: [
@@ -222,6 +244,7 @@ const apiExamples = [
       },
     ],
   },
+  // bin verification
    {
     name: "BIN",
     examples: [
@@ -245,6 +268,47 @@ const apiExamples = [
       },
     ],
   },
+  // aadhaar initiate
+  {
+    name: "AVI",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            code: 200,
+            message: "Data Found Successfully.",
+            result: {
+              aadhaar: "53XXXXXXXX11",
+            },
+          },
+        },
+      },
+    ],
+  },
+    // aadhaar status
+  {
+    name: "AVS",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            code: 200,
+            message: "Data Found Successfully.",
+            result: {
+              aadhaar: "53XXXXXXXX11",
+            },
+          },
+        },
+      },
+    ],
+  },
+    // pan to aadhaar
   {
     name: "PTA",
     examples: [
@@ -264,6 +328,7 @@ const apiExamples = [
       },
     ],
   },
+  // gst verify
   {
     name: "GST",
     examples: [
@@ -277,8 +342,9 @@ const apiExamples = [
       },
     ],
   },
+  // face verification
   {
-    name: "FaceMatch",
+    name: "FACE",
     examples: [
       {
         statusCode: 200,
@@ -290,6 +356,7 @@ const apiExamples = [
       },
     ],
   },
+  // shop verification
   {
     name: "SHOP",
     examples: [
@@ -303,6 +370,7 @@ const apiExamples = [
       },
     ],
   },
+  // cin verification
   {
     name: "CIN",
     examples: [
@@ -316,6 +384,7 @@ const apiExamples = [
       },
     ],
   },
+  // udyam verification
   {
     name: "UDYAM",
     examples: [
@@ -367,6 +436,7 @@ const apiExamples = [
       },
     ],
   },
+  // Bank Acccount Verification
   {
     name: "BPD",
     examples: [
@@ -387,6 +457,7 @@ const apiExamples = [
       },
     ],
   },
+  // bank penny less
   {
     name: "BPL",
     examples: [
@@ -407,6 +478,7 @@ const apiExamples = [
       },
     ],
   },
+  // fetching plans
   {
     name: "FP",
     examples: [
@@ -427,6 +499,7 @@ const apiExamples = [
       },
     ],
   },
+  // recharge payment
   {
     name: "RP",
     examples: [

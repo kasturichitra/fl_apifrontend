@@ -5,10 +5,11 @@ import RequestHistoryTable from "../components/refernce_route_components/Request
 import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
-import { DATA } from "../utils/apiSchema";
+import { DATA, FaceDynamic } from "../utils/apiSchema";
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
 import { FM } from "../utils/bodyParams";
+import { GetAcc } from "../utils/Language";
 
 export default function FaceMatchVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -52,7 +53,7 @@ export default function FaceMatchVerification() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">Face Match</h1>
@@ -61,7 +62,7 @@ export default function FaceMatchVerification() {
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link={"http://localhost:7010/face/facematchapi"}
+            link={"face/facematch"}
           />
 
           <p className="first_para">
@@ -97,12 +98,12 @@ export default function FaceMatchVerification() {
         {/* RESPONSES */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent  data={DATA}/>
+          <ResponseComponent dynamic200={FaceDynamic} otherData={DATA} />
         </div>
       </div>
 
       {/* RIGHT SIDE CODE SECTION */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMatchApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
@@ -111,6 +112,8 @@ export default function FaceMatchVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
+          service={"faceMatch"}
+          examples={GetAcc?.exampleCodes["FACE"] || []}
         />
       </div>
     </div>

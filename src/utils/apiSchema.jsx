@@ -1,3 +1,17 @@
+export const BaseFields = [
+  {
+    title: "message",
+    type: "string",
+    subTitle: "The http code",
+  },
+  {
+    title: "success",
+    type: "integer",
+    subTitle: "The http code",
+  },
+];
+
+
 export const PanDynamic = [
   {
     status: 200,
@@ -5,16 +19,7 @@ export const PanDynamic = [
     body: {
       type: "object",
       fields: [
-        {
-          title: "message",
-          type: "string",
-          subTitle: "The http code",
-        },
-        {
-          title: "success",
-          type: "integer",
-          subTitle: "The http code",
-        },
+        ...BaseFields,
         {
           title: "response",
           type: "object",
@@ -23,22 +28,62 @@ export const PanDynamic = [
             {
               title: "PAN",
               type: "string",
-              subTitle: "The http code",
+              subTitle: "The Requested Pan Number",
             },
             {
               title: "Name",
               type: "string",
-              subTitle: "The http code",
+              subTitle: "The Beneficiary Name of given Pan Number",
             },
             {
               title: "PAN_Holder_Type",
               type: "string",
-              subTitle: "The http code",
+              subTitle: "The Pan type of the given Pan Number",
             },
             {
               title: "PAN_Status",
               type: "string",
-              subTitle: "The http code",
+              subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanToAadhaarDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "code",
+              type: "number",
+              subTitle: "The success code",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "The success message",
+            },
+            {
+              title: "result",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "aadhaar",
+                  type: "string",
+                  subTitle: "The Requested Masked Aadhaar Number",
+                },
+              ],
             },
           ],
         },

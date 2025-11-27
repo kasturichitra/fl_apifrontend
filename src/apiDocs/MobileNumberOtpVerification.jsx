@@ -4,7 +4,7 @@ import MethodLink from "../components/MethodLink";
 import RequestHistoryTable from "../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
-import { MOG } from "../utils/bodyParams";
+import { MOV } from "../utils/bodyParams";
 import Headers from "../components/Headers/Headers";
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
@@ -53,7 +53,7 @@ export default function MobileNumberOtpVerification() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">Aadhaar Verification</h1>
@@ -87,7 +87,7 @@ export default function MobileNumberOtpVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={MOG}
+            bodyObj={MOV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -101,7 +101,7 @@ export default function MobileNumberOtpVerification() {
         </div>
       </div>
 
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
@@ -110,7 +110,7 @@ export default function MobileNumberOtpVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-              service={"pan"}
+              service={"MOBILEOTPVERIFY"}
           examples={GetAcc?.exampleCodes["PAN"] || []}
         />
       </div>

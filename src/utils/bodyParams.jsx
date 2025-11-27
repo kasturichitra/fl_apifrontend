@@ -56,27 +56,6 @@ export const UDYAM = [
   },
 ];
 
-export const NM = [
-  {
-    title: "udyam Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user Udyam number to be verified",
-    inputTag: true,
-    example: "AXER07FRGV",
-    required: true,
-  },
-  {
-    title: "udyam Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user Udyam number to be verified",
-    inputTag: true,
-    example: "AXER07FRGV",
-    required: true,
-  },
-];
-
 export const BAV = [
   {
     title: "Account Number",
@@ -99,8 +78,17 @@ export const BAV = [
   },
 ];
 
-export const ACV = [
+export const AAV = [
   {
+    title: "Aadhaar Number",
+    type: "string",
+    fieldName: "aadharNumber",
+    subTitle: "Aadhaar Number to be verified",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+    {
     title: "Aadhaar Number",
     type: "string",
     fieldName: "aadharNumber",
@@ -156,7 +144,7 @@ export const BNV = [
   },
 ];
 
-export const CTN = [
+export const NM = [
   {
     title: "Name One",
     type: "string",

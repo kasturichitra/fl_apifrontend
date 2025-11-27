@@ -21,6 +21,15 @@ html, body {
   /* overflow: auto; */
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;    
+  -ms-overflow-style: none;  
+}
+
+.hide-scrollbar::-webkit-scrollbar { 
+  display: none;             
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {

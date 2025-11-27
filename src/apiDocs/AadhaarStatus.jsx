@@ -16,8 +16,19 @@ import { GetAcc } from "../utils/Language";
 export default function AadhaarStatus() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [isExampleChoosed, setIsExampleChoosed] = useState(false);
-  const [choosedExample, setChoosedExample] = useState(null);
+     const examplesList = GetAcc?.exampleCodes["AVS"] || [];
+    const [choosedExample, setChoosedExample] = useState(() => {
+      const successExample = examplesList.find((e) => e.statusCode === 200);
+      return successExample
+        ? 200
+        : examplesList.length > 0
+        ? examplesList[0].statusCode
+        : null;
+    });
+  
+    const [isExampleChoosed, setIsExampleChoosed] = useState(
+      () => !!choosedExample
+    );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
@@ -55,7 +66,7 @@ export default function AadhaarStatus() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* HERO SECTION */}
         <div className="api_hero">
           <h1 className="api_heading">Aadhaar Verification</h1>
@@ -105,7 +116,7 @@ export default function AadhaarStatus() {
       </div>
 
       {/* Right side: API test code panel */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
@@ -114,8 +125,8 @@ export default function AadhaarStatus() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-              service={"AADHAARSTATUS"}
-                    examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"aadhaarStatus"}
+          examples={GetAcc?.exampleCodes["AVS"] || []}
         />
       </div>
     </div>

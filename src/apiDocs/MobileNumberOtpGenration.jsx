@@ -54,7 +54,7 @@ export default function MobileNumberOtpGenration() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">Aadhaar Verification</h1>
@@ -102,7 +102,7 @@ export default function MobileNumberOtpGenration() {
         </div>
       </div>
 
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
@@ -111,7 +111,7 @@ export default function MobileNumberOtpGenration() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-              service={"pan"}
+              service={"MOBILEOTPGENRATION"}
           examples={GetAcc?.exampleCodes["PAN"] || []}
         />
       </div>

@@ -10,7 +10,7 @@ import { PNV } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../utils/apiSchema";
 
 const PanToAadhaarVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -69,7 +69,7 @@ const PanToAadhaarVerification = () => {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
           <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
@@ -113,12 +113,12 @@ const PanToAadhaarVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
         </div>
       </div>
 
       {/* Code / Example Section */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}

@@ -66,7 +66,7 @@ export default function GSTINVerification() {
 
   return (
     <div className="main_parent">
-      <div className="first_child">
+      <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
           <h1 className="api_heading">GSTIN Verification</h1>
@@ -114,7 +114,7 @@ export default function GSTINVerification() {
       </div>
 
       {/* SECOND CHILD SECTION */}
-      <div className="second_child">
+      <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
