@@ -63,7 +63,7 @@ const LinkComponent = ({
         className={`docs_nav_item ${pageTitle === page?.title ? "active" : ""}`}
         onClick={handleLinkClick}
       >
-        <Link to={`/docs/${page.slug}`} className="docs_nav_btn">
+        <Link to={`/guides/${page.slug}`} className="docs_nav_btn">
           {page.title}
 
           {hasChildren && (

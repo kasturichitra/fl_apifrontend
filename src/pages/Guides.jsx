@@ -2,32 +2,52 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import "../styles/guides.css";
+import Introduction from "../documents/Introduction";
+
+const apiComponentMap = {
+     // ---------------- Guide ----------------
+   apimodule_guide: Introduction,
+};
 
 const Guides = () => {
-  const { slug } = useParams();
-  console.log("slug from URL:", slug);
+  const [activeSection, setActiveSection] = useState("");
+
+
+   const { slug } = useParams();
   const [selectedSlug, setSelectedSlug] = useState(null);
 
   useEffect(() => {
     if (slug) setSelectedSlug(slug);
   }, [slug]);
 
-  const componentMap = {
-    // "card-management": CardManagement,
-    // overview: Overview,
-    // "credit-lines": LinesOfCredit,
-    // keep adding as needed
-  };
+  const ApiComponent = selectedSlug ? apiComponentMap[selectedSlug] : null;
 
-  const ApiComponent = selectedSlug ? componentMap[selectedSlug] : null;
+  useEffect(() => {
+    const sections = document.querySelectorAll(".guide_section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="guides_main_s">
       <div className="sidebar_wrapper">
-        <SideBar />
+        <SideBar activeSection={activeSection} />
       </div>
       <div className="guides_content">
-        {ApiComponent ? (
+            {ApiComponent ? (
           <ApiComponent />
         ) : (
           <h2>Select an API from the sidebar to view its documentation.</h2>

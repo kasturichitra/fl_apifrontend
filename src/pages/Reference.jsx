@@ -37,6 +37,9 @@ import FetchingPlans from "../apiDocs/FetchingPlans";
 import RechargePayment from "../apiDocs/RechargePayment";
 import BinVerification from "../apiDocs/BinVerification";
 import FullCreditCardVerification from "../apiDocs/FullCreditCardVerification";
+import BbpsTheory from "../apiDocs/BbpsTheory";
+import BillerinfoDetails from "../apiDocs/BillerinfoDetails";
+
 
 // Placeholder if component is missing
 const ComingSoon = () => <h2>Documentation Coming Soon…</h2>;
@@ -74,10 +77,12 @@ const apiComponentMap = {
   name_match_verification: NameMatchVerification,
 
   // ---------------- BBPS ----------------
-  // fetching_verification: FetchingBillerInfo || ComingSoon,
+    bbps_Doc: BbpsTheory,
+    fetching_verification: BillerinfoDetails,
   // bill_fetch: BillFetch || ComingSoon,
   // bill_pay: BillPay || ComingSoon,
   // bill_validation: BillValidation || ComingSoon,
+ 
 
   // ---------------- MOBILE RECHARGE ----------------
   fetching_plans: FetchingPlans || ComingSoon,

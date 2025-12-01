@@ -21,8 +21,9 @@ export const images = {
 export const GuidesData = [
   {
     title: "Introduction",
+    link: "apimodule_guide",
     pages: [
-      { title: "Getting Started", slug: "getting-started" },
+      { title: "Getting Started", slug: "apimodule_guide" },
       { title: "Overview", slug: "overview" },
     ],
   },
@@ -95,12 +96,12 @@ export const ApiReferences = [
         link: "adhaar_otp_generation",
         methods: [
           {
-            title: "STEP 1 Aadhaar Initiation",
+            title: "Adhaar Otp Generation",
             type: "POST",
             link: "adhaar_otp_generation",
           },
           {
-            title: "STEP 2 Adhaar Status",
+            title: "Adhaar Otp Verification",
             type: "POST",
             link: "adhaar_otp_verification",
           },
@@ -111,12 +112,12 @@ export const ApiReferences = [
         link: "mobile_otp_generation",
         methods: [
           {
-            title: "STEP 1 Mobile Otp Generation",
+            title: "Mobile Otp Generation",
             type: "POST",
             link: "mobile_otp_generation",
           },
           {
-            title: "STEP 2 Mobile Otp Verification",
+            title: "Mobile Otp Verification",
             type: "POST",
             link: "mobile_otp_verification",
           },
@@ -135,7 +136,7 @@ export const ApiReferences = [
     items: [
       {
         title: "Bank Account Related Verification",
-        link: "bank_acc_penny_drop_verfication",
+        link: "bank_acc_verfication",
         methods: [
           {
             title: "Bank Account Verification(Penny Drop)",
@@ -218,29 +219,56 @@ export const ApiReferences = [
     section: "BBPS",
     items: [
       {
-        title: "Fetching Biller Info",
-        link: "fetching_verification",
+        title: "BBps Info",
+        link: "bbps_Doc",
         type: "POST",
-        methods: [],
+        methods: [
+        { title: "BillerInfo Details", type: "POST", link: "fetching_verification" },
+        { title: "BillFetchProcess", type: "POST", link: "bbps_get_biller_list" },
+        { title: "Bill Validation", type: "POST", link: "bbps_get_biller_list" },
+        { title: "BillPaymentFlow", type: "POST", link: "bbps_get_biller_list" },
+        { title: "QuickPaymentFlow", type: "POST", link: "bbps_get_biller_list" },
+        { title: "BillStatusCheck", type: "POST", link: "bbps_get_biller_list" },
+      ],
       },
-      {
-        title: "Bill Fetch",
-        link: "bill_fetch",
-        type: "POST",
-        methods: [],
-      },
-       {
-        title: "Bill Validation",
-        link: "bill_validation",
-        type: "POST",
-        methods: [],
-      },
-       {
-        title: "Bill Pay",
-        link: "bill_pay",
-        type: "POST",
-        methods: [],
-      },
+      // {
+      //   title: "BillerInfo Details",
+      //   link: "fetching_verification",
+      //   type: "POST",
+      //   methods: [
+      //   { title: "Get Biller List", type: "POST", link: "bbps_get_biller_list" },
+      // ],
+      // },
+      // {
+      //   title: "BillFetchProcess",
+      //   link: "bill_fetch",
+      //   type: "POST",
+      //   methods: [],
+      // },
+      //  {
+      //   title: "Bill Validation",
+      //   link: "bill_validation",
+      //   type: "POST",
+      //   methods: [],
+      // },
+      //  {
+      //   title: "BillPaymentFlow",
+      //   link: "bill_pay",
+      //   type: "POST",
+      //   methods: [],
+      // },
+      // {
+      //   title: "QuickPaymentFlow",
+      //   link: "bill_pay",
+      //   type: "POST",
+      //   methods: [],
+      // },
+      // {
+      //   title: "BillStatusCheck",
+      //   link: "bill_pay",
+      //   type: "POST",
+      //   methods: [],
+      // },
     ],
   },
   {
