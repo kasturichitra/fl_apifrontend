@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/introduction.css"
 const Introduction = () => {
   return (
     <div className="guide_page">

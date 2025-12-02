@@ -121,7 +121,7 @@ export const AAV = [
     example: "XXXXXXXXXXXX",
     required: true,
   },
-    {
+  {
     title: "Aadhaar Number",
     type: "string",
     fieldName: "aadharNumber",
@@ -287,3 +287,16 @@ export const FP = [
     required: true,
   },
 ];
+export const BilllerInfo = [
+  {
+    title: "BillerId",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS to billerid information.",
+    inputTag: true,
+    example: "AIRTM001",
+    required: true,
+    disabled: true,
+  },
+];
+

@@ -26,7 +26,7 @@ const SideBar = ({ children }) => {
             const id = entry.target.id;
             setActiveSlug(id);
 
-            // Find matching sidebar item
+            // Auto-scroll sidebar to active menu item
             const activeLink = document.querySelector(
               `.submenu_item[data-slug='${id}']`
             );
@@ -34,20 +34,22 @@ const SideBar = ({ children }) => {
             if (activeLink && sidebarRef.current) {
               const sidebar = sidebarRef.current;
 
-              const linkOffsetTop = activeLink.offsetTop;
-              const sidebarHeight = sidebar.clientHeight;
-              const linkHeight = activeLink.clientHeight;
+              const rect = activeLink.getBoundingClientRect();
+              const sidebarRect = sidebar.getBoundingClientRect();
 
+              // How far the link is inside the sidebar
+              const relativeTop = rect.top - sidebarRect.top;
+
+              // Scroll so the active item is centered
               const scrollPosition =
-                linkOffsetTop - sidebarHeight / 2 + linkHeight / 2;
+                sidebar.scrollTop + relativeTop - sidebarRect.height / 2 + rect.height / 2;
 
               sidebar.scrollTo({
                 top: scrollPosition,
                 behavior: "smooth",
               });
+
             }
-
-
           }
         });
       },
@@ -58,6 +60,7 @@ const SideBar = ({ children }) => {
 
     return () => observer.disconnect();
   }, []);
+
 
 
   /** 🔥 Smooth scroll handler */
