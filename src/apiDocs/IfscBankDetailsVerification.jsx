@@ -6,7 +6,7 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
+import { BWI } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
@@ -17,7 +17,7 @@ const IfscBankDetailsVerification = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const IfscBankDetailsVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "bin/getBankDetails",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -77,11 +77,11 @@ const IfscBankDetailsVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="bin/getBankDetails"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The Ifsc Verification API allows developers to verify users’
+            Ifsc in real-time to know about user bank.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const IfscBankDetailsVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={BWI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -127,7 +127,7 @@ const IfscBankDetailsVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"ifsc"}
           examples={GetAcc?.exampleCodes["IFSC"] || []}
         />
       </div>

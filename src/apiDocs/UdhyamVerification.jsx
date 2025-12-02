@@ -45,7 +45,7 @@ const UdyamVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "/udyam/verify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -77,7 +77,7 @@ const UdyamVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="udyam/udyamNumberverify"
+            link="udyam/verify"
           />
           <p className="first_para">
             The UDYAM Number Verification API allows developers to verify users’

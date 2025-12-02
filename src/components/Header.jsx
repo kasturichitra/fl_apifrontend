@@ -96,8 +96,8 @@ const Header = () => {
                 <img
                   src={"/images/flowpipe.png"}
                   alt="fp"
-                  height={35}
-                  width={35}
+                  height={32}
+                  width={32}
                 />
               </div>
               <div className="title_name">

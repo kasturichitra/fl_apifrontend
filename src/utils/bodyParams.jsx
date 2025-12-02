@@ -1,4 +1,44 @@
-// FACE MATCH
+// pan // panToAadhaar
+export const PNV = [
+  {
+    title: "PanCard Number",
+    type: "string",
+    fieldName: "panNumber",
+    subTitle: "user pancard number to be verified",
+    inputTag: true,
+    example: "AXER07FRGV",
+    required: true,
+  },
+];
+
+// mobile number 
+
+// mobile otp generation
+export const MOG = [
+  {
+    title: "Mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "Enter Your Mobile Number",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+];
+// mobile otp verification
+export const MOV = [
+  {
+    title: "OTP",
+    type: "string",
+    fieldName: "submittedOtp",
+    subTitle: "Enter the OTP that was sent to given Mobile Number",
+    inputTag: true,
+    example: "XXXX",
+    required: true,
+  },
+];
+
+// face match
 export const FM = [
   {
     title: "user image",
@@ -20,41 +60,8 @@ export const FM = [
   },
 ];
 
-export const PNV = [
-  {
-    title: "PanCard Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user pancard number to be verified",
-    inputTag: true,
-    example: "AXER07FRGV",
-    required: true,
-  },
-];
+// bank account verification
 
-export const FP = [
-  {
-    title: "PanCard Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user pancard number to be verified",
-    inputTag: true,
-    example: "AXER07FRGV",
-    required: true,
-  },
-];
-
-export const UDYAM = [
-  {
-    title: "udyam Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user Udyam number to be verified",
-    inputTag: true,
-    example: "AXER07FRGV",
-    required: true,
-  },
-];
 
 export const BAV = [
   {
@@ -74,6 +81,32 @@ export const BAV = [
     subTitle: "Ifsc to be verified",
     inputTag: true,
     example: "SBINXXXXXXX",
+    required: true,
+  },
+];
+
+// bank with ifsc
+export const BWI = [
+  {
+    title: "ifsc",
+    type: "string",
+    fieldName: "ifsc",
+    subTitle: "user ifsc to be verified",
+    inputTag: true,
+    example: "SBINXXXXXXX",
+    required: true,
+  },
+];
+
+// udyam
+export const UDYAM = [
+  {
+    title: "udyam Number",
+    type: "string",
+    fieldName: "panNumber",
+    subTitle: "user Udyam number to be verified",
+    inputTag: true,
+    example: "AXER07FRGV",
     required: true,
   },
 ];
@@ -101,12 +134,12 @@ export const AAV = [
 
 export const GSTIN = [
   {
-    title: "GSTIN Number",
+    title: "GST_IN Number",
     type: "string",
     fieldName: "gstinNumber",
     subTitle: "GSTIN Number to be verified",
     inputTag: true,
-    example: "XXXXXXXXXXXX",
+    example: "ABCXXXXXXXXX",
     required: true,
   },
 ];
@@ -243,25 +276,14 @@ export const AOV = [
   },
 ];
 
-export const MOG = [
+export const FP = [
   {
-    title: "Mobile Number",
+    title: "PanCard Number",
     type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "Enter Your Mobile Number",
+    fieldName: "panNumber",
+    subTitle: "user pancard number to be verified",
     inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-export const MOV = [
-  {
-    title: "OTP",
-    type: "string",
-    fieldName: "submittedOtp",
-    subTitle: "Enter the OTP sent to your Mobile Number",
-    inputTag: true,
-    example: "XXXX",
+    example: "AXER07FRGV",
     required: true,
   },
 ];

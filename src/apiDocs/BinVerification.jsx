@@ -10,7 +10,7 @@ import { PNV } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import { BinDynamic, DATA, PanDynamic } from "../utils/apiSchema";
 
 const BinVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -72,7 +72,7 @@ const BinVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Bin Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -80,8 +80,9 @@ const BinVerification = () => {
             link="pan/panverifying"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The Bin Number means Bank Identification Number
+            The Bin Number Verification API allows developers to verify users’
+            Bin numbers in real-time.
           </p>
         </div>
 
@@ -113,7 +114,7 @@ const BinVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -128,7 +129,7 @@ const BinVerification = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          examples={GetAcc?.exampleCodes["BIN"] || []}
         />
       </div>
     </div>

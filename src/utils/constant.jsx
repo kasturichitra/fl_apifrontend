@@ -136,7 +136,7 @@ export const ApiReferences = [
     items: [
       {
         title: "Bank Account Related Verification",
-        link: "bank_acc_verfication",
+        link: "bank_acc_penny_drop_verfication",
         methods: [
           {
             title: "Bank Account Verification(Penny Drop)",
@@ -198,7 +198,7 @@ export const ApiReferences = [
       },
       {
         title: "Full Credit Card Verification",
-        link: "bin_verification",
+        link: "full_credit_card_verfication",
         type: "POST",
         methods: [],
       },

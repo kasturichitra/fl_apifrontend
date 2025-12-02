@@ -10,7 +10,7 @@ import { PNV } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import { DATA, FullCardDynamic } from "../utils/apiSchema";
 
 const FullCreditCardVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -72,12 +72,12 @@ const FullCreditCardVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Full Credit Card Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="card/cardVerify"
           />
           <p className="first_para">
             The FCV Number Verification API allows developers to verify users’
@@ -113,7 +113,7 @@ const FullCreditCardVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={FullCardDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,7 +127,7 @@ const FullCreditCardVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"fullCreditCard"}
           examples={GetAcc?.exampleCodes["FCV"] || []}
         />
       </div>

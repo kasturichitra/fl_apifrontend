@@ -54,9 +54,9 @@ export const apiList = [
   {
     key: "gst",
     name: "GST",
-    url: "gst/verify",
+    url: "gst/Gstinverify",
     params: {
-      gstNumber: "22ABCDEXXXXXXXX",
+      gstinNumber: "22ABCDEXXXXXXXX",
     },
   },
   {
@@ -66,6 +66,14 @@ export const apiList = [
     params: {
       userImage: "BASE 64",
       aadhaarImage: "BASE 64",
+    },
+  },
+  {
+    key: "ifsc",
+    name: "IFSC",
+    url: "bin/getBankDetails",
+    params: {
+      ifsc: "SBINXXXXXXX",
     },
   },
   {
@@ -106,9 +114,25 @@ export const apiList = [
   {
     key: "udyam",
     name: "UDYAM",
-    url: "udyam/udyamNumberverify",
+    url: "udyam/verify",
     params: {
       udyamNumber: "123456789",
+    },
+  },
+   {
+    key: "fullCreditCard",
+    name: "FULLCREDITCARD",
+    url: "card/cardVerify",
+    params: {
+      creditCardNumber: "45XXXXXXXXXXXX23",
+    },
+  },
+  {
+    key: "bin",
+    name: "BIN",
+    url: "bin/getCardDetails",
+    params: {
+      bin: "45XXXX",
     },
   },
 ];
@@ -125,8 +149,6 @@ const baseUrl = [
     return acc;
   }, {}),
 ];
-
-console.log("baseUrl ===>>", baseUrl);
 
 const languagesSupported = ["Node"];
 
@@ -193,6 +215,26 @@ const apiExamples = [
             Name: "RAM BABU",
             PAN_Status: "VALID",
             PAN_Holder_Type: "Person",
+          },
+        },
+      },
+    ],
+  },
+  // pan to aadhaar
+  {
+    name: "PTA",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            code: 200,
+            message: "Data Found Successfully.",
+            result: {
+              aadhaar: "53XXXXXXXX11",
+            },
           },
         },
       },
@@ -308,26 +350,6 @@ const apiExamples = [
       },
     ],
   },
-  // pan to aadhaar
-  {
-    name: "PTA",
-    examples: [
-      {
-        statusCode: 200,
-        message: {
-          success: true,
-          message: "Valid",
-          response: {
-            code: 200,
-            message: "Data Found Successfully.",
-            result: {
-              aadhaar: "53XXXXXXXX11",
-            },
-          },
-        },
-      },
-    ],
-  },
   // gst verify
   {
     name: "GST",
@@ -337,7 +359,32 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: { gst_number: "22ABCDE1234F1Z5", is_valid: true },
+          data: {
+            gstinNumber: "11AAAAA1111A1Z1",
+            companyName: "ABC PRIVATE LIMITED",
+            other_business_address: "Some Additional Address",
+            register_cancellation_date: "2024-01-01",
+            state_jurisdiction:
+              "State - DemoState, Division - DemoDivision, Circle - DemoCircle",
+            tax_payer_type: "Regular",
+            trade_name: "ABC TRADERS",
+            primary_business_address: {
+              building_name: "Demo Building",
+              building_number: "12345",
+              city: "Demo City",
+              district: "Demo District",
+              flat_number: "101",
+              latitude: "12.9721",
+              longitude: "77.5933",
+              location: "Demo Location",
+              business_nature: "Supplier of Goods",
+              pincode: "123456",
+              street: "Demo Street",
+              state_code: "DemoState",
+              full_address:
+                "Demo Building, 12345, Demo Street, Demo Location, Demo District, DemoState - 123456",
+            },
+          },
         },
       },
     ],
@@ -489,23 +536,23 @@ const apiExamples = [
           success: true,
           message: "Valid",
           response: {
-            BRANCH: "PARXXXX",
-            ADDRESS: "DISTXXXXXXXX  ANXXXX XXXXXXX 52XXXX",
-            STATE: "ANXXXX XXXXXX",
-            MICR: null,
-            CONTACT: "",
+            BRANCH: "Demo Branch",
+            ADDRESS: "123 Demo Street, Demo Area, Demo City - 000000",
+            STATE: "Demo State",
+            MICR: "123456789",
+            CONTACT: "0123456789",
             UPI: true,
             RTGS: true,
-            CITY: "PRAXXXXX",
-            CENTRE: "PARXXXXX",
-            DISTRICT: "PARXXXXX",
+            CITY: "Demo City",
+            CENTRE: "Demo Centre",
+            DISTRICT: "Demo District",
             NEFT: true,
             IMPS: true,
-            SWIFT: null,
-            ISO3166: "IN-AP",
-            BANK: "XXXXX Bank XX XXXX",
-            BANKCODE: "SBXX",
-            IFSC: "SBINXXXXXXX",
+            SWIFT: "DEMOXX12345",
+            ISO3166: "IN-DM",
+            BANK: "Demo Bank Ltd",
+            BANKCODE: "DMBC",
+            IFSC: "DMBC0001234",
           },
         },
       },

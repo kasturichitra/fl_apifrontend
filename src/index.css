@@ -153,7 +153,7 @@ li > div > div {
 
 .code_block > pre {
   font-size: var(--font-medium) !important;
-  max-height: 350px;
+  max-height: 333px;
   overflow: auto !important;
   padding: 8px 16px !important;
   margin: 0 !important;

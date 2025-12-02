@@ -74,7 +74,7 @@ export default function CinVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="http://Ntar.PipelineServices/api/gst/verify/CinNumberverify"
+            link="business/CinNumberverify"
           />
           <p className="first_para">
             Enter your CIN number to verify the company details.

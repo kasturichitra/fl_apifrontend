@@ -71,7 +71,7 @@ const apiComponentMap = {
 
   // ---------------- CREDIT CARD ----------------
   bin_verification: BinVerification || ComingSoon,
-  full_credit_card_verification: FullCreditCardVerification || ComingSoon,
+  full_credit_card_verfication: FullCreditCardVerification || ComingSoon,
 
   // ---------------- COMMON ----------------
   name_match_verification: NameMatchVerification,
