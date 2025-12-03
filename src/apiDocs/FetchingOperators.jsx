@@ -6,18 +6,18 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { BAV } from "../utils/bodyParams";
+import { PNV } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../utils/apiSchema";
+import { DATA, PanDynamic } from "../utils/apiSchema";
 
-const BankAccountPennyDropVerification = () => {
+const FetchingOperators = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["BPD"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const BankAccountPennyDropVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "accounts/verify/penny-drop",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const BankAccountPennyDropVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Account Verification (Penny Drop)</h1>
+          <h1 className="api_heading">Pan Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="accounts/verify/penny-drop"
+            link="pan/panverifying"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Bank Account numbers in real-time.
+            The PAN Number Verification API allows developers to verify users’
+            PAN numbers in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const BankAccountPennyDropVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BAV}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const BankAccountPennyDropVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,13 +127,13 @@ const BankAccountPennyDropVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bpd"}
-          examples={GetAcc?.exampleCodes["BPD"] || []}
+          service={"pan"}
+          examples={GetAcc?.exampleCodes["FO"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BankAccountPennyDropVerification;
+export default FetchingOperators;
 

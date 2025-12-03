@@ -1,74 +1,48 @@
 import React, { useEffect, useState, useRef } from "react";
-import Dropdown from "./Dropdown";
 import { GuidesData } from "../utils/constant";
 import "../styles/document_page.css";
+import Dropdown from "./DocumentDropDown";
 
-const SideBar = ({ children }) => {
+const SideBar = ({ activeSection }) => {
   const [pageTitle, setPageTitle] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [parentIndex, setParentIndex] = useState(null);
-  const [activeSlug, setActiveSlug] = useState("");
 
-  const sidebarRef = useRef(null); // ref for the sidebar container
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     setPageTitle("Lending, Reinvented");
   }, []);
 
-  /** 🔥 ScrollSpy: detect which section is visible */
+  /** Apply active section highlight & auto-scroll sidebar */
   useEffect(() => {
-    const sections = document.querySelectorAll(".guide_section");
+    if (!activeSection) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            setActiveSlug(id);
-
-            // Auto-scroll sidebar to active menu item
-            const activeLink = document.querySelector(
-              `.submenu_item[data-slug='${id}']`
-            );
-
-            if (activeLink && sidebarRef.current) {
-              const sidebar = sidebarRef.current;
-
-              const rect = activeLink.getBoundingClientRect();
-              const sidebarRect = sidebar.getBoundingClientRect();
-
-              // How far the link is inside the sidebar
-              const relativeTop = rect.top - sidebarRect.top;
-
-              // Scroll so the active item is centered
-              const scrollPosition =
-                sidebar.scrollTop + relativeTop - sidebarRect.height / 2 + rect.height / 2;
-
-              sidebar.scrollTo({
-                top: scrollPosition,
-                behavior: "smooth",
-              });
-
-            }
-          }
-        });
-      },
-      { threshold: 0.4 }
+    const activeLink = document.querySelector(
+      `.submenu_item[data-slug='${activeSection}']`
     );
 
-    sections.forEach((section) => observer.observe(section));
+    if (activeLink && sidebarRef.current) {
+      const sidebar = sidebarRef.current;
+      const linkOffsetTop = activeLink.offsetTop;
+      const sidebarHeight = sidebar.clientHeight;
+      const linkHeight = activeLink.clientHeight;
 
-    return () => observer.disconnect();
-  }, []);
+      const scrollPosition =
+        linkOffsetTop - sidebarHeight / 2 + linkHeight / 2;
 
+      sidebar.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [activeSection]);
 
-
-  /** 🔥 Smooth scroll handler */
+  /** Smooth scroll when clicking sidebar items */
   const scrollToSection = (slug) => {
     const element = document.getElementById(slug);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveSlug(slug);
     }
   };
 
@@ -93,14 +67,11 @@ const SideBar = ({ children }) => {
               index={groupIndex}
               parentIndex={parentIndex}
               setParentIndex={setParentIndex}
-              activeSlug={activeSlug}            // ScrollSpy highlight
-              scrollToSection={scrollToSection}  // Smooth scroll
+              scrollToSection={scrollToSection}
+              activeSlug={activeSection}  // highlight driven by parent
             />
           ))}
         </aside>
-
-        {/* RIGHT SIDE CONTENT */}
-        {children}
       </div>
     </section>
   );

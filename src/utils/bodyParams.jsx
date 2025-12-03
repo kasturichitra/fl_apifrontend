@@ -231,6 +231,7 @@ export const SEV = [
   },
 ];
 
+// bin
 export const BIN = [
   {
     title: "Bin Verification",
@@ -238,7 +239,7 @@ export const BIN = [
     fieldName: "bin",
     subTitle: "Enter Starting 6 Digit of Card Number",
     inputTag: true,
-    example: "XXXXXXXXXXXX",
+    example: "45XXXX",
     required: true,
   },
 ];

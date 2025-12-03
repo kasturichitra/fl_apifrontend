@@ -87,7 +87,7 @@ export const apiList = [
   {
     key: "shop",
     name: "SHOP",
-    url: "shop/panverifying",
+    url: "shop/shopest",
     params: {
       registrationNumber: "AB78XXXXXXX",
       state: "TELANXXXX",
@@ -96,7 +96,7 @@ export const apiList = [
   {
     key: "bpl",
     name: "BPL",
-    url: "account/pl/verifyBankAccount",
+    url: "accounts/verify/penny-less",
     params: {
       accountNumber: "123456789",
       ifsc: "ICIC0001234",
@@ -105,7 +105,7 @@ export const apiList = [
   {
     key: "bpd",
     name: "BPD",
-    url: "account/pd/verifyBankAccount",
+    url: "accounts/verify/penny-drop",
     params: {
       accountNumber: "123456789",
       ifsc: "ICIC0001234",
@@ -131,6 +131,14 @@ export const apiList = [
     key: "bin",
     name: "BIN",
     url: "bin/getCardDetails",
+    params: {
+      bin: "45XXXX",
+    },
+  },
+    {
+    key: "plans",
+    name: "PLANS",
+    url: "Recharge/Plans",
     params: {
       bin: "45XXXX",
     },
@@ -553,6 +561,27 @@ const apiExamples = [
             BANK: "Demo Bank Ltd",
             BANKCODE: "DMBC",
             IFSC: "DMBC0001234",
+          },
+        },
+      },
+    ],
+  },
+   // fetching operators
+  {
+    name: "FO",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            name: "SAI BABA",
+            status: "VALID",
+            success: true,
+            message: "Transaction Successful",
+            account_no: "3864XXXXXXX",
+            ifsc: "SBINXXXXXXX",
           },
         },
       },

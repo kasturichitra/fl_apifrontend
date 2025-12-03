@@ -6,7 +6,7 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
+import { BIN } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
@@ -77,7 +77,7 @@ const BinVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="bin/getCardDetails"
           />
           <p className="first_para">
             The Bin Number means Bank Identification Number
@@ -104,7 +104,7 @@ const BinVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={BIN}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -128,7 +128,7 @@ const BinVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"bin"}
           examples={GetAcc?.exampleCodes["BIN"] || []}
         />
       </div>

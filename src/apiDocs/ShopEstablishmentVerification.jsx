@@ -77,7 +77,7 @@ export default function ShopVerification() {
             link="shop/shopest"
           />
           <p className="first_para">
-            Name Verification of the Account Holder Name.
+            Shop Establishmentr Verification is used to verify the shop names and addresses of the merchants in real
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export default function ShopVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"SHOP"}
+          service={"shop"}
           examples={GetAcc?.exampleCodes["SHOP"] || []}
         />
       </div>

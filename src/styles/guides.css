@@ -1,22 +1,30 @@
 .guides_main_s {
   display: flex;
-  overflow: initial;
+  height: 100vh;           /* full screen height */
+  overflow: hidden;        /* prevent double-scroll */
 }
 
-.sidebar_wrapper_refernce {
-  height: 100%;
-  /* overflow-y: auto; */
+/* FIXED + SCROLLABLE SIDEBAR */
+.sidebar_wrapper {
+  position: sticky;        /* keeps it fixed */
+  top: 0;
+  height: 100vh;           /* full height */
   width: 280px;
+  overflow-y: auto;        /* sidebar scrollable */
   border-right: 1px solid #ddd;
   background: #fafafa;
+  flex-shrink: 0;
 }
 
+/* SCROLLABLE CONTENT AREA */
 .guides_content {
-  max-height: 100vh;
   flex: 1;
-  /* overflow-y: auto; */
-  padding: 0.5rem;
+  height: 100vh;
+  overflow-y: auto;        /* only content scrolls */
+  padding: 1rem;
+  scroll-behavior: smooth; /* smooth scroll */
 }
+
 
 
 .sidebar_wrapper {

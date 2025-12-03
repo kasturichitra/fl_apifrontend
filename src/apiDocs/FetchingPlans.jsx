@@ -10,7 +10,7 @@ import { FP } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import { DATA, RechargeDynamic } from "../utils/apiSchema";
 
 const FetchingPlans = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -113,7 +113,7 @@ const FetchingPlans = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={RechargeDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,7 +127,7 @@ const FetchingPlans = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"plans"}
           examples={GetAcc?.exampleCodes["FP"] || []}
         />
       </div>

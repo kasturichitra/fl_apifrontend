@@ -39,6 +39,7 @@ import BinVerification from "../apiDocs/BinVerification";
 import FullCreditCardVerification from "../apiDocs/FullCreditCardVerification";
 import BbpsTheory from "../apiDocs/BbpsTheory";
 import BillerinfoDetails from "../apiDocs/BillerinfoDetails";
+import FetchingOperators from "../apiDocs/FetchingOperators";
 
 
 // Placeholder if component is missing
@@ -85,6 +86,7 @@ const apiComponentMap = {
  
 
   // ---------------- MOBILE RECHARGE ----------------
+  fetching_operators: FetchingOperators || ComingSoon,
   fetching_plans: FetchingPlans || ComingSoon,
   recharge_payment: RechargePayment || ComingSoon,
 };

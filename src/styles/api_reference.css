@@ -324,7 +324,7 @@
   max-height: 100%;
   background-color: #111827;
   border: 1px solid var(--border-color);
-  padding: 10px;
+  padding-inline: 10px;
   overflow: auto;
   display: flex;
   position: relative;

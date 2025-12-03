@@ -223,13 +223,37 @@ export const ApiReferences = [
         link: "bbps_Doc",
         type: "POST",
         methods: [
-        { title: "BillerInfo Details", type: "POST", link: "fetching_verification" },
-        { title: "BillFetchProcess", type: "POST", link: "bbps_get_biller_list" },
-        { title: "Bill Validation", type: "POST", link: "bbps_get_biller_list" },
-        { title: "BillPaymentFlow", type: "POST", link: "bbps_get_biller_list" },
-        { title: "QuickPaymentFlow", type: "POST", link: "bbps_get_biller_list" },
-        { title: "BillStatusCheck", type: "POST", link: "bbps_get_biller_list" },
-      ],
+          {
+            title: "BillerInfo Details",
+            type: "POST",
+            link: "fetching_verification",
+          },
+          {
+            title: "BillFetchProcess",
+            type: "POST",
+            link: "bbps_get_biller_list",
+          },
+          {
+            title: "Bill Validation",
+            type: "POST",
+            link: "bbps_get_biller_list",
+          },
+          {
+            title: "BillPaymentFlow",
+            type: "POST",
+            link: "bbps_get_biller_list",
+          },
+          {
+            title: "QuickPaymentFlow",
+            type: "POST",
+            link: "bbps_get_biller_list",
+          },
+          {
+            title: "BillStatusCheck",
+            type: "POST",
+            link: "bbps_get_biller_list",
+          },
+        ],
       },
       // {
       //   title: "BillerInfo Details",
@@ -275,10 +299,23 @@ export const ApiReferences = [
     section: "Mobile Recahrge",
     items: [
       {
-        title: "Fetching Plans",
-        link: "fetching_plans",
+        title: "Recharge Plans",
+        link: "fetching_operators",
         type: "POST",
-        methods: [],
+        methods: [
+          {
+            title: "Fetching Operators",
+            link: "fetching_operators",
+            type: "POST",
+            methods: [],
+          },
+          {
+            title: "Fetching Plans",
+            link: "fetching_plans",
+            type: "POST",
+            methods: [],
+          },
+        ],
       },
       {
         title: "Mobile Recharge Payment",

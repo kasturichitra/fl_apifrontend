@@ -20,10 +20,10 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key.toLowerCase() === "/") {
+      if (e.ctrlKey && e.key === "/") {
         e.preventDefault();
-        setIncreaseSearchBar(true);
-        inputRef.current?.focus();
+        setOpenFilter(true);
+        document.body.classList.add("remove-overflow");
       }
     };
 
@@ -71,6 +71,7 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
           setPageTitle={setPageTitle}
           setHeadTitle={setHeadTitle}
           setOpenIndex={setOpenIndex}
+          setSelectedSlug={setSelectedSlug}
         />
       )}
     </div>
@@ -93,18 +94,20 @@ function JumpButton({ setOpenFilter }) {
   );
 }
 
-function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex }) {
+function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setSelectedSlug }) {
   const [value, setValue] = useState("");
 
   const filteredApis = ApiReferences.map((section) => {
     // Collect all visible entries (methods or items if methods are empty)
-    const entries = section.items.flatMap((item) => {
+    const entries = section.items.flatMap((item, idx) => {
       if (item.methods && item.methods.length > 0) {
         // If item has methods, include those
         return item.methods.map((method) => ({
           title: method.title,
           type: method.type,
           parentTitle: item.title,
+          sidebarIndex: idx,
+          link: method.link,
         }));
       } else {
         // If no methods, include item title
@@ -112,6 +115,8 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex }) {
           title: item.title,
           type: null,
           parentTitle: null,
+          sidebarIndex: idx,
+          link: item.link,
         };
       }
     });
@@ -127,7 +132,10 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex }) {
   }).filter(Boolean);
 
   return (
-    <div className="bluring" onClick={closeFilter}>
+    <div
+      className="bluring"
+      onMouseDown={(e) => e.target === e.currentTarget && closeFilter()}
+    >
       <div
         className="overlay"
         onClick={closeFilter}
@@ -135,10 +143,14 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex }) {
           position: "fixed",
           inset: 0,
           background: "transparent",
-          zIndex: 999,
+          zIndex: 1,
         }}
       />
-      <div className="api_fltr_head" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="api_fltr_head"
+        onClick={(e) => e.stopPropagation()}
+        style={{ zIndex: 2 }}
+      >
         <div className="filter_cpt">
           <div className="filter_api">
             {/* Search Header */}
@@ -167,9 +179,29 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex }) {
                         className="pop_filter_item"
                         onClick={() => {
                           setPageTitle(entry.title);
-                          setHeadTitle(section.section);
-                          setOpenIndex(j);
+                          setHeadTitle(entry.parentTitle || entry.title);
+                          setOpenIndex(entry.sidebarIndex);
+                          setSelectedSlug(entry.link);
+                          // setOpenIndex(j);
                           closeFilter();
+                          const el = document.getElementById(
+                            `sidebar-item-${entry.title.replace(/\s+/g, "-")}`
+                          );
+                          el?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                          // const element = document.getElementById(
+                          //   `api-${entry.title
+                          //     .replace(/\s+/g, "-")
+                          //     .toLowerCase()}`
+                          // );
+                          // if (element) {
+                          //   element.scrollIntoView({
+                          //     behavior: "smooth",
+                          //     block: "start",
+                          //   });
+                          // }
                         }}
                       >
                         <span className="font-semibold">{entry.title}</span>

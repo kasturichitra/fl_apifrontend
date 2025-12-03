@@ -75,6 +75,7 @@ const LinkComponent = ({
       {/* Main Item */}
       <Link to={`/reference/${item.link}`}>
         <div
+          id={`sidebar-item-${item.title.replace(/\s+/g, "-")}`}
           className={`api_nav_item cursor-pointer flex justify-between items-center w-full text-left ${
             pageTitle === item?.title ? "active" : ""
           }`}
@@ -104,6 +105,7 @@ const LinkComponent = ({
         {item?.methods?.map((method, idx) => (
           <li
             key={idx}
+            id={`sidebar-item-${item.title.replace(/\s+/g, "-")}-method-${idx}`}
             className={`api_nav_item ${
               pageTitle === method?.title ? "active" : ""
             }`}

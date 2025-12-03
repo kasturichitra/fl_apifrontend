@@ -665,7 +665,7 @@ export const GstDynamic = [
 export const BinDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns BIN details",
     body: {
       type: "object",
       fields: [
@@ -675,112 +675,49 @@ export const BinDynamic = [
           type: "object",
           objectDetails: [
             {
-              title: "gstinNumber",
+              title: "Brand",
               type: "string",
-              subTitle: "The GSTIN number of the entity",
+              subTitle: "Card network brand (e.g., Visa, Mastercard)",
             },
             {
-              title: "companyName",
+              title: "Category",
               type: "string",
-              subTitle: "Registered legal name of the company",
+              subTitle: "Card category such as Platinum, Business, etc.",
             },
             {
-              title: "other_business_address",
+              title: "CountryName",
               type: "string",
-              subTitle: "Additional business address if available",
+              subTitle: "Country where the issuing bank is located",
             },
             {
-              title: "register_cancellation_date",
+              title: "Issuer",
               type: "string",
-              subTitle: "GST registration cancellation date, if applicable",
+              subTitle: "Name of the issuing bank",
             },
             {
-              title: "state_jurisdiction",
+              title: "IssuerPhone",
               type: "string",
-              subTitle: "State jurisdiction details",
+              subTitle: "Customer support phone number of the issuer",
             },
             {
-              title: "tax_payer_type",
+              title: "IssuerUrl",
               type: "string",
-              subTitle: "Type of taxpayer registered under GST",
+              subTitle: "Official website of the issuer",
             },
             {
-              title: "trade_name",
+              title: "Type",
               type: "string",
-              subTitle: "Trade name of the business",
+              subTitle: "Type of card (Credit, Debit, etc.)",
             },
-
-            // Primary Business Address
             {
-              title: "primary_business_address",
-              type: "object",
-              objectDetails: [
-                {
-                  title: "building_name",
-                  type: "string",
-                  subTitle: "Name of the building",
-                },
-                {
-                  title: "building_number",
-                  type: "string",
-                  subTitle: "Building or house number",
-                },
-                {
-                  title: "city",
-                  type: "string",
-                  subTitle: "City of the address",
-                },
-                {
-                  title: "district",
-                  type: "string",
-                  subTitle: "District of the address",
-                },
-                {
-                  title: "flat_number",
-                  type: "string",
-                  subTitle: "Flat or unit number",
-                },
-                {
-                  title: "latitude",
-                  type: "string",
-                  subTitle: "Latitude coordinate",
-                },
-                {
-                  title: "location",
-                  type: "string",
-                  subTitle: "Location or area name",
-                },
-                {
-                  title: "longitude",
-                  type: "string",
-                  subTitle: "Longitude coordinate",
-                },
-                {
-                  title: "business_nature",
-                  type: "string",
-                  subTitle: "Nature of business",
-                },
-                {
-                  title: "pincode",
-                  type: "string",
-                  subTitle: "Postal PIN code",
-                },
-                {
-                  title: "street",
-                  type: "string",
-                  subTitle: "Street name",
-                },
-                {
-                  title: "state_code",
-                  type: "string",
-                  subTitle: "State code of the GST address",
-                },
-                {
-                  title: "full_address",
-                  type: "string",
-                  subTitle: "Complete formatted address",
-                },
-              ],
+              title: "isoCode2",
+              type: "string",
+              subTitle: "2-letter ISO country code",
+            },
+            {
+              title: "isoCode3",
+              type: "string",
+              subTitle: "3-letter ISO country code",
             },
           ],
         },
@@ -876,6 +813,45 @@ export const FullCardDynamic = [
                   ],
                 },
               ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const RechargeDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
             },
           ],
         },
