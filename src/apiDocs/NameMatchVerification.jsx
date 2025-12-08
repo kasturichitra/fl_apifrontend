@@ -127,7 +127,7 @@ const NameMatchVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"names"}
           examples={GetAcc?.exampleCodes["NM"] || []}
         />
       </div>

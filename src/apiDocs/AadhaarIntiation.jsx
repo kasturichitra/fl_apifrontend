@@ -7,7 +7,6 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 
-import { AOG } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
 import { AadhaarDynamic, DATA } from "../utils/apiSchema";
@@ -75,7 +74,7 @@ export default function AadhaarIntiation() {
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link={"aadhaar/initiate"}
+            link= "aadhaar/initiate"
           />
 
           <p className="first_para">
@@ -102,7 +101,7 @@ export default function AadhaarIntiation() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AOG}
+            bodyObj={[]}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

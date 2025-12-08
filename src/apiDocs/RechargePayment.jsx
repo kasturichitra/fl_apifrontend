@@ -45,7 +45,7 @@ const RechargePayment = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "/Recharge/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -77,7 +77,7 @@ const RechargePayment = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="Recharge/panverifying"
           />
           <p className="first_para">
             The RP Number Verification API allows developers to verify users’

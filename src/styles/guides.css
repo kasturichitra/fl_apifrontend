@@ -10,7 +10,7 @@
   top: 0;
   height: 100vh;           /* full height */
   width: 280px;
-  overflow-y: auto;        /* sidebar scrollable */
+  /* overflow-y: scroll;         */
   border-right: 1px solid #ddd;
   background: #fafafa;
   flex-shrink: 0;

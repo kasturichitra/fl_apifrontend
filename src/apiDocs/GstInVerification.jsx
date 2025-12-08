@@ -43,7 +43,7 @@ export default function GSTINVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/gst/Gstinverify",
+        path: "/business/Gstinverify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -74,7 +74,7 @@ export default function GSTINVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="gst/Gstinverify"
+            link="business/Gstinverify"
           />
           <p className="first_para">
             Enter the GSTIN number of the company you want to verify.

@@ -304,18 +304,11 @@ export const UdyamDynamic = [
     body: {
       type: "object",
       fields: [
-        {
-          title: "success",
-          type: "boolean",
-        },
-        {
-          title: "message",
-          type: "string",
-        },
+        ...BaseFields,
         {
           title: "response",
           type: "object",
-          fields: [
+          objectDetails: [
             {
               title: "udyam",
               type: "string",
@@ -427,24 +420,36 @@ export const UdyamDynamic = [
 export const ShopDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns shop details",
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "access_token",
-          type: "string",
-          required: true,
-        },
-        {
-          title: "expires_in",
-          type: "integer",
-          required: true,
-        },
-        {
-          title: "token_type",
-          type: "string",
-          required: true,
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "registrationNumber",
+              subTitle: "The Registration Number of the Shop",
+              type: "string",
+            },
+            {
+              title: "state",
+              subTitle: "The State in which the Shop is Located",
+              type: "string",
+            },
+            {
+              title: "shopName",
+              subTitle: "The Name of the Shop",
+              type: "string",
+            },
+            {
+              title: "shopAddress",
+              subTitle: "The Address of the Shop",
+              type: "string",
+            },
+          ],
         },
       ],
     },
@@ -860,7 +865,6 @@ export const RechargeDynamic = [
   },
 ];
 
-
 export const DATA = [
   {
     status: 400,
@@ -872,7 +876,8 @@ export const DATA = [
           title: "message",
           type: "string",
           subType: "",
-          subTitle: "The request was malformed or could not be processed as is.",
+          subTitle:
+            "The request was malformed or could not be processed as is.",
         },
         {
           title: "httpCode",
@@ -884,7 +889,8 @@ export const DATA = [
           title: "response",
           type: "string",
           subType: "",
-          subTitle: "A human-readable response explaining why the request was invalid.",
+          subTitle:
+            "A human-readable response explaining why the request was invalid.",
         },
       ],
     },
@@ -911,7 +917,8 @@ export const DATA = [
           title: "response",
           type: "string",
           subType: "",
-          subTitle: "A human-readable response indicating the resource does not exist.",
+          subTitle:
+            "A human-readable response indicating the resource does not exist.",
         },
       ],
     },
@@ -926,7 +933,8 @@ export const DATA = [
           title: "message",
           type: "string",
           subType: "",
-          subTitle: "The request could not be completed because it conflicts with existing data.",
+          subTitle:
+            "The request could not be completed because it conflicts with existing data.",
         },
         {
           title: "httpCode",
@@ -951,13 +959,15 @@ export const DATA = [
       fields: [
         {
           title: "details",
-          subTitle: "A list of validation errors describing what went wrong with the input.",
+          subTitle:
+            "A list of validation errors describing what went wrong with the input.",
           type: "array of objects",
           objectDetails: [
             {
               title: "Ioc",
               type: "array",
-              subTitle: "The location(s) in the request where the validation failed (e.g. field names).",
+              subTitle:
+                "The location(s) in the request where the validation failed (e.g. field names).",
               arrayTypes: ["string", "integer"],
             },
             {
@@ -969,7 +979,8 @@ export const DATA = [
             {
               title: "type",
               type: "string",
-              subTitle: "The kind of validation error (e.g. 'required', 'format', 'type mismatch').",
+              subTitle:
+                "The kind of validation error (e.g. 'required', 'format', 'type mismatch').",
               arrayTypes: [],
             },
           ],
@@ -999,4 +1010,3 @@ export const DATA = [
     },
   },
 ];
-

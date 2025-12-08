@@ -30,7 +30,7 @@ export const GuidesData = [
   {
     title: "Authentication",
     pages: [
-      { title: "API Keys", slug: "api-keys" },
+      { title: "API Keys", slug: "api_keys" },
       { title: "OAuth 2.0", slug: "oauth" },
       { title: "JWT Tokens", slug: "jwt-tokens" },
     ],
@@ -320,6 +320,12 @@ export const ApiReferences = [
       {
         title: "Mobile Recharge Payment",
         link: "recharge_payment",
+        type: "POST",
+        methods: [],
+      },
+       {
+        title: "Mobile Recharge Offers",
+        link: "recharge_payment_offers",
         type: "POST",
         methods: [],
       },

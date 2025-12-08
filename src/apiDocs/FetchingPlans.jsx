@@ -45,7 +45,7 @@ const FetchingPlans = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "Recharge/Plans",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });

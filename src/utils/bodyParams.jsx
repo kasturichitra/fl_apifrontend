@@ -11,6 +11,19 @@ export const PNV = [
   },
 ];
 
+// aadhaar
+export const AS = [
+  {
+    title: "Adhaar Number",
+    type: "string",
+    fieldName: "aadharNumber",
+    subTitle: "Enter Your Card Number",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+];
+
 // mobile number 
 
 // mobile otp generation
@@ -61,8 +74,6 @@ export const FM = [
 ];
 
 // bank account verification
-
-
 export const BAV = [
   {
     title: "Account Number",
@@ -98,7 +109,7 @@ export const BWI = [
   },
 ];
 
-// udyam
+// udyam verification
 export const UDYAM = [
   {
     title: "udyam Number",
@@ -111,27 +122,7 @@ export const UDYAM = [
   },
 ];
 
-export const AAV = [
-  {
-    title: "Aadhaar Number",
-    type: "string",
-    fieldName: "aadharNumber",
-    subTitle: "Aadhaar Number to be verified",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-  {
-    title: "Aadhaar Number",
-    type: "string",
-    fieldName: "aadharNumber",
-    subTitle: "Aadhaar Number to be verified",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-
+// gst verification
 export const GSTIN = [
   {
     title: "GST_IN Number",
@@ -144,6 +135,7 @@ export const GSTIN = [
   },
 ];
 
+// cin verification
 export const CIN = [
   {
     title: "Cin Number",
@@ -156,27 +148,7 @@ export const CIN = [
   },
 ];
 
-export const BNV = [
-  {
-    title: "Bank Acc Num",
-    type: "string",
-    fieldName: "account_no",
-    subTitle: "Bank Account Number to be verified",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-  {
-    title: "IFSC Code",
-    type: "string",
-    fieldName: "ifsc",
-    subTitle: "IFSC code of the branch",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-
+// name verification
 export const NM = [
   {
     title: "Name One",
@@ -198,18 +170,7 @@ export const NM = [
   },
 ];
 
-export const GBD = [
-  {
-    title: "Bank IFSC code ",
-    type: "string",
-    fieldName: "ifsc",
-    subTitle: "Enter your Bank IFSC c",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-
+// shop establishment
 export const SEV = [
   {
     title: "Registration Number",
@@ -244,40 +205,8 @@ export const BIN = [
   },
 ];
 
-export const AOG = [
-  {
-    title: "Adhaar Number",
-    type: "string",
-    fieldName: "aadharNumber",
-    subTitle: "Enter Your Card Number",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-
-export const AOV = [
-  {
-    title: "OTP",
-    type: "string",
-    fieldName: "otp",
-    subTitle: "Enter Your Card Number",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-  {
-    title: "client ID",
-    type: "string",
-    fieldName: "client_id",
-    subTitle: "Enter client Id received on OTP generation",
-    inputTag: true,
-    example: "XXXXXXXXXXXX",
-    required: true,
-  },
-];
-
-export const FP = [
+// fetching operators
+export const FO = [
   {
     title: "PanCard Number",
     type: "string",
@@ -288,6 +217,42 @@ export const FP = [
     required: true,
   },
 ];
+
+// fetching plans
+export const FP = [
+  {
+    title: "operatorcode",
+    type: "string",
+    fieldName: "operatorcode",
+    subTitle: "code for specific recharge partner",
+    inputTag: true,
+    example: "",
+    required: true,
+  },
+  {
+    title: "cricle",
+    type: "string",
+    fieldName: "cricle",
+    subTitle: "cricle for specific recharge partner",
+    inputTag: true,
+    example: "2",
+    required: true,
+  }
+];
+
+// recharge payment
+export const RP = [
+  {
+    title: "PanCard Number",
+    type: "string",
+    fieldName: "panNumber",
+    subTitle: "user pancard number to be verified",
+    inputTag: true,
+    example: "AXER07FRGV",
+    required: true,
+  },
+];
+
 export const BilllerInfo = [
   {
     title: "BillerId",

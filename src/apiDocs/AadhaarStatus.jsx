@@ -7,7 +7,7 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 
-import { AOG } from "../utils/bodyParams";
+import { AS } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
 import { AadhaarDynamic, DATA } from "../utils/apiSchema";
@@ -43,7 +43,7 @@ export default function AadhaarStatus() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/aadhaar/sentAadhaarotp",
+        path: "aadhaar/status",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -75,7 +75,7 @@ export default function AadhaarStatus() {
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link={"aadhaar/status"}
+            link="aadhaar/status"
           />
 
           <p className="first_para">
@@ -101,7 +101,7 @@ export default function AadhaarStatus() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AOG}
+            bodyObj={AS}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

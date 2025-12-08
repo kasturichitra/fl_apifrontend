@@ -1,59 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
-import "../styles/guides.css";
 import Introduction from "../documents/Introduction";
+import ApiKeys from "../documents/ApiKeys";
 
-// const apiComponentMap = {
-//   apimodule_guide: Introduction,
-// };
+const apiComponentMap = {
+  apimodule_guide: Introduction,
+  api_keys: ApiKeys,
+};
 
 const Guides = () => {
   const [activeSection, setActiveSection] = useState("");
+  const navigate = useNavigate();
   const { slug } = useParams();
-  const [selectedSlug, setSelectedSlug] = useState(null);
 
   useEffect(() => {
-    if (slug) setSelectedSlug(slug);
+    if (slug) setActiveSection(slug);
   }, [slug]);
 
-  // const ApiComponent = selectedSlug ? apiComponentMap[selectedSlug] : null;
-
-  /** Main ScrollSpy observer */
-  useEffect(() => {
-    const sections = document.querySelectorAll(".guide_section");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const ApiComponent = apiComponentMap[slug];
 
   return (
     <div className="guides_main_s">
-      <div className="sidebar_wrapper">
-          {/* <aside ref={sidebarRef} className="document_aside_menu"> */}
-        <SideBar activeSection={activeSection} />
-  {/* </aside> */}
-      </div>
+      <SideBar
+        activeSection={activeSection}
+        onSlugClick={(newSlug) => {
+          navigate(`/guides/${newSlug}`); 
+          setActiveSection(newSlug);
+        }}
+      />
 
       <div className="guides_content">
-        {/* {ApiComponent ? (
-          <ApiComponent />
-        ) : (
-          <h2>Select an API from the sidebar to view its documentation.</h2>
-        )} */}
-        {<Introduction/>}
+        {ApiComponent ? <ApiComponent /> : <h2>Select an API</h2>}
       </div>
     </div>
   );

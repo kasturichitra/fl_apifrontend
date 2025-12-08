@@ -62,15 +62,6 @@ const Introduction = () => {
         </p>
       </section>
 
-      <section id="api-keys" className="guide_section">
-        <h3>4.1 API Keys</h3>
-        <p>
-          API keys act as your private access credentials. You will receive test
-          keys, live keys, and rotatable keys. We explain how to store and use
-          them safely.
-        </p>
-      </section>
-
       <section id="oauth" className="guide_section">
         <h3>4.2 OAuth 2.0</h3>
         <p>

@@ -54,7 +54,7 @@ export const apiList = [
   {
     key: "gst",
     name: "GST",
-    url: "gst/Gstinverify",
+    url: "business/Gstinverify",
     params: {
       gstinNumber: "22ABCDEXXXXXXXX",
     },
@@ -120,6 +120,15 @@ export const apiList = [
     },
   },
    {
+    key: "names",
+    name: "NAMES",
+    url: "name/compareNames",
+    params: {
+      firstName: "RAJU",
+      secondName: "RAMU",
+    },
+  },
+  {
     key: "fullCreditCard",
     name: "FULLCREDITCARD",
     url: "card/cardVerify",
@@ -135,12 +144,21 @@ export const apiList = [
       bin: "45XXXX",
     },
   },
-    {
+  {
+    key: "operators",
+    name: "OPERATORS",
+    url: "Recharge/operators",
+    params: {
+      mobileNumber: "65XXXXXX78",
+    },
+  },
+  {
     key: "plans",
     name: "PLANS",
     url: "Recharge/Plans",
     params: {
-      bin: "45XXXX",
+      operatorcode: "",
+      cricle: "",
     },
   },
 ];
@@ -420,7 +438,12 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: { score: 98.45, matched: true },
+          data: {
+            registrationNumber: "REG-458921",
+            state: "Maharashtra",
+            shopName: "Sunrise Super Mart",
+            shopAddress: "12/4 MG Road, Andheri East, Mumbai - 400069",
+          },
         },
       },
     ],
@@ -566,7 +589,7 @@ const apiExamples = [
       },
     ],
   },
-   // fetching operators
+  // fetching operators
   {
     name: "FO",
     examples: [

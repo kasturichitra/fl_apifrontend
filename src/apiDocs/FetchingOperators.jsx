@@ -17,7 +17,7 @@ const FetchingOperators = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["FO"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const FetchingOperators = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "Recharge/Operators",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,15 @@ const FetchingOperators = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Fetching Recharge Operators</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="Recharge/Operators"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The Fetching Operators API allows developers to verify get real time recahrge operators that are in market now!
           </p>
         </div>
 
@@ -127,7 +126,7 @@ const FetchingOperators = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"operators"}
           examples={GetAcc?.exampleCodes["FO"] || []}
         />
       </div>
