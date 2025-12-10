@@ -72,7 +72,7 @@ const FullCreditCardVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Full Credit Card Number Verification</h1>
+          <h1 className="api_heading">Credit Card Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"

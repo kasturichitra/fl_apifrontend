@@ -46,7 +46,7 @@ export const GuidesData = [
   {
     title: "Error Handling",
     pages: [
-      { title: "Error Codes", slug: "error-codes" },
+      { title: "Error Codes", slug: "error_codes" },
       { title: "Rate Limiting", slug: "rate-limiting" },
     ],
   },
@@ -96,12 +96,12 @@ export const ApiReferences = [
         link: "adhaar_otp_generation",
         methods: [
           {
-            title: "Adhaar Otp Generation",
+            title: "STEP: 1 Adhaar Intiate",
             type: "POST",
             link: "adhaar_otp_generation",
           },
           {
-            title: "Adhaar Otp Verification",
+            title: "STEP: 2 Adhaar Status",
             type: "POST",
             link: "adhaar_otp_verification",
           },
@@ -111,13 +111,13 @@ export const ApiReferences = [
         title: "Mobile Number Verification",
         link: "mobile_otp_generation",
         methods: [
-          {
-            title: "Mobile Otp Generation",
+            {
+            title: "STEP: 1 Mobile Otp Generation",
             type: "POST",
             link: "mobile_otp_generation",
           },
           {
-            title: "Mobile Otp Verification",
+            title: "STEP: 2 Mobile Otp Verification",
             type: "POST",
             link: "mobile_otp_verification",
           },
@@ -197,8 +197,8 @@ export const ApiReferences = [
         methods: [],
       },
       {
-        title: "Full Credit Card Verification",
-        link: "full_credit_card_verfication",
+        title: "Credit Card Verification",
+        link: "credit_card_verfication",
         type: "POST",
         methods: [],
       },
@@ -255,6 +255,13 @@ export const ApiReferences = [
           },
         ],
       },
+        {
+        title: "Instant Pay",
+        link: "instant_pay",
+        type: "POST",
+        methods: [
+        ],
+      }
       // {
       //   title: "BillerInfo Details",
       //   link: "fetching_verification",

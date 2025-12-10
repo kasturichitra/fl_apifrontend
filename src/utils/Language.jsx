@@ -143,6 +143,24 @@ export const apiList = [
       bin: "45XXXX",
     },
   },
+     {
+    key: "recharge",
+    name: "RECHARGE",
+    url: "Recharge/RechargeURL",
+    params: {
+      customerNumber: "",
+      actualAmount: "",
+    },
+  },
+  {
+    key: "offers",
+    name: "OFFERS",
+    url: "Recharge/OffersPlans",
+    params: {
+      operator_code: "",
+      mobile_no: "",
+    },
+  },
 ];
 
 const baseUrl = [
@@ -611,6 +629,27 @@ const apiExamples = [
   // recharge payment
   {
     name: "RP",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            name: "SAI BABA",
+            status: "VALID",
+            success: true,
+            message: "Transaction Successful",
+            account_no: "3864XXXXXXX",
+            ifsc: "SBINXXXXXXX",
+          },
+        },
+      },
+    ],
+  },
+    // recharge offers
+   {
+    name: "RO",
     examples: [
       {
         statusCode: 200,

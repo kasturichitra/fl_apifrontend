@@ -44,6 +44,7 @@ import BillFetchDetails from "../apiDocs/BillfetchDetails";
 import BillpayDetails from "../apiDocs/BillpayDetails";
 import BillValidationDetails from "../apiDocs/BillValidation";
 import QuickPayDetails from "../apiDocs/BillQuickpay";
+import InstantPayPayment from "../apiDocs/InstantPayPayment";
 
 
 // Placeholder if component is missing
@@ -88,6 +89,7 @@ const apiComponentMap = {
      bill_pay: BillpayDetails,
      quick_pay: QuickPayDetails,
      bill_validation: BillValidationDetails,
+         instant_pay: InstantPayPayment,
     
   // ---------------- MOBILE RECHARGE ----------------
   fetching_operators: FetchingOperators || ComingSoon,

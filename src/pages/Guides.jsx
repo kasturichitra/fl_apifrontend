@@ -3,10 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import Introduction from "../documents/Introduction";
 import ApiKeys from "../documents/ApiKeys";
+import ErrorCodesDoc from "../documents/ErrorCodesDoc";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
   api_keys: ApiKeys,
+  error_codes: ErrorCodesDoc
 };
 
 const Guides = () => {

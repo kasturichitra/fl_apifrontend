@@ -1,59 +1,47 @@
 import React from "react";
+import TableContents from "../components/TableContents";
+import { CodeBlock, Heading, List, ListItem, Paragraph } from "../components/Ui";
+import "../styles/ui.css"
 
 const ApiKeys = () => {
   return (
-    <section id="api-keys" className="guide_section">
+    <div className="api_layout">
 
-      <h2>API Keys</h2>
-      <p>
-        API keys are unique credentials used to authenticate requests made to the API.
-        They identify your application, enforce access control, and track usage.
-      </p>
+      {/* LEFT CONTENT */}
+      <section className="api_main">
 
+        <Heading level={2} id="api-keys-title">API Keys</Heading>
 
-      {/* TYPES OF API KEYS */}
-      <h3>Types of API Keys</h3>
-      <ul>
-        <li>
-          <strong>Test Keys:</strong> Used for development and sandbox environments. They cannot
-          perform real operations.
-        </li>
-        <li>
-          <strong>Live Keys:</strong> Used in production. Must be stored securely and never exposed
-          publicly.
-        </li>
-        <li>
-          <strong>Publishable Keys:</strong> Safe for client-side usage with limited permissions.
-        </li>
-        <li>
-          <strong>Rotatable Keys:</strong> Allows you to cycle keys without downtime. Old keys remain
-          functional until revoked.
-        </li>
-      </ul>
+        <Paragraph>
+          API keys are unique credentials used to authenticate requests made to the API.
+          They identify your application, enforce access control, and track usage.
+        </Paragraph>
 
+        <Heading level={3} id="types-of-api-keys">Types of API Keys</Heading>
+        <List>
+          <ListItem><strong>Test Keys:</strong> Used for development and sandbox environments.</ListItem>
+          <ListItem><strong>Live Keys:</strong> Used in production and must be stored securely.</ListItem>
+          <ListItem><strong>Publishable Keys:</strong> Safe for limited client-side usage.</ListItem>
+          <ListItem><strong>Rotatable Keys:</strong> Allows safe key rotation without downtime.</ListItem>
+        </List>
 
-      {/* GENERATION */}
-      <h3>How to Generate API Keys</h3>
-      <ol>
-        <li>Open your dashboard and go to <strong>Developers → API Keys</strong>.</li>
-        <li>Click <strong>"Generate New Key"</strong>.</li>
-        <li>Select Test, Live, Publishable, or Rotatable.</li>
-        <li>
-          Copy the key and store it securely. Keys are only shown once for security reasons.
-        </li>
-      </ol>
+        <Heading level={3} id="generate-api-keys">How to Generate API Keys</Heading>
+        <List ordered>
+          <ListItem>Open your dashboard and go to <strong>Developers → API Keys</strong>.</ListItem>
+          <ListItem>Click <strong>"Generate New Key"</strong>.</ListItem>
+          <ListItem>Select Test, Live, Publishable, or Rotatable.</ListItem>
+          <ListItem>Copy the key and store it securely.</ListItem>
+        </List>
 
+        <Heading level={3} id="using-api-keys">Using API Keys</Heading>
+        <Paragraph>API keys must be sent in the <strong>Authorization</strong> header using Bearer format.</Paragraph>
 
-      {/* USING API KEYS */}
-      <h3>Using API Keys</h3>
-      <p>API keys must be sent in the <strong>Authorization</strong> header using Bearer format.</p>
-
-      <pre className="code_block">
+        <CodeBlock>
 {`curl -X GET "https://api.yourdomain.com/v1/users" \\
 -H "Authorization: Bearer YOUR_API_KEY"`}
-      </pre>
+        </CodeBlock>
 
-      <pre className="code_block">
+        <CodeBlock>
 {`// Node.js example
 import axios from "axios";
 
@@ -62,53 +50,48 @@ axios.get("https://api.yourdomain.com/v1/users", {
     Authorization: \`Bearer \${process.env.API_KEY}\`,
   },
 });`}
-      </pre>
+        </CodeBlock>
 
+        <Heading level={3} id="sending-api-keys-securely">Sending API Keys Securely</Heading>
+        <List>
+          <ListItem>Always use HTTPS to encrypt API communication.</ListItem>
+          <ListItem>Never send API keys in URL query strings.</ListItem>
+          <ListItem>Use environment variables or secret managers.</ListItem>
+          <ListItem>Restrict permissions to what is needed.</ListItem>
+        </List>
 
-      {/* SENDING API KEYS SECURELY */}
-      <h3>Sending API Keys Securely</h3>
-      <ul>
-        <li>Always use HTTPS to encrypt API communication.</li>
-        <li>Never send API keys in the URL query string.</li>
-        <li>Use environment variables or secret managers.</li>
-        <li>Restrict key permissions to only what is required.</li>
-      </ul>
+        <Heading level={3} id="api-key-rotation">API Key Rotation</Heading>
+        <List ordered>
+          <ListItem>Generate a new API key.</ListItem>
+          <ListItem>Update your server.</ListItem>
+          <ListItem>Test your integration.</ListItem>
+          <ListItem>Revoke the old key.</ListItem>
+        </List>
 
+        <Heading level={3} id="security-best-practices">Security Best Practices</Heading>
+        <List>
+          <ListItem>Keep production keys secure.</ListItem>
+          <ListItem>Use separate keys for all environments.</ListItem>
+          <ListItem>Enable IP allowlisting.</ListItem>
+          <ListItem>Monitor API usage activity.</ListItem>
+        </List>
 
-      {/* KEY ROTATION */}
-      <h3>API Key Rotation</h3>
-      <p>
-        Key rotation helps prevent unauthorized access. When rotating keys:
-      </p>
-      <ol>
-        <li>Generate a new API key.</li>
-        <li>Update your server to use the new key.</li>
-        <li>Test your application.</li>
-        <li>Revoke the old key from the dashboard.</li>
-      </ol>
+        <Heading level={3} id="common-api-key-mistakes">Common Mistakes</Heading>
+        <List>
+          <ListItem>Exposing keys in GitHub.</ListItem>
+          <ListItem>Sending keys using HTTP.</ListItem>
+          <ListItem>Putting secret keys in frontend code.</ListItem>
+          <ListItem>Not rotating keys regularly.</ListItem>
+        </List>
 
+      </section>
 
-      {/* SECURITY BEST PRACTICES */}
-      <h3>Security Best Practices</h3>
-      <ul>
-        <li>Keep all production keys private and secure.</li>
-        <li>Use separate keys for development, staging, and production.</li>
-        <li>Enable IP allowlisting when possible.</li>
-        <li>Monitor API usage to detect suspicious activity.</li>
-        <li>Avoid hardcoding keys directly in source code.</li>
-      </ul>
+      {/* RIGHT SIDEBAR */}
+      <aside className="api_toc">
+        <TableContents />
+      </aside>
 
-
-      {/* COMMON MISTAKES */}
-      <h3>Common Mistakes</h3>
-      <ul>
-        <li>Exposing keys in GitHub repositories.</li>
-        <li>Using HTTP instead of HTTPS.</li>
-        <li>Putting secret keys in client-side code.</li>
-        <li>Forgetting to rotate keys regularly.</li>
-      </ul>
-
-    </section>
+    </div>
   );
 };
 

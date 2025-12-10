@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DocumentNavigationMobile from "./DocumentNavigationMobile";
 import { images } from "../utils/constant";
 import "../styles/header.css";
 import { setPageTitle, setOpenMenu } from "../redux/slice/headerSlice";
+import { searchItems } from "./SearchItems";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,13 @@ const Header = () => {
 
   const [increaseSearchBar, setIncreaseSearchBar] = useState(false);
   const [displayedRoute, setDisplayedRoute] = useState("Guides");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   const inputRef = useRef(null);
   const hamburgerRef = useRef(null);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   /** --- Event Handlers --- */
   const handleClick = (e) => {
@@ -57,6 +61,32 @@ const Header = () => {
       dispatch(setPageTitle("Guides"));
     }
   }, [pathname, dispatch]);
+
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+
+    const currentPage = displayedRoute;
+    const filtered = searchItems.filter(
+      (item) =>
+        item.category === currentPage &&
+        item.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setSuggestions(filtered);
+  };
+
+  const handleSuggestionClick = (path, title) => {
+    navigate(path);
+    dispatch(setPageTitle(title));
+    setSearchQuery("");
+    setSuggestions([]);
+    setIncreaseSearchBar(false);
+  };
 
   // Close menus and search on outside click
   useEffect(() => {
@@ -211,9 +241,28 @@ const Header = () => {
                   className="search_icon_img"
                 />
               </div>
-              <input type="text" placeholder="Search" ref={inputRef} />
+              <input
+                type="text"
+                placeholder="Search"
+                ref={inputRef}
+                value={searchQuery}
+                onChange={(e) => handleInputChange(e)}
+              />
               {!increaseSearchBar && <kbd className="ctrl">CTRL-K</kbd>}
             </div>
+            {suggestions.length > 0 && (
+              <ul className="suggestions_dropdown">
+                {suggestions.map((item, index) => (
+                  <li
+                    key={index}
+                    className="suggestion_item"
+                    onClick={() => handleSuggestionClick(item.path, item.title)}
+                  >
+                    {item.title}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
 

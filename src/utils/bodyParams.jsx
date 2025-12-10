@@ -154,18 +154,18 @@ export const NM = [
     title: "Name One",
     type: "string",
     fieldName: "firstName",
-    subTitle: "Enter your Name on Bank Account",
+   subTitle: "Enter a Name to verify",
     inputTag: true,
-    example: "XXXXXXXXXXXX",
+    example: "RAXX",
     required: true,
   },
   {
     title: "Name Two",
     type: "string",
     fieldName: "secondName",
-    subTitle: "Enter your Name on Pan card",
+    subTitle: "Enter another Name to verify",
     inputTag: true,
-    example: "XXXXXXXXXXXX",
+    example: "RAXX",
     required: true,
   },
 ];
@@ -253,6 +253,9 @@ export const RP = [
   },
 ];
 
+// bbps
+
+// biller info
 export const BilllerInfo = [
   {
     title: "BillerId",

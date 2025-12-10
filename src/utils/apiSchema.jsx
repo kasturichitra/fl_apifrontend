@@ -473,7 +473,7 @@ export const NameDynamic = [
         {
           title: "response",
           type: "object",
-          fields: [
+          objectDetails: [
             {
               title: "firstName",
               type: "string",
@@ -825,7 +825,7 @@ export const FullCardDynamic = [
     },
   },
 ];
-export const RechargeDynamic = [
+export const RechargePaymentDynamic = [
   {
     status: 200,
     summary: "Returns a paginated list of accounts",
@@ -857,6 +857,101 @@ export const RechargeDynamic = [
               title: "PAN_Status",
               type: "string",
               subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const RechargeDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "success",
+              type: "boolean",
+              subTitle: "Indicates whether the request was successful",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "Status message of the response",
+            },
+            {
+              title: "response",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "card_number",
+                  type: "string",
+                  subTitle: "Masked card number",
+                },
+                {
+                  title: "is_valid",
+                  type: "boolean",
+                  subTitle: "Indicates whether the card number is valid",
+                },
+                {
+                  title: "issuer_info",
+                  type: "object",
+                  objectDetails: [
+                    {
+                      title: "Brand",
+                      type: "string",
+                      subTitle: "Card brand (e.g., Visa, Mastercard)",
+                    },
+                    {
+                      title: "Category",
+                      type: "string",
+                      subTitle: "Card category (e.g., Platinum, Business)",
+                    },
+                    {
+                      title: "CountryName",
+                      type: "string",
+                      subTitle: "Country of the card issuer",
+                    },
+                    {
+                      title: "Issuer",
+                      type: "string",
+                      subTitle: "Financial institution issuing the card",
+                    },
+                    {
+                      title: "IssuerPhone",
+                      type: "string",
+                      subTitle: "Issuer contact phone number",
+                    },
+                    {
+                      title: "IssuerUrl",
+                      type: "string",
+                      subTitle: "Issuer website URL",
+                    },
+                    {
+                      title: "Type",
+                      type: "string",
+                      subTitle: "Type of card (Credit/Debit)",
+                    },
+                    {
+                      title: "isoCode2",
+                      type: "string",
+                      subTitle: "Two-letter ISO country code",
+                    },
+                    {
+                      title: "isoCode3",
+                      type: "string",
+                      subTitle: "Three-letter ISO country code",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

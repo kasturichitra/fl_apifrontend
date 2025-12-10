@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/introduction.css"
+import TableContents from "../components/TableContents";
 const Introduction = () => {
   return (
     <div className="guide_page">
@@ -169,7 +170,9 @@ const Introduction = () => {
           Answers to common developer and business questions.
         </p>
       </section>
-
+      <div>
+        <TableContents/>
+      </div>
     </div>
   );
 };

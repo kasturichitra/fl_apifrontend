@@ -1,5 +1,3 @@
-"";
-
 import React, { useEffect, useState } from "react";
 
 export default function TableContents() {
@@ -7,7 +5,6 @@ export default function TableContents() {
   //
 
   useEffect(() => {
-    // Small delay to ensure DOM is rendered
     const timer = setTimeout(() => {
       const collected = Array.from(
         document.querySelectorAll("h1[id], h2[id],h3[id]")
