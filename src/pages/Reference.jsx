@@ -40,6 +40,10 @@ import FullCreditCardVerification from "../apiDocs/FullCreditCardVerification";
 import BbpsTheory from "../apiDocs/BbpsTheory";
 import BillerinfoDetails from "../apiDocs/BillerinfoDetails";
 import FetchingOperators from "../apiDocs/FetchingOperators";
+import BillFetchDetails from "../apiDocs/BillfetchDetails";
+import BillpayDetails from "../apiDocs/BillpayDetails";
+import BillValidationDetails from "../apiDocs/BillValidation";
+import QuickPayDetails from "../apiDocs/BillQuickpay";
 
 
 // Placeholder if component is missing
@@ -80,11 +84,11 @@ const apiComponentMap = {
   // ---------------- BBPS ----------------
     bbps_Doc: BbpsTheory,
     fetching_verification: BillerinfoDetails,
-  // bill_fetch: BillFetch || ComingSoon,
-  // bill_pay: BillPay || ComingSoon,
-  // bill_validation: BillValidation || ComingSoon,
- 
-
+    bill_fetch: BillFetchDetails,
+     bill_pay: BillpayDetails,
+     quick_pay: QuickPayDetails,
+     bill_validation: BillValidationDetails,
+    
   // ---------------- MOBILE RECHARGE ----------------
   fetching_operators: FetchingOperators || ComingSoon,
   fetching_plans: FetchingPlans || ComingSoon,

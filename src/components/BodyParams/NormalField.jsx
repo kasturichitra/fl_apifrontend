@@ -27,13 +27,14 @@ export default function NormalField({
     fieldName,
     inputTag,
     example,
+    readOnly
   } = field;
 
-  useEffect(() => {
-    if (required) {
-      setAllRequiredFields((prev) => ({ ...prev, [fieldName]: true }));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (required) {
+  //     setAllRequiredFields((prev) => ({ ...prev, [fieldName]: true }));
+  //   }
+  // }, []);
 
   const HandleBlurOut = (e) => {
     const { value } = e.target;
@@ -98,6 +99,7 @@ export default function NormalField({
               onFocus={HandleFocus}
               value={faceMatchState?.[resType]?.[fieldName] || ""}
               name={fieldName}
+              readOnly={readOnly }
             />
           )}
 

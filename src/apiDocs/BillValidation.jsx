@@ -6,15 +6,15 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { BilllerInfo, PNV } from "../utils/bodyParams";
+import { BilllerInfo, Billpay, BillValidation, PNV } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
 // import { DATA, PanDynamic } from "../utils/apiSchema";
 import { BbpsApi_Headers } from "../utils/BbpsApi_Headers";
-import {DATA, BillerInfo } from "../utils/BbpsSchema";
+import { DATA, BillerInfo } from "../utils/BbpsSchema";
 
-const BillerinfoDetails = () => {
+const BillValidationDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -73,20 +73,24 @@ const BillerinfoDetails = () => {
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
         <div className="api_hero">
-          <h1 className="api_heading">BillerInfo Details</h1>
+          <h1 className="api_heading">BillValidation Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            link="https://stgapi.billavenue.com/billpay/extMdmCntrl/mdmRequestNew/xml"
+            link="https://stgapi.billavenue.com/billpay/extBillValCntrl/billValidationRequest/xml"
           />
           <p className="first_para">
-            The BillerInfo API provides the complete list of BBPS billers along with
-            their categories and required customer input fields. It helps identify which
-            billers are available and what details are needed to fetch or pay a bill.
+            The BillValidation API allows you to verify the bill details for a BBPS biller
+            before initiating the payment. By providing customer inputs such as account number,
+            consumer number, or mobile number, the API fetches the biller-provided details
+            including bill amount, due date, and customer information. This ensures that
+            the payment is made against a valid bill and reduces errors in the bill payment workflow.
           </p>
-           </div>
-          <RequestHistoryTable TableClass="history_Table" />
-          <div className="py-6">
+
+
+        </div>
+        <RequestHistoryTable TableClass="history_Table" />
+        <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
@@ -98,7 +102,7 @@ const BillerinfoDetails = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BilllerInfo}
+            bodyObj={BillValidation}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -118,12 +122,12 @@ const BillerinfoDetails = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"BillerInfo"}
-          examples={GetAcc?.exampleCodes["BillerInfo"] || []}
+          service={"BillValidation"}
+          examples={GetAcc?.exampleCodes["BillValidation"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BillerinfoDetails;
+export default BillValidationDetails;

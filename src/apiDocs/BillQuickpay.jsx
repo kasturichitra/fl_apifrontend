@@ -6,15 +6,15 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { BilllerInfo, PNV } from "../utils/bodyParams";
+import { BilllerInfo, Billpay, PNV, Quickpay } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
 // import { DATA, PanDynamic } from "../utils/apiSchema";
 import { BbpsApi_Headers } from "../utils/BbpsApi_Headers";
-import {DATA, BillerInfo } from "../utils/BbpsSchema";
+import { DATA, BillerInfo } from "../utils/BbpsSchema";
 
-const BillerinfoDetails = () => {
+const QuickPayDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -73,20 +73,23 @@ const BillerinfoDetails = () => {
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
         <div className="api_hero">
-          <h1 className="api_heading">BillerInfo Details</h1>
+          <h1 className="api_heading">QuickPay Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            link="https://stgapi.billavenue.com/billpay/extMdmCntrl/mdmRequestNew/xml"
+            link="https://stgapi.billavenue.com/billpay/extBillPayCntrl/billPayRequest/xml"
           />
           <p className="first_para">
-            The BillerInfo API provides the complete list of BBPS billers along with
-            their categories and required customer input fields. It helps identify which
-            billers are available and what details are needed to fetch or pay a bill.
+            The BillPay API allows you to make real-time payments to BBPS billers
+            using customer inputs, bill details, and the selected payment mode. Once
+            the payment request is submitted, BBPS processes the transaction and
+            returns the payment status, acknowledgement ID, and other confirmation
+            details. This API completes the final step of the bill payment workflow.
           </p>
-           </div>
-          <RequestHistoryTable TableClass="history_Table" />
-          <div className="py-6">
+
+        </div>
+        <RequestHistoryTable TableClass="history_Table" />
+        <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
@@ -98,7 +101,7 @@ const BillerinfoDetails = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BilllerInfo}
+            bodyObj={Quickpay}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -118,12 +121,12 @@ const BillerinfoDetails = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"BillerInfo"}
-          examples={GetAcc?.exampleCodes["BillerInfo"] || []}
+          service={"QuickPay"}
+          examples={GetAcc?.exampleCodes["QuickPay"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BillerinfoDetails;
+export default QuickPayDetails;

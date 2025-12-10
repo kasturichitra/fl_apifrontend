@@ -231,22 +231,22 @@ export const ApiReferences = [
           {
             title: "BillFetchProcess",
             type: "POST",
-            link: "bbps_get_biller_list",
+            link: "bill_fetch",
           },
           {
             title: "Bill Validation",
             type: "POST",
-            link: "bbps_get_biller_list",
+            link: "bill_validation",
           },
           {
             title: "BillPaymentFlow",
             type: "POST",
-            link: "bbps_get_biller_list",
+            link: "bill_pay",
           },
           {
             title: "QuickPaymentFlow",
             type: "POST",
-            link: "bbps_get_biller_list",
+            link: "quick_pay",
           },
           {
             title: "BillStatusCheck",

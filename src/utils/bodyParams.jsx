@@ -262,7 +262,306 @@ export const BilllerInfo = [
     inputTag: true,
     example: "AIRTM001",
     required: true,
-    disabled: true,
+    readOnly: true
   },
+  
 ];
+export const BillFetch = [
+  {
+    title: "Biller ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique code of the biller from BBPS",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Customer Mobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "Mobile number of the customer",
+    inputTag: true,
+    example: "XXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Input Params",
+    type: "string",
+    fieldName: "inputParams",
+    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    inputTag: true,
+    example: "*********",
+    required: true,
+    readOnly: true
+  }
+];
+export const BillValidation = [
+  {
+    title: "Biller ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Customer Mobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "Mobile number of the customer",
+    inputTag: true,
+    example: "XXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Input Params",
+    type: "object",
+    fieldName: "inputParams",
+    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    inputTag: true,
+    // example: [
+    //   { paramName: "CA Number", paramValue: "XXXX" },
+    //   { paramName: "BU Number", paramValue: "XXXX" }
+    // ],
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Amount",
+    type: "number",
+    fieldName: "amount",
+    subTitle: "Amount to pay for the bill",
+    inputTag: true,
+    example: 100,
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Currency",
+    type: "string",
+    fieldName: "currency",
+    subTitle: "Currency code (usually INR)",
+    inputTag: true,
+    example: "INR",
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Payment Mode",
+    type: "string",
+    fieldName: "paymentMode",
+    subTitle: "Payment mode like UPI, AEPS, Cash, etc.",
+    inputTag: true,
+    example: "UPI",
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Quick Pay",
+    type: "boolean",
+    fieldName: "quickPay",
+    subTitle: "Whether it is a quick pay transaction",
+    inputTag: true,
+    example: false,
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Split Pay",
+    type: "boolean",
+    fieldName: "splitPay",
+    subTitle: "Whether the bill is being split",
+    inputTag: true,
+    example: false,
+    required: false,
+    readOnly: true
+  }
+];
+export const Billpay = [
+  {
+    title: "Biller ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Customer Mobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "Mobile number of the customer",
+    inputTag: true,
+    example: "XXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Input Params",
+    type: "string",
+    fieldName: "inputParams",
+    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    inputTag: true,
+    example: "*********",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Amount",
+    type: "number",
+    fieldName: "amount",
+    subTitle: "Amount to pay for the bill",
+    inputTag: true,
+    example: "100",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Currency",
+    type: "string",
+    fieldName: "currency",
+    subTitle: "Currency code (usually INR)",
+    inputTag: true,
+    example: "INR",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Payment Mode",
+    type: "string",
+    fieldName: "paymentMode",
+    subTitle: "Payment mode like UPI, AEPS, Cash, etc.",
+    inputTag: true,
+    example: "UPI",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Quick Pay",
+    type: "boolean",
+    fieldName: "quickPay",
+    subTitle: "Whether it is a quick pay transaction",
+    inputTag: true,
+    example: false,
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Split Pay",
+    type: "boolean",
+    fieldName: "splitPay",
+    subTitle: "Whether the bill is being split",
+    inputTag: true,
+    example: false,
+    required: false,
+    readOnly: true
+  }
+];
+export const Quickpay = [
+  {
+    title: "Biller ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Customer Mobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "Mobile number of the customer",
+    inputTag: true,
+    example: "XXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Input Params",
+    type: "string",
+    fieldName: "inputParams",
+    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    inputTag: true,
+    example: "*********",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Amount",
+    type: "number",
+    fieldName: "amount",
+    subTitle: "Amount to pay for the bill (in rupees)",
+    inputTag: true,
+    example: 100,
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Currency",
+    type: "string",
+    fieldName: "currency",
+    subTitle: "Currency code (usually INR)",
+    inputTag: true,
+    example: "INR",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Payment Mode",
+    type: "string",
+    fieldName: "paymentMode",
+    subTitle: "Payment mode like UPI or Debit Card",
+    inputTag: true,
+    example: "UPI / Debit Card",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Quick Pay",
+    type: "boolean",
+    fieldName: "quickPay",
+    subTitle: "Whether it is a quick pay transaction",
+    inputTag: true,
+    example: true,
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Split Pay",
+    type: "boolean",
+    fieldName: "splitPay",
+    subTitle: "Whether the bill is being split",
+    inputTag: true,
+    example: false,
+    required: false,
+    readOnly: true
+  },
+  {
+    title: "Payment Info",
+    type: "array",
+    fieldName: "paymentInfo",
+    subTitle: "Payment-specific details like VPA for UPI or Card/OTP for debit card",
+    inputTag: true,
+    // example: [
+    //   { infoName: "VPA", infoValue: "customer@upi" },
+    //   { infoName: "AuthCode", infoValue: "123456" }
+    // ],
+    required: true,
+    readOnly: true
+  }
+];
+
+
+
+
 
