@@ -80,8 +80,8 @@ const PanToAadhaarVerification = () => {
             link="pan/panToAadhaar"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The PAN Number to masked Aadhaar API allows developers to verify users’
+            PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
         </div>
 

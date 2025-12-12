@@ -17,7 +17,7 @@ export const AS = [
     title: "Adhaar Number",
     type: "string",
     fieldName: "aadharNumber",
-    subTitle: "Enter Your Card Number",
+    subTitle: "Enter Your ts transaction id",
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
@@ -208,12 +208,12 @@ export const BIN = [
 // fetching operators
 export const FO = [
   {
-    title: "PanCard Number",
+    title: "mobileNumber",
     type: "string",
-    fieldName: "panNumber",
-    subTitle: "user pancard number to be verified",
+    fieldName: "mobileNumber",
+    subTitle: "user mobileNumber to get operators",
     inputTag: true,
-    example: "AXER07FRGV",
+    example: "65XXXXXX78",
     required: true,
   },
 ];
@@ -253,6 +253,28 @@ export const RP = [
   },
 ];
 
+// fetching offers
+export const FOP = [
+  {
+    title: "operatorCode",
+    type: "string",
+    fieldName: "operator_code",
+    subTitle: "use operator_code to get offers",
+    inputTag: true,
+    example: "",
+    required: true,
+  },
+  {
+    title: "mobileNumber",
+    type: "string",
+    fieldName: "mobile_no",
+    subTitle: "use mobileNumber to get offers",
+    inputTag: true,
+    example: "65XXXXXX78",
+    required: true,
+  },
+];
+
 // bbps
 
 // biller info
@@ -269,6 +291,8 @@ export const BilllerInfo = [
   },
   
 ];
+
+// bill fetch
 export const BillFetch = [
   {
     title: "Biller ID",

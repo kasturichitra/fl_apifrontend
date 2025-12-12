@@ -72,7 +72,7 @@ const InstantPayPayment = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Instant Pay Payment Integration</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -80,8 +80,8 @@ const InstantPayPayment = () => {
             link="pan/panverifying"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The nstant Pay Payment API allows developers to pay users’
+            credit card bills in real-time.
           </p>
         </div>
 

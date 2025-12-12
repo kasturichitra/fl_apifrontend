@@ -4,11 +4,13 @@ import SideBar from "../components/SideBar";
 import Introduction from "../documents/Introduction";
 import ApiKeys from "../documents/ApiKeys";
 import ErrorCodesDoc from "../documents/ErrorCodesDoc";
+import ApiRateLimit from "../documents/ApiRateLimit";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
   api_keys: ApiKeys,
-  error_codes: ErrorCodesDoc
+  error_codes: ErrorCodesDoc,
+  rate_limiting: ApiRateLimit
 };
 
 const Guides = () => {

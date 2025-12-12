@@ -143,7 +143,7 @@ export const apiList = [
       bin: "45XXXX",
     },
   },
-     {
+  {
     key: "recharge",
     name: "RECHARGE",
     url: "Recharge/RechargeURL",
@@ -452,7 +452,140 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: { CinNumber: "U123456ABC", is_valid: true },
+          data: {
+            CIN: "U12345DL2025PTC999999",
+            COMPANY_NAME: "ABC TECHNOLOGIES PRIVATE LIMITED",
+            DATE_OF_REGISTRATION: "01/15/2025",
+            CITY: "New Delhi",
+            DISTRICT: "New Delhi",
+            STATE: "Delhi",
+            COUNTRY: "India",
+            PINCODE: "110001",
+            ROC: "ROC Delhi",
+            CATEGORY: "Company limited by shares",
+            SUBCATEGORY: "Non-government company",
+            CLASS: "Private",
+            AUTHORIZED_CAPITAL: "500000",
+            PAIDUP_CAPITAL: "500000",
+            NUMBER_OF_MEMBERS: "",
+            ACTIVITY_DESCRIPTION: "IT Services",
+            REGISTERED_OFFICE_ADDRESS:
+              "12/5, Tech Park Tower, 3rd Floor, Connaught Place, New Delhi, Delhi, India, 110001",
+            GETDATA: 1,
+            TIMESTAMP: "2025-01-02T02:08:40.000Z",
+            COUNTRY_INC: "Indian",
+            F_COMPANY_SHARE_CAP: "null",
+            STATUS: "Active",
+            TYPE_OF_OFFICE: "AABCD1234F",
+            FOREIGN_DETAILS: null,
+            FOREIGN_ADDRESS: null,
+            ACTIVITY_CODE: "null",
+            ADDRESS_OTHER_THAN_RO: "-",
+            EMAIL: "info@abctech.com",
+            LISTING_STATUS: "Unlisted",
+            ACTIVE_COMPLIANCE: "",
+            COMPANY_FILING_STATUS_16_17_18: "",
+            SUSPENDED_AT_STOCK: "-",
+            LAST_AGM: "09/30/2024",
+            LAST_BALANCESHEET: "03/31/2024",
+            CIRP: "",
+            PARTNERS: "",
+            PREVIOUS_FIRM: null,
+            SOLVENCY_FILED: "null",
+            COMPANY_STATUS: "Active",
+            old_cin: null,
+            PAN: "AABCD1234F",
+            has_financials: 1,
+            has_charges: 1,
+            IS_DOCS_PROCESSED: 0,
+            IS_AUDITOR_MOVED: 100,
+            PRIORITY_1: 100,
+            DOCS_PROCESS_ON: "2024-11-24T18:19:06.000Z",
+            MULTIPLE_ADDRESS: [
+              {
+                city: "New Delhi",
+                state: "Delhi",
+                country: "India",
+                district: "New Delhi",
+                locality: "Connaught Place",
+                officeType: "",
+                postalCode: "110001",
+                addressType: "Registered Address",
+                activeStatus: "Y",
+                migrationFlag: "",
+                streetAddress: "Tech Park Tower, 3rd Floor",
+                streetAddress2: "",
+                streetAddress3: "",
+                streetAddress4: "",
+                establishmentDate: "",
+              },
+              {
+                city: "Noida",
+                state: "Uttar Pradesh",
+                country: "India",
+                district: "Gautam Buddha Nagar",
+                locality: "Sector 62",
+                officeType: "",
+                postalCode: "201301",
+                addressType: "Police Station Address",
+                activeStatus: "Y",
+                migrationFlag: "N",
+                streetAddress: "IT Hub Complex",
+                streetAddress2: "",
+                streetAddress3: "",
+                streetAddress4: "",
+                establishmentDate: "",
+              },
+              {
+                city: "Gurugram",
+                state: "Haryana",
+                country: "India",
+                district: "Gurugram",
+                locality: "Cyber City",
+                officeType: "",
+                postalCode: "122002",
+                addressType: "Present Address",
+                activeStatus: "Y",
+                migrationFlag: "N",
+                streetAddress: "DLF Phase 3, Building 14",
+                streetAddress2: "",
+                streetAddress3: "",
+                streetAddress4: "",
+                establishmentDate: "",
+              },
+            ],
+            IS_ADDRESS_UPDATED: 1,
+            STOCKS: null,
+            WEBSITE: "https://www.abctech.com",
+            LOGO: null,
+            INDUSTRY: "Information Technology",
+            COMPANY_AGE: "1 Year",
+            MOBILE: "9876543210",
+            SHOWN_TO_WEBSITE: 1,
+            IS_PAN_SAVED: 0,
+            IS_MASKED_EMAIL_DONE: 1,
+            IS_CIN_DIN_MAP: 0,
+            ANNUAL_RETURNS_3YRS: [
+              { dataOfFilling: "10/10/2023", financialYear: "31-03-2023" },
+              { dataOfFilling: "10/11/2022", financialYear: "31-03-2022" },
+              { dataOfFilling: "10/10/2021", financialYear: "31-03-2021" },
+            ],
+            BALANCESHEET_3YRS: [
+              { dataOfFilling: "09/27/2023", financialYear: "31-03-2023" },
+              { dataOfFilling: "09/28/2022", financialYear: "31-03-2022" },
+              { dataOfFilling: "09/25/2021", financialYear: "31-03-2021" },
+            ],
+            MOVED_TO_NEW_DB: 0,
+            DIN_CONTACT_UPDATE: 0,
+            IS_BASIC: 1,
+            NEW_UPDATED_TIME: "2025-01-02T05:38:40.000Z",
+            NICCode1: "62020",
+            NICCode1Desc: "Computer consultancy and IT-related services",
+            NICCode2: null,
+            NICCode2Desc: null,
+            NICCode3: null,
+            NICCode3Desc: null,
+          },
         },
       },
     ],
@@ -647,8 +780,8 @@ const apiExamples = [
       },
     ],
   },
-    // recharge offers
-   {
+  // recharge offers
+  {
     name: "RO",
     examples: [
       {
@@ -689,7 +822,8 @@ const apiExamples = [
                   billerCategory: "Credit Card",
                   billerCoverage: "IND",
                   billerAliasName: "XXXX XXXX",
-                  billerDescription: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                  billerDescription:
+                    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                   billerInputParams: {
                     paramInfo: [
                       {
@@ -699,7 +833,7 @@ const apiExamples = [
                         minLength: "4",
                         paramName: "Last 4 digit of primary credit card number",
                         isOptional: "false",
-                        visibility: "true"
+                        visibility: "true",
                       },
                       {
                         regEx: "^[6-9][0-9]{9}$",
@@ -708,19 +842,43 @@ const apiExamples = [
                         minLength: "10",
                         paramName: "Mobile Number",
                         isOptional: "false",
-                        visibility: "true"
-                      }
-                    ]
+                        visibility: "true",
+                      },
+                    ],
                   },
                   billerPaymentModes: {
                     paymentModeInfo: [
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "AEPS" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "Account Transfer" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "Cash" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "Debit Card" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "Internet Banking" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentMode: "UPI" }
-                    ]
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "AEPS",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "Account Transfer",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "Cash",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "Debit Card",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "Internet Banking",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentMode: "UPI",
+                      },
+                    ],
                   },
                   billerResponseType: "SINGLE",
                   interchangeFeeCCF1: {
@@ -729,7 +887,7 @@ const apiExamples = [
                     feeMaxAmt: "XXXXXXXX",
                     feeMinAmt: "X",
                     percentFee: "X.XX",
-                    feeDirection: "C2B"
+                    feeDirection: "C2B",
                   },
                   planAdditionalInfo: "",
                   planMdmRequirement: "NOT_SUPPORTED",
@@ -737,209 +895,249 @@ const apiExamples = [
                   billerAdditionalInfo: {
                     paramInfo: [
                       { paramName: "Minimum Amount Due" },
-                      { paramName: "Maximum Permissible Amount" }
-                    ]
+                      { paramName: "Maximum Permissible Amount" },
+                    ],
                   },
                   supportPendingStatus: "Yes",
                   billerFetchRequiremet: "MANDATORY",
                   billerPaymentChannels: {
                     paymentChannelInfo: [
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "ATM" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "AGT" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "BNKBRNCH" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "BSC" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "INT" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "INTB" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "KIOSK" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "MPOS" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "MOB" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "MOBB" },
-                      { maxAmount: "XXXXXXXXXXX", minAmount: "XXX", paymentChannelName: "POS" }
-                    ]
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "ATM",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "AGT",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "BNKBRNCH",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "BSC",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "INT",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "INTB",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "KIOSK",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "MPOS",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "MOB",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "MOBB",
+                      },
+                      {
+                        maxAmount: "XXXXXXXXXXX",
+                        minAmount: "XXX",
+                        paymentChannelName: "POS",
+                      },
+                    ],
                   },
                   billerPaymentExactness: "",
                   billerPlanResponseParams: "",
                   billerAdditionalInfoPayment: "",
                   billerSupportBillValidation: "NOT_SUPPORTED",
-                  rechargeAmountInValidationRequest: ""
+                  rechargeAmountInValidationRequest: "",
                 },
-                responseCode: "000"
-              }
-            }
-          }
-        }
-      }
-],
-  },
-   {
-  name: "BillFetch",
-  examples: [
-    {
-      statusCode: 200,
-      message: {
-        success: true,
-        message: "Valid",
-        response: {
-          jsonData: {
-            billFetchResponse: {
-              responseCode: "000",
-              inputParams: {
-                input: [
-                  {
-                    paramName: "Last 4 digit of primary credit card number",
-                    paramValue: "XXXX"
-                  },
-                  {
-                    paramName: "Mobile Number",
-                    paramValue: "XXXXXXXXXX"
-                  }
-                ]
+                responseCode: "000",
               },
-              billerResponse: {
-                billAmount: "XXXXXX",
-                billDate: "XXXX-XX-XX",
-                customerName: "XXXXXXXX XXXXXXX",
-                dueDate: "XXXX-XX-XX"
-              },
-              additionalInfo: {
-                info: [
-                  {
-                    infoName: "Minimum Amount Due",
-                    infoValue: "XXXXX.XX"
-                  },
-                  {
-                    infoName: "Maximum Permissible Amount",
-                    infoValue: "XXXXX.XX"
-                  }
-                ]
-              }
-            }
-          }
-        }
-      }
-    }
-  ]
-},
-{
-  name: "BillValidation",
-  examples: [
-    {
-      statusCode: 200,
-      message: {
-        success: true,
-        message: "Valid",
-        response: {
-          jsonData: {
-            billValidationResponse: {
-              responseCode: "000",
-              responseReason: "Successful",
-              complianceCode: "XXXX",
-              complianceReason: "XXXXXXXXXXXX",
-              approvalRefNo: "XXXXXXXXXXXXXXXX"
-            }
+            },
           },
-          requestId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-        }
-      }
-    }
-  ]
-},
+        },
+      },
+    ],
+  },
   {
-  name: "BillPay",
-  examples: [
-    {
-      statusCode: 200,
-      message: {
-        success: true,
-        message: "Valid",
-        response: {
-          jsonData: {
-            billPayResponse: {
-              responseCode: "000",
-              responseReason: "Successful",
-              txnRefId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              approvalRefNumber: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              txnRespType: "FORWARD TYPE RESPONSE",
-
-              inputParams: {
-                input: [
-                  {
-                    paramName: "Last 4 digit of primary credit card number",
-                    paramValue: "XXXX"
-                  },
-                  {
-                    paramName: "Mobile Number",
-                    paramValue: "XXXXXXXXXX"
-                  }
-                ]
+    name: "BillFetch",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            jsonData: {
+              billFetchResponse: {
+                responseCode: "000",
+                inputParams: {
+                  input: [
+                    {
+                      paramName: "Last 4 digit of primary credit card number",
+                      paramValue: "XXXX",
+                    },
+                    {
+                      paramName: "Mobile Number",
+                      paramValue: "XXXXXXXXXX",
+                    },
+                  ],
+                },
+                billerResponse: {
+                  billAmount: "XXXXXX",
+                  billDate: "XXXX-XX-XX",
+                  customerName: "XXXXXXXX XXXXXXX",
+                  dueDate: "XXXX-XX-XX",
+                },
+                additionalInfo: {
+                  info: [
+                    {
+                      infoName: "Minimum Amount Due",
+                      infoValue: "XXXXX.XX",
+                    },
+                    {
+                      infoName: "Maximum Permissible Amount",
+                      infoValue: "XXXXX.XX",
+                    },
+                  ],
+                },
               },
-
-              CustConvFee: "X",
-              RespAmount: "XXX",
-              RespBillDate: "XXXX-XX-XX",
-              RespCustomerName: "XXXXXXXX XXXXXXX",
-              RespDueDate: "XXXX-XX-XX"
-            }
-          }
-        }
-      }
-    }
-  ]
-},
-{
-  name: "QuickPay",
-  examples: [
-    {
-      statusCode: 200,
-      message: {
-        success: true,
-        message: "Valid",
-        response: {
-          jsonData: {
-            billPayResponse: {
-              responseCode: "000",
-              responseReason: "Successful",
-              txnRefId: "XXXXXXXXXXXX",
-              approvalRefNumber: "XXXXXXXXXXXX",
-              txnRespType: "FORWARD TYPE RESPONSE",
-
-              inputParams: {
-                input: [
-                  {
-                    paramName: "Subscriber Number",
-                    paramValue: "XXXXXXXX"
-                  },
-                  {
-                    paramName: "Mobile Number",
-                    paramValue: "XXXXXXXXXX"
-                  }
-                ]
+            },
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "BillValidation",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            jsonData: {
+              billValidationResponse: {
+                responseCode: "000",
+                responseReason: "Successful",
+                complianceCode: "XXXX",
+                complianceReason: "XXXXXXXXXXXX",
+                approvalRefNo: "XXXXXXXXXXXXXXXX",
               },
+            },
+            requestId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "BillPay",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            jsonData: {
+              billPayResponse: {
+                responseCode: "000",
+                responseReason: "Successful",
+                txnRefId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                approvalRefNumber:
+                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                txnRespType: "FORWARD TYPE RESPONSE",
 
-              CustConvFee: "X",
-              RespAmount: "XXXXX",
-              RespBillDate: "XXXX-XX-XX",
-              RespBillNumber: "NA",
-              RespBillPeriod: "XXXX",
-              RespCustomerName: "XXXX XXXXX",
-              RespDueDate: "XXXX-XX-XX"
-            }
-          }
-        }
-      }
-    }
-  ]
-}
+                inputParams: {
+                  input: [
+                    {
+                      paramName: "Last 4 digit of primary credit card number",
+                      paramValue: "XXXX",
+                    },
+                    {
+                      paramName: "Mobile Number",
+                      paramValue: "XXXXXXXXXX",
+                    },
+                  ],
+                },
 
+                CustConvFee: "X",
+                RespAmount: "XXX",
+                RespBillDate: "XXXX-XX-XX",
+                RespCustomerName: "XXXXXXXX XXXXXXX",
+                RespDueDate: "XXXX-XX-XX",
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "QuickPay",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            jsonData: {
+              billPayResponse: {
+                responseCode: "000",
+                responseReason: "Successful",
+                txnRefId: "XXXXXXXXXXXX",
+                approvalRefNumber: "XXXXXXXXXXXX",
+                txnRespType: "FORWARD TYPE RESPONSE",
 
+                inputParams: {
+                  input: [
+                    {
+                      paramName: "Subscriber Number",
+                      paramValue: "XXXXXXXX",
+                    },
+                    {
+                      paramName: "Mobile Number",
+                      paramValue: "XXXXXXXXXX",
+                    },
+                  ],
+                },
 
-
+                CustConvFee: "X",
+                RespAmount: "XXXXX",
+                RespBillDate: "XXXX-XX-XX",
+                RespBillNumber: "NA",
+                RespBillPeriod: "XXXX",
+                RespCustomerName: "XXXX XXXXX",
+                RespDueDate: "XXXX-XX-XX",
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
 
   //    {
   //     name: "BillFetch",
   //     examples: [
   // {responseCode:"000",responseReason:"Successful",txnRefId:"CC015330CBAA98155678",approvalRefNumber:"RneKliUJVyXjAOEJvC6GwhtL15d53300529",txnRespType:"FORWARD TYPE RESPONSE",inputParams:{"input":[{"paramName":"Last 4 digit of primary credit card number","paramValue":"8584"},{"paramName":"Mobile Number","paramValue":"8099781613"}]},CustConvFee:"0",RespAmount:"100",RespBillDate:"2025-11-23",RespCustomerName:"CHITRA KASTURI",RespDueDate:"2025-12-13"}
-
 
   //     ],
   //   },

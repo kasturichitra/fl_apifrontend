@@ -72,7 +72,7 @@ const RechargeOffers = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Recharge Offers</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -80,8 +80,8 @@ const RechargeOffers = () => {
             link="Recharge/OffersPlans"
           />
           <p className="first_para">
-            The RP Number Verification API allows developers to verify users’
-            RP numbers in real-time.
+            The Recharge Offers API allows developers to get offers
+            for the mobile numbers in real-time.
           </p>
         </div>
 

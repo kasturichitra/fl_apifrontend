@@ -45,7 +45,7 @@ const FullCreditCardVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "card/cardVerify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });

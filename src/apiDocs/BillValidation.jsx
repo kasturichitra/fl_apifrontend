@@ -11,8 +11,7 @@ import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
 // import { DATA, PanDynamic } from "../utils/apiSchema";
-import { BbpsApi_Headers } from "../utils/BbpsApi_Headers";
-import { DATA, BillerInfo } from "../utils/BbpsSchema";
+import { BbpsApi_Headers } from "../utils/Api_Headers.jsx";
 
 const BillValidationDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});

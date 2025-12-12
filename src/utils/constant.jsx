@@ -36,18 +36,10 @@ export const GuidesData = [
     ],
   },
   {
-    title: "Core Endpoints",
-    pages: [
-      { title: "Users API", slug: "users-api" },
-      { title: "Orders API", slug: "orders-api" },
-      { title: "Payments API", slug: "payments-api" },
-    ],
-  },
-  {
     title: "Error Handling",
     pages: [
       { title: "Error Codes", slug: "error_codes" },
-      { title: "Rate Limiting", slug: "rate-limiting" },
+      { title: "Rate Limiting", slug: "rate_limiting" },
     ],
   },
   {
@@ -111,7 +103,7 @@ export const ApiReferences = [
         title: "Mobile Number Verification",
         link: "mobile_otp_generation",
         methods: [
-            {
+          {
             title: "STEP: 1 Mobile Otp Generation",
             type: "POST",
             link: "mobile_otp_generation",
@@ -132,7 +124,7 @@ export const ApiReferences = [
     ],
   },
   {
-    section: "ACCOUNT",
+    section: `🏦 ACCOUNT`,
     items: [
       {
         title: "Bank Account Related Verification",
@@ -255,13 +247,12 @@ export const ApiReferences = [
           },
         ],
       },
-        {
+      {
         title: "Instant Pay",
         link: "instant_pay",
         type: "POST",
-        methods: [
-        ],
-      }
+        methods: [],
+      },
       // {
       //   title: "BillerInfo Details",
       //   link: "fetching_verification",
@@ -330,7 +321,7 @@ export const ApiReferences = [
         type: "POST",
         methods: [],
       },
-       {
+      {
         title: "Mobile Recharge Offers",
         link: "recharge_payment_offers",
         type: "POST",
@@ -353,54 +344,20 @@ export const color = (Method) => {
 
 export const releaseNotes = [
   {
-    date: "2025-10-27",
-    editType: "Fixed",
-    title:
-      "Uploaded Documents Now Persist Across Master Account, Originator, and Owner Orgs",
+    date: "2025-12-27",
+    editType: "Started",
+    title: "Entering the Market with Limited APIs — Growing Step by Step",
     description: [
-      "We’ve fixed an issue that prevented uploaded documents from persisting across related organizations — specifically between Master Account, Originator, and Owner entities in CanopyOS.",
+      "We are now entering the market and currently providing a limited set of APIs as we establish our foundation.",
+      "Our API offerings will expand gradually as we continue to grow and enhance our platform step by step.",
     ],
     whatWasHappening: [
-      "Previously, when an account was associated with multiple organizations, documents uploaded under one org were not visible to others in the same account hierarchy.",
-      "This meant that new organizations could not access original uploaded documents, impacting visibility and workflow continuity in CanopyOS.",
+      "As a new entrant, our API coverage is intentionally limited to ensure stability and focused development.",
+      "This initial phase allows us to refine core functionality before broadening our API ecosystem.",
     ],
     whatWeFixed: [
-      "Document visibility is now properly synchronized across connected orgs.",
-      "When a document is uploaded under one organization, it will now persist and remain accessible across Master Account, Originator, and Owner contexts.",
-    ],
-  },
-  {
-    date: "2025-10-27",
-    editType: "Fixed",
-    title:
-      "Uploaded Documents Now Persist Across Master Account, Originator, and Owner Orgs",
-    description: [
-      "We’ve fixed an issue that prevented uploaded documents from persisting across related organizations — specifically between Master Account, Originator, and Owner entities in CanopyOS.",
-    ],
-    whatWasHappening: [
-      "Previously, when an account was associated with multiple organizations, documents uploaded under one org were not visible to others in the same account hierarchy.",
-      "This meant that new organizations could not access original uploaded documents, impacting visibility and workflow continuity in CanopyOS.",
-    ],
-    whatWeFixed: [
-      "Document visibility is now properly synchronized across connected orgs.",
-      "When a document is uploaded under one organization, it will now persist and remain accessible across Master Account, Originator, and Owner contexts.",
-    ],
-  },
-  {
-    date: "2025-10-27",
-    editType: "Fixed",
-    title:
-      "Uploaded Documents Now Persist Across Master Account, Originator, and Owner Orgs",
-    description: [
-      "We’ve fixed an issue that prevented uploaded documents from persisting across related organizations — specifically between Master Account, Originator, and Owner entities in CanopyOS.",
-    ],
-    whatWasHappening: [
-      "Previously, when an account was associated with multiple organizations, documents uploaded under one org were not visible to others in the same account hierarchy.",
-      "This meant that new organizations could not access original uploaded documents, impacting visibility and workflow continuity in CanopyOS.",
-    ],
-    whatWeFixed: [
-      "Document visibility is now properly synchronized across connected orgs.",
-      "When a document is uploaded under one organization, it will now persist and remain accessible across Master Account, Originator, and Owner contexts.",
+      "We have successfully launched our initial set of APIs with stable, foundational capabilities.",
+      "More APIs and features will be introduced progressively as we continue to grow and scale our platform.",
     ],
   },
 ];

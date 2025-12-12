@@ -274,28 +274,129 @@ export const FaceDynamic = [
 export const CinDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns CIN Registration Details",
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "access_token",
-          type: "string",
-          required: true,
-        },
-        {
-          title: "expires_in",
-          type: "integer",
-          required: true,
-        },
-        {
-          title: "token_type",
-          type: "string",
-          required: true,
-        },
-      ],
-    },
-  },
+          title: "response",
+          subtitle: "CIN Registration Details",
+          type: "object",
+          objectDetails: [
+            { title: "CIN", subtitle: "Corporate Identification Number", type: "string", value: "U12345DL2025PTC999999" },
+            { title: "Company Name", subtitle: "Registered Name of the Company", type: "string", value: "ABC TECHNOLOGIES PRIVATE LIMITED" },
+            { title: "Date of Registration", subtitle: "Date when company was registered", type: "string", value: "01/15/2025" },
+            { title: "Status", subtitle: "Current status of the company", type: "string", value: "Active" },
+            { title: "PAN", subtitle: "Permanent Account Number of the company", type: "string", value: "AABCD1234F" },
+            { title: "Authorized Capital", subtitle: "Authorized share capital of the company", type: "string", value: "500000" },
+            { title: "Paidup Capital", subtitle: "Paid-up capital of the company", type: "string", value: "500000" },
+            { title: "Email", subtitle: "Registered company email", type: "string", value: "info@abctech.com" },
+            { title: "Mobile", subtitle: "Registered company mobile number", type: "string", value: "9876543210" },
+            {
+              title: "Multiple Addresses",
+              subtitle: "Registered, Police Station, and Present Addresses",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  { title: "City", subtitle: "City of the address", type: "string" },
+                  { title: "State", subtitle: "State of the address", type: "string" },
+                  { title: "Country", subtitle: "Country of the address", type: "string" },
+                  { title: "District", subtitle: "District of the address", type: "string" },
+                  { title: "Locality", subtitle: "Local area or locality", type: "string" },
+                  { title: "Postal Code", subtitle: "PIN or ZIP code", type: "string" },
+                  { title: "Address Type", subtitle: "Type of address", type: "string" },
+                  { title: "Street Address", subtitle: "Street or building address", type: "string" },
+                ],
+              },
+              value: [
+                {
+                  City: "New Delhi",
+                  State: "Delhi",
+                  Country: "India",
+                  District: "New Delhi",
+                  Locality: "Connaught Place",
+                  "Postal Code": "110001",
+                  "Address Type": "Registered Address",
+                  "Street Address": "Tech Park Tower, 3rd Floor"
+                },
+                {
+                  City: "Noida",
+                  State: "Uttar Pradesh",
+                  Country: "India",
+                  District: "Gautam Buddha Nagar",
+                  Locality: "Sector 62",
+                  "Postal Code": "201301",
+                  "Address Type": "Police Station Address",
+                  "Street Address": "IT Hub Complex"
+                },
+                {
+                  City: "Gurugram",
+                  State: "Haryana",
+                  Country: "India",
+                  District: "Gurugram",
+                  Locality: "Cyber City",
+                  "Postal Code": "122002",
+                  "Address Type": "Present Address",
+                  "Street Address": "DLF Phase 3, Building 14"
+                }
+              ]
+            },
+            {
+              title: "NIC Codes",
+              subtitle: "National Industrial Classification Codes",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  { title: "NIC Code", subtitle: "2/4/5 digit NIC code", type: "string" },
+                  { title: "Description", subtitle: "Description of activity", type: "string" },
+                ],
+              },
+              value: [
+                { "NIC Code": "62020", Description: "Computer consultancy and IT-related services" }
+              ]
+            },
+            {
+              title: "Annual Returns (3 Yrs)",
+              subtitle: "Company annual returns for the last 3 years",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  { title: "Financial Year", subtitle: "Financial year ending", type: "string" },
+                  { title: "Date of Filing", subtitle: "Filing date of the return", type: "string" },
+                ],
+              },
+              value: [
+                { "Financial Year": "31-03-2023", "Date of Filing": "10/10/2023" },
+                { "Financial Year": "31-03-2022", "Date of Filing": "10/11/2022" },
+                { "Financial Year": "31-03-2021", "Date of Filing": "10/10/2021" },
+              ]
+            },
+            {
+              title: "Balance Sheets (3 Yrs)",
+              subtitle: "Company balance sheets for the last 3 years",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  { title: "Financial Year", subtitle: "Financial year ending", type: "string" },
+                  { title: "Date of Filing", subtitle: "Filing date of balance sheet", type: "string" },
+                ],
+              },
+              value: [
+                { "Financial Year": "31-03-2023", "Date of Filing": "09/27/2023" },
+                { "Financial Year": "31-03-2022", "Date of Filing": "09/28/2022" },
+                { "Financial Year": "31-03-2021", "Date of Filing": "09/25/2021" },
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
 ];
 export const UdyamDynamic = [
   {
@@ -307,60 +408,74 @@ export const UdyamDynamic = [
         ...BaseFields,
         {
           title: "response",
+          subtitle: "Udyam Registration Details",
           type: "object",
           objectDetails: [
             {
               title: "udyam",
+              subtitle: "Udyam Registration Number",
               type: "string",
             },
             {
               title: "Date of Commencement of Production/Business",
+              subtitle: "Date when the enterprise started production/business",
               type: "string",
             },
             {
               title: "Date of Incorporation",
+              subtitle: "Date when the company was incorporated",
               type: "string",
             },
             {
               title: "Date of Udyam Registration",
+              subtitle: "Date when the enterprise received Udyam registration",
               type: "string",
             },
             {
               title: "MSME-DFO",
+              subtitle: "MSME-DFO office code",
               type: "string",
             },
             {
               title: "Major Activity",
+              subtitle: "Primary business activity of the enterprise",
               type: "string",
             },
             {
               title: "Name of Enterprise",
+              subtitle: "Registered name of the enterprise",
               type: "string",
             },
             {
               title: "Organisation Type",
+              subtitle: "Type of organization (Private, Public, Partnership, etc.)",
               type: "string",
             },
             {
               title: "Social Category",
+              subtitle: "Social category of the entrepreneur",
               type: "string",
             },
             {
               title: "Enterprise Type",
+              subtitle: "Type/classification of enterprise",
               type: "array",
               items: {
                 type: "object",
                 fields: [
                   {
                     title: "Classification Date",
+                    subtitle: "Date of enterprise type classification",
                     type: "string",
                   },
                   {
                     title: "Classification Year",
+                    subtitle: "Financial year of classification",
                     type: "string",
                   },
                   {
                     title: "Enterprise Type",
+                    subtitle: "Type of enterprise (Micro, Small, Medium)",
                     type: "string",
                   },
                 ],
@@ -368,28 +483,34 @@ export const UdyamDynamic = [
             },
             {
               title: "National Industry Classification Code(S)",
+              subtitle: "NIC codes representing enterprise activities",
               type: "array",
               items: {
                 type: "object",
                 fields: [
                   {
                     title: "Activity",
+                    subtitle: "Description of the activity",
                     type: "string",
                   },
                   {
                     title: "Date",
+                    subtitle: "Date associated with the activity",
                     type: "string",
                   },
                   {
                     title: "Nic 2 Digit",
+                    subtitle: "2-digit NIC code",
                     type: "string",
                   },
                   {
                     title: "Nic 4 Digit",
+                    subtitle: "4-digit NIC code",
                     type: "string",
                   },
                   {
                     title: "Nic 5 Digit",
+                    subtitle: "5-digit NIC code",
                     type: "string",
                   },
                 ],
@@ -397,18 +518,19 @@ export const UdyamDynamic = [
             },
             {
               title: "Official address of Enterprise",
+              subtitle: "Registered office address details",
               type: "object",
               fields: [
-                { title: "Flat/Door/Block No", type: "string" },
-                { title: "Name of Premises/ Building", type: "string" },
-                { title: "Village/Town", type: "string" },
-                { title: "Block", type: "string" },
-                { title: "Road/Street/Lane", type: "string" },
-                { title: "City", type: "string" },
-                { title: "State", type: "string" },
-                { title: "District", type: "string" },
-                { title: "Mobile", type: "string" },
-                { title: "Email", type: "string" },
+                { title: "Flat/Door/Block No", subtitle: "Flat or door number", type: "string" },
+                { title: "Name of Premises/ Building", subtitle: "Name of the building or premises", type: "string" },
+                { title: "Village/Town", subtitle: "Village or town", type: "string" },
+                { title: "Block", subtitle: "Block name or number", type: "string" },
+                { title: "Road/Street/Lane", subtitle: "Road, street or lane name", type: "string" },
+                { title: "City", subtitle: "City name", type: "string" },
+                { title: "State", subtitle: "State name", type: "string" },
+                { title: "District", subtitle: "District name", type: "string" },
+                { title: "Mobile", subtitle: "Registered mobile number", type: "string" },
+                { title: "Email", subtitle: "Registered email address", type: "string" },
               ],
             },
           ],
@@ -952,6 +1074,45 @@ export const RechargeDynamic = [
                   ],
                 },
               ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const BillerInfo = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
             },
           ],
         },

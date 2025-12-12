@@ -83,6 +83,14 @@ const PanVerification = () => {
             The PAN Number Verification API allows developers to verify users’
             PAN numbers in real-time.
           </p>
+          <p className="first_para">PAN (Permanent Account Number)</p>
+          <p className="first_para">
+            PAN is a 10-character alphanumeric identifier issued by the Income
+            Tax Department of India.
+          </p>
+          <p className="first_para">
+            Used for tax-related identification for individuals and entities.{" "}
+          </p>
         </div>
 
         {/* Request History Table */}
