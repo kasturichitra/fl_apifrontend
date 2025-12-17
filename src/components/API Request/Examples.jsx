@@ -176,9 +176,9 @@ function DisplayExamplesContent({
   );
 }
 
-function RenderExampleCodes({ examples, apiError, choosedExample }) {
-  let { statusCode, message } =
-    apiError || examples.filter((e) => e.statusCode === choosedExample)[0];
+function RenderExampleCodes({ apiError, examples, choosedExample, setApiError}) {
+  let { statusCode= "", message= "" } =
+    apiError || examples.filter((e) => e?.statusCode === choosedExample)[0];
 
   const [isCopied, setIsCopied] = useState(false);
 

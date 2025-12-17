@@ -587,6 +587,42 @@ export const Quickpay = [
     readOnly: true
   }
 ];
+export const InstantPay = [
+  {
+    title: "Bank ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Customer Mobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "Mobile number of the customer",
+    inputTag: true,
+    example: "XXXXXXXXXX",
+    required: true,
+    readOnly: true
+  },
+  {
+    title: "Input Params",
+    type: "object",
+    fieldName: "inputParams",
+    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    inputTag: true,
+    // example: [
+    //   { paramName: "CA Number", paramValue: "XXXX" },
+    //   { paramName: "BU Number", paramValue: "XXXX" }
+    // ],
+    required: true,
+    readOnly: true
+  },
+ 
+];
 
 
 

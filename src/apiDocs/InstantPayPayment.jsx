@@ -6,11 +6,12 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
+import { BilllerInfo, Billpay, BillValidation, InstantPay, PNV } from "../utils/bodyParams";
+import { api_Headers, InstantpayApi_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+// import { DATA, PanDynamic } from "../utils/apiSchema";
+import { BbpsApi_Headers } from "../utils/Api_Headers.jsx";
 
 const InstantPayPayment = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -24,8 +25,8 @@ const InstantPayPayment = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
@@ -70,54 +71,48 @@ const InstantPayPayment = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Instant Pay Payment Integration</h1>
+          <h1 className="api_heading">InstantBill Pay Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            LinkClass="link_class"
-            link="pan/panverifying"
+            link="https://stgapi.instantpay.in/payments/payout"
           />
           <p className="first_para">
-            The nstant Pay Payment API allows developers to pay users’
-            credit card bills in real-time.
+            The Instantpay Credit Card Payment API allows you to initiate and process credit card
+            bill payments after validating the card details. By submitting encrypted card
+            information, payer details, and transaction parameters, the API ensures that payments
+            are made only to valid credit card accounts, reducing errors and ensuring a secure and
+            seamless bill payment workflow.
           </p>
+
+
+
         </div>
-
-        {/* Request History Table */}
         <RequestHistoryTable TableClass="history_Table" />
-
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
-            headersObj={api_Headers}
+            headersObj={InstantpayApi_Headers}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
           />
         </div>
-
-        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={InstantPay}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
-
-        {/* Response */}
-        <div className="py-6">
+        {/* <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
-        </div>
+          <ResponseComponent dynamic200={BillerInfo} otherData={DATA} />
+        </div> */}
       </div>
-
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
@@ -127,8 +122,8 @@ const InstantPayPayment = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"InstantPay"}
+          examples={GetAcc?.exampleCodes["InstantPay"] || []}
         />
       </div>
     </div>
@@ -136,4 +131,3 @@ const InstantPayPayment = () => {
 };
 
 export default InstantPayPayment;
-

@@ -33,7 +33,7 @@ import BillpayDetails from "../apiDocs/BillpayDetails";
 import BillValidationDetails from "../apiDocs/BillValidation";
 import QuickPayDetails from "../apiDocs/BillQuickpay";
 import InstantPayPayment from "../apiDocs/InstantPayPayment";
-
+import InstantpayTheory from "../apiDocs/InstantpayTheory"
 // Mobile Recharge
 import FetchingOperators from "../apiDocs/FetchingOperators";
 import FetchingPlans from "../apiDocs/FetchingPlans";
@@ -79,7 +79,9 @@ const apiComponentMap = {
   bill_pay: BillpayDetails,
   quick_pay: QuickPayDetails,
   bill_validation: BillValidationDetails,
-  instant_pay: InstantPayPayment,
+ //------------ instantpay----------
+   instantpay_Doc: InstantpayTheory,
+   instant_Pay: InstantPayPayment,
 
   // ---------------- MOBILE RECHARGE ----------------
   fetching_operators: FetchingOperators,

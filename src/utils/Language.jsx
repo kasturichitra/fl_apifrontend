@@ -1133,6 +1133,44 @@ const apiExamples = [
       },
     ],
   },
+{
+  name: "InstantPay",
+  examples: [
+    {
+      // statusCode: "TXN",
+      statusCode: 200,
+      actcode: null,
+      status: "Transaction Successful",
+      data: {
+        externalRef: "XXXXXXXXXXXX",
+        poolReferenceId: "XXXXXXXXXXXX",
+        txnValue: "4.00",
+        txnReferenceId: "XXXXXXXX",
+        pool: {
+          account: "7428XXXXXX42",
+          openingBal: "3697.27",
+          mode: "DR",
+          amount: "9.90",
+          closingBal: "3687.37"
+        },
+        payer: {
+          account: "7428XXXXXX42",
+          name: "Sample Store"
+        },
+        payee: {
+          account: "3798XXXXXXXX2004",
+          name: "Instantpay India Ltd"
+        }
+      },
+      timestamp: "2022-03-15 18:08:13",
+      ipay_uuid: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+      orderid: "XXXXXXXXXXXX",
+      environment: "LIVE",
+      internalCode: null
+    }
+  ]
+}
+
 
   //    {
   //     name: "BillFetch",

@@ -247,12 +247,12 @@ export const ApiReferences = [
           },
         ],
       },
-      {
-        title: "Instant Pay",
-        link: "instant_pay",
-        type: "POST",
-        methods: [],
-      },
+      // {
+      //   title: "Instant Pay",
+      //   link: "instant_pay",
+      //   type: "POST",
+      //   methods: [],
+      // },
       // {
       //   title: "BillerInfo Details",
       //   link: "fetching_verification",
@@ -291,6 +291,25 @@ export const ApiReferences = [
       //   type: "POST",
       //   methods: [],
       // },
+    ],
+  },
+   {
+    section: "Instantpay",
+    items: [
+      {
+        title: "Instant Pay",
+        link: "instantpay_Doc",
+        type: "POST",
+        methods: [
+          {
+            title: "InstantBill Pay",
+            type: "POST",
+            link: "instant_Pay",
+          },
+         
+        ],
+      },
+     
     ],
   },
   {
