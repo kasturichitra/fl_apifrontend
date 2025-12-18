@@ -6,11 +6,11 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
+import { RO } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import { DATA, RechargeOffersDynamic } from "../utils/apiSchema";
 
 const RechargeOffers = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -103,7 +103,7 @@ const RechargeOffers = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={RO}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const RechargeOffers = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={RechargeOffersDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,7 +127,7 @@ const RechargeOffers = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"offers"}
           examples={GetAcc?.exampleCodes["RP"] || []}
         />
       </div>

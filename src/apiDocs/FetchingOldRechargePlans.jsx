@@ -6,7 +6,7 @@ import ResponseComponent from "../components/Responses/ResponsesComponent";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
+import { FOP } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
@@ -17,7 +17,7 @@ const FetchingOldRechargePlans = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["FOP"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -103,7 +103,7 @@ const FetchingOldRechargePlans = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={FOP}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -128,7 +128,7 @@ const FetchingOldRechargePlans = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"oldPlans"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          examples={GetAcc?.exampleCodes["FOP"] || []}
         />
       </div>
     </div>

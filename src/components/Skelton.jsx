@@ -18,7 +18,7 @@ const Skelton = () => {
 
         {/* REQUEST HISTORY TABLE SKELETON */}
         <div className="skeleton_table">
-          {Array.from({ length: 1 }).map((_, idx) => (
+          {Array.from({ length: 6 }).map((_, idx) => (
             <div className="skeleton_row" key={idx}>
               <div className="skeleton_cell"></div>
             </div>
@@ -28,7 +28,7 @@ const Skelton = () => {
         {/* HEADERS SECTION */}
         <div className="py-6">
           <div className="skeleton_section_title"></div>
-          {Array.from({ length: 3 }).map((_, idx) => (
+          {Array.from({ length: 2 }).map((_, idx) => (
             <div className="skeleton_text" key={idx}></div>
           ))}
         </div>
@@ -44,7 +44,7 @@ const Skelton = () => {
         {/* RESPONSES */}
         <div className="py-6">
           <div className="skeleton_section_title"></div>
-          {Array.from({ length: 5 }).map((_, idx) => (
+          {Array.from({ length: 12 }).map((_, idx) => (
             <div className="skeleton_text skeleton_response" key={idx}></div>
           ))}
         </div>

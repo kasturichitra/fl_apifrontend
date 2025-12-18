@@ -148,28 +148,6 @@ export const CIN = [
   },
 ];
 
-// name verification
-export const NM = [
-  {
-    title: "Name One",
-    type: "string",
-    fieldName: "firstName",
-   subTitle: "Enter a Name to verify",
-    inputTag: true,
-    example: "RAXX",
-    required: true,
-  },
-  {
-    title: "Name Two",
-    type: "string",
-    fieldName: "secondName",
-    subTitle: "Enter another Name to verify",
-    inputTag: true,
-    example: "RAXX",
-    required: true,
-  },
-];
-
 // shop establishment
 export const SEV = [
   {
@@ -188,6 +166,28 @@ export const SEV = [
     subTitle: "Enter your State Name",
     inputTag: true,
     example: "XXXXXXXXXXXX",
+    required: true,
+  },
+];
+
+// name verification
+export const NM = [
+  {
+    title: "Name One",
+    type: "string",
+    fieldName: "firstName",
+   subTitle: "Enter a Name to verify",
+    inputTag: true,
+    example: "RAXX",
+    required: true,
+  },
+  {
+    title: "Name Two",
+    type: "string",
+    fieldName: "secondName",
+    subTitle: "Enter another Name to verify",
+    inputTag: true,
+    example: "RAXX",
     required: true,
   },
 ];
@@ -253,7 +253,29 @@ export const RP = [
   },
 ];
 
-// fetching offers
+// recharge offers
+export const RO = [
+  {
+    title: "operatorCode",
+    type: "string",
+    fieldName: "operator_code",
+    subTitle: "use operator_code to get offers",
+    inputTag: true,
+    example: "",
+    required: true,
+  },
+  {
+    title: "mobileNumber",
+    type: "string",
+    fieldName: "mobile_no",
+    subTitle: "use mobileNumber to get offers",
+    inputTag: true,
+    example: "65XXXXXX78",
+    required: true,
+  },
+];
+
+// fetching old plans
 export const FOP = [
   {
     title: "operatorCode",
@@ -325,6 +347,8 @@ export const BillFetch = [
     readOnly: true
   }
 ];
+
+// bill validation
 export const BillValidation = [
   {
     title: "Biller ID",
@@ -410,6 +434,8 @@ export const BillValidation = [
     readOnly: true
   }
 ];
+
+// bill pay
 export const Billpay = [
   {
     title: "Biller ID",
@@ -492,6 +518,8 @@ export const Billpay = [
     readOnly: true
   }
 ];
+
+// quick pay
 export const Quickpay = [
   {
     title: "Biller ID",
@@ -587,6 +615,8 @@ export const Quickpay = [
     readOnly: true
   }
 ];
+
+// instant pay
 export const InstantPay = [
   {
     title: "Bank ID",

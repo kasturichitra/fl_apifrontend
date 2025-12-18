@@ -152,7 +152,7 @@ export const apiList = [
       bin: "45XXXX",
     },
   },
-    {
+  {
     key: "oldPlans",
     name: "OLDPLANS",
     url: "Recharge/Plans",
@@ -172,6 +172,15 @@ export const apiList = [
   {
     key: "offers",
     name: "OFFERS",
+    url: "Recharge/OffersPlans",
+    params: {
+      operator_code: "",
+      mobile_no: "",
+    },
+  },
+   {
+    key: "operators",
+    name: "OPERATORS",
     url: "Recharge/OffersPlans",
     params: {
       operator_code: "",
@@ -766,13 +775,15 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: {
-            name: "SAI BABA",
-            status: "VALID",
-            success: true,
-            message: "Transaction Successful",
-            account_no: "3864XXXXXXX",
-            ifsc: "SBINXXXXXXX",
+          data: {
+            ERROR: "0",
+            STATUS: "0",
+            Operator: "RELIANCE JIO",
+            Circle: "AP",
+            RDATA: {
+              "Popular Plans": [],
+            },
+            MESSAGE: "Operator Plan Successfully",
           },
         },
       },
@@ -815,6 +826,29 @@ const apiExamples = [
             message: "Transaction Successful",
             account_no: "3864XXXXXXX",
             ifsc: "SBINXXXXXXX",
+          },
+        },
+      },
+    ],
+  },
+  // fetching old plans
+  {
+    name: "FOP",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          data: {
+            ERROR: "0",
+            STATUS: "0",
+            Operator: "RELIANCE JIO",
+            Circle: "AP",
+            RDATA: {
+              "Popular Plans": [],
+            },
+            MESSAGE: "Operator Plan Successfully",
           },
         },
       },

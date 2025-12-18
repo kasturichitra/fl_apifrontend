@@ -32,7 +32,12 @@ export const GuidesData = [
     pages: [
       { title: "API Keys", slug: "api_keys" },
       { title: "OAuth 2.0", slug: "oauth" },
-      { title: "JWT Tokens", slug: "jwt-tokens" },
+    ],
+  },
+   {
+    title: "Authentication",
+    pages: [
+      { title: "API Keys", slug: "api_keys" },
     ],
   },
   {
@@ -49,10 +54,6 @@ export const GuidesData = [
       { title: "Filtering & Sorting", slug: "filtering-sorting" },
       { title: "Best Practices", slug: "best-practices" },
     ],
-  },
-  {
-    title: "Changelog",
-    pages: [{ title: "Release Notes", slug: "release-notes" }],
   },
   {
     title: "Reference",
@@ -381,6 +382,19 @@ export const releaseNotes = [
     whatWeFixed: [
       "We have successfully launched our initial set of APIs with stable, foundational capabilities.",
       "More APIs and features will be introduced progressively as we continue to grow and scale our platform.",
+    ],
+  },
+    {
+    date: "2025-12-27",
+    editType: "KYC APIS",
+    title: "Entering the Market with Limited APIs — Growing Step by Step",
+    description: [
+      "We are now entering the market and currently providing a limited set of APIs as we establish our foundation.",
+      "Our API offerings will expand gradually as we continue to grow and enhance our platform step by step.",
+    ],
+    whatWasHappening: [
+      "As a new entrant, our API coverage is intentionally limited to ensure stability and focused development.",
+      "This initial phase allows us to refine core functionality before broadening our API ecosystem.",
     ],
   },
 ];
