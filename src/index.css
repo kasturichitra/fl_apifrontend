@@ -185,6 +185,10 @@ blockquote > div {
   margin-block: 0rem;
 }
 
+.link_style {
+  color: rgb(69, 69, 252);
+}
+
 @media (min-width: 768px) {
   .document_aside_menu {
     display: block;

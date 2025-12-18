@@ -293,7 +293,7 @@ export const ApiReferences = [
       // },
     ],
   },
-   {
+  {
     section: "Instantpay",
     items: [
       {
@@ -306,29 +306,33 @@ export const ApiReferences = [
             type: "POST",
             link: "instant_Pay",
           },
-         
         ],
       },
-     
     ],
   },
   {
     section: "Mobile Recahrge",
     items: [
       {
+        title: "Fetching Operators",
+        link: "fetching_operators",
+        type: "POST",
+        methods: [],
+      },
+      {
         title: "Recharge Plans",
         link: "fetching_operators",
         type: "POST",
         methods: [
           {
-            title: "Fetching Operators",
-            link: "fetching_operators",
+            title: "Fetching Plans",
+            link: "fetching_plans",
             type: "POST",
             methods: [],
           },
-          {
-            title: "Fetching Plans",
-            link: "fetching_plans",
+           {
+            title: "Fetching Old Plans",
+            link: "fetching_old_plans",
             type: "POST",
             methods: [],
           },

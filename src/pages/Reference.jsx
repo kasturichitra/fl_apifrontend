@@ -40,6 +40,7 @@ import FetchingPlans from "../apiDocs/FetchingPlans";
 import RechargePayment from "../apiDocs/RechargePayment";
 import RechargeOffers from "../apiDocs/RechargeOffers";
 import Skelton from "../components/Skelton";
+import FetchingOldRechargePlans from "../apiDocs/FetchingOldRechargePlans";
 
 const apiComponentMap = {
   // ---------------- KYC ----------------
@@ -88,6 +89,7 @@ const apiComponentMap = {
   fetching_plans: FetchingPlans,
   recharge_payment: RechargePayment,
   recharge_payment_offers: RechargeOffers,
+  fetching_old_plans: FetchingOldRechargePlans
 };
 
 const Reference = () => {

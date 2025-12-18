@@ -10,7 +10,7 @@ import { FP } from "../utils/bodyParams";
 import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
-import { DATA, RechargeDynamic } from "../utils/apiSchema";
+import { DATA, RechargePlansDynamic } from "../utils/apiSchema";
 
 const FetchingPlans = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -113,7 +113,7 @@ const FetchingPlans = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargeDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={RechargePlansDynamic} otherData={DATA} />
         </div>
       </div>
 

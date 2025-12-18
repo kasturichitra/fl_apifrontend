@@ -1,5 +1,6 @@
 import React from "react";
 import NormalField from "../BodyParams/NormalField";
+import { Link } from "react-router-dom";
 
 function Headers({
   headersObj,
@@ -36,6 +37,7 @@ function Headers({
           />
         ))}
       </div>
+      <p>To Know more about api keys click here <Link to="/guides/api_keys" className="link_style">apiKeys</Link></p>
     </div>
   );
 }

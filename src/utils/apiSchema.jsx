@@ -986,6 +986,162 @@ export const RechargePaymentDynamic = [
     },
   },
 ];
+export const RechargeOffersDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const RechargeOperatorsDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const RechargePlansDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const RechargeOldPlansDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "The Requested Pan Number",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "The Beneficiary Name of given Pan Number",
+            },
+            {
+              title: "PAN_Holder_Type",
+              type: "string",
+              subTitle: "The Pan type of the given Pan Number",
+            },
+            {
+              title: "PAN_Status",
+              type: "string",
+              subTitle: "The current Pan status",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
 export const RechargeDynamic = [
   {
     status: 200,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EndpointCard from "./EndpointCard";
 import "../../styles/responses.css";
+import { Link } from "react-router-dom";
 
 export default function ResponseComponent({ dynamic200, otherData }) {
   const [openIndex, setOpenIndex] = useState(0);
@@ -30,7 +31,7 @@ export default function ResponseComponent({ dynamic200, otherData }) {
             );
           })}
       </div>
-      <p>To Know more about error codes click here <a href="/guides/error_codes">errorCodes</a></p>
+      <p>To Know more about error codes click here <Link to="/guides/error_codes" className="link_style">errorCodes</Link></p>
     </div>
   );
 }

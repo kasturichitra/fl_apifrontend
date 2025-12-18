@@ -71,6 +71,11 @@
   width: 20%;
 }
 
+.skelton_url_method{
+  display: flex;
+  gap: 1rem;
+}
+
 .skeleton_link {
   height: 16px;
   width: 15%;
@@ -113,9 +118,9 @@
 }
 
 .skeleton_code_line {
-  height: 14rem;
+  height: 17rem;
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .sidebar_wrapper {

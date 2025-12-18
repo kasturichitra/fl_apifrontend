@@ -9,7 +9,10 @@ const Skelton = () => {
         {/* HERO SKELETON */}
         <div className="api_hero">
           <div className="skeleton_title skeleton_short"></div>
-          <div className="skeleton_text skeleton_link"></div>
+          <div className="skelton_url_method">
+            <div className="skeleton_text skeleton_link"></div>
+            <div className="skeleton_text skeleton_link"></div>
+          </div>
           <div className="skeleton_text skeleton_paragraph"></div>
         </div>
 

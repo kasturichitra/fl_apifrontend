@@ -136,8 +136,25 @@ export const apiList = [
     },
   },
   {
+    key: "name",
+    name: "NAME",
+    url: "name/compareNames",
+    params: {
+      firstName: "RAXX",
+      secondName: "RAXX",
+    },
+  },
+  {
     key: "plans",
     name: "PLANS",
+    url: "Recharge/Plans",
+    params: {
+      bin: "45XXXX",
+    },
+  },
+    {
+    key: "oldPlans",
+    name: "OLDPLANS",
     url: "Recharge/Plans",
     params: {
       bin: "45XXXX",
@@ -726,13 +743,15 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: {
-            name: "SAI BABA",
-            status: "VALID",
-            success: true,
-            message: "Transaction Successful",
-            account_no: "3864XXXXXXX",
-            ifsc: "SBINXXXXXXX",
+          data: {
+            ERROR: "0",
+            STATUS: "1",
+            Mobile: "918688571181",
+            Operator: "Reliance Jio Infocomm Limited",
+            OpCode: "11",
+            Circle: "Andhra Pradesh",
+            CircleCode: "49",
+            Message: "Successfully",
           },
         },
       },
@@ -801,6 +820,8 @@ const apiExamples = [
       },
     ],
   },
+  // bbps
+  // biller info
   {
     name: "BillerInfo",
     examples: [
@@ -973,6 +994,7 @@ const apiExamples = [
       },
     ],
   },
+  // bill fetch
   {
     name: "BillFetch",
     examples: [
@@ -1022,6 +1044,7 @@ const apiExamples = [
       },
     ],
   },
+  // bill validation
   {
     name: "BillValidation",
     examples: [
@@ -1046,6 +1069,7 @@ const apiExamples = [
       },
     ],
   },
+  // bill pay request
   {
     name: "BillPay",
     examples: [
@@ -1089,6 +1113,7 @@ const apiExamples = [
       },
     ],
   },
+  // bill quick pay
   {
     name: "QuickPay",
     examples: [
@@ -1133,52 +1158,44 @@ const apiExamples = [
       },
     ],
   },
-{
-  name: "InstantPay",
-  examples: [
-    {
-      // statusCode: "TXN",
-      statusCode: 200,
-      actcode: null,
-      status: "Transaction Successful",
-      data: {
-        externalRef: "XXXXXXXXXXXX",
-        poolReferenceId: "XXXXXXXXXXXX",
-        txnValue: "4.00",
-        txnReferenceId: "XXXXXXXX",
-        pool: {
-          account: "7428XXXXXX42",
-          openingBal: "3697.27",
-          mode: "DR",
-          amount: "9.90",
-          closingBal: "3687.37"
+  // Instant pay
+  {
+    name: "InstantPay",
+    examples: [
+      {
+        // statusCode: "TXN",
+        statusCode: 200,
+        actcode: null,
+        status: "Transaction Successful",
+        data: {
+          externalRef: "XXXXXXXXXXXX",
+          poolReferenceId: "XXXXXXXXXXXX",
+          txnValue: "4.00",
+          txnReferenceId: "XXXXXXXX",
+          pool: {
+            account: "7428XXXXXX42",
+            openingBal: "3697.27",
+            mode: "DR",
+            amount: "9.90",
+            closingBal: "3687.37",
+          },
+          payer: {
+            account: "7428XXXXXX42",
+            name: "Sample Store",
+          },
+          payee: {
+            account: "3798XXXXXXXX2004",
+            name: "Instantpay India Ltd",
+          },
         },
-        payer: {
-          account: "7428XXXXXX42",
-          name: "Sample Store"
-        },
-        payee: {
-          account: "3798XXXXXXXX2004",
-          name: "Instantpay India Ltd"
-        }
+        timestamp: "2022-03-15 18:08:13",
+        ipay_uuid: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+        orderid: "XXXXXXXXXXXX",
+        environment: "LIVE",
+        internalCode: null,
       },
-      timestamp: "2022-03-15 18:08:13",
-      ipay_uuid: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      orderid: "XXXXXXXXXXXX",
-      environment: "LIVE",
-      internalCode: null
-    }
-  ]
-}
-
-
-  //    {
-  //     name: "BillFetch",
-  //     examples: [
-  // {responseCode:"000",responseReason:"Successful",txnRefId:"CC015330CBAA98155678",approvalRefNumber:"RneKliUJVyXjAOEJvC6GwhtL15d53300529",txnRespType:"FORWARD TYPE RESPONSE",inputParams:{"input":[{"paramName":"Last 4 digit of primary credit card number","paramValue":"8584"},{"paramName":"Mobile Number","paramValue":"8099781613"}]},CustConvFee:"0",RespAmount:"100",RespBillDate:"2025-11-23",RespCustomerName:"CHITRA KASTURI",RespDueDate:"2025-12-13"}
-
-  //     ],
-  //   },
+    ],
+  },
 ];
 
 const exampleCodes = apiExamples.reduce((acc, api) => {
