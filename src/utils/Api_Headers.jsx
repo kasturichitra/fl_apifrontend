@@ -3,7 +3,7 @@ export const api_Headers = [
     title: "client_id",
     type: "string",
     fieldName: "client_id",
-    subTitle: "",
+    subTitle: "Enter Your Client Id here",
     inputTag: true,
     example: "",
     required: true,
@@ -11,7 +11,7 @@ export const api_Headers = [
   {
     title: "secret_key",
     type: "string",
-    subTitle: "",
+    subTitle: "Enter Your Secret Key here",
     inputTag: true,
     fieldName: "secret_key",
     example: "",
@@ -24,7 +24,6 @@ export const BbpsApi_Headers = [
   { title: "ver", type: "string", fieldName: "ver", required: true },
   { title: "Institution ID", type: "string", fieldName: "timestamp", required: true },
   { title: "requestId", type: "string", fieldName: "requestId", required: true },
- 
 ];
 
 export const InstantpayApi_Headers = [

@@ -45,7 +45,7 @@ const BankAccountPennyLessVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "account/pl/verifyBankAccount",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });

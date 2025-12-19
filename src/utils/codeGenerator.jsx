@@ -41,6 +41,6 @@ ${formattedParams}
 
 axios.request(options)
   .then(res => console.log(res.data))
-  .catch(err => console.error(err));`
+  .catch(err => console.error(err));`,
   };
 }

@@ -12,19 +12,43 @@ export const PNV = [
 ];
 
 // aadhaar
-export const AS = [
+
+// aadhaar initiate
+export const AI = [
   {
-    title: "Adhaar Number",
+    title: "callback_url",
     type: "string",
-    fieldName: "aadharNumber",
-    subTitle: "Enter Your ts transaction id",
+    fieldName: "callback_url",
+    subTitle: "Enter Your callback_url here",
+    inputTag: true,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  {
+    title: "redirect_url",
+    type: "string",
+    fieldName: "redirect_url",
+    subTitle: "Enter Your redirect_url here",
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
   },
 ];
 
-// mobile number 
+// aadhaar status
+export const AS = [
+  {
+    title: "tsTransId ",
+    type: "string",
+    fieldName: "tsTransId",
+    subTitle: "Enter Your ts transaction id",
+    inputTag: true,
+    example: "ts-XXXXXX",
+    required: true,
+  },
+];
+
+// mobile number
 
 // mobile otp generation
 export const MOG = [
@@ -176,7 +200,7 @@ export const NM = [
     title: "Name One",
     type: "string",
     fieldName: "firstName",
-   subTitle: "Enter a Name to verify",
+    subTitle: "Enter a Name to verify",
     inputTag: true,
     example: "RAXX",
     required: true,
@@ -237,18 +261,27 @@ export const FP = [
     inputTag: true,
     example: "2",
     required: true,
-  }
+  },
 ];
 
 // recharge payment
 export const RP = [
   {
-    title: "PanCard Number",
+    title: "operatorCode",
     type: "string",
-    fieldName: "panNumber",
-    subTitle: "user pancard number to be verified",
+    fieldName: "operator_code",
+    subTitle: "use operator_code to get offers",
     inputTag: true,
-    example: "AXER07FRGV",
+    example: "",
+    required: true,
+  },
+  {
+    title: "mobileNumber",
+    type: "string",
+    fieldName: "mobile_no",
+    subTitle: "use mobileNumber to get offers",
+    inputTag: true,
+    example: "65XXXXXX78",
     required: true,
   },
 ];
@@ -287,12 +320,12 @@ export const FOP = [
     required: true,
   },
   {
-    title: "mobileNumber",
+    title: "cricle",
     type: "string",
-    fieldName: "mobile_no",
-    subTitle: "use mobileNumber to get offers",
+    fieldName: "cricle",
+    subTitle: "cricle for specific recharge partner",
     inputTag: true,
-    example: "65XXXXXX78",
+    example: "2",
     required: true,
   },
 ];
@@ -309,9 +342,8 @@ export const BilllerInfo = [
     inputTag: true,
     example: "AIRTM001",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
-  
 ];
 
 // bill fetch
@@ -324,7 +356,7 @@ export const BillFetch = [
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Customer Mobile",
@@ -334,18 +366,19 @@ export const BillFetch = [
     inputTag: true,
     example: "XXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Input Params",
     type: "string",
     fieldName: "inputParams",
-    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    subTitle:
+      "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
     inputTag: true,
     example: "*********",
     required: true,
-    readOnly: true
-  }
+    readOnly: true,
+  },
 ];
 
 // bill validation
@@ -358,7 +391,7 @@ export const BillValidation = [
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Customer Mobile",
@@ -368,20 +401,21 @@ export const BillValidation = [
     inputTag: true,
     example: "XXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Input Params",
     type: "object",
     fieldName: "inputParams",
-    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    subTitle:
+      "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
     inputTag: true,
     // example: [
     //   { paramName: "CA Number", paramValue: "XXXX" },
     //   { paramName: "BU Number", paramValue: "XXXX" }
     // ],
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Amount",
@@ -391,7 +425,7 @@ export const BillValidation = [
     inputTag: true,
     example: 100,
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Currency",
@@ -401,7 +435,7 @@ export const BillValidation = [
     inputTag: true,
     example: "INR",
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Payment Mode",
@@ -411,7 +445,7 @@ export const BillValidation = [
     inputTag: true,
     example: "UPI",
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Quick Pay",
@@ -421,7 +455,7 @@ export const BillValidation = [
     inputTag: true,
     example: false,
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Split Pay",
@@ -431,8 +465,8 @@ export const BillValidation = [
     inputTag: true,
     example: false,
     required: false,
-    readOnly: true
-  }
+    readOnly: true,
+  },
 ];
 
 // bill pay
@@ -445,7 +479,7 @@ export const Billpay = [
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Customer Mobile",
@@ -455,17 +489,18 @@ export const Billpay = [
     inputTag: true,
     example: "XXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Input Params",
     type: "string",
     fieldName: "inputParams",
-    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    subTitle:
+      "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
     inputTag: true,
     example: "*********",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Amount",
@@ -475,7 +510,7 @@ export const Billpay = [
     inputTag: true,
     example: "100",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Currency",
@@ -485,7 +520,7 @@ export const Billpay = [
     inputTag: true,
     example: "INR",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Payment Mode",
@@ -495,7 +530,7 @@ export const Billpay = [
     inputTag: true,
     example: "UPI",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Quick Pay",
@@ -505,7 +540,7 @@ export const Billpay = [
     inputTag: true,
     example: false,
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Split Pay",
@@ -515,8 +550,8 @@ export const Billpay = [
     inputTag: true,
     example: false,
     required: false,
-    readOnly: true
-  }
+    readOnly: true,
+  },
 ];
 
 // quick pay
@@ -529,7 +564,7 @@ export const Quickpay = [
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Customer Mobile",
@@ -539,17 +574,18 @@ export const Quickpay = [
     inputTag: true,
     example: "XXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Input Params",
     type: "string",
     fieldName: "inputParams",
-    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    subTitle:
+      "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
     inputTag: true,
     example: "*********",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Amount",
@@ -559,7 +595,7 @@ export const Quickpay = [
     inputTag: true,
     example: 100,
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Currency",
@@ -569,7 +605,7 @@ export const Quickpay = [
     inputTag: true,
     example: "INR",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Payment Mode",
@@ -579,7 +615,7 @@ export const Quickpay = [
     inputTag: true,
     example: "UPI / Debit Card",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Quick Pay",
@@ -589,7 +625,7 @@ export const Quickpay = [
     inputTag: true,
     example: true,
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Split Pay",
@@ -599,21 +635,22 @@ export const Quickpay = [
     inputTag: true,
     example: false,
     required: false,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Payment Info",
     type: "array",
     fieldName: "paymentInfo",
-    subTitle: "Payment-specific details like VPA for UPI or Card/OTP for debit card",
+    subTitle:
+      "Payment-specific details like VPA for UPI or Card/OTP for debit card",
     inputTag: true,
     // example: [
     //   { infoName: "VPA", infoValue: "customer@upi" },
     //   { infoName: "AuthCode", infoValue: "123456" }
     // ],
     required: true,
-    readOnly: true
-  }
+    readOnly: true,
+  },
 ];
 
 // instant pay
@@ -626,7 +663,7 @@ export const InstantPay = [
     inputTag: true,
     example: "XXXXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Customer Mobile",
@@ -636,25 +673,20 @@ export const InstantPay = [
     inputTag: true,
     example: "XXXXXXXXXX",
     required: true,
-    readOnly: true
+    readOnly: true,
   },
   {
     title: "Input Params",
     type: "object",
     fieldName: "inputParams",
-    subTitle: "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
+    subTitle:
+      "Enter biller-required dynamic fields (CA Number, Account Number, BU, etc.)",
     inputTag: true,
     // example: [
     //   { paramName: "CA Number", paramValue: "XXXX" },
     //   { paramName: "BU Number", paramValue: "XXXX" }
     // ],
     required: true,
-    readOnly: true
+    readOnly: true,
   },
- 
 ];
-
-
-
-
-

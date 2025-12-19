@@ -149,7 +149,8 @@ export const apiList = [
     name: "PLANS",
     url: "Recharge/Plans",
     params: {
-      bin: "45XXXX",
+      operatorcode: "",
+      cricle: ""
     },
   },
   {
@@ -157,7 +158,8 @@ export const apiList = [
     name: "OLDPLANS",
     url: "Recharge/Plans",
     params: {
-      bin: "45XXXX",
+      operatorcode: "",
+      cricle: ""
     },
   },
   {
@@ -178,7 +180,7 @@ export const apiList = [
       mobile_no: "",
     },
   },
-   {
+  {
     key: "operators",
     name: "OPERATORS",
     url: "Recharge/OffersPlans",
@@ -819,13 +821,12 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: {
-            name: "SAI BABA",
-            status: "VALID",
-            success: true,
-            message: "Transaction Successful",
-            account_no: "3864XXXXXXX",
-            ifsc: "SBINXXXXXXX",
+          data: {
+            ERROR: "11",
+            STATUS: "3",
+            MOBILENO: "",
+            RDATA: null,
+            MESSAGE: "Roffer Check service only availble in Airtel and VI.",
           },
         },
       },

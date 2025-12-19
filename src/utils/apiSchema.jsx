@@ -989,7 +989,7 @@ export const RechargePaymentDynamic = [
 export const RechargeOffersDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns recharge offers for a mobile number",
     body: {
       type: "object",
       fields: [
@@ -997,27 +997,31 @@ export const RechargeOffersDynamic = [
         {
           title: "response",
           type: "object",
-
           objectDetails: [
             {
-              title: "PAN",
+              title: "ERROR",
               type: "string",
-              subTitle: "The Requested Pan Number",
+              subTitle: "Error code returned by the offer service",
             },
             {
-              title: "Name",
+              title: "STATUS",
               type: "string",
-              subTitle: "The Beneficiary Name of given Pan Number",
+              subTitle: "Status of the request",
             },
             {
-              title: "PAN_Holder_Type",
+              title: "MOBILENO",
               type: "string",
-              subTitle: "The Pan type of the given Pan Number",
+              subTitle: "Mobile number for which offers are checked",
             },
             {
-              title: "PAN_Status",
+              title: "RDATA",
+              type: "object",
+              subTitle: "Recharge offer data (null if not available)",
+            },
+            {
+              title: "MESSAGE",
               type: "string",
-              subTitle: "The current Pan status",
+              subTitle: "Response message",
             },
           ],
         },
@@ -1028,7 +1032,7 @@ export const RechargeOffersDynamic = [
 export const RechargeOperatorsDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns operator details for a mobile number",
     body: {
       type: "object",
       fields: [
@@ -1036,27 +1040,46 @@ export const RechargeOperatorsDynamic = [
         {
           title: "response",
           type: "object",
-
           objectDetails: [
             {
-              title: "PAN",
+              title: "ERROR",
               type: "string",
-              subTitle: "The Requested Pan Number",
+              subTitle: "Error code (0 means no error)",
             },
             {
-              title: "Name",
+              title: "STATUS",
               type: "string",
-              subTitle: "The Beneficiary Name of given Pan Number",
+              subTitle: "Status of the request (1 means success)",
             },
             {
-              title: "PAN_Holder_Type",
+              title: "Mobile",
               type: "string",
-              subTitle: "The Pan type of the given Pan Number",
+              subTitle: "Requested mobile number",
             },
             {
-              title: "PAN_Status",
+              title: "Operator",
               type: "string",
-              subTitle: "The current Pan status",
+              subTitle: "Mobile network operator name",
+            },
+            {
+              title: "OpCode",
+              type: "string",
+              subTitle: "Operator code",
+            },
+            {
+              title: "Circle",
+              type: "string",
+              subTitle: "Telecom circle name",
+            },
+            {
+              title: "CircleCode",
+              type: "string",
+              subTitle: "Telecom circle code",
+            },
+            {
+              title: "Message",
+              type: "string",
+              subTitle: "Response message",
             },
           ],
         },
@@ -1067,7 +1090,7 @@ export const RechargeOperatorsDynamic = [
 export const RechargePlansDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns recharge plans for the selected operator and circle",
     body: {
       type: "object",
       fields: [
@@ -1075,27 +1098,63 @@ export const RechargePlansDynamic = [
         {
           title: "response",
           type: "object",
-
           objectDetails: [
             {
-              title: "PAN",
+              title: "ERROR",
               type: "string",
-              subTitle: "The Requested Pan Number",
+              subTitle: "Error code (0 means no error)",
             },
             {
-              title: "Name",
+              title: "STATUS",
               type: "string",
-              subTitle: "The Beneficiary Name of given Pan Number",
+              subTitle: "Status of the request",
             },
             {
-              title: "PAN_Holder_Type",
+              title: "Operator",
               type: "string",
-              subTitle: "The Pan type of the given Pan Number",
+              subTitle: "Mobile operator name",
             },
             {
-              title: "PAN_Status",
+              title: "Circle",
               type: "string",
-              subTitle: "The current Pan status",
+              subTitle: "Telecom circle code",
+            },
+            {
+              title: "RDATA",
+              type: "object",
+              subTitle: "Recharge plans grouped by categories",
+              objectDetails: [
+                {
+                  title: "Popular Plans",
+                  type: "array",
+                  subTitle: "List of popular recharge plans",
+                  arrayDetails: {
+                    type: "object",
+                    objectDetails: [
+                      {
+                        title: "amount",
+                        type: "string",
+                        subTitle: "Recharge amount",
+                      },
+                      {
+                        title: "validity",
+                        type: "string",
+                        subTitle: "Plan validity",
+                      },
+                      {
+                        title: "description",
+                        type: "string",
+                        subTitle: "Plan benefits description",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              title: "MESSAGE",
+              type: "string",
+              subTitle: "Response message",
             },
           ],
         },
@@ -1106,7 +1165,7 @@ export const RechargePlansDynamic = [
 export const RechargeOldPlansDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "Returns old recharge plans for the selected operator and circle",
     body: {
       type: "object",
       fields: [
@@ -1114,27 +1173,63 @@ export const RechargeOldPlansDynamic = [
         {
           title: "response",
           type: "object",
-
           objectDetails: [
             {
-              title: "PAN",
+              title: "ERROR",
               type: "string",
-              subTitle: "The Requested Pan Number",
+              subTitle: "Error code (0 means no error)",
             },
             {
-              title: "Name",
+              title: "STATUS",
               type: "string",
-              subTitle: "The Beneficiary Name of given Pan Number",
+              subTitle: "Status of the request",
             },
             {
-              title: "PAN_Holder_Type",
+              title: "Operator",
               type: "string",
-              subTitle: "The Pan type of the given Pan Number",
+              subTitle: "Mobile operator name",
             },
             {
-              title: "PAN_Status",
+              title: "Circle",
               type: "string",
-              subTitle: "The current Pan status",
+              subTitle: "Telecom circle code",
+            },
+            {
+              title: "RDATA",
+              type: "object",
+              subTitle: "Old recharge plans grouped by categories",
+              objectDetails: [
+                {
+                  title: "Popular Plans",
+                  type: "array",
+                  subTitle: "List of old popular recharge plans",
+                  arrayDetails: {
+                    type: "object",
+                    objectDetails: [
+                      {
+                        title: "amount",
+                        type: "string",
+                        subTitle: "Recharge amount",
+                      },
+                      {
+                        title: "validity",
+                        type: "string",
+                        subTitle: "Plan validity",
+                      },
+                      {
+                        title: "description",
+                        type: "string",
+                        subTitle: "Plan benefits description",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              title: "MESSAGE",
+              type: "string",
+              subTitle: "Response message",
             },
           ],
         },
@@ -1276,6 +1371,7 @@ export const BillerInfo = [
     },
   },
 ];
+
 
 export const DATA = [
   {

@@ -11,6 +11,7 @@ import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
 import { AadhaarDynamic, DATA } from "../utils/apiSchema";
 import { GetAcc } from "../utils/Language";
+import { AI } from "../utils/bodyParams";
 
 export default function AadhaarIntiation() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -101,7 +102,7 @@ export default function AadhaarIntiation() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={[]}
+            bodyObj={AI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

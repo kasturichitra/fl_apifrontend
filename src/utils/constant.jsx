@@ -34,11 +34,9 @@ export const GuidesData = [
       { title: "OAuth 2.0", slug: "oauth" },
     ],
   },
-   {
-    title: "Authentication",
-    pages: [
-      { title: "API Keys", slug: "api_keys" },
-    ],
+  {
+    title: "Params",
+    pages: [{ title: "Body Params", slug: "body_params" }],
   },
   {
     title: "Error Handling",
@@ -331,7 +329,7 @@ export const ApiReferences = [
             type: "POST",
             methods: [],
           },
-           {
+          {
             title: "Fetching Old Plans",
             link: "fetching_old_plans",
             type: "POST",
@@ -384,9 +382,35 @@ export const releaseNotes = [
       "More APIs and features will be introduced progressively as we continue to grow and scale our platform.",
     ],
   },
-    {
+  {
     date: "2025-12-27",
     editType: "KYC APIS",
+    title: "Launching KYC APIs — Building Trust Step by Step",
+    description: [
+      "We are entering the market with a focused set of KYC APIs designed to support secure and compliant identity verification.",
+      "Our KYC API offerings will expand gradually as we strengthen our infrastructure and introduce additional verification services.",
+    ],
+    whatWasHappening: [
+      "In this initial phase, we are providing essential KYC APIs to ensure accuracy, reliability, and regulatory compliance.",
+      "This approach allows us to validate performance and security before scaling to a broader KYC API ecosystem.",
+    ],
+  },
+  {
+    date: "2025-12-27",
+    editType: "ACCOUNT APIS",
+    title: "Launching Account APIs — Building a Strong Financial Foundation",
+    description: [
+      "We are entering the market with a focused set of Account APIs to support secure and reliable account-related operations.",
+      "Our Account API offerings will expand gradually as we enhance features, performance, and scalability step by step.",
+    ],
+    whatWasHappening: [
+      "During this initial phase, we are providing essential Account APIs to ensure stability, accuracy, and secure data handling.",
+      "This approach allows us to refine core account functionality before expanding into a broader Account API ecosystem.",
+    ],
+  },
+  {
+    date: "2025-12-27",
+    editType: "COMPANY APIS",
     title: "Entering the Market with Limited APIs — Growing Step by Step",
     description: [
       "We are now entering the market and currently providing a limited set of APIs as we establish our foundation.",
@@ -395,6 +419,19 @@ export const releaseNotes = [
     whatWasHappening: [
       "As a new entrant, our API coverage is intentionally limited to ensure stability and focused development.",
       "This initial phase allows us to refine core functionality before broadening our API ecosystem.",
+    ],
+  },
+  {
+    date: "2025-12-27",
+    editType: "CARDS APIS",
+    title: "Launching Cards APIs — Powering Secure Card Services",
+    description: [
+      "We are entering the market with a focused set of Cards APIs to support card issuance, validation, and related operations.",
+      "Our Cards API offerings will expand gradually as we enhance security, features, and card service capabilities step by step.",
+    ],
+    whatWasHappening: [
+      "In this initial phase, we are providing essential Cards APIs to ensure secure processing and reliable card-related transactions.",
+      "This approach allows us to validate performance and compliance before scaling to a broader Cards API ecosystem.",
     ],
   },
 ];

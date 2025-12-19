@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/bodyParams.css";
 import Bodypar from "./Bodypar";
+import { Link } from "react-router-dom";
 
 export default function BodyParams({
   bodyObj,
@@ -64,6 +65,12 @@ export default function BodyParams({
           );
         })}
       </div>
+      <p>
+        To Know more about body params click here{" "}
+        <Link to="/guides/body_params" className="link_style">
+          BodyParams
+        </Link>
+      </p>
     </div>
   );
 }

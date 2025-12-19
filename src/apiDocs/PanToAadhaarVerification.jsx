@@ -45,7 +45,7 @@ const PanToAadhaarVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -77,7 +77,7 @@ const PanToAadhaarVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panToAadhaar"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
             The PAN Number to masked Aadhaar API allows developers to verify users’

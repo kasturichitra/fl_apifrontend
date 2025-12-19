@@ -6,10 +6,12 @@ import ApiKeys from "../documents/ApiKeys";
 import ErrorCodesDoc from "../documents/ErrorCodesDoc";
 import ApiRateLimit from "../documents/ApiRateLimit";
 import Skelton from "../components/Skelton";
+import BodyParams from "../documents/BodyParams";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
   api_keys: ApiKeys,
+  body_params: BodyParams,
   error_codes: ErrorCodesDoc,
   rate_limiting: ApiRateLimit
 };
