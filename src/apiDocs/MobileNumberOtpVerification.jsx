@@ -14,8 +14,18 @@ import { GetAcc } from "../utils/Language";
 export default function MobileNumberOtpVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [isExampleChoosed, setIsExampleChoosed] = useState(false);
-  const [choosedExample, setChoosedExample] = useState(null);
+  const examplesList = GetAcc?.exampleCodes["MOV"] || [];
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
+      ? examplesList[0].statusCode
+      : null;
+  });
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample
+  );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
@@ -30,7 +40,7 @@ export default function MobileNumberOtpVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/otp/mobileOtp",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -56,13 +66,13 @@ export default function MobileNumberOtpVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification</h1>
+          <h1 className="api_heading">Mobile Otp Verification</h1>
 
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="mobileNumber/mobileotpVerify"
+            link="mobileNumber/otp_verification"
           />
 
           <p className="first_para">
@@ -110,8 +120,8 @@ export default function MobileNumberOtpVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-              service={"MOBILEOTPVERIFY"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"mobileOtpVerify"}
+          examples={GetAcc?.exampleCodes["MOV"] || []}
         />
       </div>
     </div>

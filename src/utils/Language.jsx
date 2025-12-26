@@ -38,7 +38,7 @@ export const apiList = [
   {
     key: "mobileOtpGenration",
     name: "MOBILEOTPGENRATION",
-    url: "mobileNumber/mobileOtp",
+    url: "mobileNumber/otp_generation",
     params: {
       mobileNumber: "7345XXXXXX",
     },
@@ -46,7 +46,7 @@ export const apiList = [
   {
     key: "mobileOtpVerify",
     name: "MOBILEOTPVERIFY",
-    url: "mobileNumber/mobileotpVerify",
+    url: "mobileNumber/otp_verification",
     params: {
       submittedOtp: "12XX",
     },
@@ -150,7 +150,7 @@ export const apiList = [
     url: "Recharge/Plans",
     params: {
       operatorcode: "",
-      cricle: ""
+      cricle: "",
     },
   },
   {
@@ -159,7 +159,7 @@ export const apiList = [
     url: "Recharge/Plans",
     params: {
       operatorcode: "",
-      cricle: ""
+      cricle: "",
     },
   },
   {
@@ -167,8 +167,11 @@ export const apiList = [
     name: "RECHARGE",
     url: "Recharge/RechargeURL",
     params: {
-      customerNumber: "",
+      mobileNumber: "",
+      geoCode: "",
       actualAmount: "",
+      spKey: "",
+      Pincode: "",
     },
   },
   {
@@ -372,6 +375,77 @@ const apiExamples = [
         statusCode: 200,
         message: {
           success: true,
+          message: "DigiLocker link generate successfully.",
+          transId: "TS-1766728568969",
+          ts_trans_id: "PX-PBJ-340999",
+          link: "https://www.truthscreen.com/eaadhaarDigilocker/dgl_auth_validate/MzY5MzAwMw==",
+        },
+      },
+    ],
+  },
+  // aadhaar status
+  {
+    name: "AVS",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            success: true,
+            message: "Aadhaar retrieved and verified successfully",
+            data: {
+              status: 1,
+              msg: "Digilocker status API",
+              data: {
+                "DV-ABC-123456": {
+                  final_status: "Completed",
+                  msg: [
+                    {
+                      doc_type: "ADHAR",
+                      file_type: "application/xml",
+                      doc_name: "Aadhaar Card",
+                      doc_issuer: "UIDAI",
+                      s3_file_url:
+                        "https://dummy-bucket.s3.ap-south-1.amazonaws.com/digilocker/sample/AadhaarCard.xml",
+                      data: {
+                        name: "Ravi Kumar",
+                        "Father Name": "C/O Suresh Kumar",
+                        dob: "01-01-1995",
+                        aadhar_number: "xxxxxxxx1234",
+                        gender: "M",
+                        address: {
+                          house: "12-34-567",
+                          loc: "Green Park",
+                          vtc: "Andheri East",
+                          lm: "Near City Mall",
+                          dist: "Mumbai Suburban",
+                          state: "Maharashtra",
+                          country: "India",
+                          pc: "400069",
+                        },
+                        co: "C/O Suresh Kumar",
+                        photo: "BASE64_ENCODED_IMAGE_DATA_PLACEHOLDER",
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
+  // mobile otp genration
+  {
+    name: "MOG",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
           message: "Valid",
           response: {
             code: 200,
@@ -384,9 +458,9 @@ const apiExamples = [
       },
     ],
   },
-  // aadhaar status
+  // mobile otp verification
   {
-    name: "AVS",
+    name: "MOV",
     examples: [
       {
         statusCode: 200,
@@ -466,7 +540,35 @@ const apiExamples = [
         message: {
           success: true,
           message: "Valid",
-          response: { score: 98.45, matched: true },
+          response: {
+            registrationNumber: "registrationNumber",
+            previousRegistrationCertificate: "NA",
+            nameOfTheShop: "",
+            address: "",
+            act: "Shops and Establishments",
+            dateOfCommencment: "",
+            summary: {
+              registrationNumber: "registrationNumber",
+              name: "",
+              status: "",
+              dateOfCommencement: "",
+              address: "",
+              splitAddress: {
+                district: [""],
+                state: [["state", ""]],
+                city: [""],
+                pincode: "",
+                country: [],
+                addressLine: "",
+              },
+            },
+            detailed: {
+              registrationNumber: "registrationNumber",
+              previousRegistrationCertificate: "NA",
+              nameOfTheShop: "name of Shop",
+              act: "",
+            },
+          },
         },
       },
     ],

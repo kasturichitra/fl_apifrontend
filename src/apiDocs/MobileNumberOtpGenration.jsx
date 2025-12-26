@@ -11,12 +11,21 @@ import { FetchApi } from "../utils/Custom_Api";
 import { DATA, MobileDynamic } from "../utils/apiSchema";
 import { GetAcc } from "../utils/Language";
 
-
 export default function MobileNumberOtpGenration() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [isExampleChoosed, setIsExampleChoosed] = useState(false);
-  const [choosedExample, setChoosedExample] = useState(null);
+  const examplesList = GetAcc?.exampleCodes["MOG"] || [];
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
+      ? examplesList[0].statusCode
+      : null;
+  });
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample
+  );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
@@ -31,7 +40,7 @@ export default function MobileNumberOtpGenration() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/otp/mobileOtp",
+        path: "mobileNumber/otp_generation",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -57,13 +66,13 @@ export default function MobileNumberOtpGenration() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification</h1>
+          <h1 className="api_heading">Mobile Otp Generation</h1>
 
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="mobileNumber/mobileOtp"
+            link="mobileNumber/otp_generation"
           />
 
           <p className="first_para">
@@ -111,8 +120,8 @@ export default function MobileNumberOtpGenration() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-              service={"MOBILEOTPGENRATION"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"mobileOtpGenration"}
+          examples={GetAcc?.exampleCodes["MOG"] || []}
         />
       </div>
     </div>

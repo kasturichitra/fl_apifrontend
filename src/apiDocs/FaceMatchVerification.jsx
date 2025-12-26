@@ -30,7 +30,7 @@ export default function FaceMatchVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/face/facematchapi",
+        path: "face/facematch",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });

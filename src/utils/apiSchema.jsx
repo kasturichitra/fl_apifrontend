@@ -553,23 +553,109 @@ export const ShopDynamic = [
           objectDetails: [
             {
               title: "registrationNumber",
-              subTitle: "The Registration Number of the Shop",
               type: "string",
             },
             {
-              title: "state",
-              subTitle: "The State in which the Shop is Located",
+              title: "previousRegistrationCertificate",
               type: "string",
             },
             {
-              title: "shopName",
-              subTitle: "The Name of the Shop",
+              title: "nameOfTheShop",
               type: "string",
             },
             {
-              title: "shopAddress",
-              subTitle: "The Address of the Shop",
+              title: "address",
               type: "string",
+            },
+            {
+              title: "act",
+              type: "string",
+            },
+            {
+              title: "dateOfCommencment",
+              type: "string",
+            },
+            {
+              title: "summary",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "registrationNumber",
+                  type: "string",
+                },
+                {
+                  title: "name",
+                  type: "string",
+                },
+                {
+                  title: "status",
+                  type: "string",
+                },
+                {
+                  title: "dateOfCommencement",
+                  type: "string",
+                },
+                {
+                  title: "address",
+                  type: "string",
+                },
+                {
+                  title: "splitAddress",
+                  type: "object",
+                  objectDetails: [
+                    {
+                      title: "district",
+                      type: "array",
+                      itemsType: "string",
+                    },
+                    {
+                      title: "state",
+                      type: "array",
+                      itemsType: "array",
+                    },
+                    {
+                      title: "city",
+                      type: "array",
+                      itemsType: "string",
+                    },
+                    {
+                      title: "pincode",
+                      type: "string",
+                    },
+                    {
+                      title: "country",
+                      type: "array",
+                      itemsType: "string",
+                    },
+                    {
+                      title: "addressLine",
+                      type: "string",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: "detailed",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "registrationNumber",
+                  type: "string",
+                },
+                {
+                  title: "previousRegistrationCertificate",
+                  type: "string",
+                },
+                {
+                  title: "nameOfTheShop",
+                  type: "string",
+                },
+                {
+                  title: "act",
+                  type: "string",
+                },
+              ],
             },
           ],
         },

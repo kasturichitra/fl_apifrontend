@@ -64,6 +64,15 @@ export const GuidesData = [
 
 export const ApiReferences = [
   {
+    items: [
+       {
+        title: "Encryption And Decryption",
+        link: "encrypt_and_decrypt",
+        methods: [],
+      }
+    ],
+  },
+  {
     section: "KYC",
     items: [
       {

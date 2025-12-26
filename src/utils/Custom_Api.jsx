@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const FetchApi = async ({ path, method, body = {}, headers = {} }) => {
+export const FetchApi = async ({ method, path, headers = {}, body = {} }) => {
   const url = import.meta.env.VITE_HTTP_URL;
   const fetchUrl = url + path;
   let token =
