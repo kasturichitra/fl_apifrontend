@@ -228,9 +228,9 @@ function CopyTryComponent({ copyCode, makeFaceMathcApiCall }) {
           <img src={images?.check} alt="" title="copied" className="invert-100" />
         )}
       </button>
-      <button className={"" ? "code_main_try_btn": "code_main_try_btn disabled" } onClick={makeFaceMathcApiCall} disabled={true}>
+      {/* <button className={"" ? "code_main_try_btn": "code_main_try_btn disabled" } onClick={makeFaceMathcApiCall} disabled={true}>
         Try It!
-      </button>
+      </button> */}
     </div>
   );
 }

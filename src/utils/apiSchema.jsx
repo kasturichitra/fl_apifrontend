@@ -281,33 +281,33 @@ export const CinDynamic = [
         ...BaseFields,
         {
           title: "response",
-          subtitle: "CIN Registration Details",
+          subTitle: "CIN Registration Details",
           type: "object",
           objectDetails: [
-            { title: "CIN", subtitle: "Corporate Identification Number", type: "string", value: "U12345DL2025PTC999999" },
-            { title: "Company Name", subtitle: "Registered Name of the Company", type: "string", value: "ABC TECHNOLOGIES PRIVATE LIMITED" },
-            { title: "Date of Registration", subtitle: "Date when company was registered", type: "string", value: "01/15/2025" },
-            { title: "Status", subtitle: "Current status of the company", type: "string", value: "Active" },
-            { title: "PAN", subtitle: "Permanent Account Number of the company", type: "string", value: "AABCD1234F" },
-            { title: "Authorized Capital", subtitle: "Authorized share capital of the company", type: "string", value: "500000" },
-            { title: "Paidup Capital", subtitle: "Paid-up capital of the company", type: "string", value: "500000" },
-            { title: "Email", subtitle: "Registered company email", type: "string", value: "info@abctech.com" },
-            { title: "Mobile", subtitle: "Registered company mobile number", type: "string", value: "9876543210" },
+            { title: "CIN", subTitle: "Corporate Identification Number", type: "string", value: "U12345DL2025PTC999999" },
+            { title: "Company Name", subTitle: "Registered Name of the Company", type: "string", value: "ABC TECHNOLOGIES PRIVATE LIMITED" },
+            { title: "Date of Registration", subTitle: "Date when company was registered", type: "string", value: "01/15/2025" },
+            { title: "Status", subTitle: "Current status of the company", type: "string", value: "Active" },
+            { title: "PAN", subTitle: "Permanent Account Number of the company", type: "string", value: "AABCD1234F" },
+            { title: "Authorized Capital", subTitle: "Authorized share capital of the company", type: "string", value: "500000" },
+            { title: "Paidup Capital", subTitle: "Paid-up capital of the company", type: "string", value: "500000" },
+            { title: "Email", subTitle: "Registered company email", type: "string", value: "info@abctech.com" },
+            { title: "Mobile", subTitle: "Registered company mobile number", type: "string", value: "9876543210" },
             {
               title: "Multiple Addresses",
-              subtitle: "Registered, Police Station, and Present Addresses",
+              subTitle: "Registered, Police Station, and Present Addresses",
               type: "array",
               items: {
                 type: "object",
                 fields: [
-                  { title: "City", subtitle: "City of the address", type: "string" },
-                  { title: "State", subtitle: "State of the address", type: "string" },
-                  { title: "Country", subtitle: "Country of the address", type: "string" },
-                  { title: "District", subtitle: "District of the address", type: "string" },
-                  { title: "Locality", subtitle: "Local area or locality", type: "string" },
-                  { title: "Postal Code", subtitle: "PIN or ZIP code", type: "string" },
-                  { title: "Address Type", subtitle: "Type of address", type: "string" },
-                  { title: "Street Address", subtitle: "Street or building address", type: "string" },
+                  { title: "City", subTitle: "City of the address", type: "string" },
+                  { title: "State", subTitle: "State of the address", type: "string" },
+                  { title: "Country", subTitle: "Country of the address", type: "string" },
+                  { title: "District", subTitle: "District of the address", type: "string" },
+                  { title: "Locality", subTitle: "Local area or locality", type: "string" },
+                  { title: "Postal Code", subTitle: "PIN or ZIP code", type: "string" },
+                  { title: "Address Type", subTitle: "Type of address", type: "string" },
+                  { title: "Street Address", subTitle: "Street or building address", type: "string" },
                 ],
               },
               value: [
@@ -345,13 +345,13 @@ export const CinDynamic = [
             },
             {
               title: "NIC Codes",
-              subtitle: "National Industrial Classification Codes",
+              subTitle: "National Industrial Classification Codes",
               type: "array",
               items: {
                 type: "object",
                 fields: [
-                  { title: "NIC Code", subtitle: "2/4/5 digit NIC code", type: "string" },
-                  { title: "Description", subtitle: "Description of activity", type: "string" },
+                  { title: "NIC Code", subTitle: "2/4/5 digit NIC code", type: "string" },
+                  { title: "Description", subTitle: "Description of activity", type: "string" },
                 ],
               },
               value: [
@@ -360,13 +360,13 @@ export const CinDynamic = [
             },
             {
               title: "Annual Returns (3 Yrs)",
-              subtitle: "Company annual returns for the last 3 years",
+              subTitle: "Company annual returns for the last 3 years",
               type: "array",
               items: {
                 type: "object",
                 fields: [
-                  { title: "Financial Year", subtitle: "Financial year ending", type: "string" },
-                  { title: "Date of Filing", subtitle: "Filing date of the return", type: "string" },
+                  { title: "Financial Year", subTitle: "Financial year ending", type: "string" },
+                  { title: "Date of Filing", subTitle: "Filing date of the return", type: "string" },
                 ],
               },
               value: [
@@ -377,13 +377,13 @@ export const CinDynamic = [
             },
             {
               title: "Balance Sheets (3 Yrs)",
-              subtitle: "Company balance sheets for the last 3 years",
+              subTitle: "Company balance sheets for the last 3 years",
               type: "array",
               items: {
                 type: "object",
                 fields: [
-                  { title: "Financial Year", subtitle: "Financial year ending", type: "string" },
-                  { title: "Date of Filing", subtitle: "Filing date of balance sheet", type: "string" },
+                  { title: "Financial Year", subTitle: "Financial year ending", type: "string" },
+                  { title: "Date of Filing", subTitle: "Filing date of balance sheet", type: "string" },
                 ],
               },
               value: [
@@ -408,74 +408,74 @@ export const UdyamDynamic = [
         ...BaseFields,
         {
           title: "response",
-          subtitle: "Udyam Registration Details",
+          subTitle: "Udyam Registration Details",
           type: "object",
           objectDetails: [
             {
               title: "udyam",
-              subtitle: "Udyam Registration Number",
+              subTitle: "Udyam Registration Number",
               type: "string",
             },
             {
               title: "Date of Commencement of Production/Business",
-              subtitle: "Date when the enterprise started production/business",
+              subTitle: "Date when the enterprise started production/business",
               type: "string",
             },
             {
               title: "Date of Incorporation",
-              subtitle: "Date when the company was incorporated",
+              subTitle: "Date when the company was incorporated",
               type: "string",
             },
             {
               title: "Date of Udyam Registration",
-              subtitle: "Date when the enterprise received Udyam registration",
+              subTitle: "Date when the enterprise received Udyam registration",
               type: "string",
             },
             {
               title: "MSME-DFO",
-              subtitle: "MSME-DFO office code",
+              subTitle: "MSME-DFO office code",
               type: "string",
             },
             {
               title: "Major Activity",
-              subtitle: "Primary business activity of the enterprise",
+              subTitle: "Primary business activity of the enterprise",
               type: "string",
             },
             {
               title: "Name of Enterprise",
-              subtitle: "Registered name of the enterprise",
+              subTitle: "Registered name of the enterprise",
               type: "string",
             },
             {
               title: "Organisation Type",
-              subtitle: "Type of organization (Private, Public, Partnership, etc.)",
+              subTitle: "Type of organization (Private, Public, Partnership, etc.)",
               type: "string",
             },
             {
               title: "Social Category",
-              subtitle: "Social category of the entrepreneur",
+              subTitle: "Social category of the entrepreneur",
               type: "string",
             },
             {
               title: "Enterprise Type",
-              subtitle: "Type/classification of enterprise",
+              subTitle: "Type/classification of enterprise",
               type: "array",
               items: {
                 type: "object",
                 fields: [
                   {
                     title: "Classification Date",
-                    subtitle: "Date of enterprise type classification",
+                    subTitle: "Date of enterprise type classification",
                     type: "string",
                   },
                   {
                     title: "Classification Year",
-                    subtitle: "Financial year of classification",
+                    subTitle: "Financial year of classification",
                     type: "string",
                   },
                   {
                     title: "Enterprise Type",
-                    subtitle: "Type of enterprise (Micro, Small, Medium)",
+                    subTitle: "Type of enterprise (Micro, Small, Medium)",
                     type: "string",
                   },
                 ],
@@ -483,34 +483,34 @@ export const UdyamDynamic = [
             },
             {
               title: "National Industry Classification Code(S)",
-              subtitle: "NIC codes representing enterprise activities",
+              subTitle: "NIC codes representing enterprise activities",
               type: "array",
               items: {
                 type: "object",
                 fields: [
                   {
                     title: "Activity",
-                    subtitle: "Description of the activity",
+                    subTitle: "Description of the activity",
                     type: "string",
                   },
                   {
                     title: "Date",
-                    subtitle: "Date associated with the activity",
+                    subTitle: "Date associated with the activity",
                     type: "string",
                   },
                   {
                     title: "Nic 2 Digit",
-                    subtitle: "2-digit NIC code",
+                    subTitle: "2-digit NIC code",
                     type: "string",
                   },
                   {
                     title: "Nic 4 Digit",
-                    subtitle: "4-digit NIC code",
+                    subTitle: "4-digit NIC code",
                     type: "string",
                   },
                   {
                     title: "Nic 5 Digit",
-                    subtitle: "5-digit NIC code",
+                    subTitle: "5-digit NIC code",
                     type: "string",
                   },
                 ],
@@ -518,19 +518,19 @@ export const UdyamDynamic = [
             },
             {
               title: "Official address of Enterprise",
-              subtitle: "Registered office address details",
+              subTitle: "Registered office address details",
               type: "object",
               fields: [
-                { title: "Flat/Door/Block No", subtitle: "Flat or door number", type: "string" },
-                { title: "Name of Premises/ Building", subtitle: "Name of the building or premises", type: "string" },
-                { title: "Village/Town", subtitle: "Village or town", type: "string" },
-                { title: "Block", subtitle: "Block name or number", type: "string" },
-                { title: "Road/Street/Lane", subtitle: "Road, street or lane name", type: "string" },
-                { title: "City", subtitle: "City name", type: "string" },
-                { title: "State", subtitle: "State name", type: "string" },
-                { title: "District", subtitle: "District name", type: "string" },
-                { title: "Mobile", subtitle: "Registered mobile number", type: "string" },
-                { title: "Email", subtitle: "Registered email address", type: "string" },
+                { title: "Flat/Door/Block No", subTitle: "Flat or door number", type: "string" },
+                { title: "Name of Premises/ Building", subTitle: "Name of the building or premises", type: "string" },
+                { title: "Village/Town", subTitle: "Village or town", type: "string" },
+                { title: "Block", subTitle: "Block name or number", type: "string" },
+                { title: "Road/Street/Lane", subTitle: "Road, street or lane name", type: "string" },
+                { title: "City", subTitle: "City name", type: "string" },
+                { title: "State", subTitle: "State name", type: "string" },
+                { title: "District", subTitle: "District name", type: "string" },
+                { title: "Mobile", subTitle: "Registered mobile number", type: "string" },
+                { title: "Email", subTitle: "Registered email address", type: "string" },
               ],
             },
           ],
@@ -549,87 +549,107 @@ export const ShopDynamic = [
         ...BaseFields,
         {
           title: "data",
+          subTitle: "Details of the shop",
           type: "object",
           objectDetails: [
             {
               title: "registrationNumber",
               type: "string",
+              subTitle: "Shop registration number",
             },
             {
               title: "previousRegistrationCertificate",
               type: "string",
+              subTitle: "Previous registration certificate number",
             },
             {
               title: "nameOfTheShop",
               type: "string",
+              subTitle: "Name of the shop",
             },
             {
               title: "address",
               type: "string",
+              subTitle: "Registered address of the shop",
             },
             {
               title: "act",
               type: "string",
+              subTitle: "Applicable act under which shop is registered",
             },
             {
               title: "dateOfCommencment",
               type: "string",
+              subTitle: "Date of commencement of the shop",
             },
             {
               title: "summary",
               type: "object",
+              subTitle: "Summary information of the shop",
               objectDetails: [
                 {
                   title: "registrationNumber",
                   type: "string",
+                  subTitle: "Shop registration number",
                 },
                 {
                   title: "name",
                   type: "string",
+                  subTitle: "Name of the shop",
                 },
                 {
                   title: "status",
                   type: "string",
+                  subTitle: "Current status of the shop",
                 },
                 {
                   title: "dateOfCommencement",
                   type: "string",
+                  subTitle: "Date when the shop started operations",
                 },
                 {
                   title: "address",
                   type: "string",
+                  subTitle: "Shop address",
                 },
                 {
                   title: "splitAddress",
                   type: "object",
+                  subTitle: "Detailed breakdown of the shop address",
                   objectDetails: [
                     {
                       title: "district",
                       type: "array",
                       itemsType: "string",
+                      subTitle: "District(s) of the shop",
                     },
                     {
                       title: "state",
                       type: "array",
                       itemsType: "array",
+                      subTitle: "State(s) of the shop",
                     },
                     {
                       title: "city",
                       type: "array",
                       itemsType: "string",
+                      subTitle: "City or cities of the shop",
                     },
                     {
                       title: "pincode",
                       type: "string",
+                      subTitle: "Postal code of the shop",
                     },
                     {
                       title: "country",
                       type: "array",
                       itemsType: "string",
+                      subTitle: "Country or countries of the shop",
                     },
                     {
                       title: "addressLine",
                       type: "string",
+                      subTitle: "Street or detailed address line",
                     },
                   ],
                 },
@@ -638,22 +658,27 @@ export const ShopDynamic = [
             {
               title: "detailed",
               type: "object",
+              subTitle: "Detailed registration information of the shop",
               objectDetails: [
                 {
                   title: "registrationNumber",
                   type: "string",
+                  subTitle: "Shop registration number",
                 },
                 {
                   title: "previousRegistrationCertificate",
                   type: "string",
+                  subTitle: "Previous registration certificate number",
                 },
                 {
                   title: "nameOfTheShop",
                   type: "string",
+                  subTitle: "Name of the shop",
                 },
                 {
                   title: "act",
                   type: "string",
+                  subTitle: "Applicable act under which shop is registered",
                 },
               ],
             },
@@ -673,26 +698,32 @@ export const NameDynamic = [
         {
           title: "success",
           type: "boolean",
+          subTitle: "Indicates whether the API request was successful",
         },
         {
           title: "message",
           type: "string",
+          subTitle: "Overall response message from the server",
         },
         {
           title: "response",
           type: "object",
+          subTitle: "Contains detailed name information",
           objectDetails: [
             {
               title: "firstName",
               type: "string",
+              subTitle: "First name extracted from the input",
             },
             {
               title: "secondName",
               type: "string",
+              subTitle: "Second name extracted from the input",
             },
             {
               title: "result",
               type: "integer",
+              subTitle: "Result code indicating the name validation outcome",
             },
           ],
         },
@@ -710,38 +741,47 @@ export const AccountDynamic = [
         {
           title: "message",
           type: "string",
+          subTitle: "Overall response message from the server",
         },
         {
           title: "success",
           type: "boolean",
+          subTitle: "Indicates whether the API request was successful",
         },
         {
           title: "response",
           type: "object",
+          subTitle: "Contains detailed account validation information",
           objectDetails: [
             {
               title: "name",
               type: "string",
+              subTitle: "Name associated with the bank account",
             },
             {
               title: "status",
               type: "string",
+              subTitle: "Current validation status of the account",
             },
             {
               title: "success",
               type: "boolean",
+              subTitle: "Indicates whether account validation succeeded",
             },
             {
               title: "message",
               type: "string",
+              subTitle: "Detailed message about the account validation result",
             },
             {
               title: "account_no",
               type: "string",
+              subTitle: "Bank account number provided for validation",
             },
             {
               title: "ifsc",
               type: "string",
+              subTitle: "IFSC code of the bank branch",
             },
           ],
         },

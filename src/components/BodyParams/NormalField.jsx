@@ -27,7 +27,8 @@ export default function NormalField({
     fieldName,
     inputTag,
     example,
-    readOnly
+    readOnly,
+    optional
   } = field;
 
   // useEffect(() => {
@@ -84,6 +85,7 @@ export default function NormalField({
             )}
 
             {required && <span className="required_fld ">required</span>}
+            {optional && <span className="required_fld ">optional</span>}
           </div>
           <p className="field_subT">{subTitle}</p>
         </div>
