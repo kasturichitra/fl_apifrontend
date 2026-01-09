@@ -64,12 +64,18 @@ export const GuidesData = [
 
 export const ApiReferences = [
   {
+    section: "ENCRYPT AND DECRYPT",
     items: [
-       {
-        title: "Encryption And Decryption",
-        link: "encrypt_and_decrypt",
+      {
+        title: "Encryption",
+        link: "encrypt",
         methods: [],
-      }
+      },
+      {
+        title: "Decryption",
+        link: "decrypt",
+        methods: [],
+      },
     ],
   },
   {

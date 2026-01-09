@@ -9,7 +9,7 @@ import Headers from "../components/Headers/Headers";
 
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { AadhaarDynamic, DATA } from "../utils/apiSchema";
+import { AadhaarIntiateDynamic, DATA } from "../utils/apiSchema";
 import { GetAcc } from "../utils/Language";
 import { AI } from "../utils/bodyParams";
 
@@ -112,7 +112,7 @@ export default function AadhaarIntiation() {
         {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
         </div>
       </div>
 

@@ -85,7 +85,7 @@ export default function NormalField({
             )}
 
             {required && <span className="required_fld ">required</span>}
-            {optional && <span className="required_fld ">optional</span>}
+            {optional && <span className="optional_fld ">optional</span>}
           </div>
           <p className="field_subT">{subTitle}</p>
         </div>

@@ -41,8 +41,13 @@ import RechargePayment from "../apiDocs/RechargePayment";
 import RechargeOffers from "../apiDocs/RechargeOffers";
 import Skelton from "../components/Skelton";
 import FetchingOldRechargePlans from "../apiDocs/FetchingOldRechargePlans";
+import Decryption from "../apiDocs/Decryption";
+import Encryption from "../apiDocs/Encryption";
 
 const apiComponentMap = {
+  // encryption and decryption
+  encrypt: Encryption,
+  decrypt: Decryption,
   // ---------------- KYC ----------------
   pan_num_verfication: PanVerification,
   pan_num_to_aadhaar: PanToAadhaarVerification,

@@ -174,6 +174,16 @@ export const UDYAM = [
     example: "AXER07FRGV",
     required: true,
   },
+  {
+    title: "mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "mobile number of the given pan",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: false,
+    optional: true,
+  },
 ];
 
 // gst verification
@@ -186,6 +196,16 @@ export const GSTIN = [
     inputTag: false,
     example: "ABCXXXXXXXXX",
     required: true,
+  },
+  {
+    title: "mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "mobile number of the given pan",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: false,
+    optional: true,
   },
 ];
 
@@ -264,6 +284,16 @@ export const NM = [
     example: "RAXX",
     required: true,
   },
+  {
+    title: "mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "mobile number of the given pan",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: false,
+    optional: true,
+  },
 ];
 
 // bin
@@ -276,6 +306,16 @@ export const BIN = [
     inputTag: false,
     example: "45XXXX",
     required: true,
+  },
+  {
+    title: "mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "mobile number of the given pan",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: false,
+    optional: true,
   },
 ];
 

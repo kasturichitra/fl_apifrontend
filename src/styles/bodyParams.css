@@ -58,6 +58,11 @@
   color: #fb7185;
 }
 
+.optional_fld {
+  font-size: 0.75rem;
+  color: #cac9c9;
+}
+
 .field_subT {
   font-size: var(--font-small);
   margin-top: 0.125rem;

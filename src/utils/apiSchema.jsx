@@ -90,27 +90,73 @@ export const PanToAadhaarDynamic = [
     },
   },
 ];
-export const AadhaarDynamic = [
+export const AadhaarIntiateDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "DigiLocker link generated successfully",
     body: {
       type: "object",
       fields: [
         {
-          title: "access_token",
-          type: "string",
-          required: true,
+          title: "success",
+          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          type: "boolean",
         },
         {
-          title: "expires_in",
-          type: "integer",
-          required: true,
+          title: "message",
+          subTitle: "Response message describing the result of the DigiLocker link request",
+          type: "string",
         },
         {
-          title: "token_type",
+          title: "transId",
+          subTitle: "Unique transaction ID generated for this DigiLocker request",
           type: "string",
-          required: true,
+        },
+        {
+          title: "ts_trans_id",
+          subTitle: "TruthScreen system transaction reference ID",
+          type: "string",
+        },
+        {
+          title: "link",
+          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          type: "string",
+        },
+      ],
+    },
+  },
+];
+export const AadhaarStatusDynamic = [
+  {
+    status: 200,
+    summary: "DigiLocker link generated successfully",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "success",
+          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          type: "boolean",
+        },
+        {
+          title: "message",
+          subTitle: "Response message describing the result of the DigiLocker link request",
+          type: "string",
+        },
+        {
+          title: "transId",
+          subTitle: "Unique transaction ID generated for this DigiLocker request",
+          type: "string",
+        },
+        {
+          title: "ts_trans_id",
+          subTitle: "TruthScreen system transaction reference ID",
+          type: "string",
+        },
+        {
+          title: "link",
+          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          type: "string",
         },
       ],
     },

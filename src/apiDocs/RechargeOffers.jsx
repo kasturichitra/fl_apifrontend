@@ -17,7 +17,7 @@ const RechargeOffers = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["RP"] || [];
+  const examplesList = GetAcc?.exampleCodes["RO"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -128,7 +128,7 @@ const RechargeOffers = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"offers"}
-          examples={GetAcc?.exampleCodes["RP"] || []}
+          examples={GetAcc?.exampleCodes["RO"] || []}
         />
       </div>
     </div>
