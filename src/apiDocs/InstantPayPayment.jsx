@@ -89,7 +89,7 @@ const InstantPayPayment = () => {
 
 
         </div>
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers

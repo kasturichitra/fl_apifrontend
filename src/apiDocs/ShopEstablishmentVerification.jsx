@@ -82,7 +82,7 @@ export default function ShopVerification() {
         </div>
 
         {/* REQUEST HISTORY TABLE */}
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* HEADERS */}
         <div className="py-6">

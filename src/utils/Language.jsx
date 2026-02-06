@@ -1,67 +1,262 @@
 import { generateCode } from "./codeGenerator";
 const HttpUrl = import.meta.env.VITE_HTTP_URL;
+const RechargeHttpUrl = import.meta.env.VITE_HTTP_RECHARGE_URL;
+const BillPaymentsHttpUrl = import.meta.env.VITE_HTTP_BILL_PAYMENTS_URL;
+
+const BASE_URL_BY_CATEGORY = {
+  kyc: HttpUrl,
+  recharge: RechargeHttpUrl,
+  billPayments: BillPaymentsHttpUrl,
+};
+
+// export const apiList = [
+//   {
+//     key: "pan",
+//     name: "PAN",
+//     url: "pan/panverifying",
+//     params: {
+//       panNumber: "IROPXXXXXX",
+//     },
+//   },
+//   {
+//     key: "panToAadhaar",
+//     name: "PANTOAADHAAR",
+//     url: "pan/panToAadhaar",
+//     params: {
+//       panNumber: "IROPXXXXXX",
+//     },
+//   },
+//   {
+//     key: "aadhaarInitiate",
+//     name: "AADHAARINITIATE",
+//     url: "aadhaar/initiate",
+//     params: {
+//       redirect_url: "",
+//       callback_url: "",
+//     },
+//   },
+//   {
+//     key: "aadhaarStatus",
+//     name: "AADHAARSTATUS",
+//     url: "aadhaar/status",
+//     params: {
+//       tsTransId: "",
+//     },
+//   },
+//   {
+//     key: "mobileOtpGenration",
+//     name: "MOBILEOTPGENRATION",
+//     url: "mobileNumber/otp_generation",
+//     params: {
+//       mobileNumber: "7345XXXXXX",
+//     },
+//   },
+//   {
+//     key: "mobileOtpVerify",
+//     name: "MOBILEOTPVERIFY",
+//     url: "mobileNumber/otp_verification",
+//     params: {
+//       submittedOtp: "12XX",
+//     },
+//   },
+//   {
+//     key: "gst",
+//     name: "GST",
+//     url: "gst/Gstinverify",
+//     params: {
+//       gstinNumber: "22ABCDEXXXXXXXX",
+//     },
+//   },
+//   {
+//     key: "faceMatch",
+//     name: "FACEMATCH",
+//     url: "face/facematch",
+//     params: {
+//       userImage: "BASE 64",
+//       aadhaarImage: "BASE 64",
+//     },
+//   },
+//   {
+//     key: "ifsc",
+//     name: "IFSC",
+//     url: "bin/getBankDetails",
+//     params: {
+//       ifsc: "SBINXXXXXXX",
+//     },
+//   },
+//   {
+//     key: "cin",
+//     name: "CIN",
+//     url: "business/CinNumberverify",
+//     params: {
+//       CIN: "U12345XYZ",
+//     },
+//   },
+//   {
+//     key: "shop",
+//     name: "SHOP",
+//     url: "shop/shopest",
+//     params: {
+//       registrationNumber: "AB78XXXXXXX",
+//       state: "TELANXXXX",
+//     },
+//   },
+//   {
+//     key: "bpl",
+//     name: "BPL",
+//     url: "accounts/verify/penny-less",
+//     params: {
+//       accountNumber: "123456789",
+//       ifsc: "ICIC0001234",
+//     },
+//   },
+//   {
+//     key: "bpd",
+//     name: "BPD",
+//     url: "accounts/verify/penny-drop",
+//     params: {
+//       accountNumber: "123456789",
+//       ifsc: "ICIC0001234",
+//     },
+//   },
+//   {
+//     key: "udyam",
+//     name: "UDYAM",
+//     url: "udyam/verify",
+//     params: {
+//       udyamNumber: "123456789",
+//     },
+//   },
+//   {
+//     key: "fullCreditCard",
+//     name: "FULLCREDITCARD",
+//     url: "card/cardVerify",
+//     params: {
+//       creditCardNumber: "45XXXXXXXXXXXX23",
+//     },
+//   },
+//   {
+//     key: "bin",
+//     name: "BIN",
+//     url: "bin/getCardDetails",
+//     params: {
+//       bin: "45XXXX",
+//     },
+//   },
+//   {
+//     key: "name",
+//     name: "NAME",
+//     url: "name/compareNames",
+//     params: {
+//       firstName: "RAXX",
+//       secondName: "RAXX",
+//     },
+//   },
+//   {
+//     key: "plans",
+//     name: "PLANS",
+//     url: "Recharge/Plans",
+//     params: {
+//       operatorcode: "",
+//       cricle: "",
+//     },
+//   },
+//   {
+//     key: "oldPlans",
+//     name: "OLDPLANS",
+//     url: "Recharge/Plans",
+//     params: {
+//       operatorcode: "",
+//       cricle: "",
+//     },
+//   },
+//   {
+//     key: "recharge",
+//     name: "RECHARGE",
+//     url: "Recharge/RechargeURL",
+//     params: {
+//       mobileNumber: "",
+//       geoCode: "",
+//       actualAmount: "",
+//       spKey: "",
+//       Pincode: "",
+//     },
+//   },
+//   {
+//     key: "offers",
+//     name: "OFFERS",
+//     url: "Recharge/OffersPlans",
+//     params: {
+//       operator_code: "",
+//       mobile_no: "",
+//     },
+//   },
+//   {
+//     key: "operators",
+//     name: "OPERATORS",
+//     url: "Recharge/OffersPlans",
+//     params: {
+//       operator_code: "",
+//       mobile_no: "",
+//     },
+//   },
+// ];
 
 export const apiList = [
+  // 🔐 KYC APIs
   {
     key: "pan",
     name: "PAN",
+    category: "kyc",
     url: "pan/panverifying",
-    params: {
-      panNumber: "IROPXXXXXX",
-    },
+    params: { panNumber: "IROPXXXXXX" },
   },
   {
     key: "panToAadhaar",
     name: "PANTOAADHAAR",
+    category: "kyc",
     url: "pan/panToAadhaar",
-    params: {
-      panNumber: "IROPXXXXXX",
-    },
+    params: { panNumber: "IROPXXXXXX" },
   },
   {
     key: "aadhaarInitiate",
     name: "AADHAARINITIATE",
+    category: "kyc",
     url: "aadhaar/initiate",
-    params: {
-      redirect_url: "",
-      callback_url: "",
-    },
+    params: { redirect_url: "", callback_url: "" },
   },
   {
     key: "aadhaarStatus",
     name: "AADHAARSTATUS",
+    category: "kyc",
     url: "aadhaar/status",
-    params: {
-      tsTransId: "",
-    },
+    params: { tsTransId: "" },
   },
   {
     key: "mobileOtpGenration",
     name: "MOBILEOTPGENRATION",
+    category: "kyc",
     url: "mobileNumber/otp_generation",
-    params: {
-      mobileNumber: "7345XXXXXX",
-    },
+    params: { mobileNumber: "7345XXXXXX" },
   },
   {
     key: "mobileOtpVerify",
     name: "MOBILEOTPVERIFY",
+    category: "kyc",
     url: "mobileNumber/otp_verification",
-    params: {
-      submittedOtp: "12XX",
-    },
+    params: { submittedOtp: "12XX" },
   },
   {
     key: "gst",
     name: "GST",
+    category: "kyc",
     url: "gst/Gstinverify",
-    params: {
-      gstinNumber: "22ABCDEXXXXXXXX",
-    },
+    params: { gstinNumber: "22ABCDEXXXXXXXX" },
   },
   {
     key: "faceMatch",
     name: "FACEMATCH",
+    category: "kyc",
     url: "face/facematch",
     params: {
       userImage: "BASE 64",
@@ -71,22 +266,21 @@ export const apiList = [
   {
     key: "ifsc",
     name: "IFSC",
+    category: "kyc",
     url: "bin/getBankDetails",
-    params: {
-      ifsc: "SBINXXXXXXX",
-    },
+    params: { ifsc: "SBINXXXXXXX" },
   },
   {
     key: "cin",
     name: "CIN",
+    category: "kyc",
     url: "business/CinNumberverify",
-    params: {
-      CIN: "U12345XYZ",
-    },
+    params: { CIN: "U12345XYZ" },
   },
   {
     key: "shop",
     name: "SHOP",
+    category: "kyc",
     url: "shop/shopest",
     params: {
       registrationNumber: "AB78XXXXXXX",
@@ -96,6 +290,7 @@ export const apiList = [
   {
     key: "bpl",
     name: "BPL",
+    category: "kyc",
     url: "accounts/verify/penny-less",
     params: {
       accountNumber: "123456789",
@@ -105,6 +300,7 @@ export const apiList = [
   {
     key: "bpd",
     name: "BPD",
+    category: "kyc",
     url: "accounts/verify/penny-drop",
     params: {
       accountNumber: "123456789",
@@ -114,57 +310,51 @@ export const apiList = [
   {
     key: "udyam",
     name: "UDYAM",
+    category: "kyc",
     url: "udyam/verify",
-    params: {
-      udyamNumber: "123456789",
-    },
+    params: { udyamNumber: "123456789" },
   },
   {
     key: "fullCreditCard",
     name: "FULLCREDITCARD",
+    category: "kyc",
     url: "card/cardVerify",
-    params: {
-      creditCardNumber: "45XXXXXXXXXXXX23",
-    },
+    params: { creditCardNumber: "45XXXXXXXXXXXX23" },
   },
   {
     key: "bin",
     name: "BIN",
+    category: "kyc",
     url: "bin/getCardDetails",
-    params: {
-      bin: "45XXXX",
-    },
+    params: { bin: "45XXXX" },
   },
   {
     key: "name",
     name: "NAME",
+    category: "kyc",
     url: "name/compareNames",
-    params: {
-      firstName: "RAXX",
-      secondName: "RAXX",
-    },
+    params: { firstName: "RAXX", secondName: "RAXX" },
   },
+
+  // 🔁 Recharge APIs
   {
     key: "plans",
     name: "PLANS",
+    category: "recharge",
     url: "Recharge/Plans",
-    params: {
-      operatorcode: "",
-      cricle: "",
-    },
+    params: { operatorcode: "", cricle: "" },
   },
   {
     key: "oldPlans",
     name: "OLDPLANS",
+    category: "recharge",
     url: "Recharge/Plans",
-    params: {
-      operatorcode: "",
-      cricle: "",
-    },
+    params: { operatorcode: "", cricle: "" },
   },
   {
     key: "recharge",
     name: "RECHARGE",
+    category: "recharge",
     url: "Recharge/RechargeURL",
     params: {
       mobileNumber: "",
@@ -177,6 +367,7 @@ export const apiList = [
   {
     key: "offers",
     name: "OFFERS",
+    category: "recharge",
     url: "Recharge/OffersPlans",
     params: {
       operator_code: "",
@@ -186,6 +377,7 @@ export const apiList = [
   {
     key: "operators",
     name: "OPERATORS",
+    category: "recharge",
     url: "Recharge/OffersPlans",
     params: {
       operator_code: "",
@@ -196,13 +388,16 @@ export const apiList = [
 
 const baseUrl = [
   apiList.reduce((acc, api) => {
+    const base = BASE_URL_BY_CATEGORY[api.category];
+
     acc[api.key] = [
       {
         serverTitle: "Test Environment",
         subTitle: "Your private sandbox environment",
-        link: `${HttpUrl}${api.url}`,
+        link: `${base}${api.url}`,
       },
     ];
+
     return acc;
   }, {}),
 ];
@@ -217,8 +412,29 @@ const languages = languagesSupported.map((lang) => {
     requestOptions: [],
   };
 
+  // apiList.forEach((api) => {
+  //   const codeObj = generateCode(api.url, api.params);
+
+  //   langObj.requestOptions.push({
+  //     requestType: { type: "Fetch request", shortType: "fetch" },
+  //     code: codeObj.fetch,
+  //     installPackage: "",
+  //     serviceName: api.name,
+  //   });
+
+  //   langObj.requestOptions.push({
+  //     requestType: { type: "axios request", shortType: "Axios" },
+  //     code: codeObj.axios,
+  //     installPackage: "npm install axios --save",
+  //     serviceName: api.name,
+  //   });
+  // });
+
   apiList.forEach((api) => {
-    const codeObj = generateCode(api.url, api.params);
+    const base = BASE_URL_BY_CATEGORY[api.category];
+    const fullUrl = `${base}${api.url}`;
+
+    const codeObj = generateCode(fullUrl, api.params);
 
     langObj.requestOptions.push({
       requestType: { type: "Fetch request", shortType: "fetch" },
@@ -448,11 +664,8 @@ const apiExamples = [
           success: true,
           message: "Valid",
           response: {
-            code: 200,
-            message: "Data Found Successfully.",
-            result: {
-              aadhaar: "53XXXXXXXX11",
-            },
+            message: `OTP sent to 91XXXXXX78`,
+            success: `Otp sent to Your Mobile Number 91XXXXXX78`,
           },
         },
       },
@@ -468,11 +681,7 @@ const apiExamples = [
           success: true,
           message: "Valid",
           response: {
-            code: 200,
-            message: "Data Found Successfully.",
-            result: {
-              aadhaar: "53XXXXXXXX11",
-            },
+            message: "Mobile Number 91XXXXXX78 is Verified with OTP 23XX",
           },
         },
       },

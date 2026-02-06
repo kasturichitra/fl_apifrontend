@@ -8,7 +8,7 @@ import { MOV } from "../utils/bodyParams";
 import Headers from "../components/Headers/Headers";
 import { api_Headers } from "../utils/Api_Headers";
 import { FetchApi } from "../utils/Custom_Api";
-import { DATA, MobileDynamic } from "../utils/apiSchema";
+import { DATA, MobileOtpValidateDynamic } from "../utils/apiSchema";
 import { GetAcc } from "../utils/Language";
 
 export default function MobileNumberOtpVerification() {
@@ -81,7 +81,7 @@ export default function MobileNumberOtpVerification() {
         </div>
 
         {/* REQ HISTORY TABLE */}
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
@@ -107,7 +107,7 @@ export default function MobileNumberOtpVerification() {
         {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={MobileDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={MobileOtpValidateDynamic} otherData={DATA} />
         </div>
       </div>
 

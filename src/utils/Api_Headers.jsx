@@ -3,7 +3,7 @@ export const api_Headers = [
     title: "client_id",
     type: "string",
     fieldName: "client_id",
-    subTitle: "Enter Your Client Id here",
+    subTitle: "send the Client_id that was created in Dashboard",
     inputTag: false,
     example: "",
     required: true,
@@ -11,19 +11,43 @@ export const api_Headers = [
   {
     title: "secret_key",
     type: "string",
-    subTitle: "Enter Your Secret Key here",
+    subTitle: "Send the Secret Key that was created in Dashboard",
     inputTag: false,
     fieldName: "secret_key",
+    example: "",
+    required: true,
+  },
+  {
+    title: "access_token",
+    type: "string",
+    subTitle: "Send the token that was created in api call that was provided",
+    inputTag: false,
+    fieldName: "access_token",
     example: "",
     required: true,
   },
 ];
 
 export const BbpsApi_Headers = [
-  { title: "accessCode", type: "string", fieldName: "accessCode", required: true },
+  {
+    title: "accessCode",
+    type: "string",
+    fieldName: "accessCode",
+    required: true,
+  },
   { title: "ver", type: "string", fieldName: "ver", required: true },
-  { title: "Institution ID", type: "string", fieldName: "timestamp", required: true },
-  { title: "requestId", type: "string", fieldName: "requestId", required: true },
+  {
+    title: "Institution ID",
+    type: "string",
+    fieldName: "timestamp",
+    required: true,
+  },
+  {
+    title: "requestId",
+    type: "string",
+    fieldName: "requestId",
+    required: true,
+  },
 ];
 
 export const InstantpayApi_Headers = [
@@ -32,28 +56,27 @@ export const InstantpayApi_Headers = [
     type: "string",
     fieldName: "X-Ipay-Auth-Code",
     required: true,
-    description: "Authentication code provided by Instantpay (fixed value: 1)"
+    description: "Authentication code provided by Instantpay (fixed value: 1)",
   },
   {
     title: "X_Ipay_Client_Id",
     type: "string",
     fieldName: "X-Ipay-Client-Id",
     required: true,
-    description: "Unique client ID provided by Instantpay"
+    description: "Unique client ID provided by Instantpay",
   },
   {
     title: "X_Ipay_Client_Secret",
     type: "string",
     fieldName: "X-Ipay-Client-Secret",
     required: true,
-    description: "Unique client secret key provided by Instantpay"
+    description: "Unique client secret key provided by Instantpay",
   },
   {
     title: "X_Ipay_Endpoint_Ip",
     type: "string",
     fieldName: "X-Ipay-Endpoint-Ip",
     required: true,
-    description: "End customer IP address"
-  }
+    description: "End customer IP address",
+  },
 ];
-

@@ -265,7 +265,33 @@ export const IfscDynamic = [
     },
   },
 ];
-export const MobileDynamic = [
+export const MobileOtpGenrateDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "access_token",
+          type: "string",
+          required: true,
+        },
+        {
+          title: "expires_in",
+          type: "integer",
+          required: true,
+        },
+        {
+          title: "token_type",
+          type: "string",
+          required: true,
+        },
+      ],
+    },
+  },
+];
+export const MobileOtpValidateDynamic = [
   {
     status: 200,
     summary: "Returns a paginated list of accounts",

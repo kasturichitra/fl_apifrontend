@@ -86,7 +86,7 @@ const BankAccountPennyDropVerification = () => {
         </div>
 
         {/* Request History Table */}
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
         <div className="py-6">

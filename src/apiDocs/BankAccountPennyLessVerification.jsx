@@ -11,6 +11,7 @@ import { api_Headers } from "../utils/Api_Headers";
 import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
 import { DATA, AccountDynamic } from "../utils/apiSchema";
+import AccessToken from "../components/AccessToken";
 
 const BankAccountPennyLessVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -87,6 +88,8 @@ const BankAccountPennyLessVerification = () => {
 
         {/* Request History Table */}
         <RequestHistoryTable TableClass="history_Table" />
+
+        <AccessToken/>
 
         {/* Headers */}
         <div className="py-6">

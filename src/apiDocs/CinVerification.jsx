@@ -82,7 +82,7 @@ export default function CinVerification() {
         </div>
 
         {/* REQUEST HISTORY TABLE */}
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* HEADERS SECTION */}
         <div className="py-6">

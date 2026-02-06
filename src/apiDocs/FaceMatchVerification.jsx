@@ -72,7 +72,7 @@ export default function FaceMatchVerification() {
         </div>
 
         {/* REQ History Table */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}
         <div className="py-6">

@@ -84,7 +84,7 @@ export default function AadhaarStatus() {
         </div>
 
         {/* Request History */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}
         <div className="py-6">

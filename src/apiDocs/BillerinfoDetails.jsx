@@ -84,7 +84,7 @@ const BillerinfoDetails = () => {
             billers are available and what details are needed to fetch or pay a bill.
           </p>
            </div>
-          <RequestHistoryTable TableClass="history_Table" />
+          {/* <RequestHistoryTable TableClass="history_Table" /> */}
           <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers

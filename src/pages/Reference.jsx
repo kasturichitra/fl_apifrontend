@@ -43,8 +43,11 @@ import Skelton from "../components/Skelton";
 import FetchingOldRechargePlans from "../apiDocs/FetchingOldRechargePlans";
 import Decryption from "../apiDocs/Decryption";
 import Encryption from "../apiDocs/Encryption";
+import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
 
 const apiComponentMap = {
+  //access token 
+  accessToken: AccessTokenGenration,
   // encryption and decryption
   encrypt: Encryption,
   decrypt: Decryption,

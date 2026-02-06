@@ -64,20 +64,30 @@ export const GuidesData = [
 
 export const ApiReferences = [
   {
-    section: "ENCRYPT AND DECRYPT",
+    section: "ACCESS TOKEN",
     items: [
       {
-        title: "Encryption",
-        link: "encrypt",
-        methods: [],
-      },
-      {
-        title: "Decryption",
-        link: "decrypt",
+        title: "Access Token Genration",
+        link: "accessToken",
         methods: [],
       },
     ],
   },
+  // {
+  //   section: "ENCRYPT AND DECRYPT",
+  //   items: [
+  //     {
+  //       title: "Encryption",
+  //       link: "encrypt",
+  //       methods: [],
+  //     },
+  //     {
+  //       title: "Decryption",
+  //       link: "decrypt",
+  //       methods: [],
+  //     },
+  //   ],
+  // },
   {
     section: "KYC",
     items: [
@@ -135,12 +145,7 @@ export const ApiReferences = [
         link: "face_match",
         methods: [],
       },
-    ],
-  },
-  {
-    section: `🏦 ACCOUNT`,
-    items: [
-      {
+        {
         title: "Bank Account Related Verification",
         link: "bank_acc_penny_drop_verfication",
         methods: [
@@ -162,12 +167,7 @@ export const ApiReferences = [
         link: "bank_details",
         methods: [],
       },
-    ],
-  },
-  {
-    section: "COMPANY",
-    items: [
-      {
+            {
         title: "Gst_In Verification",
         link: "gst_in_verify",
         type: "POST",
@@ -191,11 +191,6 @@ export const ApiReferences = [
         type: "POST",
         methods: [],
       },
-    ],
-  },
-  {
-    section: "CreditCard",
-    items: [
       {
         title: "Bin Verification",
         link: "bin_verification",
@@ -208,12 +203,7 @@ export const ApiReferences = [
         type: "POST",
         methods: [],
       },
-    ],
-  },
-  {
-    section: "Common",
-    items: [
-      {
+        {
         title: "Name Match Verification",
         link: "name_match_verification",
         type: "POST",

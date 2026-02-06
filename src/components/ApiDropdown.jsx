@@ -16,9 +16,9 @@ function ApiDropdown({
   return (
     <div className="w-full mt-4">
       {section && (
-        <h2 className="pb-4 pt-2 pl-2 text-xs font-semibold">
+        <h1 className="pb-4 pt-2 pl-2 font-bold">
           {section.toUpperCase()}
-        </h2>
+        </h1>
       )}
       <ul className="space-y-0.5">
         {items.map((item, i) => (
