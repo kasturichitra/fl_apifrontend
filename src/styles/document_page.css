@@ -24,6 +24,12 @@
   justify-content: space-between;
 }
 
+.docs_nav_btn:hover {
+  background-color: #fff;
+  border-radius: 4px;
+  color: #000;
+}
+
 .docs_nav_icon {
   width: 0.75rem;
   height: 0.75rem;
@@ -37,7 +43,6 @@
 
 .docs_nav_lst {
   padding-left: 1.25rem;
-  /*overflow: hidden; */
   height: 0;
   transition: all 300ms ease-in-out;
 }
@@ -51,22 +56,20 @@
   border-radius: 0.25rem;
 }
 
-/* Inactive state: hover only */
 .docs_nav_item:hover {
   background-color: #303b42;
 }
 
-/* Active state */
 .docs_nav_item.active {
   background-color: #303b42;
 }
 
 .document_asd_head {
   padding-bottom: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   padding-left: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 900;
 }
 
 .document_main {
@@ -123,7 +126,8 @@
 .toc_lst {
   font-size: 0.875rem;
 }
-.toc_lst > * + * {
+
+.toc_lst>*+* {
   margin-top: 0.5rem;
 }
 
@@ -167,4 +171,3 @@
     display: none;
   }
 }
-

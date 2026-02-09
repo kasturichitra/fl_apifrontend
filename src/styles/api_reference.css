@@ -28,19 +28,18 @@
   padding: 0.5rem;
 }
 
-
 .search-icon {
-  width: 0.875rem;   
-  height: 0.875rem; 
+  width: 0.875rem;
+  height: 0.875rem;
   filter: invert(100%);
 }
 
 .section-head {
-  padding-top: 0.5rem;   
+  padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  padding-left: 0.5rem;  
+  padding-left: 0.5rem;
   padding-right: 0.5rem;
-  margin-top: 0.25rem; 
+  margin-top: 0.25rem;
 }
 
 /* .ref_aside {
@@ -64,7 +63,6 @@
   overflow-y: auto;
   background: #111827;
 }
-
 
 .ref_aside > * + * {
   margin-top: 0.5rem;
@@ -127,11 +125,11 @@
 }
 
 .api_nav_item:hover {
-  background-color: #303b42;
+  background-color: #fff;
 }
 
 .api_nav_item.active {
-  background-color: #303b42;
+  background-color: #fff;
 }
 
 .api_nav_link_btn {
@@ -152,23 +150,22 @@
   margin-block: 4px;
 }
 
-
 .api_nav_item {
-  padding: 0.25rem 0.5rem;   
-  border-radius: 0.25rem;   
-  font-size: var(--font-medium);       
-  display: flex;             
-  justify-content: space-between; 
-  cursor: pointer;           
-  transition: background-color 0.2s ease; 
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: var(--font-medium);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .api_nav_item:hover {
-  background-color: #303B42; /* hover:bg-[#303B42] */
+  background-color: #303b42; /* hover:bg-[#303B42] */
 }
 
 .api_nav_item.active {
-  background-color: #303B42; /* bg-[#303B42] */
+  background-color: #303b42; /* bg-[#303B42] */
 }
 
 .rotating-loader {
@@ -190,7 +187,6 @@
   }
 }
 
-
 .api_post {
   max-width: 1152px;
   width: calc(100% - 288px);
@@ -207,7 +203,7 @@
 .first_child {
   width: calc(100% - 480px);
   padding: 31px;
-   overflow-y: auto;   /* scrolls */
+  overflow-y: auto; /* scrolls */
   height: 100vh;
   border-right: 1px solid var(--border-color);
 }
@@ -216,7 +212,7 @@
   min-width: 480px;
   max-width: 480px;
   padding: 1.25rem;
-    overflow-y: auto;  /* scrolls only inside */
+  overflow-y: auto; /* scrolls only inside */
   height: 100vh;
   position: sticky;
   top: 0;
@@ -249,8 +245,9 @@
 .link_class {
   font-size: var(--font-medium);
   color: rgb(168, 172, 177);
-  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-    Menlo, Consolas, monospace;
+  font-family:
+    "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono", Menlo,
+    Consolas, monospace;
 }
 
 .first_para {
@@ -357,16 +354,14 @@
   border: 1px solid rgba(229, 231, 235, 0.2);
 }
 
-.pop_filter_item_mthd_type{
-    font-size: 10px;
+.pop_filter_item_mthd_type {
+  font-size: 10px;
   min-width: 2.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 0.75rem;
   text-align: center;
 }
-
-
 
 .api_section:not(:first-child) {
   margin-top: 5px;

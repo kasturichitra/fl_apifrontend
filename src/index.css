@@ -188,7 +188,22 @@ blockquote > div {
 .link_style {
   color: rgb(69, 69, 252);
 }
+html::-webkit-scrollbar {
+  display: none;
+}
 
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: -moz-scrollbars-none; /* Older Firefox */
+}
+
+/* Ensure body can still scroll */
+body {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-right: 0 !important; /* Prevent layout shift */
+}
 @media (min-width: 768px) {
   .document_aside_menu {
     display: block;
