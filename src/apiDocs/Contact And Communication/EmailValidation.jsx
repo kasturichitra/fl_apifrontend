@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { UDYAM } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
 
-const UdyamVerification = () => {
+const EmailValidation = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const UdyamVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/udyam/verify",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const UdyamVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="udyam/verify"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The PAN Number to masked Aadhaar API allows developers to verify users’
+            PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const UdyamVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const UdyamVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,12 +127,13 @@ const UdyamVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"udyam"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default UdyamVerification;
+export default EmailValidation;
+

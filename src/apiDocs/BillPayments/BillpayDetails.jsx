@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams.jsx";
+import MethodLink from "../../components/MethodLink.jsx";
+import ResponseComponent from "../../components/Responses/ResponsesComponent.jsx";
+import Codes from "../../components/API Request/Codes.jsx";
+import Headers from "../../components/Headers/Headers.jsx";
+import { FetchApi } from "../../utils/Custom_Api.jsx";
+import { BilllerInfo, Billpay, PNV } from "../../utils/bodyParams.jsx";
+import { api_Headers } from "../../utils/Api_Headers.jsx";
+import { GetAcc } from "../../utils/Language.jsx";
+import "../../styles/api_reference.css";
+import { BbpsApi_Headers } from "../../utils/Api_Headers.jsx";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { UDYAM } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../utils/apiSchema";
-
-const UdyamVerification = () => {
+const BillpayDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
@@ -45,7 +44,7 @@ const UdyamVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/udyam/verify",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -70,54 +69,46 @@ const UdyamVerification = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">BillPay Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            LinkClass="link_class"
-            link="udyam/verify"
+            link="https://stgapi.billavenue.com/billpay/extBillPayCntrl/billPayRequest/xml"
           />
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The BillPay API allows you to make real-time payments to BBPS billers
+            using customer inputs, bill details, and the selected payment mode. Once
+            the payment request is submitted, BBPS processes the transaction and
+            returns the payment status, acknowledgement ID, and other confirmation
+            details. This API completes the final step of the bill payment workflow.
           </p>
+
         </div>
-
-        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
-
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
-            headersObj={api_Headers}
+            headersObj={BbpsApi_Headers}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
           />
         </div>
-
-        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={Billpay}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
-
-        {/* Response */}
-        <div className="py-6">
+        {/* <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
-        </div>
+          <ResponseComponent dynamic200={BillerInfo} otherData={DATA} />
+        </div> */}
       </div>
-
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
@@ -127,12 +118,12 @@ const UdyamVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"udyam"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          service={"BillPay"}
+          examples={GetAcc?.exampleCodes["BillPay"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default UdyamVerification;
+export default BillpayDetails;

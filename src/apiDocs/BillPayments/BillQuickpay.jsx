@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BilllerInfo, Billpay, PNV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { BbpsApi_Headers } from "../utils/Api_Headers.jsx";
+import BodyParams from "../../components/BodyParams/BodyParams.jsx";
+import MethodLink from "../../components/MethodLink.jsx";
+import ResponseComponent from "../../components/Responses/ResponsesComponent.jsx";
+import Codes from "../../components/API Request/Codes.jsx";
+import Headers from "../../components/Headers/Headers.jsx";
+import { FetchApi } from "../../utils/Custom_Api.jsx";
+import { BilllerInfo, Billpay, PNV, Quickpay } from "../../utils/bodyParams.jsx";
+import { api_Headers } from "../../utils/Api_Headers.jsx";
+import { GetAcc } from "../../utils/Language.jsx";
+import "../../styles/api_reference.css";
+// import { DATA, PanDynamic } from "../utils/apiSchema";
+import { BbpsApi_Headers } from "../../utils/Api_Headers.jsx";
 
-const BillpayDetails = () => {
+const QuickPayDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -71,7 +71,7 @@ const BillpayDetails = () => {
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
         <div className="api_hero">
-          <h1 className="api_heading">BillPay Details</h1>
+          <h1 className="api_heading">QuickPay Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -99,7 +99,7 @@ const BillpayDetails = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={Billpay}
+            bodyObj={Quickpay}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -119,12 +119,12 @@ const BillpayDetails = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"BillPay"}
-          examples={GetAcc?.exampleCodes["BillPay"] || []}
+          service={"QuickPay"}
+          examples={GetAcc?.exampleCodes["QuickPay"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BillpayDetails;
+export default QuickPayDetails;

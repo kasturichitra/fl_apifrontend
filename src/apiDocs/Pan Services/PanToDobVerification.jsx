@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, PanDynamic } from "../utils/apiSchema";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-const PanVerification = () => {
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
+
+const PanToDobVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const PanVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,24 +72,16 @@ const PanVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
-          </p>
-          <p className="first_para">PAN (Permanent Account Number)</p>
-          <p className="first_para">
-            PAN is a 10-character alphanumeric identifier issued by the Income
-            Tax Department of India.
-          </p>
-          <p className="first_para">
-            Used for tax-related identification for individuals and entities.{" "}
+            The PAN Number to masked Aadhaar API allows developers to verify users’
+            PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
         </div>
 
@@ -121,7 +113,7 @@ const PanVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -135,12 +127,13 @@ const PanVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default PanVerification;
+export default PanToDobVerification;
+

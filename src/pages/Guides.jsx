@@ -7,12 +7,14 @@ import ErrorCodesDoc from "../documents/ErrorCodesDoc";
 import ApiRateLimit from "../documents/ApiRateLimit";
 import Skelton from "../components/Skelton";
 import BodyParams from "../documents/BodyParams";
+import CategoryAndService from "../documents/CategoryAndService";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
   api_keys: ApiKeys,
   body_params: BodyParams,
   error_codes: ErrorCodesDoc,
+  category_and_service: CategoryAndService, 
   rate_limiting: ApiRateLimit
 };
 

@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { FP } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, RechargePlansDynamic } from "../utils/apiSchema";
+import BodyParams from "../../components/BodyParams/BodyParams.jsx";
+import MethodLink from "../../components/MethodLink.jsx";
+import ResponseComponent from "../../components/Responses/ResponsesComponent.jsx";
+import Codes from "../../components/API Request/Codes.jsx";
+import Headers from "../../components/Headers/Headers.jsx";
+import { FetchApi } from "../../utils/Custom_Api.jsx";
+import { BilllerInfo, Billpay, BillValidation, PNV } from "../../utils/bodyParams.jsx";
+import { GetAcc } from "../../utils/Language.jsx";
+import "../../styles/api_reference.css";
+// import { DATA, PanDynamic } from "../utils/apiSchema";
+import { BbpsApi_Headers } from "../../utils/Api_Headers.jsx";
 
-const FetchingPlans = () => {
+const BillValidationDetails = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["FP"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
@@ -45,7 +44,7 @@ const FetchingPlans = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "Recharge/Plans",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -70,54 +69,47 @@ const FetchingPlans = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Fetching Plans For Recharge</h1>
+          <h1 className="api_heading">BillValidation Details</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            LinkClass="link_class"
-            link="Recharge/Plans"
+            link="https://stgapi.billavenue.com/billpay/extBillValCntrl/billValidationRequest/xml"
           />
           <p className="first_para">
-            The FP Number Verification API allows developers to verify users’
-            FP numbers in real-time.
+            The BillValidation API allows you to verify the bill details for a BBPS biller
+            before initiating the payment. By providing customer inputs such as account number,
+            consumer number, or mobile number, the API fetches the biller-provided details
+            including bill amount, due date, and customer information. This ensures that
+            the payment is made against a valid bill and reduces errors in the bill payment workflow.
           </p>
+
+
         </div>
-
-        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
-
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
-            headersObj={api_Headers}
+            headersObj={BbpsApi_Headers}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
           />
         </div>
-
-        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={FP}
+            bodyObj={BillValidation}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
-
-        {/* Response */}
-        <div className="py-6">
+        {/* <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargePlansDynamic} otherData={DATA} />
-        </div>
+          <ResponseComponent dynamic200={BillerInfo} otherData={DATA} />
+        </div> */}
       </div>
-
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
@@ -127,12 +119,12 @@ const FetchingPlans = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"plans"}
-          examples={GetAcc?.exampleCodes["FP"] || []}
+          service={"BillValidation"}
+          examples={GetAcc?.exampleCodes["BillValidation"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default FetchingPlans;
+export default BillValidationDetails;

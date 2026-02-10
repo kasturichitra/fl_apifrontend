@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { FOP } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, RechargeOldPlansDynamic } from "../utils/apiSchema";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-const FetchingOldRechargePlans = () => {
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic } from "../../utils/apiSchema";
+
+const PanVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["FOP"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const FetchingOldRechargePlans = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/Recharge/OldPlans",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,24 @@ const FetchingOldRechargePlans = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Recharge Old Plans Fetching</h1>
+          <h1 className="api_heading">Pan Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="Recharge/OldPlans"
+            link="pan/panverifying"
           />
           <p className="first_para">
             The PAN Number Verification API allows developers to verify users’
             PAN numbers in real-time.
+          </p>
+          <p className="first_para">PAN (Permanent Account Number)</p>
+          <p className="first_para">
+            PAN is a 10-character alphanumeric identifier issued by the Income
+            Tax Department of India.
+          </p>
+          <p className="first_para">
+            Used for tax-related identification for individuals and entities.{" "}
           </p>
         </div>
 
@@ -103,7 +111,7 @@ const FetchingOldRechargePlans = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={FOP}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +121,7 @@ const FetchingOldRechargePlans = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargeOldPlansDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,12 +135,12 @@ const FetchingOldRechargePlans = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"oldPlans"}
-          examples={GetAcc?.exampleCodes["FOP"] || []}
+          service={"pan"}
+          examples={GetAcc?.exampleCodes["PAN"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default FetchingOldRechargePlans;
+export default PanVerification;

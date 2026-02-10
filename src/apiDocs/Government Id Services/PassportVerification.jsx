@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { RO } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, RechargeOffersDynamic } from "../utils/apiSchema";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-const RechargeOffers = () => {
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
+
+const PassportVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["RO"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const RechargeOffers = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "Recharge/OffersPlans",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const RechargeOffers = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Recharge Offers</h1>
+          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="Recharge/OffersPlans"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The Recharge Offers API allows developers to get offers
-            for the mobile numbers in real-time.
+            The PAN Number to masked Aadhaar API allows developers to verify users’
+            PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const RechargeOffers = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={RO}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const RechargeOffers = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargeOffersDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,13 +127,13 @@ const RechargeOffers = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"offers"}
-          examples={GetAcc?.exampleCodes["RO"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default RechargeOffers;
+export default PassportVerification;
 

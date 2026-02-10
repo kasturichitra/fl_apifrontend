@@ -2,103 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SideBarApi from "../components/SideBarApi";
 import "../styles/guides.css";
-
-// Import your existing documentation components
-import PanVerification from "../apiDocs/PanVerification";
-import PanToAadhaarVerification from "../apiDocs/PanToAadhaarVerification";
-import FaceMatchVerification from "../apiDocs/FaceMatchVerification";
-import MobileNumberOtpGenration from "../apiDocs/MobileNumberOtpGenration";
-import MobileNumberOtpVerification from "../apiDocs/MobileNumberOtpVerification";
-import AadhaarIntiation from "../apiDocs/AadhaarIntiation";
-import AadhaarStatus from "../apiDocs/AadhaarStatus";
-
-import BankAccountPennyDropVerification from "../apiDocs/BankAccountPennyDropVerification";
-import BankAccountPennyLessVerification from "../apiDocs/BankAccountPennyLessVerification";
-import IfscBankDetailsVerification from "../apiDocs/IfscBankDetailsVerification";
-
-import GSTINVerification from "../apiDocs/GstInVerification";
-import CinVerification from "../apiDocs/CinVerification";
-import ShopVerification from "../apiDocs/ShopEstablishmentVerification";
-import UdyamVerification from "../apiDocs/UdhyamVerification";
-
-import NameMatchVerification from "../apiDocs/NameMatchVerification";
-
-import BinVerification from "../apiDocs/BinVerification";
-import FullCreditCardVerification from "../apiDocs/FullCreditCardVerification";
-
-import BbpsTheory from "../apiDocs/BbpsTheory";
-import BillerinfoDetails from "../apiDocs/BillerinfoDetails";
-import BillFetchDetails from "../apiDocs/BillfetchDetails";
-import BillpayDetails from "../apiDocs/BillpayDetails";
-import BillValidationDetails from "../apiDocs/BillValidation";
-import QuickPayDetails from "../apiDocs/BillQuickpay";
-import InstantPayPayment from "../apiDocs/InstantPayPayment";
-import InstantpayTheory from "../apiDocs/InstantpayTheory"
-// Mobile Recharge
-import FetchingOperators from "../apiDocs/FetchingOperators";
-import FetchingPlans from "../apiDocs/FetchingPlans";
-import RechargePayment from "../apiDocs/RechargePayment";
-import RechargeOffers from "../apiDocs/RechargeOffers";
 import Skelton from "../components/Skelton";
-import FetchingOldRechargePlans from "../apiDocs/FetchingOldRechargePlans";
-import Decryption from "../apiDocs/Decryption";
-import Encryption from "../apiDocs/Encryption";
-import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
-
-const apiComponentMap = {
-  //access token 
-  accessToken: AccessTokenGenration,
-  // encryption and decryption
-  encrypt: Encryption,
-  decrypt: Decryption,
-  // ---------------- KYC ----------------
-  pan_num_verfication: PanVerification,
-  pan_num_to_aadhaar: PanToAadhaarVerification,
-
-  adhaar_otp_generation: AadhaarIntiation,
-  adhaar_otp_verification: AadhaarStatus,
-
-  mobile_otp_generation: MobileNumberOtpGenration,
-  mobile_otp_verification: MobileNumberOtpVerification,
-
-  face_match: FaceMatchVerification,
-
-  // ---------------- ACCOUNT ----------------
-  bank_acc_penny_drop_verfication: BankAccountPennyDropVerification,
-  bank_acc_penny_less_verfication: BankAccountPennyLessVerification,
-  bank_details: IfscBankDetailsVerification,
-
-  // ---------------- COMPANY ----------------
-  gst_in_verify: GSTINVerification,
-  Cin_number_verification: CinVerification,
-  shop_establishment_verification: ShopVerification,
-  udyam_verification: UdyamVerification,
-
-  // ---------------- CREDIT CARD ----------------
-  bin_verification: BinVerification,
-  credit_card_verfication: FullCreditCardVerification,
-
-  // ---------------- COMMON ----------------
-  name_match_verification: NameMatchVerification,
-
-  // ---------------- BBPS ----------------
-  bbps_Doc: BbpsTheory,
-  fetching_verification: BillerinfoDetails,
-  bill_fetch: BillFetchDetails,
-  bill_pay: BillpayDetails,
-  quick_pay: QuickPayDetails,
-  bill_validation: BillValidationDetails,
- //------------ instantpay----------
-   instantpay_Doc: InstantpayTheory,
-   instant_Pay: InstantPayPayment,
-
-  // ---------------- MOBILE RECHARGE ----------------
-  fetching_operators: FetchingOperators,
-  fetching_plans: FetchingPlans,
-  recharge_payment: RechargePayment,
-  recharge_payment_offers: RechargeOffers,
-  fetching_old_plans: FetchingOldRechargePlans
-};
+import { selectingActiveRefernce } from "../utils/selectingReference";
 
 const Reference = () => {
   const { slug } = useParams();
@@ -118,7 +23,7 @@ const Reference = () => {
   }, [slug]);
 
   // always get the component directly from selectedSlug
-  const ApiComponent = selectedSlug ? apiComponentMap[selectedSlug] : null;
+  const ApiComponent = selectedSlug ? selectingActiveRefernce(selectedSlug) : null;
 
   return (
     <div className="guides_main_s">

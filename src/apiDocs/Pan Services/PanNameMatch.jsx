@@ -1,32 +1,31 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BilllerInfo, Billpay, PNV, Quickpay } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-// import { DATA, PanDynamic } from "../utils/apiSchema";
-import { BbpsApi_Headers } from "../utils/Api_Headers.jsx";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-const QuickPayDetails = () => {
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
+
+const PanNameMatch = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-        ? examplesList[0].statusCode
-        : null;
+      ? examplesList[0].statusCode
+      : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
@@ -46,7 +45,7 @@ const QuickPayDetails = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,46 +70,54 @@ const QuickPayDetails = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
+        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">QuickPay Details</h1>
+          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            link="https://stgapi.billavenue.com/billpay/extBillPayCntrl/billPayRequest/xml"
+            LinkClass="link_class"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The BillPay API allows you to make real-time payments to BBPS billers
-            using customer inputs, bill details, and the selected payment mode. Once
-            the payment request is submitted, BBPS processes the transaction and
-            returns the payment status, acknowledgement ID, and other confirmation
-            details. This API completes the final step of the bill payment workflow.
+            The PAN Number to masked Aadhaar API allows developers to verify users’
+            PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
-
         </div>
+
+        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
+
+        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
-            headersObj={BbpsApi_Headers}
+            headersObj={api_Headers}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
           />
         </div>
+
+        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={Quickpay}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
-        {/* <div className="py-6">
+
+        {/* Response */}
+        <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BillerInfo} otherData={DATA} />
-        </div> */}
+          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
+        </div>
       </div>
+
+      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
@@ -120,12 +127,13 @@ const QuickPayDetails = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"QuickPay"}
-          examples={GetAcc?.exampleCodes["QuickPay"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default QuickPayDetails;
+export default PanNameMatch;
+

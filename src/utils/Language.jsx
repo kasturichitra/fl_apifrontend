@@ -9,199 +9,6 @@ const BASE_URL_BY_CATEGORY = {
   billPayments: BillPaymentsHttpUrl,
 };
 
-// export const apiList = [
-//   {
-//     key: "pan",
-//     name: "PAN",
-//     url: "pan/panverifying",
-//     params: {
-//       panNumber: "IROPXXXXXX",
-//     },
-//   },
-//   {
-//     key: "panToAadhaar",
-//     name: "PANTOAADHAAR",
-//     url: "pan/panToAadhaar",
-//     params: {
-//       panNumber: "IROPXXXXXX",
-//     },
-//   },
-//   {
-//     key: "aadhaarInitiate",
-//     name: "AADHAARINITIATE",
-//     url: "aadhaar/initiate",
-//     params: {
-//       redirect_url: "",
-//       callback_url: "",
-//     },
-//   },
-//   {
-//     key: "aadhaarStatus",
-//     name: "AADHAARSTATUS",
-//     url: "aadhaar/status",
-//     params: {
-//       tsTransId: "",
-//     },
-//   },
-//   {
-//     key: "mobileOtpGenration",
-//     name: "MOBILEOTPGENRATION",
-//     url: "mobileNumber/otp_generation",
-//     params: {
-//       mobileNumber: "7345XXXXXX",
-//     },
-//   },
-//   {
-//     key: "mobileOtpVerify",
-//     name: "MOBILEOTPVERIFY",
-//     url: "mobileNumber/otp_verification",
-//     params: {
-//       submittedOtp: "12XX",
-//     },
-//   },
-//   {
-//     key: "gst",
-//     name: "GST",
-//     url: "gst/Gstinverify",
-//     params: {
-//       gstinNumber: "22ABCDEXXXXXXXX",
-//     },
-//   },
-//   {
-//     key: "faceMatch",
-//     name: "FACEMATCH",
-//     url: "face/facematch",
-//     params: {
-//       userImage: "BASE 64",
-//       aadhaarImage: "BASE 64",
-//     },
-//   },
-//   {
-//     key: "ifsc",
-//     name: "IFSC",
-//     url: "bin/getBankDetails",
-//     params: {
-//       ifsc: "SBINXXXXXXX",
-//     },
-//   },
-//   {
-//     key: "cin",
-//     name: "CIN",
-//     url: "business/CinNumberverify",
-//     params: {
-//       CIN: "U12345XYZ",
-//     },
-//   },
-//   {
-//     key: "shop",
-//     name: "SHOP",
-//     url: "shop/shopest",
-//     params: {
-//       registrationNumber: "AB78XXXXXXX",
-//       state: "TELANXXXX",
-//     },
-//   },
-//   {
-//     key: "bpl",
-//     name: "BPL",
-//     url: "accounts/verify/penny-less",
-//     params: {
-//       accountNumber: "123456789",
-//       ifsc: "ICIC0001234",
-//     },
-//   },
-//   {
-//     key: "bpd",
-//     name: "BPD",
-//     url: "accounts/verify/penny-drop",
-//     params: {
-//       accountNumber: "123456789",
-//       ifsc: "ICIC0001234",
-//     },
-//   },
-//   {
-//     key: "udyam",
-//     name: "UDYAM",
-//     url: "udyam/verify",
-//     params: {
-//       udyamNumber: "123456789",
-//     },
-//   },
-//   {
-//     key: "fullCreditCard",
-//     name: "FULLCREDITCARD",
-//     url: "card/cardVerify",
-//     params: {
-//       creditCardNumber: "45XXXXXXXXXXXX23",
-//     },
-//   },
-//   {
-//     key: "bin",
-//     name: "BIN",
-//     url: "bin/getCardDetails",
-//     params: {
-//       bin: "45XXXX",
-//     },
-//   },
-//   {
-//     key: "name",
-//     name: "NAME",
-//     url: "name/compareNames",
-//     params: {
-//       firstName: "RAXX",
-//       secondName: "RAXX",
-//     },
-//   },
-//   {
-//     key: "plans",
-//     name: "PLANS",
-//     url: "Recharge/Plans",
-//     params: {
-//       operatorcode: "",
-//       cricle: "",
-//     },
-//   },
-//   {
-//     key: "oldPlans",
-//     name: "OLDPLANS",
-//     url: "Recharge/Plans",
-//     params: {
-//       operatorcode: "",
-//       cricle: "",
-//     },
-//   },
-//   {
-//     key: "recharge",
-//     name: "RECHARGE",
-//     url: "Recharge/RechargeURL",
-//     params: {
-//       mobileNumber: "",
-//       geoCode: "",
-//       actualAmount: "",
-//       spKey: "",
-//       Pincode: "",
-//     },
-//   },
-//   {
-//     key: "offers",
-//     name: "OFFERS",
-//     url: "Recharge/OffersPlans",
-//     params: {
-//       operator_code: "",
-//       mobile_no: "",
-//     },
-//   },
-//   {
-//     key: "operators",
-//     name: "OPERATORS",
-//     url: "Recharge/OffersPlans",
-//     params: {
-//       operator_code: "",
-//       mobile_no: "",
-//     },
-//   },
-// ];
-
 export const apiList = [
   // 🔐 KYC APIs
   {
@@ -249,6 +56,13 @@ export const apiList = [
   {
     key: "gst",
     name: "GST",
+    category: "kyc",
+    url: "gst/Gstinverify",
+    params: { gstinNumber: "22ABCDEXXXXXXXX" },
+  },
+  {
+    key: "gstToPan",
+    name: "GSTTOPAN",
     category: "kyc",
     url: "gst/Gstinverify",
     params: { gstinNumber: "22ABCDEXXXXXXXX" },
@@ -392,8 +206,6 @@ const baseUrl = [
 
     acc[api.key] = [
       {
-        serverTitle: "Test Environment",
-        subTitle: "Your private sandbox environment",
         link: `${base}${api.url}`,
       },
     ];
@@ -404,6 +216,11 @@ const baseUrl = [
 
 const languagesSupported = ["Node"];
 
+const supportedParams = {
+  categoryId: "",
+  serviceId: "",
+};
+
 const languages = languagesSupported.map((lang) => {
   const langObj = {
     imageUrl: `/images/${lang.toLowerCase()}.png`,
@@ -412,29 +229,16 @@ const languages = languagesSupported.map((lang) => {
     requestOptions: [],
   };
 
-  // apiList.forEach((api) => {
-  //   const codeObj = generateCode(api.url, api.params);
-
-  //   langObj.requestOptions.push({
-  //     requestType: { type: "Fetch request", shortType: "fetch" },
-  //     code: codeObj.fetch,
-  //     installPackage: "",
-  //     serviceName: api.name,
-  //   });
-
-  //   langObj.requestOptions.push({
-  //     requestType: { type: "axios request", shortType: "Axios" },
-  //     code: codeObj.axios,
-  //     installPackage: "npm install axios --save",
-  //     serviceName: api.name,
-  //   });
-  // });
-
   apiList.forEach((api) => {
     const base = BASE_URL_BY_CATEGORY[api.category];
     const fullUrl = `${base}${api.url}`;
 
-    const codeObj = generateCode(fullUrl, api.params);
+    const mixedParams = {
+      ...api.params,
+      ...supportedParams,
+    }
+
+    const codeObj = generateCode(fullUrl, mixedParams);
 
     langObj.requestOptions.push({
       requestType: { type: "Fetch request", shortType: "fetch" },

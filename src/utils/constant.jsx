@@ -36,7 +36,10 @@ export const GuidesData = [
   },
   {
     title: "Params",
-    pages: [{ title: "Body Params", slug: "body_params" }],
+    pages: [
+      { title: "Body Params", slug: "body_params" },
+      { title: "Category And Service", slug: "category_and_service" },
+    ],
   },
   {
     title: "Error Handling",
@@ -89,113 +92,642 @@ export const ApiReferences = [
   //   ],
   // },
   {
-    section: "KYC",
+    section: "API",
     items: [
       {
-        title: "Pan",
-        link: "pan_num_verfication",
+        title: "Pan Services",
+        link: "pan_basic_verification",
         methods: [
           {
-            title: "Pan Number Verification",
+            title: "PAN Basic Verification",
             type: "POST",
-            link: "pan_num_verfication",
+            link: "pan_basic_verification",
           },
           {
-            title: "Pan Number To Masked Aadhaar",
+            title: "PAN Name Match",
             type: "POST",
-            link: "pan_num_to_aadhaar",
+            link: "pan_name_match",
+          },
+          {
+            title: "PAN DOB Validation",
+            type: "POST",
+            link: "pan_dob_validation",
+          },
+          {
+            title: "PAN Detailed Profile",
+            type: "POST",
+            link: "pan_detailed_profile",
+          },
+          {
+            title: "PAN Address Fetch",
+            type: "POST",
+            link: "pan_address_fetch",
+          },
+          {
+            title: "PAN Linked Mobile",
+            type: "POST",
+            link: "pan_linked_mobile",
+          },
+          {
+            title: "PAN–Aadhaar Link Status",
+            type: "POST",
+            link: "pan_aadhaar_link_status",
+          },
+          {
+            title: "PAN Aadhaar Seeding",
+            type: "POST",
+            link: "pan_aadhaar_seeding",
+          },
+          {
+            title: "PAN Active / Inactive Status",
+            type: "POST",
+            link: "pan_active_inactive_status",
+          },
+          {
+            title: "PAN Correction Status",
+            type: "POST",
+            link: "pan_correction_status",
+          },
+          {
+            title: "PAN Reprint Tracking",
+            type: "POST",
+            link: "pan_reprint_tracking",
           },
         ],
       },
       {
-        title: "Aadhaar Verification",
-        link: "adhaar_otp_generation",
+        title: "Aadhaar & DigiLocker",
+        link: "aadhaar_xml_verification",
         methods: [
           {
-            title: "STEP: 1 Adhaar Intiate",
+            title: "Aadhaar XML Verification",
             type: "POST",
+            link: "aadhaar_xml_verification",
+          },
+          {
+            title: "Aadhaar QR Validation",
+            type: "POST",
+            link: "aadhaar_qr_validation",
+          },
+          {
+            title: "Aadhaar Name Fetch",
+            type: "POST",
+            link: "aadhaar_name_fetch",
+          },
+          {
+            title: "Aadhaar DOB Fetch",
+            type: "POST",
+            link: "aadhaar_dob_fetch",
+          },
+          {
+            title: "DigiLocker Document List",
+            type: "POST",
+            link: "digilocker_document_list",
+          },
+          {
+            title: "DigiLocker Document Download",
+            type: "POST",
+            link: "digilocker_document_download",
+          },
+          {
+            title: "Aadhaar Number Verification",
             link: "adhaar_otp_generation",
-          },
-          {
-            title: "STEP: 2 Adhaar Status",
-            type: "POST",
-            link: "adhaar_otp_verification",
+            methods: [
+              {
+                title: "Aadhaar OTP Send",
+                type: "POST",
+                link: "aadhaar_otp_send",
+              },
+              {
+                title: "Aadhaar OTP Verify",
+                type: "POST",
+                link: "aadhaar_otp_verify",
+              },
+            ],
           },
         ],
       },
       {
-        title: "Mobile Number Verification",
+        title: "Banking & Financial",
+        link: "banking_and_financial",
+        methods: [
+          {
+            title: "Bank Account Verification",
+            type: "POST",
+            link: "bank_account_verification",
+          },
+          {
+            title: "Account Holder Name Match",
+            type: "POST",
+            link: "account_holder_name_match",
+          },
+          {
+            title: "Penny Drop Credit",
+            type: "POST",
+            link: "penny_drop_credit",
+          },
+          {
+            title: "Penny Drop Status",
+            type: "POST",
+            link: "penny_drop_status",
+          },
+          {
+            title: "IFSC Lookup",
+            type: "POST",
+            link: "ifsc_lookup",
+          },
+          {
+            title: "Bank Branch Lookup",
+            type: "POST",
+            link: "bank_branch_lookup",
+          },
+          {
+            title: "UPI / VPA Verification",
+            type: "POST",
+            link: "upi_vpa_verification",
+          },
+          {
+            title: "Cheque OCR",
+            type: "POST",
+            link: "cheque_ocr",
+          },
+          {
+            title: "Bank Statement Analysis",
+            type: "POST",
+            link: "bank_statement_analysis",
+          },
+        ],
+      },
+      {
+        title: "GST Services",
+        link: "gst_services",
+        methods: [
+          {
+            title: "GSTIN Verification",
+            type: "POST",
+            link: "gstin_verification",
+          },
+          {
+            title: "GSTIN Name Match",
+            type: "POST",
+            link: "gstin_name_match",
+          },
+          {
+            title: "GST Business Profile",
+            type: "POST",
+            link: "gst_business_profile",
+          },
+          {
+            title: "Principal Place of Business",
+            type: "POST",
+            link: "principal_place_of_business",
+          },
+          {
+            title: "GST Filing Status",
+            type: "POST",
+            link: "gst_filing_status",
+          },
+          {
+            title: "GST Return History",
+            type: "POST",
+            link: "gst_return_history",
+          },
+          {
+            title: "GST Compliance Score",
+            type: "POST",
+            link: "gst_compliance_score",
+          },
+          {
+            title: "GST Registration Date",
+            type: "POST",
+            link: "gst_registration_date",
+          },
+          {
+            title: "GST Amendment History",
+            type: "POST",
+            link: "gst_amendment_history",
+          },
+        ],
+      },
+      {
+        title: "Business & Company",
+        link: "business_and_company",
+        methods: [
+          {
+            title: "CIN Verification",
+            type: "POST",
+            link: "cin_verification",
+          },
+          {
+            title: "Full card Verification",
+            link: "full_card_verification",
+            type: "POST",
+          },
+          {
+            title: "Bin Verification",
+            link: "bin_verification",
+            type: "POST",
+          },
+          {
+            title: "DIN Verification",
+            type: "POST",
+            link: "din_verification",
+          },
+          {
+            title: "UDYAM Verification",
+            type: "POST",
+            link: "udyam_verification",
+          },
+          {
+            title: "MSME Certificate Fetch",
+            type: "POST",
+            link: "msme_certificate_fetch",
+          },
+          {
+            title: "Shop Act Verification",
+            type: "POST",
+            link: "shop_act_verification",
+          },
+          {
+            title: "Trade License Lookup",
+            type: "POST",
+            link: "trade_license_lookup",
+          },
+          {
+            title: "Director Details",
+            type: "POST",
+            link: "director_details",
+          },
+          {
+            title: "Shareholding Pattern",
+            type: "POST",
+            link: "shareholding_pattern",
+          },
+        ],
+      },
+      {
+        title: "Employment & Income",
+        link: "employment_and_income",
+        methods: [
+          {
+            title: "Employment History",
+            type: "POST",
+            link: "employment_history",
+          },
+          {
+            title: "Employer Verification",
+            type: "POST",
+            link: "employer_verification",
+          },
+          {
+            title: "UAN Verification",
+            type: "POST",
+            link: "uan_verification",
+          },
+          {
+            title: "EPFO Employment Records",
+            type: "POST",
+            link: "epfo_employment_records",
+          },
+          {
+            title: "Salary Credit Verification",
+            type: "POST",
+            link: "salary_credit_verification",
+          },
+          {
+            title: "Income Range Estimation",
+            type: "POST",
+            link: "income_range_estimation",
+          },
+          {
+            title: "Form-16 Verification",
+            type: "POST",
+            link: "form_16_verification",
+          },
+          {
+            title: "26AS Tax Summary",
+            type: "POST",
+            link: "26as_tax_summary",
+          },
+        ],
+      },
+      {
+        title: "Vehicle & Transport",
+        link: "vehicle_and_transport",
+        methods: [
+          {
+            title: "Vehicle RC Verification",
+            type: "POST",
+            link: "vehicle_rc_verification",
+          },
+          {
+            title: "Vehicle Owner Name",
+            type: "POST",
+            link: "vehicle_owner_name",
+          },
+          {
+            title: "Driving License Verification",
+            type: "POST",
+            link: "driving_license_verification",
+          },
+          {
+            title: "Driving License Status",
+            type: "POST",
+            link: "driving_license_status",
+          },
+          {
+            title: "Ownership Transfer History",
+            type: "POST",
+            link: "ownership_transfer_history",
+          },
+          {
+            title: "Hypothecation Status",
+            type: "POST",
+            link: "hypothecation_status",
+          },
+          {
+            title: "RTO Details",
+            type: "POST",
+            link: "rto_details",
+          },
+          {
+            title: "Vehicle Registration Zone",
+            type: "POST",
+            link: "vehicle_registration_zone",
+          },
+        ],
+      },
+      {
+        title: "Face & AI Verification",
+        link: "face_and_ai_verification",
+        methods: [
+          {
+            title: "Face Match Score",
+            type: "POST",
+            link: "face_match_score",
+          },
+          {
+            title: "Face Similarity",
+            type: "POST",
+            link: "face_similarity",
+          },
+          {
+            title: "Passive Liveness",
+            type: "POST",
+            link: "passive_liveness",
+          },
+          {
+            title: "Active Liveness",
+            type: "POST",
+            link: "active_liveness",
+          },
+          {
+            title: "Image Deepfake Detection",
+            type: "POST",
+            link: "image_deepfake_detection",
+          },
+          {
+            title: "Video Deepfake Detection",
+            type: "POST",
+            link: "video_deepfake_detection",
+          },
+          {
+            title: "AI Fraud Score",
+            type: "POST",
+            link: "ai_fraud_score",
+          },
+          {
+            title: "Identity Risk Score",
+            type: "POST",
+            link: "identity_risk_score",
+          },
+        ],
+      },
+      {
+        title: "OCR & Document AI",
+        link: "ocr_and_document_ai",
+        methods: [
+          {
+            title: "PAN OCR",
+            type: "POST",
+            link: "pan_ocr",
+          },
+          {
+            title: "Aadhaar OCR",
+            type: "POST",
+            link: "aadhaar_ocr",
+          },
+          {
+            title: "Bank Statement OCR",
+            type: "POST",
+            link: "bank_statement_ocr",
+          },
+          {
+            title: "Salary Slip OCR",
+            type: "POST",
+            link: "salary_slip_ocr",
+          },
+          {
+            title: "Utility Bill OCR",
+            type: "POST",
+            link: "utility_bill_ocr",
+          },
+          {
+            title: "Rental Agreement OCR",
+            type: "POST",
+            link: "rental_agreement_ocr",
+          },
+          {
+            title: "Structured Data Extraction",
+            type: "POST",
+            link: "structured_data_extraction",
+          },
+          {
+            title: "Table Extraction",
+            type: "POST",
+            link: "table_extraction",
+          },
+        ],
+      },
+      {
+        title: "Government ID Services",
+        link: "government_id_services",
+        methods: [
+          {
+            title: "Passport Verification",
+            type: "POST",
+            link: "passport_verification",
+          },
+          {
+            title: "Passport Status",
+            type: "POST",
+            link: "passport_status",
+          },
+          {
+            title: "Voter ID Verification",
+            type: "POST",
+            link: "voter_id_verification",
+          },
+          {
+            title: "Electoral Roll Lookup",
+            type: "POST",
+            link: "electoral_roll_lookup",
+          },
+          {
+            title: "Multi-ID Search",
+            type: "POST",
+            link: "multi_id_search",
+          },
+          {
+            title: "ID Cross-Match",
+            type: "POST",
+            link: "id_cross_match",
+          },
+        ],
+      },
+      {
+        title: "Contact & Communication",
+        link: "contact_and_communication",
+        methods: [
+          {
+            title: "Mobile Number Validation",
+            type: "POST",
+            link: "mobile_number_validation",
+          },
+          {
+            title: "Mobile Line Type",
+            type: "POST",
+            link: "mobile_line_type",
+          },
+          {
+            title: "Email Validation",
+            type: "POST",
+            link: "email_validation",
+          },
+          {
+            title: "Email Domain Risk",
+            type: "POST",
+            link: "email_domain_risk",
+          },
+          {
+            title: "OTP Send",
+            type: "POST",
+            link: "otp_send",
+          },
+          {
+            title: "OTP Verify",
+            type: "POST",
+            link: "otp_verify",
+          },
+          {
+            title: "Domain Age Check",
+            type: "POST",
+            link: "domain_age_check",
+          },
+          {
+            title: "Website Risk Score",
+            type: "POST",
+            link: "website_risk_score",
+          },
+        ],
+      },
+      {
+        title: "Geo & Location",
+        link: "geo_and_location",
+        methods: [
+          {
+            title: "Pincode Details",
+            type: "POST",
+            link: "pincode_details",
+          },
+          {
+            title: "Post Office Lookup",
+            type: "POST",
+            link: "post_office_lookup",
+          },
+          {
+            title: "DigiPIN Decode",
+            type: "POST",
+            link: "digipin_decode",
+          },
+          {
+            title: "Geo Address Resolution",
+            type: "POST",
+            link: "geo_address_resolution",
+          },
+          {
+            title: "Latitude-Longitude Validation",
+            type: "POST",
+            link: "latitude_longitude_validation",
+          },
+          {
+            title: "Coordinate Accuracy",
+            type: "POST",
+            link: "coordinate_accuracy",
+          },
+        ],
+      },
+      {
+        title: "Risk & Due Diligence",
+        link: "risk_and_due_diligence",
+        methods: [
+          {
+            title: "Court Case Search",
+            type: "POST",
+            link: "court_case_search",
+          },
+          {
+            title: "Litigation History",
+            type: "POST",
+            link: "litigation_history",
+          },
+          {
+            title: "Document Forgery Detection",
+            type: "POST",
+            link: "document_forgery_detection",
+          },
+          {
+            title: "Image Tampering Detection",
+            type: "POST",
+            link: "image_tampering_detection",
+          },
+          {
+            title: "Global Watchlist Screening",
+            type: "POST",
+            link: "global_watchlist_screening",
+          },
+          {
+            title: "Negative News Scan",
+            type: "POST",
+            link: "negative_news_scan",
+          },
+          {
+            title: "Risk Profile Score",
+            type: "POST",
+            link: "risk_profile_score",
+          },
+        ],
+      },
+      {
+        title: "Other Services",
         link: "mobile_otp_generation",
         methods: [
           {
-            title: "STEP: 1 Mobile Otp Generation",
+            title: "Professional License Verification",
             type: "POST",
-            link: "mobile_otp_generation",
+            link: "professional_license_verification",
           },
           {
-            title: "STEP: 2 Mobile Otp Verification",
+            title: "Custom Verification",
             type: "POST",
-            link: "mobile_otp_verification",
+            link: "custom_verification",
+          },
+          {
+            title: "Miscellaneous Utility",
+            type: "POST",
+            link: "miscellaneous_utility",
           },
         ],
-      },
-      {
-        title: "Face Match Verification",
-        type: "POST",
-        link: "face_match",
-        methods: [],
-      },
-        {
-        title: "Bank Account Related Verification",
-        link: "bank_acc_penny_drop_verfication",
-        methods: [
-          {
-            title: "Bank Account Verification(Penny Drop)",
-            type: "POST",
-            link: "bank_acc_penny_drop_verfication",
-          },
-          {
-            title: "Bank Account Verification(Penny Less)",
-            type: "POST",
-            link: "bank_acc_penny_less_verfication",
-          },
-        ],
-      },
-      {
-        title: "Bank Details with Ifsc",
-        type: "POST",
-        link: "bank_details",
-        methods: [],
-      },
-            {
-        title: "Gst_In Verification",
-        link: "gst_in_verify",
-        type: "POST",
-        methods: [],
-      },
-      {
-        title: "Cin Number Verfication",
-        link: "Cin_number_verification",
-        type: "POST",
-        methods: [],
-      },
-      {
-        title: "Shop Establishment",
-        link: "shop_establishment_verification",
-        type: "POST",
-        methods: [],
-      },
-      {
-        title: "Udyam Verification",
-        link: "udyam_verification",
-        type: "POST",
-        methods: [],
-      },
-      {
-        title: "Bin Verification",
-        link: "bin_verification",
-        type: "POST",
-        methods: [],
       },
       {
         title: "Credit Card Verification",
@@ -203,7 +735,7 @@ export const ApiReferences = [
         type: "POST",
         methods: [],
       },
-        {
+      {
         title: "Name Match Verification",
         link: "name_match_verification",
         type: "POST",
@@ -217,7 +749,6 @@ export const ApiReferences = [
       {
         title: "BBps Info",
         link: "bbps_Doc",
-        type: "POST",
         methods: [
           {
             title: "BillerInfo Details",
@@ -303,7 +834,6 @@ export const ApiReferences = [
       {
         title: "Instant Pay",
         link: "instantpay_Doc",
-        type: "POST",
         methods: [
           {
             title: "InstantBill Pay",
@@ -325,7 +855,7 @@ export const ApiReferences = [
       },
       {
         title: "Recharge Plans",
-        link: "fetching_operators",
+        link: "fetching_plans",
         type: "POST",
         methods: [
           {

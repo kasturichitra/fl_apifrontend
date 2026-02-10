@@ -1,25 +1,162 @@
-// pan // panToAadhaar
-export const PNV = [
+export const MASTER_FIELDS = [
   {
-    title: "PanCard Number",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "user pancard number to be verified",
-    inputTag: false,
-    example: "AXER07FRGV",
-    required: true,
-  },
-  {
-    title: "mobile Number",
+    key: "mobileNumber",
+    title: "Mobile Number",
     type: "string",
     fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
+    subTitle: "Enter Your Mobile Number",
     inputTag: false,
     example: "98XXXXXX54",
     required: false,
     optional: true,
   },
+  {
+    key: "panNumber",
+    title: "PanCard Number",
+    type: "string",
+    fieldName: "panNumber",
+    subTitle: "User PAN card number to be verified",
+    inputTag: false,
+    example: "AXER07FRGV",
+    required: true,
+  },
+  {
+    key: "ifsc",
+    title: "IFSC",
+    type: "string",
+    fieldName: "ifsc",
+    subTitle: "IFSC code to be verified",
+    inputTag: false,
+    example: "SBINXXXXXXX",
+    required: true,
+  },
+  {
+    key: "accountNumber",
+    title: "Account Number",
+    type: "string",
+    fieldName: "accountNumber",
+    subTitle: "accountNumber of the bank account that need to be verify",
+    inputTag: false,
+    example: "3864XXXXXXX",
+    required: true,
+  },
+  {
+    key: "billerId",
+    title: "Biller ID",
+    type: "string",
+    fieldName: "billerId",
+    subTitle: "Unique biller code provided by BBPS",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    readOnly: true,
+    required: true,
+  },
+  {
+    key: "amount",
+    title: "Amount",
+    type: "number",
+    fieldName: "amount",
+    subTitle: "Amount to be paid",
+    inputTag: false,
+    example: 100,
+    readOnly: true,
+    required: true,
+  },
+  {
+    key: "categoryId",
+    title: "categoryId",
+    type: "string",
+    fieldName: "categoryId",
+    subTitle: "Category ",
+    inputTag: false,
+    example: 100,
+    required: true,
+    readOnly: false,
+  },
+  {
+    key: "serviceId",
+    title: "serviceId",
+    type: "string",
+    fieldName: "serviceId",
+    subTitle: "Service that you are integrating",
+    inputTag: false,
+    example: 100,
+    readOnly: false,
+    required: true,
+  },
 ];
+
+/* =========================================================
+   COMMON FIELD KEYS (not full objects)
+   ========================================================= */
+
+export const COMMON_FIELD_KEYS = ["categoryId", "serviceId"];
+
+/* =========================================================
+   SCHEMA BUILDER
+   ========================================================= */
+
+export const buildSchema = (schemaKeys = []) => {
+  const usedKeys = new Set();
+
+  // merge common + specific fields
+  const mergedKeys = [
+    ...COMMON_FIELD_KEYS.map((key) => ({ key })),
+    ...schemaKeys,
+  ];
+
+  return mergedKeys.reduce((schema, config) => {
+    const { key, overrides = {} } = config;
+
+    // avoid duplicates
+    if (usedKeys.has(key)) return schema;
+    usedKeys.add(key);
+
+    const field = MASTER_FIELDS.find((f) => f.key === key);
+
+    if (!field) {
+      throw new Error(`Schema field with key "${key}" not found`);
+    }
+
+    schema.push({
+      ...field,
+      ...overrides,
+    });
+
+    return schema;
+  }, []);
+};
+
+/* =========================================================
+   SCHEMAS
+   ========================================================= */
+
+// panToAadhaar
+export const PNV = buildSchema([
+  { key: "panNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
+// export const PNV = [
+//   {
+//     title: "PanCard Number",
+//     type: "string",
+//     fieldName: "panNumber",
+//     subTitle: "user pancard number to be verified",
+//     inputTag: false,
+//     example: "AXER07FRGV",
+//     required: true,
+//   },
+//   {
+//     title: "mobile Number",
+//     type: "string",
+//     fieldName: "mobileNumber",
+//     subTitle: "mobile number of the given pan",
+//     inputTag: false,
+//     example: "98XXXXXX54",
+//     required: false,
+//     optional: true,
+//   },
+// ];
 
 // aadhaar
 
@@ -108,37 +245,44 @@ export const FM = [
 ];
 
 // bank account verification
-export const BAV = [
+// export const BAV = [
+//   {
+//     title: "Account Number",
+//     type: "string",
+//     fieldName: "name",
+//     subTitle: "Account Number to be verified",
+//     inputTag: false,
+//     example: "987456XXXXX",
+//     required: true,
+//   },
+//   ,
+//   {
+//     title: "Ifsc",
+//     type: "string",
+//     fieldName: "ifsc",
+//     subTitle: "Ifsc to be verified",
+//     inputTag: false,
+//     example: "SBINXXXXXXX",
+//     required: true,
+//   },
+//   {
+//     title: "mobile Number",
+//     type: "string",
+//     fieldName: "mobileNumber",
+//     subTitle: "mobile number of the given pan",
+//     inputTag: false,
+//     example: "98XXXXXX54",
+//     required: false,
+//     optional: true,
+//   },
+// ];
+export const BAV = buildSchema([
   {
-    title: "Account Number",
-    type: "string",
-    fieldName: "name",
-    subTitle: "Account Number to be verified",
-    inputTag: false,
-    example: "987456XXXXX",
-    required: true,
+    key: "accountNumber",
   },
-  ,
-  {
-    title: "Ifsc",
-    type: "string",
-    fieldName: "panNumber",
-    subTitle: "Ifsc to be verified",
-    inputTag: false,
-    example: "SBINXXXXXXX",
-    required: true,
-  },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
-];
+  { key: "ifsc" },
+  { key: "mobileNumber" }, // optional
+]);
 
 // bank with ifsc
 export const BWI = [
