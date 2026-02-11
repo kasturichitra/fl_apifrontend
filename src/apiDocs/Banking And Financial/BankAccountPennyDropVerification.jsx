@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { NM } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, NameDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BAV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, AccountDynamic } from "../../utils/apiSchema";
 
-const NameMatchVerification = () => {
+const BankAccountPennyDropVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["NM"] || [];
+  const examplesList = GetAcc?.exampleCodes["BPD"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const NameMatchVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "name/compareNames",
+        path: "accounts/verify/penny-drop",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const NameMatchVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Name Match Verification</h1>
+          <h1 className="api_heading">Bank Account Verification (Penny Drop)</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link= "name/compareNames"
+            link="accounts/verify/penny-drop"
           />
           <p className="first_para">
-            The Name Match Verification API allows developers to verify users’
-            Names in real-time.
+            The Bank Account Verification API allows developers to verify users’
+            Bank Account numbers in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const NameMatchVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={NM}
+            bodyObj={BAV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const NameMatchVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={NameDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,12 +127,13 @@ const NameMatchVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"name"}
-          examples={GetAcc?.exampleCodes["NM"] || []}
+          service={"bpd"}
+          examples={GetAcc?.exampleCodes["BPD"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default NameMatchVerification;
+export default BankAccountPennyDropVerification;
+

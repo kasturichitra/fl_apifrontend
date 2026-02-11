@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BWI } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, IfscDynamic, PanDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BAV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, AccountDynamic } from "../../utils/apiSchema";
+import AccessToken from "../../components/AccessToken";
 
-const IfscBankDetailsVerification = () => {
+const BankAccountPennyLessVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
+  const examplesList = GetAcc?.exampleCodes["BPL"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +46,7 @@ const IfscBankDetailsVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "bin/getBankDetails",
+        path: "account/pl/verifyBankAccount",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,21 +73,23 @@ const IfscBankDetailsVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Details With Ifsc</h1>
+          <h1 className="api_heading">Bank Account Verification (Penny Less)</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getBankDetails"
+            link="account/pl/verifyBankAccount"
           />
           <p className="first_para">
-            The Ifsc Verification API allows developers to verify users’
-            Ifsc in real-time to know about user bank.
+            The Bank Account Verification API allows developers to verify users’
+            Account numbers and Ifsc in real-time.
           </p>
         </div>
 
         {/* Request History Table */}
         <RequestHistoryTable TableClass="history_Table" />
+
+        <AccessToken/>
 
         {/* Headers */}
         <div className="py-6">
@@ -103,7 +106,7 @@ const IfscBankDetailsVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BWI}
+            bodyObj={BAV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +116,7 @@ const IfscBankDetailsVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,12 +130,12 @@ const IfscBankDetailsVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"ifsc"}
-          examples={GetAcc?.exampleCodes["IFSC"] || []}
+          service={"bpl"}
+          examples={GetAcc?.exampleCodes["BPL"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default IfscBankDetailsVerification;
+export default BankAccountPennyLessVerification;

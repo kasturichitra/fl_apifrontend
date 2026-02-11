@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { PNV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, FullCardDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { NM } from "../../utils/Custom_Api";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, NameDynamic } from "../../utils/apiSchema";
 
-const FullCreditCardVerification = () => {
+const NameMatchVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["FCV"] || [];
+  const examplesList = GetAcc?.exampleCodes["NM"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const FullCreditCardVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "card/cardVerify",
+        path: "name/compareNames",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const FullCreditCardVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Credit Card Number Verification</h1>
+          <h1 className="api_heading">Name Match Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="card/cardVerify"
+            link= "name/compareNames"
           />
           <p className="first_para">
-            The FCV Number Verification API allows developers to verify users’
-            FCV numbers in real-time.
+            The Name Match Verification API allows developers to verify users’
+            Names in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const FullCreditCardVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={NM}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const FullCreditCardVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={FullCardDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={NameDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,12 +127,12 @@ const FullCreditCardVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"fullCreditCard"}
-          examples={GetAcc?.exampleCodes["FCV"] || []}
+          service={"name"}
+          examples={GetAcc?.exampleCodes["NM"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default FullCreditCardVerification;
+export default NameMatchVerification;

@@ -1,49 +1,51 @@
 import React, { useState } from "react";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BWI } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
 
-import { AS } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { AadhaarStatusDynamic, DATA } from "../utils/apiSchema";
-import { GetAcc } from "../utils/Language";
-
-export default function AadhaarStatus() {
+const IfscBankDetailsVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-     const examplesList = GetAcc?.exampleCodes["AVS"] || [];
-    const [choosedExample, setChoosedExample] = useState(() => {
-      const successExample = examplesList.find((e) => e.statusCode === 200);
-      return successExample
-        ? 200
-        : examplesList.length > 0
-        ? examplesList[0].statusCode
-        : null;
-    });
-  
-    const [isExampleChoosed, setIsExampleChoosed] = useState(
-      () => !!choosedExample
-    );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMathcApiCall = async () => {
+  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
+
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
+      ? examplesList[0].statusCode
+      : null;
+  });
+
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample
+  );
+
+  const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status
     );
 
     if (!isAllRequiredFieldEntered) {
-      return alert("Please enter all the Required Fields");
+      alert("Please enter all the required fields");
+      return;
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "aadhaar/status",
+        path: "bin/getBankDetails",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -55,9 +57,10 @@ export default function AadhaarStatus() {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      setChoosedExample(error?.response?.data?.statusCode);
+      const statusCode = error?.response?.data?.statusCode || 500;
+      setChoosedExample(statusCode);
       setApiResponse({
-        statusCode: error?.response?.data?.statusCode,
+        statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -67,26 +70,25 @@ export default function AadhaarStatus() {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* HERO SECTION */}
+        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification</h1>
-
+          <h1 className="api_heading">Bank Details With Ifsc</h1>
           <MethodLink
-            method={"POST"}
-            className={"method_link"}
-            LinkClass={"link_class"}
-            link="aadhaar/status"
+            method="POST"
+            className="method_link"
+            LinkClass="link_class"
+            link="bin/getBankDetails"
           />
-
           <p className="first_para">
-            Name Verification of the Account Holder Name
+            The Ifsc Verification API allows developers to verify users’
+            Ifsc in real-time to know about user bank.
           </p>
         </div>
 
-        {/* Request History */}
-        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
+        {/* Request History Table */}
+        <RequestHistoryTable TableClass="history_Table" />
 
-        {/* HEADERS */}
+        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -101,34 +103,36 @@ export default function AadhaarStatus() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AS}
+            bodyObj={BWI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Responses */}
+        {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarStatusDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* Right side: API test code panel */}
+      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMathcApiCall}
+          makeFaceMathcApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"aadhaarStatus"}
-          examples={GetAcc?.exampleCodes["AVS"] || []}
+          service={"ifsc"}
+          examples={GetAcc?.exampleCodes["IFSC"] || []}
         />
       </div>
     </div>
   );
-}
+};
+
+export default IfscBankDetailsVerification;

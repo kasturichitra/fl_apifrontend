@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import { MOV } from "../../utils/bodyParams";
+import Headers from "../../components/Headers/Headers";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { DATA, MobileOtpValidateDynamic } from "../../utils/apiSchema";
+import { GetAcc } from "../../utils/Language";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { GSTIN } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { GetAcc } from "../utils/Language";
-import { DATA, GstDynamic } from "../utils/apiSchema";
-
-export default function GSTINVerification() {
+export default function MobileNumberOtpVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
- const examplesList = GetAcc?.exampleCodes["GST"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["MOV"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -24,7 +23,6 @@ export default function GSTINVerification() {
       ? examplesList[0].statusCode
       : null;
   });
-
   const [isExampleChoosed, setIsExampleChoosed] = useState(
     () => !!choosedExample
   );
@@ -36,14 +34,13 @@ export default function GSTINVerification() {
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the Required Fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/business/Gstinverify",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -69,22 +66,23 @@ export default function GSTINVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">GSTIN Verification</h1>
+          <h1 className="api_heading">Mobile Otp Verification</h1>
+
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/Gstinverify"
+            link="mobileNumber/otp_verification"
           />
+
           <p className="first_para">
-            Enter the GSTIN number of the company you want to verify.
+            Name Verification of the Account Holder Name
           </p>
         </div>
 
-        {/* REQUEST HISTORY TABLE */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* HEADERS SECTION */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -99,7 +97,7 @@ export default function GSTINVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={GSTIN}
+            bodyObj={MOV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -109,11 +107,10 @@ export default function GSTINVerification() {
         {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={GstDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={MobileOtpValidateDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* SECOND CHILD SECTION */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
@@ -123,8 +120,8 @@ export default function GSTINVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"gst"}
-          examples={GetAcc?.exampleCodes["GST"] || []}
+          service={"mobileOtpVerify"}
+          examples={GetAcc?.exampleCodes["MOV"] || []}
         />
       </div>
     </div>

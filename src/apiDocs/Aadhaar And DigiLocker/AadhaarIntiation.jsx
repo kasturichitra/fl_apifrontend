@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { UDYAM } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../utils/apiSchema";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
 
-const UdyamVerification = () => {
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { AadhaarIntiateDynamic, DATA } from "../../utils/apiSchema";
+import { GetAcc } from "../../utils/Language";
+import { AI } from "../../utils/bodyParams";
+
+export default function AadhaarIntiation() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
-
+    const examplesList = GetAcc?.exampleCodes["AVI"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -31,21 +29,21 @@ const UdyamVerification = () => {
   const [isExampleChoosed, setIsExampleChoosed] = useState(
     () => !!choosedExample
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/udyam/verify",
+        path: "/aadhaar/sentAadhaarotp",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -57,10 +55,9 @@ const UdyamVerification = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -70,25 +67,27 @@ const UdyamVerification = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* HERO SECTION */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">Aadhaar Verification With Digilocker</h1>
+
           <MethodLink
-            method="POST"
-            className="method_link"
-            LinkClass="link_class"
-            link="udyam/verify"
+            method={"POST"}
+            className={"method_link"}
+            LinkClass={"link_class"}
+            link= "aadhaar/initiate"
           />
+
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The Aadhaar Number Verification API allows developers to verify
+            users’ Aadhaar numbers in real-time.
           </p>
         </div>
 
-        {/* Request History Table */}
-        {/* <RequestHistoryTable TableClass="history_Table" /> */}
+        {/* Request History */}
+        <RequestHistoryTable TableClass={"history_Table"} />
 
-        {/* Headers */}
+        {/* HEADERS */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -103,36 +102,34 @@ const UdyamVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={AI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* Code / Example Section */}
+      {/* Right side: API test code panel */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"udyam"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          service={"aadhaarInitiate"}
+          examples={GetAcc?.exampleCodes["AVI"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default UdyamVerification;
+}

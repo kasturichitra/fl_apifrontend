@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BAV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { UDYAM } from "../../utils/Custom_Api";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, UdyamDynamic } from "../../utils/apiSchema";
 
-const BankAccountPennyDropVerification = () => {
+const UdyamVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["BPD"] || [];
+  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -45,7 +45,7 @@ const BankAccountPennyDropVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "accounts/verify/penny-drop",
+        path: "/udyam/verify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +72,16 @@ const BankAccountPennyDropVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Account Verification (Penny Drop)</h1>
+          <h1 className="api_heading">Udyam Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="accounts/verify/penny-drop"
+            link="udyam/verify"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Bank Account numbers in real-time.
+            The UDYAM Number Verification API allows developers to verify users’
+            Udyam numbers in real-time.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const BankAccountPennyDropVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BAV}
+            bodyObj={UDYAM}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,7 @@ const BankAccountPennyDropVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -127,13 +127,12 @@ const BankAccountPennyDropVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bpd"}
-          examples={GetAcc?.exampleCodes["BPD"] || []}
+          service={"udyam"}
+          examples={GetAcc?.exampleCodes["UDYAM"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BankAccountPennyDropVerification;
-
+export default UdyamVerification;

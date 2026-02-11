@@ -3,25 +3,25 @@ import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
 // Import your existing documentation components
 import PanVerification from "../apiDocs/Pan Services/PanVerification";
 import PanToAadhaarVerification from "../apiDocs/Pan Services/PanToAadhaarVerification";
-import FaceMatchVerification from "../apiDocs/FaceMatchVerification";
-import MobileNumberOtpGenration from "../apiDocs/MobileNumberOtpGenration";
-import MobileNumberOtpVerification from "../apiDocs/MobileNumberOtpVerification";
-import AadhaarIntiation from "../apiDocs/AadhaarIntiation";
-import AadhaarStatus from "../apiDocs/AadhaarStatus";
+import FaceMatchVerification from "../apiDocs/Face And Ai Verification/FaceMatchVerification";
+import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
+import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/MobileNumberOtpVerification";
+import AadhaarIntiation from "../apiDocs/Aadhaar And DigiLocker/AadhaarIntiation";
+import AadhaarStatus from "../apiDocs/Aadhaar And DigiLocker/AadhaarStatus";
 
-import BankAccountPennyDropVerification from "../apiDocs/BankAccountPennyDropVerification";
-import BankAccountPennyLessVerification from "../apiDocs/BankAccountPennyLessVerification";
-import IfscBankDetailsVerification from "../apiDocs/IfscBankDetailsVerification";
+import BankAccountPennyDropVerification from "../apiDocs/Banking And Financial/BankAccountPennyDropVerification";
+import BankAccountPennyLessVerification from "../apiDocs/Banking And Financial/BankAccountPennyLessVerification";
+import IfscBankDetailsVerification from "../apiDocs/Banking And Financial/IfscBankDetailsVerification";
 
-import GSTINVerification from "../apiDocs/GstInVerification";
-import CinVerification from "../apiDocs/CinVerification";
-import ShopVerification from "../apiDocs/ShopEstablishmentVerification";
-import UdyamVerification from "../apiDocs/UdhyamVerification";
+import GSTINVerification from "../apiDocs/Business And Company/GstInVerification";
+import CinVerification from "../apiDocs/Business And Company/CinVerification";
+import ShopVerification from "../apiDocs/Business And Company/ShopEstablishmentVerification";
+import UdyamVerification from "../apiDocs/Business And Company/UdhyamVerification";
 
-import NameMatchVerification from "../apiDocs/NameMatchVerification";
+import NameMatchVerification from "../apiDocs/Other Services/NameMatchVerification";
 
-import BinVerification from "../apiDocs/BinVerification";
-import FullCreditCardVerification from "../apiDocs/FullCreditCardVerification";
+import BinVerification from "../apiDocs/Banking And Financial/BinVerification";
+import FullCreditCardVerification from "../apiDocs/Banking And Financial/FullCreditCardVerification";
 
 
 // Mobile Recharge
@@ -44,6 +44,7 @@ import Decryption from "../apiDocs/Decryption";
 import Encryption from "../apiDocs/Encryption";
 import PanToDobVerification from "../apiDocs/Pan Services/PanToDobVerification";
 import ComingSoon from "../components/ComingSoon";
+import VehicleRcVerification from "../apiDocs/Vehicle And Transport/VehicleRcVerification";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -134,7 +135,7 @@ const apiComponentMap = {
   "26as_tax_summary": ComingSoon,
 
   /* ================= VEHICLE & TRANSPORT ================= */
-  vehicle_rc_verification: ComingSoon,
+  vehicle_rc_verification: VehicleRcVerification,
   vehicle_owner_name: ComingSoon,
   driving_license_verification: ComingSoon,
   driving_license_status: ComingSoon,

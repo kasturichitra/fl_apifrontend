@@ -1,34 +1,24 @@
-import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import { MOG } from "../utils/bodyParams";
-import Headers from "../components/Headers/Headers";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { DATA, MobileOtpGenrateDynamic } from "../utils/apiSchema";
-import { GetAcc } from "../utils/Language";
+import React, { useState, useEffect } from "react";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { DATA, FaceDynamic } from "../../utils/apiSchema";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { FM } from "../../utils/bodyParams";
+import { GetAcc } from "../../utils/Language";
 
-export default function MobileNumberOtpGenration() {
+export default function FaceMatchVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const examplesList = GetAcc?.exampleCodes["MOG"] || [];
-  const [choosedExample, setChoosedExample] = useState(() => {
-    const successExample = examplesList.find((e) => e.statusCode === 200);
-    return successExample
-      ? 200
-      : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
-  });
-  const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
-  );
+  const [isExampleChoosed, setIsExampleChoosed] = useState(false);
+  const [choosedExample, setChoosedExample] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMathcApiCall = async () => {
+  const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status
     );
@@ -40,7 +30,7 @@ export default function MobileNumberOtpGenration() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "mobileNumber/otp_generation",
+        path: "face/facematch",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -66,23 +56,25 @@ export default function MobileNumberOtpGenration() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Mobile Otp Generation</h1>
+          <h1 className="api_heading">Face Match</h1>
 
           <MethodLink
-            method="POST"
-            className="method_link"
-            LinkClass="link_class"
-            link="mobileNumber/otp_generation"
+            method={"POST"}
+            className={"method_link"}
+            LinkClass={"link_class"}
+            link={"face/facematch"}
           />
 
           <p className="first_para">
-            Name Verification of the Account Holder Name
+            The Face Match API is a service that allows developers to compare
+            two facial images and determine their similarity or match score.
           </p>
         </div>
 
-        {/* REQ HISTORY TABLE */}
-        {/* <RequestHistoryTable TableClass="history_Table" /> */}
+        {/* REQ History Table */}
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
+        {/* HEADERS */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -97,31 +89,31 @@ export default function MobileNumberOtpGenration() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={MOG}
-            faceMatchState={faceMatchState}
+            bodyObj={FM}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* RESPONSE COMPONENT */}
+        {/* RESPONSES */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={MobileOtpGenrateDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={FaceDynamic} otherData={DATA} />
         </div>
       </div>
 
+      {/* RIGHT SIDE CODE SECTION */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMathcApiCall}
+          makeFaceMatchApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"mobileOtpGenration"}
-          examples={GetAcc?.exampleCodes["MOG"] || []}
+          service={"faceMatch"}
+          examples={GetAcc?.exampleCodes["FACE"] || []}
         />
       </div>
     </div>

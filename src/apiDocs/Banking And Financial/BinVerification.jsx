@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BAV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../utils/apiSchema";
-import AccessToken from "../components/AccessToken";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BIN } from "../../utils/Custom_Api";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
 
-const BankAccountPennyLessVerification = () => {
+const BinVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["BPL"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +45,7 @@ const BankAccountPennyLessVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "account/pl/verifyBankAccount",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,23 +72,22 @@ const BankAccountPennyLessVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Account Verification (Penny Less)</h1>
+          <h1 className="api_heading">Bin Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="account/pl/verifyBankAccount"
+            link="bin/getCardDetails"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Account numbers and Ifsc in real-time.
+            The Bin Number means Bank Identification Number
+            The Bin Number Verification API allows developers to verify users’
+            Bin numbers in real-time.
           </p>
         </div>
 
         {/* Request History Table */}
-        <RequestHistoryTable TableClass="history_Table" />
-
-        <AccessToken/>
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
         <div className="py-6">
@@ -106,7 +104,7 @@ const BankAccountPennyLessVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BAV}
+            bodyObj={BIN}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -116,7 +114,7 @@ const BankAccountPennyLessVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -130,12 +128,12 @@ const BankAccountPennyLessVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bpl"}
-          examples={GetAcc?.exampleCodes["BPL"] || []}
+          service={"bin"}
+          examples={GetAcc?.exampleCodes["BIN"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BankAccountPennyLessVerification;
+export default BinVerification;

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { SEV } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { GetAcc } from "../utils/Language";
-import { DATA, ShopDynamic } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BWI } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
 
-export default function ShopVerification() {
+const VehicleRcVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const examplesList = GetAcc?.exampleCodes["SHOP"] || [];
+  const [allRequiredFields, setAllRequiredFields] = useState({});
+
+  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -28,22 +31,21 @@ export default function ShopVerification() {
   const [isExampleChoosed, setIsExampleChoosed] = useState(
     () => !!choosedExample
   );
-  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMathcApiCall = async () => {
+  const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the Required Fields");
+      alert("Please enter all the required fields");
       return;
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/shop/shopest",
+        path: "bin/getBankDetails",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -55,9 +57,10 @@ export default function ShopVerification() {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      setChoosedExample(error?.response?.data?.statusCode);
+      const statusCode = error?.response?.data?.statusCode || 500;
+      setChoosedExample(statusCode);
       setApiResponse({
-        statusCode: error?.response?.data?.statusCode,
+        statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -67,24 +70,25 @@ export default function ShopVerification() {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* MAIN HERO ELEMENT */}
+        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Shop Establishment Verification</h1>
+          <h1 className="api_heading">Bank Details With Ifsc</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="shop/shopest"
+            link="bin/getBankDetails"
           />
           <p className="first_para">
-            Shop Establishmentr Verification is used to verify the shop names and addresses of the merchants in real
+            The Ifsc Verification API allows developers to verify users’
+            Ifsc in real-time to know about user bank.
           </p>
         </div>
 
-        {/* REQUEST HISTORY TABLE */}
-        {/* <RequestHistoryTable TableClass="history_Table" /> */}
+        {/* Request History Table */}
+        <RequestHistoryTable TableClass="history_Table" />
 
-        {/* HEADERS */}
+        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -95,38 +99,40 @@ export default function ShopVerification() {
           />
         </div>
 
-        {/* BODY PARAMS */}
+        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={SEV}
+            bodyObj={BWI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* RESPONSE COMPONENT */}
+        {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={ShopDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* SECOND CHILD (Codes Section) */}
+      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMathcApiCall}
+          makeFaceMathcApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"shop"}
-          examples={GetAcc?.exampleCodes["SHOP"] || []}
+          service={"ifsc"}
+          examples={GetAcc?.exampleCodes["IFSC"] || []}
         />
       </div>
     </div>
   );
-}
+};
+
+export default VehicleRcVerification;

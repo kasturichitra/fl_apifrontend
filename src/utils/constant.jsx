@@ -66,6 +66,7 @@ export const GuidesData = [
 ];
 
 export const ApiReferences = [
+  // Access Token Genration
   {
     section: "ACCESS TOKEN",
     items: [
@@ -76,6 +77,7 @@ export const ApiReferences = [
       },
     ],
   },
+  // Encryption And Decryption
   // {
   //   section: "ENCRYPT AND DECRYPT",
   //   items: [
@@ -94,6 +96,7 @@ export const ApiReferences = [
   {
     section: "API",
     items: [
+      // Pan Services
       {
         title: "Pan Services",
         link: "pan_basic_verification",
@@ -155,6 +158,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Aadhaar And Digilocker
       {
         title: "Aadhaar & DigiLocker",
         link: "aadhaar_xml_verification",
@@ -194,19 +198,36 @@ export const ApiReferences = [
             link: "adhaar_otp_generation",
             methods: [
               {
-                title: "Aadhaar OTP Send",
+                title: "STEP: 1 Aadhaar OTP Send",
                 type: "POST",
                 link: "aadhaar_otp_send",
               },
               {
-                title: "Aadhaar OTP Verify",
+                title: "STEP: 2 Aadhaar OTP Verify",
                 type: "POST",
                 link: "aadhaar_otp_verify",
               },
             ],
           },
+          {
+            title: "E-Aadhaar DigiLocker",
+            link: "e_aadhaar_digiLocker",
+            methods: [
+              {
+                title: "STEP: 1 Aadhaar Initiate",
+                type: "POST",
+                link: "aadhaar_initiate",
+              },
+              {
+                title: "STEP: 2 Aadhaar Status",
+                type: "POST",
+                link: "aadhaar_status",
+              },
+            ],
+          },
         ],
       },
+      // Banking and Financial
       {
         title: "Banking & Financial",
         link: "banking_and_financial",
@@ -215,6 +236,16 @@ export const ApiReferences = [
             title: "Bank Account Verification",
             type: "POST",
             link: "bank_account_verification",
+          },
+          {
+            title: "Full card Verification",
+            link: "full_card_verification",
+            type: "POST",
+          },
+          {
+            title: "Bin Verification",
+            link: "bin_verification",
+            type: "POST",
           },
           {
             title: "Account Holder Name Match",
@@ -235,6 +266,21 @@ export const ApiReferences = [
             title: "IFSC Lookup",
             type: "POST",
             link: "ifsc_lookup",
+          },
+           {
+            title: "IFSC Verification",
+            type: "POST",
+            link: "ifsc_verification",
+          },
+          {
+            title: "Account Pennyless Verification",
+            type: "POST",
+            link: "account_pennyless_verfication",
+          },
+          {
+            title: "Account Penny Drop Verification",
+            type: "POST",
+            link: "account_pennydrop_verification",
           },
           {
             title: "Bank Branch Lookup",
@@ -258,20 +304,11 @@ export const ApiReferences = [
           },
         ],
       },
+      // Gst Services
       {
         title: "GST Services",
         link: "gst_services",
         methods: [
-          {
-            title: "GSTIN Verification",
-            type: "POST",
-            link: "gstin_verification",
-          },
-          {
-            title: "GSTIN Name Match",
-            type: "POST",
-            link: "gstin_name_match",
-          },
           {
             title: "GST Business Profile",
             type: "POST",
@@ -309,24 +346,25 @@ export const ApiReferences = [
           },
         ],
       },
+      // Business And Company
       {
         title: "Business & Company",
         link: "business_and_company",
         methods: [
           {
+            title: "GSTIN Verification",
+            type: "POST",
+            link: "gstin_verification",
+          },
+          {
+            title: "GSTIN Name Match",
+            type: "POST",
+            link: "gstin_name_match",
+          },
+          {
             title: "CIN Verification",
             type: "POST",
             link: "cin_verification",
-          },
-          {
-            title: "Full card Verification",
-            link: "full_card_verification",
-            type: "POST",
-          },
-          {
-            title: "Bin Verification",
-            link: "bin_verification",
-            type: "POST",
           },
           {
             title: "DIN Verification",
@@ -349,6 +387,11 @@ export const ApiReferences = [
             link: "shop_act_verification",
           },
           {
+            title: "Shop Esatblishment Verification",
+            type: "POST",
+            link: "shop_establishment_verification",
+          },
+          {
             title: "Trade License Lookup",
             type: "POST",
             link: "trade_license_lookup",
@@ -365,6 +408,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Emplyment And Income
       {
         title: "Employment & Income",
         link: "employment_and_income",
@@ -411,6 +455,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Vehical And Transport
       {
         title: "Vehicle & Transport",
         link: "vehicle_and_transport",
@@ -457,6 +502,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Face Match And Ai Verification
       {
         title: "Face & AI Verification",
         link: "face_and_ai_verification",
@@ -503,6 +549,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Ocr And Document Ai
       {
         title: "OCR & Document AI",
         link: "ocr_and_document_ai",
@@ -549,6 +596,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Government Id Services
       {
         title: "Government ID Services",
         link: "government_id_services",
@@ -585,6 +633,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Contact And Communication
       {
         title: "Contact & Communication",
         link: "contact_and_communication",
@@ -631,6 +680,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Geo And Location
       {
         title: "Geo & Location",
         link: "geo_and_location",
@@ -667,6 +717,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Risk And Due Diligence
       {
         title: "Risk & Due Diligence",
         link: "risk_and_due_diligence",
@@ -708,6 +759,7 @@ export const ApiReferences = [
           },
         ],
       },
+      // Other Services
       {
         title: "Other Services",
         link: "mobile_otp_generation",
@@ -727,22 +779,16 @@ export const ApiReferences = [
             type: "POST",
             link: "miscellaneous_utility",
           },
+          {
+            title: "Name Match Verification",
+            link: "name_match_verification",
+            type: "POST",
+          },
         ],
-      },
-      {
-        title: "Credit Card Verification",
-        link: "credit_card_verfication",
-        type: "POST",
-        methods: [],
-      },
-      {
-        title: "Name Match Verification",
-        link: "name_match_verification",
-        type: "POST",
-        methods: [],
       },
     ],
   },
+  // Bbps
   {
     section: "BBPS",
     items: [
@@ -828,6 +874,7 @@ export const ApiReferences = [
       // },
     ],
   },
+  // Instant Pay
   {
     section: "Instantpay",
     items: [
@@ -844,6 +891,7 @@ export const ApiReferences = [
       },
     ],
   },
+  // Mobile Recharge
   {
     section: "Mobile Recahrge",
     items: [

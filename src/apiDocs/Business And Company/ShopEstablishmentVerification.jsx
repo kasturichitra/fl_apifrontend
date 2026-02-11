@@ -1,33 +1,33 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { GetAcc } from "../utils/Language";
-import { CIN } from "../utils/bodyParams";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { CinDynamic, DATA } from "../utils/apiSchema";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { SEV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { GetAcc } from "../../utils/Language";
+import { DATA, ShopDynamic } from "../../utils/apiSchema";
 
-export default function CinVerification() {
+export default function ShopVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-   const examplesList = GetAcc?.exampleCodes["CIN"] || [];
-  
-    const [choosedExample, setChoosedExample] = useState(() => {
-      const successExample = examplesList.find((e) => e.statusCode === 200);
-      return successExample
-        ? 200
-        : examplesList.length > 0
-        ? examplesList[0].statusCode
-        : null;
-    });
-  
-    const [isExampleChoosed, setIsExampleChoosed] = useState(
-      () => !!choosedExample
-    );
+  const examplesList = GetAcc?.exampleCodes["SHOP"] || [];
+
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
+      ? examplesList[0].statusCode
+      : null;
+  });
+
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample
+  );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
@@ -43,7 +43,7 @@ export default function CinVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/gst/verify/CinNumberverify",
+        path: "/shop/shopest",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -69,22 +69,22 @@ export default function CinVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">CIN Number Verification</h1>
+          <h1 className="api_heading">Shop Establishment Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/CinNumberverify"
+            link="shop/shopest"
           />
           <p className="first_para">
-            Enter your CIN number to verify the company details.
+            Shop Establishmentr Verification is used to verify the shop names and addresses of the merchants in real
           </p>
         </div>
 
         {/* REQUEST HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* HEADERS SECTION */}
+        {/* HEADERS */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -99,7 +99,7 @@ export default function CinVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={CIN}
+            bodyObj={SEV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -109,11 +109,11 @@ export default function CinVerification() {
         {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={CinDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={ShopDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* SECOND CHILD - API CALL + CODE SECTION */}
+      {/* SECOND CHILD (Codes Section) */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
@@ -123,8 +123,8 @@ export default function CinVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"cin"}
-          examples={GetAcc?.exampleCodes["CIN"] || []}
+          service={"shop"}
+          examples={GetAcc?.exampleCodes["SHOP"] || []}
         />
       </div>
     </div>

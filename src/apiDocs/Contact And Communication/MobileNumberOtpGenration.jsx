@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
-import RequestHistoryTable from "../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import { MOV } from "../utils/bodyParams";
-import Headers from "../components/Headers/Headers";
-import { api_Headers } from "../utils/Api_Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { DATA, MobileOtpValidateDynamic } from "../utils/apiSchema";
-import { GetAcc } from "../utils/Language";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import { MOG } from "../../utils/bodyParams";
+import Headers from "../../components/Headers/Headers";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { DATA, MobileOtpGenrateDynamic } from "../../utils/apiSchema";
+import { GetAcc } from "../../utils/Language";
 
-export default function MobileNumberOtpVerification() {
+export default function MobileNumberOtpGenration() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const examplesList = GetAcc?.exampleCodes["MOV"] || [];
+  const examplesList = GetAcc?.exampleCodes["MOG"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -40,7 +40,7 @@ export default function MobileNumberOtpVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "mobileNumber/otp_verification",
+        path: "mobileNumber/otp_generation",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -66,13 +66,13 @@ export default function MobileNumberOtpVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Mobile Otp Verification</h1>
+          <h1 className="api_heading">Mobile Otp Generation</h1>
 
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="mobileNumber/otp_verification"
+            link="mobileNumber/otp_generation"
           />
 
           <p className="first_para">
@@ -97,7 +97,7 @@ export default function MobileNumberOtpVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={MOV}
+            bodyObj={MOG}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -107,7 +107,7 @@ export default function MobileNumberOtpVerification() {
         {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={MobileOtpValidateDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={MobileOtpGenrateDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -120,8 +120,8 @@ export default function MobileNumberOtpVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"mobileOtpVerify"}
-          examples={GetAcc?.exampleCodes["MOV"] || []}
+          service={"mobileOtpGenration"}
+          examples={GetAcc?.exampleCodes["MOG"] || []}
         />
       </div>
     </div>
