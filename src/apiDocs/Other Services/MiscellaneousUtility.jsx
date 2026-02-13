@@ -12,7 +12,7 @@ import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, NameDynamic } from "../../utils/apiSchema";
 
-const NameMatchVerification = () => {
+const MiscellaneousUtility = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -135,4 +135,4 @@ const NameMatchVerification = () => {
   );
 };
 
-export default NameMatchVerification;
+export default MiscellaneousUtility;

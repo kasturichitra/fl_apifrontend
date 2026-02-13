@@ -6,8 +6,8 @@ import PanToAadhaarVerification from "../apiDocs/Pan Services/PanToAadhaarVerifi
 import FaceMatchVerification from "../apiDocs/Face And Ai Verification/FaceMatchVerification";
 import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
 import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/MobileNumberOtpVerification";
-import AadhaarIntiation from "../apiDocs/Aadhaar And DigiLocker/AadhaarIntiation";
-import AadhaarStatus from "../apiDocs/Aadhaar And DigiLocker/AadhaarStatus";
+import AadhaarIntiation from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/AadhaarIntiation";
+import AadhaarStatus from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/AadhaarStatus";
 
 import BankAccountPennyDropVerification from "../apiDocs/Banking And Financial/BankAccountPennyDropVerification";
 import BankAccountPennyLessVerification from "../apiDocs/Banking And Financial/BankAccountPennyLessVerification";
