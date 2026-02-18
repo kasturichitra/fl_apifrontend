@@ -1,7 +1,7 @@
 import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
 
 // Import your existing documentation components
-import PanVerification from "../apiDocs/Pan Services/PanVerification";
+import PanVerification from "../apiDocs/Pan Services/PanBasicVerification";
 import PanToAadhaarVerification from "../apiDocs/Pan Services/PanToAadhaarVerification";
 import FaceMatchVerification from "../apiDocs/Face And Ai Verification/FaceMatchVerification";
 import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
@@ -45,6 +45,12 @@ import Encryption from "../apiDocs/Encryption";
 import PanToDobVerification from "../apiDocs/Pan Services/PanToDobVerification";
 import ComingSoon from "../components/ComingSoon";
 import VehicleRcVerification from "../apiDocs/Vehicle And Transport/VehicleRcVerification";
+import PanReprintTracking from "../apiDocs/Pan Services/PanReprintTracking";
+import PanLinkedMobile from "../apiDocs/Pan Services/PanLinkedMobile";
+import PanDetailedProfile from "../apiDocs/Pan Services/PanDetailedProfile";
+import AadhaarXmlVerification from "../apiDocs/Aadhaar And DigiLocker/AadhaarXmlVerification";
+import PanNameMatch from "../apiDocs/Pan Services/PanNameMatch";
+import PanAddressFetch from "../apiDocs/Pan Services/PanAddressFetch";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -56,19 +62,21 @@ const apiComponentMap = {
 
   // ---------------- PAN SERVICES ----------------
   pan_basic_verification: PanVerification,
-  pan_name_match: NameMatchVerification,
+  pan_name_match: PanNameMatch,
   pan_dob_validation: PanToDobVerification,
-  pan_detailed_profile: ComingSoon,
-  pan_address_fetch: ComingSoon,
-  pan_linked_mobile: ComingSoon,
+  pan_detailed_profile: PanDetailedProfile,
+  pan_address_fetch: PanAddressFetch,
+  pan_linked_mobile: PanLinkedMobile,
   pan_aadhaar_link_status: PanToAadhaarVerification,
+  pan_to_masked_aadhaar: PanToAadhaarVerification,
   pan_aadhaar_seeding: ComingSoon,
   pan_active_inactive_status: ComingSoon,
   pan_correction_status: ComingSoon,
-  pan_reprint_tracking: ComingSoon,
+  pan_reprint_tracking: PanReprintTracking,
 
   // ---------------- AADHAAR & DIGILOCKER ----------------
-  aadhaar_xml_verification: ComingSoon,
+  aadhaar_xml_verification: AadhaarXmlVerification,
+  aadhaar_to_masked_pan: AadhaarStatus,
   aadhaar_qr_validation: AadhaarStatus,
   aadhaar_name_fetch: ComingSoon,
   aadhaar_dob_fetch: ComingSoon,
@@ -90,6 +98,8 @@ const apiComponentMap = {
   account_holder_name_match: NameMatchVerification,
   penny_drop_credit: BankAccountPennyDropVerification,
   penny_drop_status: ComingSoon,
+  account_pennyless_verfication: BankAccountPennyDropVerification,
+  account_pennydrop_verification: BankAccountPennyDropVerification,
   ifsc_lookup: IfscBankDetailsVerification,
   bank_branch_lookup: IfscBankDetailsVerification,
   upi_vpa_verification: ComingSoon,

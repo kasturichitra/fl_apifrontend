@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ApiDropdown from "./ApiDropdown";
 import { ApiReferences, images } from "../utils/constant";
 import "../styles/api_reference.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenMenu, setPageTitle } from "../redux/slice/headerSlice";
+import { useNavigate } from "react-router-dom";
 
 const SideBarApi = ({ children, setSelectedSlug }) => {
   const [headTitle, setHeadTitle] = useState(null);
@@ -12,10 +13,14 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
   const dispatch = useDispatch();
   const pageTitle = useSelector((state) => state.header.pageTitle);
   const openMenu = useSelector((state) => state.header.openMenu);
+  const navigate = useNavigate();
 
   const handleCloseFilterMenu = () => {
     setOpenFilter(false);
-    document.body.classList.remove("remove-overflow");
+
+    setTimeout(() => {
+      document.body.classList.remove("remove-overflow");
+    }, 0);
   };
 
   useEffect(() => {
@@ -32,8 +37,8 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
   }, []);
 
   useEffect(() => {
-    setPageTitle("Auth");
-  }, [setPageTitle]);
+    dispatch(setPageTitle("Auth"));
+  }, []);
 
   return (
     <div className="main_reference_p">
@@ -56,7 +61,7 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
               headTitle={headTitle}
               setHeadTitle={setHeadTitle}
               setOpenIndex={setOpenIndex}
-              setPageTitle={setPageTitle}
+              setPageTitle={(title) => dispatch(setPageTitle(title))}
               setSelectedSlug={setSelectedSlug}
             />
           ))}
@@ -68,10 +73,11 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
       {openFilter && (
         <PopFilter
           closeFilter={handleCloseFilterMenu}
-          setPageTitle={setPageTitle}
+          setPageTitle={(title) => dispatch(setPageTitle(title))}
           setHeadTitle={setHeadTitle}
           setOpenIndex={setOpenIndex}
           setSelectedSlug={setSelectedSlug}
+          navigate={navigate}
         />
       )}
     </div>
@@ -94,8 +100,22 @@ function JumpButton({ setOpenFilter }) {
   );
 }
 
-function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setSelectedSlug }) {
+function PopFilter({
+  closeFilter,
+  setPageTitle,
+  setHeadTitle,
+  setOpenIndex,
+  setSelectedSlug,
+  navigate,
+}) {
   const [value, setValue] = useState("");
+  const popupRef = useRef(null);
+
+  const handleOutsideClick = (e) => {
+    if (popupRef.current && !popupRef.current.contains(e.target)) {
+      closeFilter();
+    }
+  };
 
   const filteredApis = ApiReferences.map((section) => {
     // Collect all visible entries (methods or items if methods are empty)
@@ -123,7 +143,7 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setS
 
     // Filter by search text
     const filteredEntries = entries.filter((entry) =>
-      entry.title.toLowerCase().includes(value.toLowerCase())
+      entry.title.toLowerCase().includes(value.toLowerCase()),
     );
 
     return (
@@ -131,25 +151,112 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setS
     );
   }).filter(Boolean);
 
+  console.log("filtered apis ====>>", filteredApis);
+
+  // return (
+  //   <div
+  //     className="bluring"
+  //     onMouseDown={(e) => e.target === e.currentTarget && closeFilter()}
+  //   >
+  //     <div
+  //       className="overlay"
+  //       onClick={closeFilter}
+  //       style={{
+  //         position: "fixed",
+  //         inset: 0,
+  //         background: "transparent",
+  //         zIndex: 1,
+  //       }}
+  //     />
+  //     <div
+  //       className="api_fltr_head"
+  //       onClick={(e) => e.stopPropagation()}
+  //       style={{ zIndex: 2 }}
+  //     >
+  //       <div className="filter_cpt">
+  //         <div className="filter_api">
+  //           {/* Search Header */}
+  //           <div className="filter_head">
+  //             <span className="search-icon-container">
+  //               <img src={images?.searchIcon} alt="" className="search-icon" />
+  //             </span>
+  //             <input
+  //               type="text"
+  //               className="flex-1 outline-0"
+  //               placeholder="Filter"
+  //               onChange={(e) => setValue(e.target.value)}
+  //             />
+  //           </div>
+
+  //           {/* Filter Results */}
+  //           <div className="filter_opts">
+  //             {filteredApis?.length > 0 ? (
+  //               filteredApis?.map((section, i) => (
+  //                 <ol className="api_section" key={i}>
+  //                   <p className="section-head">{section.section}</p>
+
+  //                   {section?.entries?.map((entry, j) => (
+  //                     <li
+  //                       key={j}
+  //                       className="pop_filter_item"
+  //                       onClick={() => {
+  //                         setPageTitle(entry.title);
+  //                         setHeadTitle(entry.parentTitle || entry.title);
+  //                         setOpenIndex(entry.sidebarIndex);
+  //                         setSelectedSlug(entry.link);
+  //                         // setOpenIndex(j);
+  //                         closeFilter();
+  //                         const el = document.getElementById(
+  //                           `sidebar-item-${entry.title.replace(/\s+/g, "-")}`
+  //                         );
+  //                         el?.scrollIntoView({
+  //                           behavior: "smooth",
+  //                           block: "start",
+  //                         });
+  //                         // const element = document.getElementById(
+  //                         //   `api-${entry.title
+  //                         //     .replace(/\s+/g, "-")
+  //                         //     .toLowerCase()}`
+  //                         // );
+  //                         // if (element) {
+  //                         //   element.scrollIntoView({
+  //                         //     behavior: "smooth",
+  //                         //     block: "start",
+  //                         //   });
+  //                         // }
+  //                       }}
+  //                     >
+  //                       <span className="font-semibold">{entry.title}</span>
+  //                       {entry.type && (
+  //                         <span
+  //                           className={`pop_filter_item_mthd_type ${entry.type.toLowerCase()}`}
+  //                         >
+  //                           {entry.type}
+  //                         </span>
+  //                       )}
+  //                     </li>
+  //                   ))}
+  //                 </ol>
+  //               ))
+  //             ) : (
+  //               <p className="no-results">No matching APIs found</p>
+  //             )}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
   return (
     <div
       className="bluring"
-      onMouseDown={(e) => e.target === e.currentTarget && closeFilter()}
+      onMouseDown={handleOutsideClick}
+      // onClick={closeFilter} 
     >
       <div
-        className="overlay"
-        onClick={closeFilter}
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "transparent",
-          zIndex: 1,
-        }}
-      />
-      <div
         className="api_fltr_head"
-        onClick={(e) => e.stopPropagation()}
-        style={{ zIndex: 2 }}
+              ref={popupRef}
+        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
         <div className="filter_cpt">
           <div className="filter_api">
@@ -158,6 +265,7 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setS
               <span className="search-icon-container">
                 <img src={images?.searchIcon} alt="" className="search-icon" />
               </span>
+
               <input
                 type="text"
                 className="flex-1 outline-0"
@@ -177,34 +285,48 @@ function PopFilter({ closeFilter, setPageTitle, setHeadTitle, setOpenIndex, setS
                       <li
                         key={j}
                         className="pop_filter_item"
+                        // onClick={() => {
+
+                        //   setPageTitle(entry.title);
+                        //   setHeadTitle(entry.parentTitle || entry.title);
+                        //   setOpenIndex(entry.sidebarIndex);
+                        //   setSelectedSlug(entry.link);
+
+                        //   closeFilter();
+
+                        //   // scroll AFTER popup closed
+                        //   setTimeout(() => {
+
+                        //     const el = document.getElementById(
+                        //       `sidebar-item-${entry.title.replace(/\s+/g, "-")}`
+                        //     );
+
+                        //     el?.scrollIntoView({
+                        //       behavior: "smooth",
+                        //       block: "center",
+                        //     });
+
+                        //   }, 200);
+
+                        // }}
                         onClick={() => {
+                          // update redux
                           setPageTitle(entry.title);
+
+                          // update sidebar open
                           setHeadTitle(entry.parentTitle || entry.title);
+
                           setOpenIndex(entry.sidebarIndex);
-                          setSelectedSlug(entry.link);
-                          // setOpenIndex(j);
+
+                          // update content route
+                          navigate(`/reference/${entry.link}`);
+
+                          // close popup
                           closeFilter();
-                          const el = document.getElementById(
-                            `sidebar-item-${entry.title.replace(/\s+/g, "-")}`
-                          );
-                          el?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                          });
-                          // const element = document.getElementById(
-                          //   `api-${entry.title
-                          //     .replace(/\s+/g, "-")
-                          //     .toLowerCase()}`
-                          // );
-                          // if (element) {
-                          //   element.scrollIntoView({
-                          //     behavior: "smooth",
-                          //     block: "start",
-                          //   });
-                          // }
                         }}
                       >
                         <span className="font-semibold">{entry.title}</span>
+
                         {entry.type && (
                           <span
                             className={`pop_filter_item_mthd_type ${entry.type.toLowerCase()}`}

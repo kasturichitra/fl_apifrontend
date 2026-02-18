@@ -74,7 +74,7 @@ const CategoryAndService = () => {
               borderCollapse: 'collapse'
             }}
           >
-            <thead style={{ backgroundColor: '#e5e5e5' }}>
+            <thead style={{ backgroundColor: "a7a7a7", color:"red" }}>
               <tr>
                 <th style={thStyle}>Service Name</th>
                 <th style={thStyle}>Service ID</th>

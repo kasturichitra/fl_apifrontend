@@ -3,7 +3,7 @@ export const api_Headers = [
     title: "client_id",
     type: "string",
     fieldName: "client_id",
-    subTitle: "send the Client_id that was created in Dashboard",
+    subTitle: "send the Client_id which is in your profile of Dashboard",
     inputTag: false,
     example: "",
     required: true,

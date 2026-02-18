@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-import BodyParams from "../../components/BodyParams/BodyParams";
-import MethodLink from "../../components/MethodLink";
-import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../../components/Responses/ResponsesComponent";
-import Codes from "../../components/API Request/Codes";
-import Headers from "../../components/Headers/Headers";
+import BodyParams from "../../../components/BodyParams/BodyParams";
+import MethodLink from "../../../components/MethodLink";
+import RequestHistoryTable from "../../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../../components/Responses/ResponsesComponent";
+import Codes from "../../../components/API Request/Codes";
+import Headers from "../../../components/Headers/Headers";
 
-import { api_Headers } from "../../utils/Api_Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, DATA } from "../../utils/apiSchema";
-import { GetAcc } from "../../utils/Language";
-import { AI } from "../../utils/bodyParams";
+import { api_Headers } from "../../../utils/Api_Headers";
+import { FetchApi } from "../../../utils/Custom_Api";
+import { AadhaarIntiateDynamic, DATA } from "../../../utils/apiSchema";
+import { GetAcc } from "../../../utils/Language";
+import { AI } from "../../../utils/bodyParams";
 
-export default function AadhaarXmlVerification() {
+export default function StructuredDataExtraction() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
     const examplesList = GetAcc?.exampleCodes["AVI"] || [];

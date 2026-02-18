@@ -73,6 +73,7 @@ export const ApiReferences = [
       {
         title: "Access Token Genration",
         link: "accessToken",
+        type: "POST",
         methods: [],
       },
     ],
@@ -105,6 +106,11 @@ export const ApiReferences = [
             title: "PAN Basic Verification",
             type: "POST",
             link: "pan_basic_verification",
+          },
+          {
+            title: "PAN To Masked Aadhaar",
+            type: "POST",
+            link: "pan_to_masked_aadhaar",
           },
           {
             title: "PAN Name Match",
@@ -167,6 +173,11 @@ export const ApiReferences = [
             title: "Aadhaar XML Verification",
             type: "POST",
             link: "aadhaar_xml_verification",
+          },
+          {
+            title: "Aadhaar To Masked Pan",
+            type: "POST",
+            link: "aadhaar_to_masked_pan",
           },
           {
             title: "Aadhaar QR Validation",
@@ -253,21 +264,28 @@ export const ApiReferences = [
             link: "account_holder_name_match",
           },
           {
-            title: "Penny Drop Credit",
+            title: "Penny Drop",
             type: "POST",
             link: "penny_drop_credit",
-          },
-          {
-            title: "Penny Drop Status",
-            type: "POST",
-            link: "penny_drop_status",
+            methods: [
+              {
+                title: "STEP: 1 Penny Drop Credit",
+                type: "POST",
+                link: "penny_drop_credit",
+              },
+              {
+                title: "STEP: 2 Penny Drop Status",
+                type: "POST",
+                link: "penny_drop_status",
+              }
+            ],
           },
           {
             title: "IFSC Lookup",
             type: "POST",
             link: "ifsc_lookup",
           },
-           {
+          {
             title: "IFSC Verification",
             type: "POST",
             link: "ifsc_verification",
@@ -642,6 +660,18 @@ export const ApiReferences = [
             title: "Mobile Number Validation",
             type: "POST",
             link: "mobile_number_validation",
+            Methods: [
+              {
+                title: "Mobile Otp Genration",
+                type: "POST",
+                link: "mobile_otp_genration",
+              },
+              {
+                title: "Mobile Otp Validation",
+                type: "POST",
+                link: "mobile_otp_validation",
+              },
+            ],
           },
           {
             title: "Mobile Line Type",
