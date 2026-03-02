@@ -24,17 +24,18 @@ export default function BaseUrl({ data, service }) {
         <div className="base_url_btn_head">
           <button
             className="base_url_btn"
-            onClick={() => setOpenDropdown(prev => !prev)}
+            // onClick={() => setOpenDropdown(prev => !prev)}
           >
             <span className="shrink-0">Base URL</span>
-            <span>
+            {/* <span>
               <img
                 src={images.arrowIcon}
                 className="invert-100 rotate-90 w-3 h-3"
                 alt=""
               />
-            </span>
+            </span> */}
           </button>
+          
 
           <div className={`base_url_dropdown ${openDropdown ? "open" : ""}`}>
             <p className="px-3 py-0.5 text-xs">

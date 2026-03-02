@@ -1,17 +1,50 @@
-export function generateCode(url, params) {
-  // Convert params object to formatted key-value lines
+export function generateCode(url, params = {}) {
   const formattedParams = Object.entries(params)
-    .map(([key, value]) => `    "${key}": "${value}"`)
+    .map(([key, value]) => `      "${key}": "${value}"`)
     .join(",\n");
 
-  return {
-    fetch: `const options = {
+  if (Object.keys(params).length === 0) {
+    return {
+      fetch: `const options = {
   method: 'POST',
   headers: {
     accept: 'application/json',
     'content-type': 'application/json',
     client_id: 'Your_CLIENT_ID',
     secret_key: 'Your_SECRET_KEY'
+  }
+};
+
+fetch('${url}', options)
+  .then(res => res.json())
+  .then(res => console.log(res))
+  .catch(err => console.error(err));`,
+
+      axios: `import axios from 'axios';
+
+const options = {
+  method: 'POST',
+  url: '${url}',
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+    client_id: 'Your_CLIENT_ID',
+    secret_key: 'Your_SECRET_KEY'
+  }
+};
+
+axios.request(options)
+  .then(res => console.log(res.data))
+  .catch(err => console.error(err));`
+    };
+  } else {
+    return {
+      fetch: `const options = {
+  method: 'POST',
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+    access_token: 'YOUR_ACCESS_TOKEN'
   },
   body: JSON.stringify({
 ${formattedParams}
@@ -23,7 +56,7 @@ fetch('${url}', options)
   .then(res => console.log(res))
   .catch(err => console.error(err));`,
 
-    axios: `import axios from 'axios';
+      axios: `import axios from 'axios';
 
 const options = {
   method: 'POST',
@@ -31,8 +64,7 @@ const options = {
   headers: {
     accept: 'application/json',
     'content-type': 'application/json',
-    client_id: 'Your_CLIENT_ID',
-    secret_key: 'Your_SECRET_KEY'
+    access_token: 'YOUR_ACCESS_TOKEN'
   },
   data: {
 ${formattedParams}
@@ -41,6 +73,7 @@ ${formattedParams}
 
 axios.request(options)
   .then(res => console.log(res.data))
-  .catch(err => console.error(err));`,
-  };
+  .catch(err => console.error(err));`
+    };
+  }
 }

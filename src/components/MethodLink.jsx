@@ -1,11 +1,12 @@
 import { color } from "../utils/constant";
 import React from "react";
 const HttpUrl = import.meta.env.VITE_HTTP_URL;
+const superAdminHttpUrl = import.meta.env.VITE_HTTP_CLIENT_ADMIN_URL;
 
 const MethodLink = ({ method, link, className, LinkClass }) => {
   const finalLink = link?.startsWith("http")
     ? link
-    : `${HttpUrl}${link}`;
+    : link?.includes("clientToken")  ? `${superAdminHttpUrl}${link}` : `${HttpUrl}${link}`
 
   return (
     <div className={className}>

@@ -2,14 +2,24 @@ import { generateCode } from "./codeGenerator";
 const HttpUrl = import.meta.env.VITE_HTTP_URL;
 const RechargeHttpUrl = import.meta.env.VITE_HTTP_RECHARGE_URL;
 const BillPaymentsHttpUrl = import.meta.env.VITE_HTTP_BILL_PAYMENTS_URL;
+const superAdminUrl = import.meta.env.VITE_HTTP_CLIENT_ADMIN_URL;
 
 const BASE_URL_BY_CATEGORY = {
   kyc: HttpUrl,
   recharge: RechargeHttpUrl,
   billPayments: BillPaymentsHttpUrl,
+  all: superAdminUrl,
 };
 
 export const apiList = [
+  // Access Token
+  {
+    key: "access",
+    name: "ACCESS",
+    category: "all",
+    url: "api/v1/client/generate/clientToken",
+    params: {},
+  },
   // 🔐 KYC APIs
   {
     key: "pan",
@@ -22,7 +32,7 @@ export const apiList = [
     key: "panToAadhaar",
     name: "PANTOAADHAAR",
     category: "kyc",
-    url: "pan/panToAadhaar",
+    url: "pan/verify_to_aadhaar",
     params: { panNumber: "IROPXXXXXX" },
   },
   {
@@ -233,10 +243,17 @@ const languages = languagesSupported.map((lang) => {
     const base = BASE_URL_BY_CATEGORY[api.category];
     const fullUrl = `${base}${api.url}`;
 
-    const mixedParams = {
-      ...api.params,
-      ...supportedParams,
+    let mixedParams;
+    if(api?.category?.toLowerCase() == "all"){
+       mixedParams = {
+      }
+    }else{
+          mixedParams = {
+        ...api.params,
+        ...supportedParams,
+      }
     }
+
 
     const codeObj = generateCode(fullUrl, mixedParams);
 

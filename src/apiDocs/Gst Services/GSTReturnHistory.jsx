@@ -72,7 +72,7 @@ const GSTReturnHistory = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bin Number Verification</h1>
+          <h1 className="api_heading">Gst Return History</h1>
           <MethodLink
             method="POST"
             className="method_link"

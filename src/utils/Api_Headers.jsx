@@ -1,4 +1,34 @@
 export const api_Headers = [
+  // {
+  //   title: "client_id",
+  //   type: "string",
+  //   fieldName: "client_id",
+  //   subTitle: "send the Client_id which is in your profile of Dashboard",
+  //   inputTag: false,
+  //   example: "",
+  //   required: true,
+  // },
+  // {
+  //   title: "secret_key",
+  //   type: "string",
+  //   subTitle: "Send the Secret Key that was created in Dashboard",
+  //   inputTag: false,
+  //   fieldName: "secret_key",
+  //   example: "",
+  //   required: true,
+  // },
+  {
+    title: "access_token",
+    type: "string",
+    subTitle: "Send the token that was created in api call that was provided",
+    inputTag: false,
+    fieldName: "access_token",
+    example: "",
+    required: true,
+  },
+];
+
+export const toekn_api_Headers = [
   {
     title: "client_id",
     type: "string",
@@ -14,15 +44,6 @@ export const api_Headers = [
     subTitle: "Send the Secret Key that was created in Dashboard",
     inputTag: false,
     fieldName: "secret_key",
-    example: "",
-    required: true,
-  },
-  {
-    title: "access_token",
-    type: "string",
-    subTitle: "Send the token that was created in api call that was provided",
-    inputTag: false,
-    fieldName: "access_token",
     example: "",
     required: true,
   },
