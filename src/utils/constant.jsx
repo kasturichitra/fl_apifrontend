@@ -814,6 +814,11 @@ export const ApiReferences = [
             link: "name_match_verification",
             type: "POST",
           },
+           {
+            title: "InstantBill Pay",
+            type: "POST",
+            link: "instant_Pay",
+          },
         ],
       },
     ],
@@ -902,23 +907,6 @@ export const ApiReferences = [
       //   type: "POST",
       //   methods: [],
       // },
-    ],
-  },
-  // Instant Pay
-  {
-    section: "Instantpay",
-    items: [
-      {
-        title: "Instant Pay",
-        link: "instantpay_Doc",
-        methods: [
-          {
-            title: "InstantBill Pay",
-            type: "POST",
-            link: "instant_Pay",
-          },
-        ],
-      },
     ],
   },
   // Mobile Recharge

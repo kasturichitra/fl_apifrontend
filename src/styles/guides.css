@@ -12,6 +12,11 @@
   background: #fafafa;
   flex-shrink: 0;
 }
+.submenu_item.active {
+  background: #fff;
+  color: #000;
+  border-radius: 6px;
+}
 .guides_content {
   flex: 1;
   height: 100vh;

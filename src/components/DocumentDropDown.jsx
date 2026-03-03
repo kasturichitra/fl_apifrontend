@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/guides.css"
 
 const Dropdown = ({
   pageData,
@@ -47,29 +48,34 @@ const LinkComponent = ({
   const isActive = activeSlug === page.slug;
 
   // Parent is open only if it matches
-  const isParentOpen = openParent?.group === groupIndex &&
-                       openParent?.page === pageIndex;
+ const isParentOpen =
+  openParent?.group === groupIndex &&
+  openParent?.page === pageIndex ||
+  (hasChildren && page.pages?.some(p => p.slug === activeSlug));
 
-  const [openChildren, setOpenChildren] = useState(false);
+  // const handleClick = (e) => {
+  //   if (hasChildren) {
+  //     const alreadyOpen = isParentOpen;
+  //     setOpenParent(alreadyOpen ? null : { group: groupIndex, page: pageIndex });
+  //     return;
+  //   }
+  //   onSlugClick(page.slug);
+  //   const element = document.getElementById(page.slug);
+  //   if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+  // };
 
-  const handleClick = (e) => {
-    e.stopPropagation();
+  const handleClick = () => {
+  if (hasChildren) {
+    const alreadyOpen =
+      openParent?.group === groupIndex &&
+      openParent?.page === pageIndex;
 
-    if (hasChildren) {
-      // toggle current; close others
-      const alreadyOpen = isParentOpen;
+    setOpenParent(alreadyOpen ? null : { group: groupIndex, page: pageIndex });
+    return;
+  }
 
-      setOpenParent(alreadyOpen ? null : { group: groupIndex, page: pageIndex });
-      setOpenChildren(!openChildren);
-      return;
-    }
-
-    // highlight + scroll
-    onSlugClick(page.slug);
-
-    const element = document.getElementById(page.slug);
-    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  onSlugClick(page.slug);
+};
 
   return (
     <>

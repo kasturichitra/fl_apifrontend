@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import Introduction from "../documents/Introduction";
 import ApiKeys from "../documents/ApiKeys";
@@ -11,39 +11,47 @@ import CategoryAndService from "../documents/CategoryAndService";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
+  // overview: Overview,
   api_keys: ApiKeys,
+  // oauth: OAuth,
   body_params: BodyParams,
+  category_and_service: CategoryAndService,
   error_codes: ErrorCodesDoc,
-  category_and_service: CategoryAndService, 
-  rate_limiting: ApiRateLimit
+  rate_limiting: ApiRateLimit,
+  // webhooks: Webhooks,
+  // "filtering-sorting": FilteringSorting,
+  // "best-practices": BestPractices,
+  // "sdks-libraries": SDKs,
+  // faqs: FAQs,
 };
 
 const Guides = () => {
-  const [activeSection, setActiveSection] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { slug } = useParams();
+  const activeSection = slug || "apimodule_guide";
+  const ApiComponent = apiComponentMap[slug];
+  const { setShowSuggestions, setSearchTermQuery } = useOutletContext();
 
   useEffect(() => {
-    if (slug) setActiveSection(slug);
-  }, [slug]);
-
-  const ApiComponent = apiComponentMap[slug];
+    if (!slug) {
+      navigate("/guides/apimodule_guide", { replace: true });
+    }
+  }, [slug, navigate]);
 
   return (
     <div className="guides_main_s">
       <SideBar
         activeSection={activeSection}
         onSlugClick={(newSlug) => {
-          navigate(`/guides/${newSlug}`); 
-          setActiveSection(newSlug);
+          navigate(`/guides/${newSlug}`);
         }}
       />
 
       <div className="guides_content">
         {/* {ApiComponent ? <ApiComponent /> : <div>Select an API</div>} */}
 
-           {loading && <Skelton/>}
+        {loading && <Skelton />}
 
         {!loading && ApiComponent && <ApiComponent />}
 
@@ -70,7 +78,7 @@ const Guides = () => {
               <strong>Use Cases:</strong> Fintech onboarding, credit apps,
               insurance, digital KYC, fraud prevention.
             </p>
-            
+
             <h3>🔹 BBPS (Bharat Bill Payment System) APIs</h3>
             <p>
               BBPS APIs enable your application to conduct nationwide utility

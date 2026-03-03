@@ -7,14 +7,17 @@ import "../styles/header.css";
 import { setPageTitle, setOpenMenu } from "../redux/slice/headerSlice";
 import { searchItems } from "./SearchItems";
 
-const Header = () => {
+const Header = ({
+  suggestions,
+  setSuggestions,
+  setSearchQuery,
+  searchQuery,
+}) => {
   const dispatch = useDispatch();
   const { pageTitle, openMenu } = useSelector((state) => state.header);
 
   const [increaseSearchBar, setIncreaseSearchBar] = useState(false);
   const [displayedRoute, setDisplayedRoute] = useState("Guides");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
 
   const inputRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -62,6 +65,11 @@ const Header = () => {
     }
   }, [pathname, dispatch]);
 
+  useEffect(() => {
+    if (pathname.includes("guides")) {
+    }
+  }, [pathname]);
+
   const handleInputChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
@@ -75,17 +83,21 @@ const Header = () => {
     const filtered = searchItems.filter(
       (item) =>
         item.category === currentPage &&
-        item.title.toLowerCase().includes(query.toLowerCase())
+        item.title.toLowerCase().includes(query.toLowerCase()),
     );
     setSuggestions(filtered);
   };
 
   const handleSuggestionClick = (path, title) => {
-    navigate(path);
-    dispatch(setPageTitle(title));
     setSearchQuery("");
     setSuggestions([]);
     setIncreaseSearchBar(false);
+    if (path.includes("changelog")) {
+      navigate(path);
+      return;
+    }
+    navigate(path);
+    dispatch(setPageTitle(title));
   };
 
   // Close menus and search on outside click
@@ -176,7 +188,13 @@ const Header = () => {
           {/* Left Part (desktop) */}
           <nav className="desktop_nav_btm_left">
             <ul className="desktop_nav_btm_left_ul">
-              <li onClick={() => dispatch(setPageTitle("Guides"))}>
+              <li
+                onClick={() => {
+                  setSuggestions([]);
+                  setSearchQuery("");
+                  dispatch(setPageTitle("Guides"));
+                }}
+              >
                 <Link
                   to="/guides"
                   className={`desk_nav_item ${
@@ -192,7 +210,13 @@ const Header = () => {
                 </Link>
               </li>
 
-              <li onClick={() => dispatch(setPageTitle("API Reference"))}>
+              <li
+                onClick={() => {
+                  setSuggestions([]);
+                  setSearchQuery("");
+                  dispatch(setPageTitle("API Reference"));
+                }}
+              >
                 <Link
                   to="/reference"
                   className={`desk_nav_item ${
@@ -208,7 +232,13 @@ const Header = () => {
                 </Link>
               </li>
 
-              <li onClick={() => dispatch(setPageTitle("Release Notes"))}>
+              <li
+                onClick={() => {
+                  setSuggestions([]);
+                  setSearchQuery("");
+                  dispatch(setPageTitle("Release Notes"));
+                }}
+              >
                 <Link
                   to="/changelog"
                   className={`desk_nav_item ${

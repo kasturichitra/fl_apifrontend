@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import SideBarApi from "../components/SideBarApi";
 import "../styles/guides.css";
 import Skelton from "../components/Skelton";
@@ -9,6 +9,7 @@ const Reference = () => {
   const { slug } = useParams();
   const [selectedSlug, setSelectedSlug] = useState(null);
   const [loading, setLoading] = useState(false); // loading state
+  const { setShowSuggestions, setSearchTermQuery } = useOutletContext();
 
   useEffect(() => {
     if (slug) {
@@ -23,18 +24,24 @@ const Reference = () => {
   }, [slug]);
 
   // always get the component directly from selectedSlug
-  const ApiComponent = selectedSlug ? selectingActiveRefernce(selectedSlug) : null;
+  const ApiComponent = selectedSlug
+    ? selectingActiveRefernce(selectedSlug)
+    : null;
 
   return (
     <div className="guides_main_s">
       {/* Sidebar */}
       <div className="sidebar_wrapper_refernce">
-        <SideBarApi setSelectedSlug={setSelectedSlug} />
+        <SideBarApi
+          setSelectedSlug={setSelectedSlug}
+          setShowSuggestions={setShowSuggestions}
+          setSearchTermQuery={setSearchTermQuery}
+        />
       </div>
 
       {/* Main Content */}
       <div className="guides_content">
-        {loading && <Skelton/>}
+        {loading && <Skelton />}
 
         {!loading && ApiComponent && <ApiComponent />}
 

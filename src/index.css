@@ -48,10 +48,6 @@ body {
   
 }
 
-body.remove-overflow {
-  /*overflow: hidden; */
-}
-
 .document_aside_menu {
   /* width: 288px; */
   background-color: var(--body_background);

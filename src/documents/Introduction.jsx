@@ -1,10 +1,9 @@
 import React from "react";
-import "../styles/introduction.css"
+import "../styles/introduction.css";
 import TableContents from "../components/TableContents";
 const Introduction = () => {
   return (
     <div className="guide_page">
-
       <section id="introduction" className="guide_section">
         <p>
           FlowPipe is a unified service platform designed to simplify and
@@ -19,7 +18,7 @@ const Introduction = () => {
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
         </p>
-           <p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -31,7 +30,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -43,7 +43,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -55,7 +56,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -67,7 +69,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -79,7 +82,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -91,7 +95,8 @@ const Introduction = () => {
           and how you can seamlessly add it to your applications with minimal
           effort. The goal is to make your onboarding smooth, predictable, and
           enjoyable.
-        </p>   <p>
+        </p>
+        <p>
           FlowPipe is a unified service platform designed to simplify and
           centralize multiple verification, payment, and automation workflows.
           Instead of integrating with several individual providers, FlowPipe
@@ -107,7 +112,7 @@ const Introduction = () => {
       </section>
 
       <div>
-        <TableContents/>
+        <TableContents />
       </div>
     </div>
   );

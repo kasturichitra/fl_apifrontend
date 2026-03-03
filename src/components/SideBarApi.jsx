@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOpenMenu, setPageTitle } from "../redux/slice/headerSlice";
 import { useNavigate } from "react-router-dom";
 
-const SideBarApi = ({ children, setSelectedSlug }) => {
+const SideBarApi = ({ setSelectedSlug, setShowSuggestions, setSearchTermQuery }) => {
   const [headTitle, setHeadTitle] = useState(null);
   const [openIndex, setOpenIndex] = useState(null);
   const [openFilter, setOpenFilter] = useState(false);
@@ -63,12 +63,12 @@ const SideBarApi = ({ children, setSelectedSlug }) => {
               setOpenIndex={setOpenIndex}
               setPageTitle={(title) => dispatch(setPageTitle(title))}
               setSelectedSlug={setSelectedSlug}
+              setShowSuggestions={setShowSuggestions}
+              setSearchTermQuery={setSearchTermQuery}
             />
           ))}
         </div>
       </aside>
-
-      {children}
 
       {openFilter && (
         <PopFilter
@@ -152,101 +152,6 @@ function PopFilter({
   }).filter(Boolean);
 
   console.log("filtered apis ====>>", filteredApis);
-
-  // return (
-  //   <div
-  //     className="bluring"
-  //     onMouseDown={(e) => e.target === e.currentTarget && closeFilter()}
-  //   >
-  //     <div
-  //       className="overlay"
-  //       onClick={closeFilter}
-  //       style={{
-  //         position: "fixed",
-  //         inset: 0,
-  //         background: "transparent",
-  //         zIndex: 1,
-  //       }}
-  //     />
-  //     <div
-  //       className="api_fltr_head"
-  //       onClick={(e) => e.stopPropagation()}
-  //       style={{ zIndex: 2 }}
-  //     >
-  //       <div className="filter_cpt">
-  //         <div className="filter_api">
-  //           {/* Search Header */}
-  //           <div className="filter_head">
-  //             <span className="search-icon-container">
-  //               <img src={images?.searchIcon} alt="" className="search-icon" />
-  //             </span>
-  //             <input
-  //               type="text"
-  //               className="flex-1 outline-0"
-  //               placeholder="Filter"
-  //               onChange={(e) => setValue(e.target.value)}
-  //             />
-  //           </div>
-
-  //           {/* Filter Results */}
-  //           <div className="filter_opts">
-  //             {filteredApis?.length > 0 ? (
-  //               filteredApis?.map((section, i) => (
-  //                 <ol className="api_section" key={i}>
-  //                   <p className="section-head">{section.section}</p>
-
-  //                   {section?.entries?.map((entry, j) => (
-  //                     <li
-  //                       key={j}
-  //                       className="pop_filter_item"
-  //                       onClick={() => {
-  //                         setPageTitle(entry.title);
-  //                         setHeadTitle(entry.parentTitle || entry.title);
-  //                         setOpenIndex(entry.sidebarIndex);
-  //                         setSelectedSlug(entry.link);
-  //                         // setOpenIndex(j);
-  //                         closeFilter();
-  //                         const el = document.getElementById(
-  //                           `sidebar-item-${entry.title.replace(/\s+/g, "-")}`
-  //                         );
-  //                         el?.scrollIntoView({
-  //                           behavior: "smooth",
-  //                           block: "start",
-  //                         });
-  //                         // const element = document.getElementById(
-  //                         //   `api-${entry.title
-  //                         //     .replace(/\s+/g, "-")
-  //                         //     .toLowerCase()}`
-  //                         // );
-  //                         // if (element) {
-  //                         //   element.scrollIntoView({
-  //                         //     behavior: "smooth",
-  //                         //     block: "start",
-  //                         //   });
-  //                         // }
-  //                       }}
-  //                     >
-  //                       <span className="font-semibold">{entry.title}</span>
-  //                       {entry.type && (
-  //                         <span
-  //                           className={`pop_filter_item_mthd_type ${entry.type.toLowerCase()}`}
-  //                         >
-  //                           {entry.type}
-  //                         </span>
-  //                       )}
-  //                     </li>
-  //                   ))}
-  //                 </ol>
-  //               ))
-  //             ) : (
-  //               <p className="no-results">No matching APIs found</p>
-  //             )}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
   return (
     <div
       className="bluring"

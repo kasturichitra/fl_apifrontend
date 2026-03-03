@@ -1,4 +1,4 @@
-import { ApiReferences, GuidesData } from "../utils/constant";
+import { ApiReferences, GuidesData, releaseNotes } from "../utils/constant";
 
 // Helper to flatten GuidesData
 const generateGuideSearchItems = (guidesData) => {
@@ -40,12 +40,12 @@ const generateApiSearchItems = (apiReferences) => {
 };
 
 // Changelog / Release Notes (from GuidesData "Changelog" section)
-const generateReleaseNotesItems = (guidesData) => {
-  const changelogSection = guidesData.find((s) => s.title === "Changelog");
-  if (!changelogSection) return [];
-  return changelogSection.pages.map((page) => ({
+const generateReleaseNotesItems = (releaseNotes) => {
+  // const changelogSection = releaseNotes.find((s) => s.title === "Changelog");
+  // if (!changelogSection) return [];
+  return releaseNotes.map((page) => ({
     title: page.title,
-    path: `/changelog/${page.slug}`,
+    path: `/changelog#${page.editType}`,
     category: "Release Notes",
   }));
 };
@@ -54,5 +54,5 @@ const generateReleaseNotesItems = (guidesData) => {
 export const searchItems = [
   ...generateGuideSearchItems(GuidesData),
   ...generateApiSearchItems(ApiReferences),
-  ...generateReleaseNotesItems(GuidesData),
+  ...generateReleaseNotesItems(releaseNotes),
 ];

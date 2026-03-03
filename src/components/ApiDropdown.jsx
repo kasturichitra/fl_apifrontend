@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { color } from "../utils/constant";
 
-function ApiDropdown({ ApiData, pageTitle, setPageTitle }) {
+function ApiDropdown({ ApiData, pageTitle, setPageTitle, setShowSuggestions, setSearchTermQuery }) {
   const { section, items } = ApiData;
   const location = useLocation();
 
@@ -45,6 +45,8 @@ function ApiDropdown({ ApiData, pageTitle, setPageTitle }) {
             openLevels={openLevels}
             toggleItem={toggleItem}
             location={location}
+            setShowSuggestions={setShowSuggestions}
+            setSearchTermQuery={setSearchTermQuery}
           />
         ))}
       </ul>
@@ -60,6 +62,8 @@ const LinkComponent = ({
   openLevels,
   toggleItem,
   location,
+  setShowSuggestions,
+  setSearchTermQuery
 }) => {
   const isOpen = openLevels[level] === item.link;
   const hasChildren = item.methods?.length > 0;
@@ -79,6 +83,8 @@ const LinkComponent = ({
   }, [location.pathname]);
 
   const handleClick = (e) => {
+    setShowSuggestions(false);
+    setSearchTermQuery("")
     if (hasChildren) {
       e.preventDefault();
       toggleItem(item.link, level);

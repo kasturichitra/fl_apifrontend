@@ -20,16 +20,6 @@ const ErrorCodesDoc = () => {
             </ListItem>
           ))}
         </List>
-
-        <Heading level={3} id="example-usage">Example Usage</Heading>
-        <CodeBlock>
-{`try {
-  const data = await apiCall();
-} catch(err) {
-  const error = mapError(err);
-  console.log(error.httpCode, error.message);
-}`}
-        </CodeBlock>
       </section>
 
       <aside className="api_toc">
