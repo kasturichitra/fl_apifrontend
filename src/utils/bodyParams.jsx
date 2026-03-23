@@ -90,7 +90,6 @@ export const MASTER_FIELDS = [
    COMMON FIELD KEYS (not full objects)
    ========================================================= */
 
-export const COMMON_FIELD_KEYS = ["categoryId", "serviceId"];
 
 /* =========================================================
    SCHEMA BUILDER
@@ -99,13 +98,7 @@ export const COMMON_FIELD_KEYS = ["categoryId", "serviceId"];
 export const buildSchema = (schemaKeys = []) => {
   const usedKeys = new Set();
 
-  // merge common + specific fields
-  const mergedKeys = [
-    ...COMMON_FIELD_KEYS.map((key) => ({ key })),
-    ...schemaKeys,
-  ];
-
-  return mergedKeys.reduce((schema, config) => {
+  return schemaKeys.reduce((schema, config) => {
     const { key, overrides = {} } = config;
 
     // avoid duplicates

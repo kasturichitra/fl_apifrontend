@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
-
+import { GetAcc } from "../../utils/Language";
+import { CIN } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, DATA } from "../../utils/apiSchema";
-import { GetAcc } from "../../utils/Language";
-import { AI } from "../../utils/bodyParams";
+import { CinDynamic, DATA } from "../../utils/apiSchema";
 
-export default function AadhaarXmlVerification() {
+export default function DinVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-    const examplesList = GetAcc?.exampleCodes["AVI"] || [];
-  const [choosedExample, setChoosedExample] = useState(() => {
-    const successExample = examplesList.find((e) => e.statusCode === 200);
-    return successExample
-      ? 200
-      : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
-  });
-
-  const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
-  );
+   const examplesList = GetAcc?.exampleCodes["CIN"] || [];
+  
+    const [choosedExample, setChoosedExample] = useState(() => {
+      const successExample = examplesList.find((e) => e.statusCode === 200);
+      return successExample
+        ? 200
+        : examplesList.length > 0
+        ? examplesList[0].statusCode
+        : null;
+    });
+  
+    const [isExampleChoosed, setIsExampleChoosed] = useState(
+      () => !!choosedExample
+    );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
@@ -37,13 +36,14 @@ export default function AadhaarXmlVerification() {
     );
 
     if (!isAllRequiredFieldEntered) {
-      return alert("Please enter all the Required Fields");
+      alert("Please enter all the Required Fields");
+      return;
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/aadhaar/sentAadhaarotp",
+        path: "/gst/verify/CinNumberverify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -67,27 +67,24 @@ export default function AadhaarXmlVerification() {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* HERO SECTION */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification With Digilocker</h1>
-
+          <h1 className="api_heading">CIN Number Verification</h1>
           <MethodLink
-            method={"POST"}
-            className={"method_link"}
-            LinkClass={"link_class"}
-            link= "aadhaar/initiate"
+            method="POST"
+            className="method_link"
+            LinkClass="link_class"
+            link="business/CinNumberverify"
           />
-
           <p className="first_para">
-            The Aadhaar Number Verification API allows developers to verify
-            users’ Aadhaar numbers in real-time.
+            Enter your CIN number to verify the company details.
           </p>
         </div>
 
-        {/* Request History */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* REQUEST HISTORY TABLE */}
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* HEADERS */}
+        {/* HEADERS SECTION */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -98,25 +95,25 @@ export default function AadhaarXmlVerification() {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AI}
+            bodyObj={CIN}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Responses */}
+        {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={CinDynamic} otherData={DATA} />
         </div>
       </div>
 
-      {/* Right side: API test code panel */}
+      {/* SECOND CHILD - API CALL + CODE SECTION */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMathcApiCall}
@@ -126,8 +123,8 @@ export default function AadhaarXmlVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"aadhaarInitiate"}
-          examples={GetAcc?.exampleCodes["AVI"] || []}
+          service={"cin"}
+          examples={GetAcc?.exampleCodes["CIN"] || []}
         />
       </div>
     </div>

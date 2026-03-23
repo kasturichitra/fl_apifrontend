@@ -12,12 +12,12 @@ import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
 
-const PanReprintTracking = () => {
+const PanDirector = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN_DIRECTOR"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -136,11 +136,13 @@ const PanReprintTracking = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          examples={GetAcc?.exampleCodes["PAN_DIRECTOR"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default PanReprintTracking;
+export default PanDirector;
+
+

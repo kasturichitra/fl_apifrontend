@@ -45,12 +45,10 @@ import Encryption from "../apiDocs/Encryption";
 import PanToDobVerification from "../apiDocs/Pan Services/PanToDobVerification";
 import ComingSoon from "../components/ComingSoon";
 import VehicleRcVerification from "../apiDocs/Vehicle And Transport/VehicleRcVerification";
-import PanReprintTracking from "../apiDocs/Pan Services/PanReprintTracking";
 import PanLinkedMobile from "../apiDocs/Pan Services/PanLinkedMobile";
-import PanDetailedProfile from "../apiDocs/Pan Services/PanDetailedProfile";
-import AadhaarXmlVerification from "../apiDocs/Aadhaar And DigiLocker/AadhaarXmlVerification";
 import PanNameMatch from "../apiDocs/Pan Services/PanNameMatch";
-import PanAddressFetch from "../apiDocs/Pan Services/PanAddressFetch";
+import PanDirector from "../apiDocs/Pan Services/PanDirector";
+import DinVerification from "../apiDocs/Business And Company/DinVerification";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -63,16 +61,12 @@ const apiComponentMap = {
   // ---------------- PAN SERVICES ----------------
   pan_basic_verification: PanVerification,
   pan_name_match: PanNameMatch,
-  pan_dob_validation: PanToDobVerification,
-  pan_detailed_profile: PanDetailedProfile,
-  pan_address_fetch: PanAddressFetch,
+  pan_name_dob_validation: PanToDobVerification,
   pan_linked_mobile: PanLinkedMobile,
-  pan_aadhaar_link_status: PanToAadhaarVerification,
   pan_to_masked_aadhaar: PanToAadhaarVerification,
   pan_aadhaar_seeding: ComingSoon,
   pan_active_inactive_status: ComingSoon,
-  pan_correction_status: ComingSoon,
-  pan_reprint_tracking: PanReprintTracking,
+  pan_director: PanDirector,
 
   // ---------------- AADHAAR & DIGILOCKER ----------------
   aadhaar_xml_verification: AadhaarXmlVerification,
@@ -126,7 +120,7 @@ const apiComponentMap = {
 
   /* ================= BUSINESS & COMPANY ================= */
   cin_verification: CinVerification,
-  din_verification: ComingSoon,
+  din_verification: DinVerification,
   udyam_verification: UdyamVerification,
   msme_certificate_fetch: ComingSoon,
   shop_act_verification: ShopVerification,
@@ -149,8 +143,6 @@ const apiComponentMap = {
   vehicle_owner_name: ComingSoon,
   driving_license_verification: ComingSoon,
   driving_license_status: ComingSoon,
-  ownership_transfer_history: ComingSoon,
-  hypothecation_status: ComingSoon,
   rto_details: ComingSoon,
   vehicle_registration_zone: ComingSoon,
 
@@ -164,13 +156,8 @@ const apiComponentMap = {
 
   /* ================= CONTACT & COMMUNICATION ================= */
   mobile_number_validation: ComingSoon,
-  mobile_line_type: ComingSoon,
   email_validation: ComingSoon,
   email_domain_risk: ComingSoon,
-  otp_send: ComingSoon,
-  otp_verify: ComingSoon,
-  domain_age_check: ComingSoon,
-  website_risk_score: ComingSoon,
 
   /* ================= GEO & LOCATION ================= */
   pincode_details: ComingSoon,

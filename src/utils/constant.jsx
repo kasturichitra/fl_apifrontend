@@ -118,29 +118,9 @@ export const ApiReferences = [
             link: "pan_name_match",
           },
           {
-            title: "PAN DOB Validation",
+            title: "PAN NAME DOB Validation",
             type: "POST",
-            link: "pan_dob_validation",
-          },
-          {
-            title: "PAN Detailed Profile",
-            type: "POST",
-            link: "pan_detailed_profile",
-          },
-          {
-            title: "PAN Address Fetch",
-            type: "POST",
-            link: "pan_address_fetch",
-          },
-          {
-            title: "PAN Linked Mobile",
-            type: "POST",
-            link: "pan_linked_mobile",
-          },
-          {
-            title: "PAN–Aadhaar Link Status",
-            type: "POST",
-            link: "pan_aadhaar_link_status",
+            link: "pan_name_dob_validation",
           },
           {
             title: "PAN Aadhaar Seeding",
@@ -153,14 +133,25 @@ export const ApiReferences = [
             link: "pan_active_inactive_status",
           },
           {
-            title: "PAN Correction Status",
+            title: "PAN Director",
             type: "POST",
-            link: "pan_correction_status",
+            link: "pan_director",
           },
           {
-            title: "PAN Reprint Tracking",
-            type: "POST",
-            link: "pan_reprint_tracking",
+            title: "PAN ITD Status",
+            link: "pan_itd_status",
+            methods: [
+              {
+                title: "STEP: 1 PAN ITD OTP Send",
+                type: "POST",
+                link: "pan_itd_otp_send",
+              },
+              {
+                title: "STEP: 2 PAN ITD OTP Verify",
+                type: "POST",
+                link: "pan_itd_otp_verify",
+              },
+            ],
           },
         ],
       },
@@ -170,29 +161,9 @@ export const ApiReferences = [
         link: "aadhaar_xml_verification",
         methods: [
           {
-            title: "Aadhaar XML Verification",
-            type: "POST",
-            link: "aadhaar_xml_verification",
-          },
-          {
             title: "Aadhaar To Masked Pan",
             type: "POST",
             link: "aadhaar_to_masked_pan",
-          },
-          {
-            title: "Aadhaar QR Validation",
-            type: "POST",
-            link: "aadhaar_qr_validation",
-          },
-          {
-            title: "Aadhaar Name Fetch",
-            type: "POST",
-            link: "aadhaar_name_fetch",
-          },
-          {
-            title: "Aadhaar DOB Fetch",
-            type: "POST",
-            link: "aadhaar_dob_fetch",
           },
           {
             title: "DigiLocker Document List",
@@ -277,7 +248,7 @@ export const ApiReferences = [
                 title: "STEP: 2 Penny Drop Status",
                 type: "POST",
                 link: "penny_drop_status",
-              }
+              },
             ],
           },
           {
@@ -499,16 +470,6 @@ export const ApiReferences = [
             link: "driving_license_status",
           },
           {
-            title: "Ownership Transfer History",
-            type: "POST",
-            link: "ownership_transfer_history",
-          },
-          {
-            title: "Hypothecation Status",
-            type: "POST",
-            link: "hypothecation_status",
-          },
-          {
             title: "RTO Details",
             type: "POST",
             link: "rto_details",
@@ -660,23 +621,28 @@ export const ApiReferences = [
             title: "Mobile Number Validation",
             type: "POST",
             link: "mobile_number_validation",
-            Methods: [
+            methods: [
               {
-                title: "Mobile Otp Genration",
+                title: "STEP:1 Mobile Otp Genration",
                 type: "POST",
                 link: "mobile_otp_genration",
               },
               {
-                title: "Mobile Otp Validation",
+                title: "STEP:2 Mobile Otp Validation",
                 type: "POST",
                 link: "mobile_otp_validation",
               },
             ],
           },
           {
-            title: "Mobile Line Type",
+            title: "Mobile To Uan",
             type: "POST",
-            link: "mobile_line_type",
+            link: "mobile_to_uan",
+          },
+          {
+            title: "Mobile To Pan",
+            type: "POST",
+            link: "mobile_to_pan",
           },
           {
             title: "Email Validation",
@@ -687,26 +653,6 @@ export const ApiReferences = [
             title: "Email Domain Risk",
             type: "POST",
             link: "email_domain_risk",
-          },
-          {
-            title: "OTP Send",
-            type: "POST",
-            link: "otp_send",
-          },
-          {
-            title: "OTP Verify",
-            type: "POST",
-            link: "otp_verify",
-          },
-          {
-            title: "Domain Age Check",
-            type: "POST",
-            link: "domain_age_check",
-          },
-          {
-            title: "Website Risk Score",
-            type: "POST",
-            link: "website_risk_score",
           },
         ],
       },
@@ -814,7 +760,7 @@ export const ApiReferences = [
             link: "name_match_verification",
             type: "POST",
           },
-           {
+          {
             title: "InstantBill Pay",
             type: "POST",
             link: "instant_Pay",

@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { color } from "../utils/constant";
 
-function ApiDropdown({ ApiData, pageTitle, setPageTitle, setShowSuggestions, setSearchTermQuery }) {
+function ApiDropdown({
+  ApiData,
+  pageTitle,
+  setPageTitle,
+  setShowSuggestions,
+  setSearchTermQuery,
+}) {
   const { section, items } = ApiData;
   const location = useLocation();
 
@@ -63,7 +69,7 @@ const LinkComponent = ({
   toggleItem,
   location,
   setShowSuggestions,
-  setSearchTermQuery
+  setSearchTermQuery,
 }) => {
   const isOpen = openLevels[level] === item.link;
   const hasChildren = item.methods?.length > 0;
@@ -73,7 +79,7 @@ const LinkComponent = ({
   useEffect(() => {
     if (hasChildren) {
       const childActive = item.methods.some((child) =>
-        location.pathname.startsWith(`/reference/${child.link}`)
+        location.pathname.startsWith(`/reference/${child.link}`),
       );
 
       if (childActive && openLevels[level] !== item.link) {
@@ -84,9 +90,9 @@ const LinkComponent = ({
 
   const handleClick = (e) => {
     setShowSuggestions(false);
-    setSearchTermQuery("")
+    setSearchTermQuery("");
     if (hasChildren) {
-      e.preventDefault();
+      // e.preventDefault();
       toggleItem(item.link, level);
     } else {
       setPageTitle(item.title);
@@ -106,7 +112,11 @@ const LinkComponent = ({
       >
         <div className="flex items-center gap-2">
           <span>{item.title}</span>
-          {item.type && <span className={`${color(item.type)} api_nav_link_spn`}>{item.type}</span>}
+          {item.type && (
+            <span className={`${color(item.type)} api_nav_link_spn`}>
+              {item.type}
+            </span>
+          )}
         </div>
 
         {hasChildren && (
@@ -133,6 +143,8 @@ const LinkComponent = ({
               openLevels={openLevels}
               toggleItem={toggleItem}
               location={location}
+              setShowSuggestions={setShowSuggestions}
+              setSearchTermQuery={setSearchTermQuery}
             />
           ))}
         </ul>

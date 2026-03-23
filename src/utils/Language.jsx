@@ -244,16 +244,14 @@ const languages = languagesSupported.map((lang) => {
     const fullUrl = `${base}${api.url}`;
 
     let mixedParams;
-    if(api?.category?.toLowerCase() == "all"){
-       mixedParams = {
-      }
-    }else{
-          mixedParams = {
+    if (api?.category?.toLowerCase() == "all") {
+      mixedParams = {};
+    } else {
+      mixedParams = {
         ...api.params,
         ...supportedParams,
-      }
+      };
     }
-
 
     const codeObj = generateCode(fullUrl, mixedParams);
 
@@ -309,6 +307,41 @@ const apiExamples = [
             Name: "RAM BABU",
             PAN_Status: "VALID",
             PAN_Holder_Type: "Person",
+          },
+        },
+      },
+    ],
+  },
+  // pan director
+  {
+    name: "PAN_DIRECTOR",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            din: "ABCDEXXXXXXXX",
+            name: "RAM",
+          },
+        },
+      },
+    ],
+  },
+  // pan to gst
+  {
+    name: "PAN_TO_GST",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            gstin: "ABCDXXXXXXXX",
+            authStatus: "",
+            stateCd: "",
           },
         },
       },
