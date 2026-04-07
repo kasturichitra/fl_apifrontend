@@ -7,7 +7,6 @@ import ErrorCodesDoc from "../documents/ErrorCodesDoc";
 import ApiRateLimit from "../documents/ApiRateLimit";
 import Skelton from "../components/Skelton";
 import BodyParams from "../documents/BodyParams";
-import CategoryAndService from "../documents/CategoryAndService";
 
 const apiComponentMap = {
   apimodule_guide: Introduction,
@@ -15,7 +14,6 @@ const apiComponentMap = {
   api_keys: ApiKeys,
   // oauth: OAuth,
   body_params: BodyParams,
-  category_and_service: CategoryAndService,
   error_codes: ErrorCodesDoc,
   rate_limiting: ApiRateLimit,
   // webhooks: Webhooks,

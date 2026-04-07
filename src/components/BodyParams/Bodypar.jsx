@@ -6,6 +6,7 @@ import BodyAccordian from "./BodyParAccordian";
 import ArrOfStrings from "./ArrOfStrings";
 import ArrTypeBdyPrms from "./ArrTypeBdyPrms";
 import ImageField from "./ImageField";
+import FileUpload from "./FileUpload";
 
 export function getBodyParComponent(
   obj,
@@ -23,6 +24,10 @@ export function getBodyParComponent(
     case "integer":
     case "number":
       Component = NormalField;
+      break;
+
+    case "file":
+      Component = FileUpload;
       break;
 
     case "image":

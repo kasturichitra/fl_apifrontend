@@ -1,5 +1,10 @@
 export const BaseFields = [
   {
+    title: "httpCode",
+    type: "number",
+    subTitle: "HTTP status code of the response",
+  },
+  {
     title: "message",
     type: "string",
     subTitle: "A descriptive message about the result of the API call.",
@@ -11,6 +16,7 @@ export const BaseFields = [
   },
 ];
 
+// pan services
 export const PanDynamic = [
   {
     status: 200,
@@ -50,7 +56,7 @@ export const PanDynamic = [
     },
   },
 ];
-export const PanToAadhaarDynamic = [
+export const PanToMaskedAadhaarDynamic = [
   {
     status: 200,
     summary: "Returns a paginated list of accounts",
@@ -90,6 +96,7 @@ export const PanToAadhaarDynamic = [
     },
   },
 ];
+// aadhaar services
 export const AadhaarIntiateDynamic = [
   {
     status: 200,
@@ -162,102 +169,96 @@ export const AadhaarStatusDynamic = [
     },
   },
 ];
-export const IfscDynamic = [
+export const DigilockerVerifyDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "DigiLocker link generated successfully",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "success",
+          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          type: "boolean",
+        },
+        {
+          title: "message",
+          subTitle: "Response message describing the result of the DigiLocker link request",
+          type: "string",
+        },
+        {
+          title: "transId",
+          subTitle: "Unique transaction ID generated for this DigiLocker request",
+          type: "string",
+        },
+        {
+          title: "ts_trans_id",
+          subTitle: "TruthScreen system transaction reference ID",
+          type: "string",
+        },
+        {
+          title: "link",
+          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          type: "string",
+        },
+      ],
+    },
+  },
+];
+export const AadhaarToMaskedPanDynamic = [
+  {
+    status: 200,
+    summary: "DigiLocker link generated successfully",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "success",
+          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          type: "boolean",
+        },
+        {
+          title: "message",
+          subTitle: "Response message describing the result of the DigiLocker link request",
+          type: "string",
+        },
+        {
+          title: "transId",
+          subTitle: "Unique transaction ID generated for this DigiLocker request",
+          type: "string",
+        },
+        {
+          title: "ts_trans_id",
+          subTitle: "TruthScreen system transaction reference ID",
+          type: "string",
+        },
+        {
+          title: "link",
+          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          type: "string",
+        },
+      ],
+    },
+  },
+];
+
+// face and ai services
+export const ImageBlurrinessDynamic = [
+  {
+    status: 200,
+    summary: "Returns image blurriness result",
     body: {
       type: "object",
       fields: [
         ...BaseFields,
         {
-          title: "response",
+          title: "data",
           type: "object",
           objectDetails: [
             {
-              title: "BRANCH",
+              title: "result",
               type: "string",
-              subTitle: "The branch name of the IFSC code",
-            },
-            {
-              title: "ADDRESS",
-              type: "string",
-              subTitle: "The address of the branch",
-            },
-            {
-              title: "STATE",
-              type: "string",
-              subTitle: "The state in which the branch is located",
-            },
-            {
-              title: "MICR",
-              type: "string",
-              subTitle: "MICR code of the branch",
-            },
-            {
-              title: "CONTACT",
-              type: "string",
-              subTitle: "Contact number of the branch",
-            },
-            {
-              title: "UPI",
-              type: "boolean",
-              subTitle: "Whether UPI is supported",
-            },
-            {
-              title: "RTGS",
-              type: "boolean",
-              subTitle: "Whether RTGS is supported",
-            },
-            {
-              title: "CITY",
-              type: "string",
-              subTitle: "The city of the branch",
-            },
-            {
-              title: "CENTRE",
-              type: "string",
-              subTitle: "The centre linked to the branch",
-            },
-            {
-              title: "DISTRICT",
-              type: "string",
-              subTitle: "The district of the branch",
-            },
-            {
-              title: "NEFT",
-              type: "boolean",
-              subTitle: "Whether NEFT is supported",
-            },
-            {
-              title: "IMPS",
-              type: "boolean",
-              subTitle: "Whether IMPS is supported",
-            },
-            {
-              title: "SWIFT",
-              type: "string",
-              subTitle: "SWIFT code of the branch",
-            },
-            {
-              title: "ISO3166",
-              type: "string",
-              subTitle: "ISO code for the region",
-            },
-            {
-              title: "BANK",
-              type: "string",
-              subTitle: "The bank name",
-            },
-            {
-              title: "BANKCODE",
-              type: "string",
-              subTitle: "The bank code",
-            },
-            {
-              title: "IFSC",
-              type: "string",
-              subTitle: "The IFSC code",
+              subTitle: "Blurriness status of the image (e.g., Clear, Blurry)",
             },
           ],
         },
@@ -265,6 +266,82 @@ export const IfscDynamic = [
     },
   },
 ];
+export const AiImageCheckDynamic = [
+  {
+    status: 200,
+    summary: "Returns image blurriness result",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "ai_generated",
+              type: "string",
+              subTitle: "The score of ai check",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const DeepfakeImageCheckDynamic = [
+  {
+    status: 200,
+    summary: "Returns image blurriness result",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "deepfake",
+              type: "string",
+              subTitle: "The score of deepfake check",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const AiAndDeepfakeCheckDynamic = [
+  {
+    status: 200,
+    summary: "Returns image blurriness result",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "ai_generated",
+              type: "string",
+              subTitle: "The score of ai check",
+            },
+            {
+              title: "deepfake",
+              type: "string",
+              subTitle: "The score of deepfake check",
+            }
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// contact and communication services
 export const MobileOtpGenrateDynamic = [
   {
     status: 200,
@@ -343,6 +420,8 @@ export const FaceDynamic = [
     },
   },
 ];
+
+// business services
 export const CinDynamic = [
   {
     status: 200,
@@ -760,107 +839,6 @@ export const ShopDynamic = [
     },
   },
 ];
-export const NameDynamic = [
-  {
-    status: 200,
-    summary: "Returns name details",
-    body: {
-      type: "object",
-      fields: [
-        {
-          title: "success",
-          type: "boolean",
-          subTitle: "Indicates whether the API request was successful",
-        },
-        {
-          title: "message",
-          type: "string",
-          subTitle: "Overall response message from the server",
-        },
-        {
-          title: "response",
-          type: "object",
-          subTitle: "Contains detailed name information",
-          objectDetails: [
-            {
-              title: "firstName",
-              type: "string",
-              subTitle: "First name extracted from the input",
-            },
-            {
-              title: "secondName",
-              type: "string",
-              subTitle: "Second name extracted from the input",
-            },
-            {
-              title: "result",
-              type: "integer",
-              subTitle: "Result code indicating the name validation outcome",
-            },
-          ],
-        },
-      ],
-    },
-  },
-];
-export const AccountDynamic = [
-  {
-    status: 200,
-    summary: "Returns account validation details",
-    body: {
-      type: "object",
-      fields: [
-        {
-          title: "message",
-          type: "string",
-          subTitle: "Overall response message from the server",
-        },
-        {
-          title: "success",
-          type: "boolean",
-          subTitle: "Indicates whether the API request was successful",
-        },
-        {
-          title: "response",
-          type: "object",
-          subTitle: "Contains detailed account validation information",
-          objectDetails: [
-            {
-              title: "name",
-              type: "string",
-              subTitle: "Name associated with the bank account",
-            },
-            {
-              title: "status",
-              type: "string",
-              subTitle: "Current validation status of the account",
-            },
-            {
-              title: "success",
-              type: "boolean",
-              subTitle: "Indicates whether account validation succeeded",
-            },
-            {
-              title: "message",
-              type: "string",
-              subTitle: "Detailed message about the account validation result",
-            },
-            {
-              title: "account_no",
-              type: "string",
-              subTitle: "Bank account number provided for validation",
-            },
-            {
-              title: "ifsc",
-              type: "string",
-              subTitle: "IFSC code of the bank branch",
-            },
-          ],
-        },
-      ],
-    },
-  },
-];
 export const GstDynamic = [
   {
     status: 200,
@@ -987,6 +965,161 @@ export const GstDynamic = [
     },
   },
 ];
+
+// other services
+export const NameDynamic = [
+  {
+    status: 200,
+    summary: "Returns name details",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "success",
+          type: "boolean",
+          subTitle: "Indicates whether the API request was successful",
+        },
+        {
+          title: "message",
+          type: "string",
+          subTitle: "Overall response message from the server",
+        },
+        {
+          title: "response",
+          type: "object",
+          subTitle: "Contains detailed name information",
+          objectDetails: [
+            {
+              title: "firstName",
+              type: "string",
+              subTitle: "First name extracted from the input",
+            },
+            {
+              title: "secondName",
+              type: "string",
+              subTitle: "Second name extracted from the input",
+            },
+            {
+              title: "result",
+              type: "integer",
+              subTitle: "Result code indicating the name validation outcome",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// geo location services
+export const pincodeGeofencingDynamic = [
+  {
+    status: 200,
+    summary: "Returns Pincode details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "District",
+              type: "string",
+              subTitle: "District name",
+            },
+            {
+              title: "Pincode",
+              type: "number",
+              subTitle: "Postal PIN code",
+            },
+            {
+              title: "Post Office",
+              type: "string",
+              subTitle: "Name of the post office",
+            },
+            {
+              title: "State",
+              type: "string",
+              subTitle: "State name",
+            },
+            {
+              title: "Subdistrict",
+              type: "string",
+              subTitle: "Subdistrict or tehsil name",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const longLatGeofencingDynamic = [
+  {
+    status: 200,
+    summary: "Returns Pincode details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          fields: [
+            {
+              title: "centerCode",
+              type: "string",
+              subTitle: "Center Code",
+            },
+            {
+              title: "district",
+              type: "string",
+              subTitle: "District name",
+            },
+            {
+              title: "pincode",
+              type: "string",
+              subTitle: "Postal PIN code",
+            },
+            {
+              title: "populationGroup",
+              type: "string",
+              subTitle: "Population Group",
+            },
+            {
+              title: "postOffice",
+              type: "string",
+              subTitle: "Name of the post office",
+            },
+            {
+              title: "revenueCenter",
+              type: "string",
+              subTitle: "Revenue Center",
+            },
+            {
+              title: "state",
+              type: "string",
+              subTitle: "State name",
+            },
+            {
+              title: "subdistrict",
+              type: "string",
+              subTitle: "Subdistrict or tehsil name",
+            },
+            {
+              title: "tier",
+              type: "string",
+              subTitle: "Tier",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// banking services
 export const BinDynamic = [
   {
     status: 200,
@@ -1145,6 +1278,169 @@ export const FullCardDynamic = [
     },
   },
 ];
+export const IfscDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+          objectDetails: [
+            {
+              title: "BRANCH",
+              type: "string",
+              subTitle: "The branch name of the IFSC code",
+            },
+            {
+              title: "ADDRESS",
+              type: "string",
+              subTitle: "The address of the branch",
+            },
+            {
+              title: "STATE",
+              type: "string",
+              subTitle: "The state in which the branch is located",
+            },
+            {
+              title: "MICR",
+              type: "string",
+              subTitle: "MICR code of the branch",
+            },
+            {
+              title: "CONTACT",
+              type: "string",
+              subTitle: "Contact number of the branch",
+            },
+            {
+              title: "UPI",
+              type: "boolean",
+              subTitle: "Whether UPI is supported",
+            },
+            {
+              title: "RTGS",
+              type: "boolean",
+              subTitle: "Whether RTGS is supported",
+            },
+            {
+              title: "CITY",
+              type: "string",
+              subTitle: "The city of the branch",
+            },
+            {
+              title: "CENTRE",
+              type: "string",
+              subTitle: "The centre linked to the branch",
+            },
+            {
+              title: "DISTRICT",
+              type: "string",
+              subTitle: "The district of the branch",
+            },
+            {
+              title: "NEFT",
+              type: "boolean",
+              subTitle: "Whether NEFT is supported",
+            },
+            {
+              title: "IMPS",
+              type: "boolean",
+              subTitle: "Whether IMPS is supported",
+            },
+            {
+              title: "SWIFT",
+              type: "string",
+              subTitle: "SWIFT code of the branch",
+            },
+            {
+              title: "ISO3166",
+              type: "string",
+              subTitle: "ISO code for the region",
+            },
+            {
+              title: "BANK",
+              type: "string",
+              subTitle: "The bank name",
+            },
+            {
+              title: "BANKCODE",
+              type: "string",
+              subTitle: "The bank code",
+            },
+            {
+              title: "IFSC",
+              type: "string",
+              subTitle: "The IFSC code",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const AccountDynamic = [
+  {
+    status: 200,
+    summary: "Returns account validation details",
+    body: {
+      type: "object",
+      fields: [
+        {
+          title: "message",
+          type: "string",
+          subTitle: "Overall response message from the server",
+        },
+        {
+          title: "success",
+          type: "boolean",
+          subTitle: "Indicates whether the API request was successful",
+        },
+        {
+          title: "response",
+          type: "object",
+          subTitle: "Contains detailed account validation information",
+          objectDetails: [
+            {
+              title: "name",
+              type: "string",
+              subTitle: "Name associated with the bank account",
+            },
+            {
+              title: "status",
+              type: "string",
+              subTitle: "Current validation status of the account",
+            },
+            {
+              title: "success",
+              type: "boolean",
+              subTitle: "Indicates whether account validation succeeded",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "Detailed message about the account validation result",
+            },
+            {
+              title: "account_no",
+              type: "string",
+              subTitle: "Bank account number provided for validation",
+            },
+            {
+              title: "ifsc",
+              type: "string",
+              subTitle: "IFSC code of the bank branch",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// Recharge
 export const RechargePaymentDynamic = [
   {
     status: 200,
@@ -1530,6 +1826,8 @@ export const RechargeDynamic = [
     },
   },
 ];
+
+// bbps
 export const BillerInfo = [
   {
     status: 200,
@@ -1570,7 +1868,7 @@ export const BillerInfo = [
   },
 ];
 
-
+// common Data
 export const DATA = [
   {
     status: 400,

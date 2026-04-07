@@ -9,31 +9,31 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic } from "../../utils/apiSchema";
 
-const PanToAadhaarVerification = () => {
+const PanToFatherName = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-        ? examplesList[0].statusCode
-        : null;
+      ? examplesList[0].statusCode
+      : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample,
+    () => !!choosedExample
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status,
+      (status) => !status
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -44,7 +44,7 @@ const PanToAadhaarVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,16 +71,24 @@ const PanToAadhaarVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Pan Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="pan/panverifying"
           />
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify
-            users’ PAN numbers and get the masked aadhaar numbers in real-time.
+            The PAN Number Verification API allows developers to verify users’
+            PAN numbers in real-time.
+          </p>
+          <p className="first_para">PAN (Permanent Account Number)</p>
+          <p className="first_para">
+            PAN is a 10-character alphanumeric identifier issued by the Income
+            Tax Department of India.
+          </p>
+          <p className="first_para">
+            Used for tax-related identification for individuals and entities.{" "}
           </p>
         </div>
 
@@ -112,10 +120,7 @@ const PanToAadhaarVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
-            otherData={DATA}
-          />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -129,12 +134,13 @@ const PanToAadhaarVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"pan"}
+          examples={GetAcc?.exampleCodes["PAN"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default PanToAadhaarVerification;
+export default PanToFatherName;
+

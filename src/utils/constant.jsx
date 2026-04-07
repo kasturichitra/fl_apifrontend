@@ -103,14 +103,19 @@ export const ApiReferences = [
         link: "pan_basic_verification",
         methods: [
           {
-            title: "PAN Basic Verification",
+            title: "PAN",
             type: "POST",
-            link: "pan_basic_verification",
+            link: "pan",
           },
           {
-            title: "PAN To Masked Aadhaar",
+            title: "Know your GSTIN using PAN",
             type: "POST",
-            link: "pan_to_masked_aadhaar",
+            link: "know_your_gstin_using_pan",
+          },
+          {
+            title: "PAN/TAN Verification",
+            type: "POST",
+            link: "pan_tan_verification",
           },
           {
             title: "PAN Name Match",
@@ -118,19 +123,24 @@ export const ApiReferences = [
             link: "pan_name_match",
           },
           {
-            title: "PAN NAME DOB Validation",
+            title: "PAN to GST",
             type: "POST",
-            link: "pan_name_dob_validation",
+            link: "pan_to_gst",
           },
           {
-            title: "PAN Aadhaar Seeding",
+            title: "PAN ITD Status",
             type: "POST",
-            link: "pan_aadhaar_seeding",
+            link: "pan_itd_status",
           },
           {
-            title: "PAN Active / Inactive Status",
+            title: "PAN Name DOB",
             type: "POST",
-            link: "pan_active_inactive_status",
+            link: "pan_name_dob",
+          },
+          {
+            title: "PAN to Father Name",
+            type: "POST",
+            link: "pan_to_father_name",
           },
           {
             title: "PAN Director",
@@ -158,7 +168,7 @@ export const ApiReferences = [
       // Aadhaar And Digilocker
       {
         title: "Aadhaar & DigiLocker",
-        link: "aadhaar_xml_verification",
+        link: "aadhaar_to_masked_pan",
         methods: [
           {
             title: "Aadhaar To Masked Pan",
@@ -233,23 +243,6 @@ export const ApiReferences = [
             title: "Account Holder Name Match",
             type: "POST",
             link: "account_holder_name_match",
-          },
-          {
-            title: "Penny Drop",
-            type: "POST",
-            link: "penny_drop_credit",
-            methods: [
-              {
-                title: "STEP: 1 Penny Drop Credit",
-                type: "POST",
-                link: "penny_drop_credit",
-              },
-              {
-                title: "STEP: 2 Penny Drop Status",
-                type: "POST",
-                link: "penny_drop_status",
-              },
-            ],
           },
           {
             title: "IFSC Lookup",
@@ -371,11 +364,6 @@ export const ApiReferences = [
             link: "msme_certificate_fetch",
           },
           {
-            title: "Shop Act Verification",
-            type: "POST",
-            link: "shop_act_verification",
-          },
-          {
             title: "Shop Esatblishment Verification",
             type: "POST",
             link: "shop_establishment_verification",
@@ -487,44 +475,34 @@ export const ApiReferences = [
         link: "face_and_ai_verification",
         methods: [
           {
-            title: "Face Match Score",
+            title: "Face Match",
             type: "POST",
-            link: "face_match_score",
+            link: "face_match",
           },
           {
-            title: "Face Similarity",
+            title: "Liveness",
             type: "POST",
-            link: "face_similarity",
+            link: "liveness",
           },
           {
-            title: "Passive Liveness",
+            title: "Deepfake Detection",
             type: "POST",
-            link: "passive_liveness",
+            link: "deepfake_detection",
           },
           {
-            title: "Active Liveness",
+            title: "AI Detection",
             type: "POST",
-            link: "active_liveness",
+            link: "ai_detection",
           },
           {
-            title: "Image Deepfake Detection",
+            title: "AI and Deepfake Detection",
             type: "POST",
-            link: "image_deepfake_detection",
+            link: "ai_and_deepfake_detection",
           },
           {
-            title: "Video Deepfake Detection",
+            title: "Bluriness",
             type: "POST",
-            link: "video_deepfake_detection",
-          },
-          {
-            title: "AI Fraud Score",
-            type: "POST",
-            link: "ai_fraud_score",
-          },
-          {
-            title: "Identity Risk Score",
-            type: "POST",
-            link: "identity_risk_score",
+            link: "bluriness",
           },
         ],
       },
@@ -662,34 +640,39 @@ export const ApiReferences = [
         link: "geo_and_location",
         methods: [
           {
-            title: "Pincode Details",
+            title: "Geo-Tagging Search",
             type: "POST",
-            link: "pincode_details",
+            link: "geo_tagging_search",
           },
           {
-            title: "Post Office Lookup",
+            title: "Geo-Tagging Distance Calculation",
             type: "POST",
-            link: "post_office_lookup",
+            link: "geo_tagging_distance_calculation",
           },
           {
-            title: "DigiPIN Decode",
+            title: "Longitude/Latitude Geofencing",
             type: "POST",
-            link: "digipin_decode",
+            link: "longitude_latitude_geofencing",
           },
           {
-            title: "Geo Address Resolution",
+            title: "Pincode Geofencing",
             type: "POST",
-            link: "geo_address_resolution",
+            link: "pincode_geofencing",
           },
           {
-            title: "Latitude-Longitude Validation",
+            title: "Lat Long to DIGIPIN",
             type: "POST",
-            link: "latitude_longitude_validation",
+            link: "lat_long_to_digipin",
           },
           {
-            title: "Coordinate Accuracy",
+            title: "DIGIPIN to Lat Long",
             type: "POST",
-            link: "coordinate_accuracy",
+            link: "digipin_to_lat_long",
+          },
+          {
+            title: "Address to DIGIPIN",
+            type: "POST",
+            link: "address_to_digipin",
           },
         ],
       },
@@ -699,71 +682,46 @@ export const ApiReferences = [
         link: "risk_and_due_diligence",
         methods: [
           {
-            title: "Court Case Search",
+            title: "Court Records Check (DIY)",
             type: "POST",
-            link: "court_case_search",
+            link: "court_records_check_diy",
           },
           {
-            title: "Litigation History",
+            title: "Domain Verification",
             type: "POST",
-            link: "litigation_history",
+            link: "domain_verification",
           },
           {
-            title: "Document Forgery Detection",
+            title: "Profile Advance",
             type: "POST",
-            link: "document_forgery_detection",
-          },
-          {
-            title: "Image Tampering Detection",
-            type: "POST",
-            link: "image_tampering_detection",
-          },
-          {
-            title: "Global Watchlist Screening",
-            type: "POST",
-            link: "global_watchlist_screening",
-          },
-          {
-            title: "Negative News Scan",
-            type: "POST",
-            link: "negative_news_scan",
-          },
-          {
-            title: "Risk Profile Score",
-            type: "POST",
-            link: "risk_profile_score",
+            link: "profile_advance",
           },
         ],
       },
       // Other Services
       {
         title: "Other Services",
-        link: "mobile_otp_generation",
+        link: "professional_license_verification",
         methods: [
           {
-            title: "Professional License Verification",
+            title: "Know your TAN",
             type: "POST",
-            link: "professional_license_verification",
+            link: "know_your_tan",
           },
           {
-            title: "Custom Verification",
+            title: "FSSAI Verification",
             type: "POST",
-            link: "custom_verification",
+            link: "fssai_verification",
           },
           {
-            title: "Miscellaneous Utility",
+            title: "Industry Type",
             type: "POST",
-            link: "miscellaneous_utility",
+            link: "industry_type",
           },
           {
             title: "Name Match Verification",
             link: "name_match_verification",
             type: "POST",
-          },
-          {
-            title: "InstantBill Pay",
-            type: "POST",
-            link: "instant_Pay",
           },
         ],
       },

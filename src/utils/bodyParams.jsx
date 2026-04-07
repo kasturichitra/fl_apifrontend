@@ -11,6 +11,17 @@ export const MASTER_FIELDS = [
     optional: true,
   },
   {
+    key: "pincode",
+    title: "Pincode",
+    type: "string",
+    fieldName: "pincode",
+    subTitle: "Enter Your pincode",
+    inputTag: false,
+    example: "784569",
+    required: true,
+    optional: false,
+  },
+  {
     key: "panNumber",
     title: "PanCard Number",
     type: "string",
@@ -63,25 +74,23 @@ export const MASTER_FIELDS = [
     required: true,
   },
   {
-    key: "categoryId",
-    title: "categoryId",
-    type: "string",
-    fieldName: "categoryId",
-    subTitle: "Category ",
+    key: "latitude",
+    title: "Latitude",
+    type: "number",
+    fieldName: "latitude",
+    subTitle: "Enter your current latitude",
     inputTag: false,
-    example: 100,
+    example: 17.385044,
     required: true,
-    readOnly: false,
   },
   {
-    key: "serviceId",
-    title: "serviceId",
-    type: "string",
-    fieldName: "serviceId",
-    subTitle: "Service that you are integrating",
+    key: "longitude",
+    title: "Longitude",
+    type: "number",
+    fieldName: "longitude",
+    subTitle: "Enter your current longitude",
     inputTag: false,
-    example: 100,
-    readOnly: false,
+    example: 78.486671,
     required: true,
   },
 ];
@@ -89,7 +98,6 @@ export const MASTER_FIELDS = [
 /* =========================================================
    COMMON FIELD KEYS (not full objects)
    ========================================================= */
-
 
 /* =========================================================
    SCHEMA BUILDER
@@ -129,27 +137,56 @@ export const PNV = buildSchema([
   { key: "panNumber" },
   { key: "mobileNumber" }, // optional by default
 ]);
-// export const PNV = [
-//   {
-//     title: "PanCard Number",
-//     type: "string",
-//     fieldName: "panNumber",
-//     subTitle: "user pancard number to be verified",
-//     inputTag: false,
-//     example: "AXER07FRGV",
-//     required: true,
-//   },
-//   {
-//     title: "mobile Number",
-//     type: "string",
-//     fieldName: "mobileNumber",
-//     subTitle: "mobile number of the given pan",
-//     inputTag: false,
-//     example: "98XXXXXX54",
-//     required: false,
-//     optional: true,
-//   },
-// ];
+
+// geo location services
+// pincode geofencing
+export const PG = buildSchema([
+  { key: "pincode" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// longitude latitude geofencing
+export const LLG = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// digipin to longitude latitude
+export const DTLL = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// address to digipin
+export const ATD = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// geo tagging search
+export const GTS = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// geo tagging search and distance calculation
+export const GTSADC = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+export const LLTD = buildSchema([
+  { key: "latitude" },
+  { key: "longitude" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+
 
 // aadhaar
 
@@ -221,15 +258,15 @@ export const FM = [
     title: "user image",
     type: "image",
     fieldName: "userimage",
-    subTitle: "user image to be verified",
+    subTitle: "send user image in base64 that should be verified",
     inputTag: false,
-    example: "Dr.",
+    example: "",
     required: true,
   },
   {
     title: "adhaar image",
     type: "image",
-    subTitle: "adhaar image to be verified",
+    subTitle: "send aadhaar image in base64 that should be verified",
     inputTag: false,
     fieldName: "aadharImage",
     example: "",
@@ -237,38 +274,20 @@ export const FM = [
   },
 ];
 
+// image blurriness, ai image check, deepfake image check, ai and deepfake image check
+export const IC = [
+  {
+    title: "user image",
+    type: "image",
+    fieldName: "userimage",
+    subTitle: "user image to be verified",
+    inputTag: false,
+    example: "Dr.",
+    required: true,
+  },
+];
+
 // bank account verification
-// export const BAV = [
-//   {
-//     title: "Account Number",
-//     type: "string",
-//     fieldName: "name",
-//     subTitle: "Account Number to be verified",
-//     inputTag: false,
-//     example: "987456XXXXX",
-//     required: true,
-//   },
-//   ,
-//   {
-//     title: "Ifsc",
-//     type: "string",
-//     fieldName: "ifsc",
-//     subTitle: "Ifsc to be verified",
-//     inputTag: false,
-//     example: "SBINXXXXXXX",
-//     required: true,
-//   },
-//   {
-//     title: "mobile Number",
-//     type: "string",
-//     fieldName: "mobileNumber",
-//     subTitle: "mobile number of the given pan",
-//     inputTag: false,
-//     example: "98XXXXXX54",
-//     required: false,
-//     optional: true,
-//   },
-// ];
 export const BAV = buildSchema([
   {
     key: "accountNumber",
@@ -300,6 +319,13 @@ export const BWI = [
   },
 ];
 
+export const PCG = buildSchema([
+  { key: "pincode" },
+  { key: "mobileNumber" }, // optional by default
+]);
+
+// business services
+
 // udyam verification
 export const UDYAM = [
   {
@@ -322,7 +348,6 @@ export const UDYAM = [
     optional: true,
   },
 ];
-
 // gst verification
 export const GSTIN = [
   {
@@ -345,7 +370,6 @@ export const GSTIN = [
     optional: true,
   },
 ];
-
 // cin verification
 export const CIN = [
   {
@@ -368,7 +392,6 @@ export const CIN = [
     optional: true,
   },
 ];
-
 // shop establishment
 export const SEV = [
   {
@@ -400,7 +423,6 @@ export const SEV = [
     optional: true,
   },
 ];
-
 // name verification
 export const NM = [
   {
@@ -456,6 +478,7 @@ export const BIN = [
   },
 ];
 
+// recharge
 // fetching operators
 export const FO = [
   {
@@ -468,7 +491,6 @@ export const FO = [
     required: true,
   },
 ];
-
 // fetching plans
 export const FP = [
   {
@@ -490,7 +512,6 @@ export const FP = [
     required: true,
   },
 ];
-
 // recharge payment
 export const RP = [
   {
@@ -539,7 +560,6 @@ export const RP = [
     required: true,
   },
 ];
-
 // recharge offers
 export const RO = [
   {
@@ -561,7 +581,6 @@ export const RO = [
     required: true,
   },
 ];
-
 // fetching old plans
 export const FOP = [
   {
@@ -599,7 +618,6 @@ export const BilllerInfo = [
     readOnly: true,
   },
 ];
-
 // bill fetch
 export const BillFetch = [
   {
@@ -634,7 +652,6 @@ export const BillFetch = [
     readOnly: true,
   },
 ];
-
 // bill validation
 export const BillValidation = [
   {
@@ -722,7 +739,6 @@ export const BillValidation = [
     readOnly: true,
   },
 ];
-
 // bill pay
 export const Billpay = [
   {
@@ -807,7 +823,6 @@ export const Billpay = [
     readOnly: true,
   },
 ];
-
 // quick pay
 export const Quickpay = [
   {

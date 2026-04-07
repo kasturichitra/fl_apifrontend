@@ -1,40 +1,39 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { NM } from "../../utils/bodyParams";
+import { ATD, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, NameDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
 
-const ProfessionalLicenseVerification = () => {
+const AddressToDigipin = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["NM"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -45,7 +44,7 @@ const ProfessionalLicenseVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "name/compareNames",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,16 +71,17 @@ const ProfessionalLicenseVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Name Match Verification</h1>
+          <h1 className="api_heading">Address To Digipin</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link= "name/compareNames"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The Name Match Verification API allows developers to verify users’
-            Names in real-time.
+            The Address to Digipin API enables developers to convert a physical
+            address into a unique Digipin code, allowing for simplified,
+            accurate, and shareable location identification.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const ProfessionalLicenseVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={NM}
+            bodyObj={ATD}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -113,7 +113,10 @@ const ProfessionalLicenseVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={NameDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -127,12 +130,12 @@ const ProfessionalLicenseVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"name"}
-          examples={GetAcc?.exampleCodes["NM"] || []}
+          service={"addressToDigipin"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default ProfessionalLicenseVerification;
+export default AddressToDigipin;

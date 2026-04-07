@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
-import MethodLink from "../components/MethodLink";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { LLG, PNV } from "../../utils/bodyParams";
+import { api_Headers } from "../../utils/Api_Headers";
+import { GetAcc } from "../../utils/Language";
+import "../../styles/api_reference.css";
+import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
 
-import ResponseComponent from "../components/Responses/ResponsesComponent";
-import Codes from "../components/API Request/Codes";
-import Headers from "../components/Headers/Headers";
-import { FetchApi } from "../utils/Custom_Api";
-import { BilllerInfo, Billpay, BillValidation, InstantPay, PNV } from "../utils/bodyParams";
-import { api_Headers, InstantpayApi_Headers } from "../utils/Api_Headers";
-import { GetAcc } from "../utils/Language";
-import "../styles/api_reference.css";
-// import { DATA, PanDynamic } from "../utils/apiSchema";
-import { BbpsApi_Headers } from "../utils/Api_Headers.jsx";
-
-const InstantPayPayment = () => {
+const LongLatGeofencing = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["LLG"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -30,12 +28,12 @@ const InstantPayPayment = () => {
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -46,7 +44,7 @@ const InstantPayPayment = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,48 +69,59 @@ const InstantPayPayment = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
+        {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">InstantBill Pay Details</h1>
+          <h1 className="api_heading">Longitude Latitude Geofencing</h1>
           <MethodLink
             method="POST"
             className="method_link"
-            link="https://stgapi.instantpay.in/payments/payout"
+            LinkClass="link_class"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The Instantpay Credit Card Payment API allows you to initiate and process credit card
-            bill payments after validating the card details. By submitting encrypted card
-            information, payer details, and transaction parameters, the API ensures that payments
-            are made only to valid credit card accounts, reducing errors and ensuring a secure and
-            seamless bill payment workflow.
+            The Longitude Latitude Geofencing API allows developers to define
+            virtual geographic boundaries using coordinates and monitor whether
+            a location enters, exits, or stays within a specified area in
+            real-time.
           </p>
-
-
-
         </div>
+
+        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
+
+        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
             setAllRequiredFields={setAllRequiredFields}
-            headersObj={InstantpayApi_Headers}
+            headersObj={api_Headers}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
           />
         </div>
+
+        {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={InstantPay}
+            bodyObj={LLG}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
-        {/* <div className="py-6">
+
+        {/* Response */}
+        <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BillerInfo} otherData={DATA} />
-        </div> */}
+          <ResponseComponent
+            dynamic200={PanToAadhaarDynamic}
+            otherData={DATA}
+          />
+        </div>
       </div>
+
+      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
           makeFaceMathcApiCall={makeFaceMatchApiCall}
@@ -122,12 +131,12 @@ const InstantPayPayment = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"InstantPay"}
-          examples={GetAcc?.exampleCodes["InstantPay"] || []}
+          service={"longitudeLatitudeGeofencing"}
+          examples={GetAcc?.exampleCodes["LLG"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default InstantPayPayment;
+export default LongLatGeofencing;

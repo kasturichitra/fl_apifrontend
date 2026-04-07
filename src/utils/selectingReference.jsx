@@ -3,6 +3,10 @@ import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
 // Import your existing documentation components
 import PanVerification from "../apiDocs/Pan Services/PanBasicVerification";
 import PanToAadhaarVerification from "../apiDocs/Pan Services/PanToAadhaarVerification";
+import PanNameMatch from "../apiDocs/Pan Services/PanNameMatch";
+import PanDirector from "../apiDocs/Pan Services/PanDirector";
+import PanToDobVerification from "../apiDocs/Pan Services/PanToDobVerification";
+
 import FaceMatchVerification from "../apiDocs/Face And Ai Verification/FaceMatchVerification";
 import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
 import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/MobileNumberOtpVerification";
@@ -17,6 +21,7 @@ import GSTINVerification from "../apiDocs/Business And Company/GstInVerification
 import CinVerification from "../apiDocs/Business And Company/CinVerification";
 import ShopVerification from "../apiDocs/Business And Company/ShopEstablishmentVerification";
 import UdyamVerification from "../apiDocs/Business And Company/UdhyamVerification";
+import DinVerification from "../apiDocs/Business And Company/DinVerification";
 
 import NameMatchVerification from "../apiDocs/Other Services/NameMatchVerification";
 
@@ -30,25 +35,32 @@ import FetchingPlans from "../apiDocs/Recharge/FetchingPlans";
 import RechargePayment from "../apiDocs/Recharge/RechargePayment";
 import RechargeOffers from "../apiDocs/Recharge/RechargeOffers";
 
+//bbps
 import BbpsTheory from "../apiDocs/BillPayments/BbpsTheory";
 import BillerinfoDetails from "../apiDocs/BillPayments/BillerinfoDetails";
 import BillFetchDetails from "../apiDocs/BillPayments/BillfetchDetails";
 import BillpayDetails from "../apiDocs/BillPayments/BillpayDetails";
 import BillValidationDetails from "../apiDocs/BillPayments/BillValidation";
 import QuickPayDetails from "../apiDocs/BillPayments/BillQuickpay";
-import InstantPayPayment from "../apiDocs/InstantPayPayment";
-import InstantpayTheory from "../apiDocs/InstantpayTheory";
 
 import FetchingOldRechargePlans from "../apiDocs/Recharge/FetchingOldRechargePlans";
 import Decryption from "../apiDocs/Decryption";
 import Encryption from "../apiDocs/Encryption";
-import PanToDobVerification from "../apiDocs/Pan Services/PanToDobVerification";
 import ComingSoon from "../components/ComingSoon";
 import VehicleRcVerification from "../apiDocs/Vehicle And Transport/VehicleRcVerification";
-import PanLinkedMobile from "../apiDocs/Pan Services/PanLinkedMobile";
-import PanNameMatch from "../apiDocs/Pan Services/PanNameMatch";
-import PanDirector from "../apiDocs/Pan Services/PanDirector";
-import DinVerification from "../apiDocs/Business And Company/DinVerification";
+import ImageBlurriness from "../apiDocs/Face And Ai Verification/ImageBlurriness";
+import AiImageCheck from "../apiDocs/Face And Ai Verification/AiImageCheck";
+import DeepfakeImageCheck from "../apiDocs/Face And Ai Verification/DeepfakeImageCheck";
+import AiAndDeepfakeImageCheck from "../apiDocs/Face And Ai Verification/AiAndDeepfakeImageCheck";
+import GeoTaggingSearch from "../apiDocs/Geo Location/GeoTaggingSearch";
+import GeoTaggingDistanceCalculation from "../apiDocs/Geo Location/GeoTaggingDistanceCalculation";
+import PincodeGeofencing from "../apiDocs/Geo Location/PincodeGeofencing";
+import LongLatToDigipin from "../apiDocs/Geo Location/LongLatToDigipin";
+import DigipinToLongLat from "../apiDocs/Geo Location/DigipinToLongLat";
+import LongLatGeofencing from "../apiDocs/Geo Location/LongLatGeofencing";
+import AddressToDigipin from "../apiDocs/Geo Location/AddressToDigipin";
+import PanToFatherName from "../apiDocs/Pan Services/PanToFatherName";
+import PanToGst from "../apiDocs/Pan Services/PanToGst";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -62,38 +74,32 @@ const apiComponentMap = {
   pan_basic_verification: PanVerification,
   pan_name_match: PanNameMatch,
   pan_name_dob_validation: PanToDobVerification,
-  pan_linked_mobile: PanLinkedMobile,
   pan_to_masked_aadhaar: PanToAadhaarVerification,
-  pan_aadhaar_seeding: ComingSoon,
-  pan_active_inactive_status: ComingSoon,
+  pan_to_gst: PanToGst,
   pan_director: PanDirector,
+  pan_to_father_name: PanToFatherName,
 
-  // ---------------- AADHAAR & DIGILOCKER ----------------
-  aadhaar_xml_verification: AadhaarXmlVerification,
+  // ---------------- AADHAAR & DIGILOCKER ----------------]
   aadhaar_to_masked_pan: AadhaarStatus,
-  aadhaar_qr_validation: AadhaarStatus,
   aadhaar_name_fetch: ComingSoon,
   aadhaar_dob_fetch: ComingSoon,
   digilocker_document_list: ComingSoon,
   digilocker_document_download: ComingSoon,
-
   aadhaar_otp_send: AadhaarIntiation,
   aadhaar_otp_verify: AadhaarStatus,
 
-  // ---------------- MOBILE OTP ----------------
-  mobile_otp_generation: MobileNumberOtpGenration,
-  mobile_otp_verification: MobileNumberOtpVerification,
-
   // ---------------- FACE MATCH ----------------
   face_match: FaceMatchVerification,
+  bluriness: ImageBlurriness,
+  ai_detection: AiImageCheck,
+  deepfake_detection: DeepfakeImageCheck,
+  ai_and_deepfake_detection: AiAndDeepfakeImageCheck,
 
   // ---------------- BANKING & FINANCIAL ----------------
   bank_account_verification: BankAccountPennyDropVerification,
   account_holder_name_match: NameMatchVerification,
-  penny_drop_credit: BankAccountPennyDropVerification,
-  penny_drop_status: ComingSoon,
   account_pennyless_verfication: BankAccountPennyDropVerification,
-  account_pennydrop_verification: BankAccountPennyDropVerification,
+  account_pennydrop_verification: BankAccountPennyLessVerification,
   ifsc_lookup: IfscBankDetailsVerification,
   bank_branch_lookup: IfscBankDetailsVerification,
   upi_vpa_verification: ComingSoon,
@@ -155,17 +161,20 @@ const apiComponentMap = {
   id_cross_match: ComingSoon,
 
   /* ================= CONTACT & COMMUNICATION ================= */
-  mobile_number_validation: ComingSoon,
+  // mobile_number_validation
+  mobile_otp_generation: MobileNumberOtpGenration,
+  mobile_otp_verification: MobileNumberOtpVerification,
   email_validation: ComingSoon,
   email_domain_risk: ComingSoon,
 
   /* ================= GEO & LOCATION ================= */
-  pincode_details: ComingSoon,
-  post_office_lookup: ComingSoon,
-  digipin_decode: ComingSoon,
-  geo_address_resolution: ComingSoon,
-  latitude_longitude_validation: ComingSoon,
-  coordinate_accuracy: ComingSoon,
+  geo_tagging_search: GeoTaggingSearch,
+  geo_tagging_distance_calculation: GeoTaggingDistanceCalculation,
+  pincode_geofencing: PincodeGeofencing,
+  lat_long_to_digipin: LongLatToDigipin,
+  digipin_to_lat_long: DigipinToLongLat,
+  longitude_latitude_geofencing: LongLatGeofencing,
+  address_to_digipin: AddressToDigipin,
 
   /* ================= RISK & DUE DILIGENCE ================= */
   court_case_search: ComingSoon,
@@ -188,10 +197,6 @@ const apiComponentMap = {
   bill_pay: BillpayDetails,
   bill_validation: BillValidationDetails,
   quick_pay: QuickPayDetails,
-
-  // ---------------- INSTANT PAY ----------------
-  instantpay_Doc: InstantpayTheory,
-  instant_Pay: InstantPayPayment,
 
   // ---------------- MOBILE RECHARGE ----------------
   fetching_operators: FetchingOperators,

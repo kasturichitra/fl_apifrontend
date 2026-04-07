@@ -21,6 +21,7 @@ export const apiList = [
     params: {},
   },
   // 🔐 KYC APIs
+  // pan services
   {
     key: "pan",
     name: "PAN",
@@ -36,6 +37,72 @@ export const apiList = [
     params: { panNumber: "IROPXXXXXX" },
   },
   {
+    key: "panNameMatch",
+    name: "PAN NAME MATCH",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panNameDobValidation",
+    name: "PAN NAME DOB VALIDATION",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+      dob: "",
+    },
+  },
+  {
+    key: "panAadhaarSeeding",
+    name: "PAN AADHAAR SEEDING",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panActiveInactiveStatus",
+    name: "PAN ACTIVE / INACTIVE STATUS",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panDirector",
+    name: "PAN DIRECTOR",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panItdOtpSend",
+    name: "PAN ITD OTP SEND",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panItdOtpVerify",
+    name: "PAN ITD OTP VERIFY",
+    category: "kyc",
+    url: "pan/pan",
+    params: {
+      panNumber: "",
+      otp: "",
+    },
+  },
+  // aadhaar services
+  {
     key: "aadhaarInitiate",
     name: "AADHAARINITIATE",
     category: "kyc",
@@ -49,6 +116,7 @@ export const apiList = [
     url: "aadhaar/status",
     params: { tsTransId: "" },
   },
+  // contact services
   {
     key: "mobileOtpGenration",
     name: "MOBILEOTPGENRATION",
@@ -63,6 +131,7 @@ export const apiList = [
     url: "mobileNumber/otp_verification",
     params: { submittedOtp: "12XX" },
   },
+  // business services
   {
     key: "gst",
     name: "GST",
@@ -76,23 +145,6 @@ export const apiList = [
     category: "kyc",
     url: "gst/Gstinverify",
     params: { gstinNumber: "22ABCDEXXXXXXXX" },
-  },
-  {
-    key: "faceMatch",
-    name: "FACEMATCH",
-    category: "kyc",
-    url: "face/facematch",
-    params: {
-      userImage: "BASE 64",
-      aadhaarImage: "BASE 64",
-    },
-  },
-  {
-    key: "ifsc",
-    name: "IFSC",
-    category: "kyc",
-    url: "bin/getBankDetails",
-    params: { ifsc: "SBINXXXXXXX" },
   },
   {
     key: "cin",
@@ -110,6 +162,22 @@ export const apiList = [
       registrationNumber: "AB78XXXXXXX",
       state: "TELANXXXX",
     },
+  },
+  {
+    key: "udyam",
+    name: "UDYAM",
+    category: "kyc",
+    url: "udyam/verify",
+    params: { udyamNumber: "123456789" },
+  },
+
+  // banking and financial
+  {
+    key: "ifsc",
+    name: "IFSC",
+    category: "kyc",
+    url: "bin/getBankDetails",
+    params: { ifsc: "SBINXXXXXXX" },
   },
   {
     key: "bpl",
@@ -132,13 +200,6 @@ export const apiList = [
     },
   },
   {
-    key: "udyam",
-    name: "UDYAM",
-    category: "kyc",
-    url: "udyam/verify",
-    params: { udyamNumber: "123456789" },
-  },
-  {
     key: "fullCreditCard",
     name: "FULLCREDITCARD",
     category: "kyc",
@@ -152,12 +213,141 @@ export const apiList = [
     url: "bin/getCardDetails",
     params: { bin: "45XXXX" },
   },
+
+  // other services
   {
     key: "name",
     name: "NAME",
     category: "kyc",
     url: "name/compareNames",
     params: { firstName: "RAXX", secondName: "RAXX" },
+  },
+
+  // geo location
+  {
+    key: "geoTaggingSearch",
+    name: "GEO TAGGING SEARCH",
+    category: "geo",
+    url: "location/geo/tagging",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "geoTaggingDistanceCalculation",
+    name: "GEO TAGGING DISTANCE CALCULATION",
+    category: "geo",
+    url: "location/geo/tagging/distance_calculation",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "longitudeLatitudeGeofencing",
+    name: "LONGITUDE LATITUDE GEOFENCING",
+    category: "geo",
+    url: "location/longLat/geofencing",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "pincodeGeofencing",
+    name: "PINCODE GEOFENCING",
+    category: "geo",
+    url: "location/pincode/geofencing",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "latLongToDigipin",
+    name: "LAT LONG TO DIGIPIN",
+    category: "geo",
+    url: "location/longLat/digipin",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "digipinToLatLong",
+    name: "DIGIPIN TO LAT LONG",
+    category: "geo",
+    url: "location/digipin/longLat",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+  {
+    key: "addressToDigipin",
+    name: "ADDRESS TO DIGIPIN",
+    category: "geo",
+    url: "location/address/digipin",
+    params: {
+      pinCode: "",
+      longitude: "",
+      latitude: "",
+    },
+  },
+
+  // face and ai services
+  {
+    key: "faceMatch",
+    name: "FACEMATCH",
+    category: "kyc",
+    url: "face/facematch",
+    params: {
+      userImage: "BASE 64",
+      aadhaarImage: "BASE 64",
+    },
+  },
+  {
+    key: "aiAndDeepfakeImageCheck",
+    name: "AIANDDEEPFAKEUIMAGECHECK",
+    category: "kyc",
+    url: "image/ai_deepfake_check",
+    params: {
+      file: "image",
+    },
+  },
+  {
+    key: "deepfakeImageCheck",
+    name: "DEEPFAKEIMAGECHECK",
+    category: "kyc",
+    url: "image/deepfake_check",
+    params: {
+      file: "image",
+    },
+  },
+  {
+    key: "aiImageCheck",
+    name: "AIIMAGECHECK",
+    category: "kyc",
+    url: "image/ai_image_check",
+    params: {
+      file: "image",
+    },
+  },
+  {
+    key: "imageBlurCheck",
+    name: "IMAGEBLURCHECK",
+    category: "kyc",
+    url: "image/blur_Check",
+    params: {
+      file: "image",
+    },
   },
 
   // 🔁 Recharge APIs
@@ -226,11 +416,6 @@ const baseUrl = [
 
 const languagesSupported = ["Node"];
 
-const supportedParams = {
-  categoryId: "",
-  serviceId: "",
-};
-
 const languages = languagesSupported.map((lang) => {
   const langObj = {
     imageUrl: `/images/${lang.toLowerCase()}.png`,
@@ -249,7 +434,6 @@ const languages = languagesSupported.map((lang) => {
     } else {
       mixedParams = {
         ...api.params,
-        ...supportedParams,
       };
     }
 
@@ -293,6 +477,7 @@ const commonErrorExamples = [
 ];
 
 const apiExamples = [
+  // pan services
   // pan verification
   {
     name: "PAN",
@@ -331,7 +516,7 @@ const apiExamples = [
   },
   // pan to gst
   {
-    name: "PAN_TO_GST",
+    name: "PTG",
     examples: [
       {
         statusCode: 200,
@@ -367,6 +552,8 @@ const apiExamples = [
       },
     ],
   },
+
+  // other services
   // name match
   {
     name: "NM",
@@ -385,6 +572,8 @@ const apiExamples = [
       },
     ],
   },
+
+  // banking services
   // full card verification
   {
     name: "FCV",
@@ -437,6 +626,8 @@ const apiExamples = [
       },
     ],
   },
+
+  // aadhaar services
   // aadhaar initiate
   {
     name: "AVI",
@@ -508,6 +699,8 @@ const apiExamples = [
       },
     ],
   },
+
+  // contact and communication services
   // mobile otp genration
   {
     name: "MOG",
@@ -541,6 +734,8 @@ const apiExamples = [
       },
     ],
   },
+
+  // business service
   // gst verify
   {
     name: "GST",
@@ -580,21 +775,7 @@ const apiExamples = [
       },
     ],
   },
-  // face verification
-  {
-    name: "FACE",
-    examples: [
-      {
-        statusCode: 200,
-        message: {
-          success: true,
-          message: "Valid",
-          response: { score: 98.45, matched: true },
-        },
-      },
-    ],
-  },
-  // shop verification
+    // shop verification
   {
     name: "SHOP",
     examples: [
@@ -835,7 +1016,8 @@ const apiExamples = [
       },
     ],
   },
-  // Bank Acccount Verification
+
+  // banking services
   // bank penny drop
   {
     name: "BPD",
@@ -910,6 +1092,357 @@ const apiExamples = [
       },
     ],
   },
+
+  // geo location
+  // pincode geofencing
+  {
+    name: "PCG",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            District: "Agra",
+            Pincode: "282003",
+            "Post Office": "Agra Fort",
+            State: "UTTAR PRADESH",
+            Subdistrict: "Agra",
+          },
+        },
+      },
+    ],
+  },
+  // longitude latitude geofencing
+  {
+    name: "LLG",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            "Center Code": "156XXX",
+            District: "Fatehpur",
+            Pincode: "212XXX",
+            "Population Group": "Rural Centre",
+            "Post Office": "Kora Jahanabad",
+            "Revenue Center": "Vijuri",
+            State: "UTTAR PRADESH",
+            Subdistrict: "Bindki",
+            Tier: "Tier 6",
+          },
+        },
+      },
+    ],
+  },
+  // digipin to longitude latitude
+  {
+    name: "DTLL",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            address_components: [
+              {
+                long_name: "442301",
+                short_name: "442301",
+                types: ["postal_code"],
+              },
+              {
+                long_name: "Hinganghat",
+                short_name: "Hinganghat",
+                types: ["locality", "political"],
+              },
+              {
+                long_name: "Nagpur Division",
+                short_name: "Nagpur Division",
+                types: ["administrative_area_level_2", "political"],
+              },
+              {
+                long_name: "Maharashtra",
+                short_name: "MH",
+                types: ["administrative_area_level_1", "political"],
+              },
+              {
+                long_name: "India",
+                short_name: "IN",
+                types: ["country", "political"],
+              },
+            ],
+            formatted_address: "Hinganghat, Maharashtra 442301, India",
+            geometry: {
+              location: {
+                lat: 20.4968021,
+                lng: 78.8835548,
+              },
+              location_type: "APPROXIMATE",
+              viewport: {
+                northeast: {
+                  lat: 20.7838901,
+                  lng: 79.1688539,
+                },
+                southwest: {
+                  lat: 20.4292651,
+                  lng: 78.717747,
+                },
+              },
+            },
+            place_id: "ChIJ3RL07yFv0zsRAAVdQejQCcA",
+            types: ["postal_code"],
+          },
+        },
+      },
+    ],
+  },
+  // address to digipin
+  {
+    name: "ATD",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            address_components: [
+              {
+                long_name: "AltF GBP",
+                short_name: "",
+                types: [],
+              },
+              {
+                long_name: "Tower D",
+                short_name: "Tower D",
+                types: ["subpremise"],
+              },
+              {
+                long_name: "02",
+                short_name: "02",
+                types: ["street_number"],
+              },
+              {
+                long_name: "Mehrauli-Gurgaon Road",
+                short_name: "MG Road",
+                types: ["route"],
+              },
+              {
+                long_name: "Sikanderpur",
+                short_name: "Sikanderpur",
+                types: ["political", "sublocality", "sublocality_level_3"],
+              },
+              {
+                long_name: "Sector 26",
+                short_name: "Sector 26",
+                types: ["political", "sublocality", "sublocality_level_1"],
+              },
+              {
+                long_name: "Gurugram",
+                short_name: "Gurugram",
+                types: ["locality", "political"],
+              },
+              {
+                long_name: "Gurugram",
+                short_name: "Gurugram",
+                types: ["administrative_area_level_3", "political"],
+              },
+              {
+                long_name: "Gurgaon Division",
+                short_name: "Gurgaon Division",
+                types: ["administrative_area_level_2", "political"],
+              },
+              {
+                long_name: "Haryana",
+                short_name: "HR",
+                types: ["administrative_area_level_1", "political"],
+              },
+              {
+                long_name: "India",
+                short_name: "IN",
+                types: ["country", "political"],
+              },
+              {
+                long_name: "122002",
+                short_name: "122002",
+                types: ["postal_code"],
+              },
+            ],
+            formatted_address:
+              "AltF GBP, Tower D, 02, Mehrauli-Gurgaon Rd, Sikanderpur, Sector 26, Gurugram, Haryana 122002, India",
+            geometry: {
+              location: {
+                lat: 28.4799517,
+                lng: 77.1022117,
+              },
+              location_type: "ROOFTOP",
+              viewport: {
+                northeast: {
+                  lat: 28.4813898302915,
+                  lng: 77.1037876302915,
+                },
+                southwest: {
+                  lat: 28.47869186970849,
+                  lng: 77.10108966970849,
+                },
+              },
+            },
+            place_id: "ChIJD0SlHwAZDTkRKhrcgTMjBFI",
+            types: ["establishment", "point_of_interest"],
+            digipin: "39J-L28-99LM",
+            score: "59.0%",
+          },
+        },
+      },
+    ],
+  },
+  // longitude latitude to digipin
+  {
+    name: "LLTD",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            address_components: [
+              {
+                long_name: "W6JG+87V",
+                short_name: "W6JG+87V",
+                types: ["plus_code"],
+              },
+              {
+                long_name: "Jamui",
+                short_name: "Jamui",
+                types: ["locality", "political"],
+              },
+              {
+                long_name: "Jamui",
+                short_name: "Jamui",
+                types: ["administrative_area_level_3", "political"],
+              },
+              {
+                long_name: "Munger Division",
+                short_name: "Munger Division",
+                types: ["administrative_area_level_2", "political"],
+              },
+              {
+                long_name: "Bihar",
+                short_name: "BR",
+                types: ["administrative_area_level_1", "political"],
+              },
+              {
+                long_name: "India",
+                short_name: "IN",
+                types: ["country", "political"],
+              },
+              {
+                long_name: "811307",
+                short_name: "811307",
+                types: ["postal_code"],
+              },
+            ],
+            formatted_address: "W6JG+87V, Jamui, Bihar 811307, India",
+            place_id: "ChIJz6e_eDcq8jkRS-n7CnxoRig",
+            types: ["premise", "street_address"],
+            digipin: "25F-C2M-P2P7",
+          },
+        },
+      },
+    ],
+  },
+
+  // face and ai services
+  // blurriness
+  {
+    name: "IB",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          httpCode: 200,
+          data: {
+            result: "Clear",
+          },
+        },
+      },
+    ],
+  },
+  // ai image check
+  {
+    name: "AIC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          httpCode: 200,
+          data: {
+            ai_generated: 0.01,
+          },
+        },
+      },
+    ],
+  },
+  // deepfake image check
+  {
+    name: "DIC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          httpCode: 200,
+          data: {
+            deepfake: 0.01,
+          },
+        },
+      },
+    ],
+  },
+  // ai and deepfake image check
+  {
+    name: "ADIC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          httpCode: 200,
+          data: {
+            ai_generated: 0.01,
+            deepfake: 0.01,
+          },
+        },
+      },
+    ],
+  },
+    // face verification
+  {
+    name: "FACE",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: { score: 98.45, matched: true },
+        },
+      },
+    ],
+  },
+
+  // Recharge
   // fetching operators
   {
     name: "FO",
@@ -1020,6 +1553,7 @@ const apiExamples = [
       },
     ],
   },
+
   // bbps
   // biller info
   {

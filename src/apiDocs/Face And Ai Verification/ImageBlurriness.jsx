@@ -1,39 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { DATA, ImageBlurrinessDynamic } from "../../utils/apiSchema";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { FM, IV } from "../../utils/bodyParams";
+import { GetAcc } from "../../utils/Language";
 
-import BodyParams from "../../../components/BodyParams/BodyParams";
-import MethodLink from "../../../components/MethodLink";
-import RequestHistoryTable from "../../../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../../../components/Responses/ResponsesComponent";
-import Codes from "../../../components/API Request/Codes";
-import Headers from "../../../components/Headers/Headers";
-
-import { api_Headers } from "../../../utils/Api_Headers";
-import { FetchApi } from "../../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, DATA } from "../../../utils/apiSchema";
-import { GetAcc } from "../../../utils/Language";
-import { AI } from "../../../utils/bodyParams";
-
-export default function CustomVerification() {
+export default function ImageBlurriness() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-    const examplesList = GetAcc?.exampleCodes["AVI"] || [];
+  const [allRequiredFields, setAllRequiredFields] = useState({});
+
+  const examplesList = GetAcc?.exampleCodes["IB"] || [];
+
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
-  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMathcApiCall = async () => {
+  const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -43,7 +43,7 @@ export default function CustomVerification() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/aadhaar/sentAadhaarotp",
+        path: "face/facematch",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -67,25 +67,25 @@ export default function CustomVerification() {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* HERO SECTION */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification With Digilocker</h1>
+          <h1 className="api_heading">IMAGE BLURRINESS DETECTION</h1>
 
           <MethodLink
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link= "aadhaar/initiate"
+            link={"image/blur_Check"}
           />
 
           <p className="first_para">
-            The Aadhaar Number Verification API allows developers to verify
-            users’ Aadhaar numbers in real-time.
+            The Face Match API is a service that allows developers to compare
+            two facial images and determine their similarity or match score.
           </p>
         </div>
 
-        {/* Request History */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* REQ History Table */}
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}
         <div className="py-6">
@@ -98,36 +98,50 @@ export default function CustomVerification() {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
-          <p className="text-xs font-medium">BODY PARAMS</p>
+          <p className="text-xs font-medium">FORM DATA</p>
+          <p className="text-xs font-medium text-gray-600">
+            Please submit the data using <code>multipart/form-data</code>{" "}
+            format.
+          </p>
+          <p className="text-xs font-medium text-gray-600">
+            Use key-value pairs for fields and include any files as{" "}
+            <code>file</code> inputs.
+          </p>
+          <p className="text-xs font-medium text-gray-600">
+            ⚠️ Make sure all required fields are included.
+          </p>
+
           <BodyParams
-            bodyObj={AI}
-            faceMatchState={faceMatchState}
+            bodyObj={IV}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Responses */}
+        {/* RESPONSES */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={ImageBlurrinessDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
-      {/* Right side: API test code panel */}
+      {/* RIGHT SIDE CODE SECTION */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMathcApiCall}
+          makeFaceMatchApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"aadhaarInitiate"}
-          examples={GetAcc?.exampleCodes["AVI"] || []}
+          service={"imageBlurCheck"}
+          examples={GetAcc?.exampleCodes["IB"] || []}
         />
       </div>
     </div>

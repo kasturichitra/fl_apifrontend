@@ -71,12 +71,12 @@ export default function BodyParams({
           BodyParams
         </Link>
       </p>
-       {/* <p>
+       <p>
         To Know about Category_Id and Service_Id click here{" "}
         <Link to="/guides/category_and_service" className="link_style">
           Service And Category
         </Link>
-      </p> */}
+      </p>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import { MOG } from "../../utils/bodyParams";

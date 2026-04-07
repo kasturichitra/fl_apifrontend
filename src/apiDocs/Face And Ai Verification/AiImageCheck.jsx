@@ -1,51 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { AiImageCheckDynamic, DATA } from "../../utils/apiSchema";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { FM, IV } from "../../utils/bodyParams";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
 
-const PanLinkedMobile = () => {
+export default function AiImageCheck() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["AIC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "face/facematch",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -57,10 +55,9 @@ const PanLinkedMobile = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -70,25 +67,27 @@ const PanLinkedMobile = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Face Match</h1>
+
           <MethodLink
-            method="POST"
-            className="method_link"
-            LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            method={"POST"}
+            className={"method_link"}
+            LinkClass={"link_class"}
+            link={"image/ai_image_check"}
           />
+
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The Face Match API is a service that allows developers to compare
+            two facial images and determine their similarity or match score.
           </p>
         </div>
 
-        {/* Request History Table */}
-        {/* <RequestHistoryTable TableClass="history_Table" /> */}
+        {/* REQ History Table */}
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
-        {/* Headers */}
+        {/* HEADERS */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -99,41 +98,51 @@ const PanLinkedMobile = () => {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
-          <p className="text-xs font-medium">BODY PARAMS</p>
+          <p className="text-xs font-medium">FORM DATA</p>
+          <p className="text-xs text-gray-600">
+            Please submit the data using <code>multipart/form-data</code>{" "}
+            format.
+          </p>
+          <p className="text-xs text-gray-600">
+            Use key-value pairs for fields and include any files as{" "}
+            <code>file</code> inputs.
+          </p>
+          <p className="text-xs text-gray-600">
+            ⚠️ Make sure all required fields are included.
+          </p>
           <BodyParams
-            bodyObj={PNV}
-            faceMatchState={faceMatchState}
+            bodyObj={IV}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* RESPONSES */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={AiImageCheckDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
-      {/* Code / Example Section */}
+      {/* RIGHT SIDE CODE SECTION */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMatchApiCall={makeFaceMatchApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"aiImageCheck"}
+          examples={GetAcc?.exampleCodes["AIC"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default PanLinkedMobile;
-
+}
