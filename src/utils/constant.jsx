@@ -171,37 +171,6 @@ export const ApiReferences = [
         link: "aadhaar_to_masked_pan",
         methods: [
           {
-            title: "Aadhaar To Masked Pan",
-            type: "POST",
-            link: "aadhaar_to_masked_pan",
-          },
-          {
-            title: "DigiLocker Document List",
-            type: "POST",
-            link: "digilocker_document_list",
-          },
-          {
-            title: "DigiLocker Document Download",
-            type: "POST",
-            link: "digilocker_document_download",
-          },
-          {
-            title: "Aadhaar Number Verification",
-            link: "adhaar_otp_generation",
-            methods: [
-              {
-                title: "STEP: 1 Aadhaar OTP Send",
-                type: "POST",
-                link: "aadhaar_otp_send",
-              },
-              {
-                title: "STEP: 2 Aadhaar OTP Verify",
-                type: "POST",
-                link: "aadhaar_otp_verify",
-              },
-            ],
-          },
-          {
             title: "E-Aadhaar DigiLocker",
             link: "e_aadhaar_digiLocker",
             methods: [
@@ -216,6 +185,36 @@ export const ApiReferences = [
                 link: "aadhaar_status",
               },
             ],
+          },
+          {
+            title: "Aadhaar To Masked Pan",
+            type: "POST",
+            link: "aadhaar_to_masked_pan",
+          },
+          {
+            title: "Digilocker Issued Documents",
+            type: "POST",
+            link: "digilocker_issued_documents",
+          },
+          {
+            title: "Digilocker Pull Document",
+            type: "POST",
+            link: "digilocker_pull_document",
+          },
+          {
+            title: "Aadhaar Based eSign",
+            type: "POST",
+            link: "aadhaar_based_esign",
+          },
+          {
+            title: "E-Aadhaar Upload (pdf)",
+            type: "POST",
+            link: "e_aadhaar_upload_pdf",
+          },
+          {
+            title: "Digilocker Verify Account",
+            type: "POST",
+            link: "digilocker_verify_account",
           },
         ],
       },
@@ -438,34 +437,29 @@ export const ApiReferences = [
         link: "vehicle_and_transport",
         methods: [
           {
-            title: "Vehicle RC Verification",
+            title: "Vehicle RC",
             type: "POST",
             link: "vehicle_rc_verification",
           },
           {
-            title: "Vehicle Owner Name",
+            title: "Detailed RC Verification",
             type: "POST",
             link: "vehicle_owner_name",
           },
           {
-            title: "Driving License Verification",
+            title: "Stolen Vehicle Verification",
             type: "POST",
             link: "driving_license_verification",
           },
           {
-            title: "Driving License Status",
+            title: "Driving License",
             type: "POST",
             link: "driving_license_status",
           },
           {
-            title: "RTO Details",
+            title: "Challan via RC",
             type: "POST",
             link: "rto_details",
-          },
-          {
-            title: "Vehicle Registration Zone",
-            type: "POST",
-            link: "vehicle_registration_zone",
           },
         ],
       },

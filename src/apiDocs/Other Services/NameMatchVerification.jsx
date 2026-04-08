@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -45,7 +44,7 @@ const NameMatchVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "name/compareNames",
+        path: "common/compareNames",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });

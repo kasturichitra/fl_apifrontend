@@ -16,24 +16,24 @@ import { GetAcc } from "../../../utils/Language";
 export default function AadhaarStatus() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-     const examplesList = GetAcc?.exampleCodes["AVS"] || [];
-    const [choosedExample, setChoosedExample] = useState(() => {
-      const successExample = examplesList.find((e) => e.statusCode === 200);
-      return successExample
-        ? 200
-        : examplesList.length > 0
+  const examplesList = GetAcc?.exampleCodes["AVS"] || [];
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
         ? examplesList[0].statusCode
         : null;
-    });
-  
-    const [isExampleChoosed, setIsExampleChoosed] = useState(
-      () => !!choosedExample
-    );
+  });
+
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample,
+  );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -69,7 +69,9 @@ export default function AadhaarStatus() {
       <div className="first_child hide-scrollbar">
         {/* HERO SECTION */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification</h1>
+          <h1 className="api_heading">
+            Aadhaar Verification With Digilocker Status
+          </h1>
 
           <MethodLink
             method={"POST"}
@@ -79,7 +81,9 @@ export default function AadhaarStatus() {
           />
 
           <p className="first_para">
-            Name Verification of the Account Holder Name
+            The Aadhaar Verification with Digilocker API enables developers to
+            securely verify users’ Aadhaar details by leveraging their
+            Digilocker accounts in real-time.
           </p>
         </div>
 
@@ -111,7 +115,10 @@ export default function AadhaarStatus() {
         {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarStatusDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={AadhaarStatusDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 

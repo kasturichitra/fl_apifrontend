@@ -61,6 +61,11 @@ import LongLatGeofencing from "../apiDocs/Geo Location/LongLatGeofencing";
 import AddressToDigipin from "../apiDocs/Geo Location/AddressToDigipin";
 import PanToFatherName from "../apiDocs/Pan Services/PanToFatherName";
 import PanToGst from "../apiDocs/Pan Services/PanToGst";
+import Digilockerverify from "../apiDocs/Aadhaar And DigiLocker/Digilockerverify";
+import AadhaarToMaskedPanVerification from "../apiDocs/Aadhaar And DigiLocker/AadhaarToMaskedPanVerification";
+import CourtRecordsCheck from "../apiDocs/Risk And Due Diligence/CourtRecordsCheck";
+import DomainVerification from "../apiDocs/Risk And Due Diligence/DomainVerification";
+import ProfileAdvance from "../apiDocs/Risk And Due Diligence/ProfileAdvance";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -80,13 +85,12 @@ const apiComponentMap = {
   pan_to_father_name: PanToFatherName,
 
   // ---------------- AADHAAR & DIGILOCKER ----------------]
-  aadhaar_to_masked_pan: AadhaarStatus,
-  aadhaar_name_fetch: ComingSoon,
-  aadhaar_dob_fetch: ComingSoon,
+  aadhaar_to_masked_pan: AadhaarToMaskedPanVerification,
   digilocker_document_list: ComingSoon,
   digilocker_document_download: ComingSoon,
   aadhaar_otp_send: AadhaarIntiation,
   aadhaar_otp_verify: AadhaarStatus,
+  digilocker_verify_account: Digilockerverify,
 
   // ---------------- FACE MATCH ----------------
   face_match: FaceMatchVerification,
@@ -109,9 +113,6 @@ const apiComponentMap = {
   // ---------------- CREDIT CARD ----------------
   bin_verification: BinVerification,
   full_card_verification: FullCreditCardVerification,
-
-  // ---------------- COMMON ----------------
-  name_match_verification: NameMatchVerification,
 
   /* ================= GST SERVICES ================= */
   gstin_verification: GSTINVerification,
@@ -150,7 +151,6 @@ const apiComponentMap = {
   driving_license_verification: ComingSoon,
   driving_license_status: ComingSoon,
   rto_details: ComingSoon,
-  vehicle_registration_zone: ComingSoon,
 
     /* ================= GOVERNMENT ID SERVICES ================= */
   passport_verification: ComingSoon,
@@ -177,18 +177,12 @@ const apiComponentMap = {
   address_to_digipin: AddressToDigipin,
 
   /* ================= RISK & DUE DILIGENCE ================= */
-  court_case_search: ComingSoon,
-  litigation_history: ComingSoon,
-  document_forgery_detection: ComingSoon,
-  image_tampering_detection: ComingSoon,
-  global_watchlist_screening: ComingSoon,
-  negative_news_scan: ComingSoon,
-  risk_profile_score: ComingSoon,
+  court_records_check_diy: CourtRecordsCheck,
+  domain_verification: DomainVerification,
+  profile_advance: ProfileAdvance,
 
   /* ================= OTHER SERVICES ================= */
-  professional_license_verification: ComingSoon,
-  custom_verification: ComingSoon,
-  miscellaneous_utility: ComingSoon,
+  name_match_verification: NameMatchVerification,
 
     // ---------------- BBPS ----------------
   bbps_Doc: BbpsTheory,

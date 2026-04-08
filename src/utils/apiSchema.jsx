@@ -106,17 +106,20 @@ export const AadhaarIntiateDynamic = [
       fields: [
         {
           title: "success",
-          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          subTitle:
+            "Indicates whether the DigiLocker link generation was successful",
           type: "boolean",
         },
         {
           title: "message",
-          subTitle: "Response message describing the result of the DigiLocker link request",
+          subTitle:
+            "Response message describing the result of the DigiLocker link request",
           type: "string",
         },
         {
           title: "transId",
-          subTitle: "Unique transaction ID generated for this DigiLocker request",
+          subTitle:
+            "Unique transaction ID generated for this DigiLocker request",
           type: "string",
         },
         {
@@ -126,7 +129,8 @@ export const AadhaarIntiateDynamic = [
         },
         {
           title: "link",
-          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          subTitle:
+            "Generated DigiLocker authentication URL for Aadhaar verification",
           type: "string",
         },
       ],
@@ -142,17 +146,20 @@ export const AadhaarStatusDynamic = [
       fields: [
         {
           title: "success",
-          subTitle: "Indicates whether the DigiLocker link generation was successful",
+          subTitle:
+            "Indicates whether the DigiLocker link generation was successful",
           type: "boolean",
         },
         {
           title: "message",
-          subTitle: "Response message describing the result of the DigiLocker link request",
+          subTitle:
+            "Response message describing the result of the DigiLocker link request",
           type: "string",
         },
         {
           title: "transId",
-          subTitle: "Unique transaction ID generated for this DigiLocker request",
+          subTitle:
+            "Unique transaction ID generated for this DigiLocker request",
           type: "string",
         },
         {
@@ -162,7 +169,8 @@ export const AadhaarStatusDynamic = [
         },
         {
           title: "link",
-          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
+          subTitle:
+            "Generated DigiLocker authentication URL for Aadhaar verification",
           type: "string",
         },
       ],
@@ -176,30 +184,22 @@ export const DigilockerVerifyDynamic = [
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "success",
-          subTitle: "Indicates whether the DigiLocker link generation was successful",
-          type: "boolean",
-        },
-        {
-          title: "message",
-          subTitle: "Response message describing the result of the DigiLocker link request",
-          type: "string",
-        },
-        {
-          title: "transId",
-          subTitle: "Unique transaction ID generated for this DigiLocker request",
-          type: "string",
-        },
-        {
-          title: "ts_trans_id",
-          subTitle: "TruthScreen system transaction reference ID",
-          type: "string",
-        },
-        {
-          title: "link",
-          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
-          type: "string",
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "registered",
+              type: "Boolean",
+              subTitle: "registeration completed or not",
+            },
+            {
+              title: "digilockerid",
+              type: "string",
+              subTitle: "digilocker id that was assigned to the account",
+            },
+          ],
         },
       ],
     },
@@ -212,30 +212,17 @@ export const AadhaarToMaskedPanDynamic = [
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "success",
-          subTitle: "Indicates whether the DigiLocker link generation was successful",
-          type: "boolean",
-        },
-        {
-          title: "message",
-          subTitle: "Response message describing the result of the DigiLocker link request",
-          type: "string",
-        },
-        {
-          title: "transId",
-          subTitle: "Unique transaction ID generated for this DigiLocker request",
-          type: "string",
-        },
-        {
-          title: "ts_trans_id",
-          subTitle: "TruthScreen system transaction reference ID",
-          type: "string",
-        },
-        {
-          title: "link",
-          subTitle: "Generated DigiLocker authentication URL for Aadhaar verification",
-          type: "string",
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "result",
+              type: "string",
+              subTitle: "Blurriness status of the image (e.g., Clear, Blurry)",
+            },
+          ],
         },
       ],
     },
@@ -333,7 +320,7 @@ export const AiAndDeepfakeCheckDynamic = [
               title: "deepfake",
               type: "string",
               subTitle: "The score of deepfake check",
-            }
+            },
           ],
         },
       ],
@@ -435,15 +422,60 @@ export const CinDynamic = [
           subTitle: "CIN Registration Details",
           type: "object",
           objectDetails: [
-            { title: "CIN", subTitle: "Corporate Identification Number", type: "string", value: "U12345DL2025PTC999999" },
-            { title: "Company Name", subTitle: "Registered Name of the Company", type: "string", value: "ABC TECHNOLOGIES PRIVATE LIMITED" },
-            { title: "Date of Registration", subTitle: "Date when company was registered", type: "string", value: "01/15/2025" },
-            { title: "Status", subTitle: "Current status of the company", type: "string", value: "Active" },
-            { title: "PAN", subTitle: "Permanent Account Number of the company", type: "string", value: "AABCD1234F" },
-            { title: "Authorized Capital", subTitle: "Authorized share capital of the company", type: "string", value: "500000" },
-            { title: "Paidup Capital", subTitle: "Paid-up capital of the company", type: "string", value: "500000" },
-            { title: "Email", subTitle: "Registered company email", type: "string", value: "info@abctech.com" },
-            { title: "Mobile", subTitle: "Registered company mobile number", type: "string", value: "9876543210" },
+            {
+              title: "CIN",
+              subTitle: "Corporate Identification Number",
+              type: "string",
+              value: "U12345DL2025PTC999999",
+            },
+            {
+              title: "Company Name",
+              subTitle: "Registered Name of the Company",
+              type: "string",
+              value: "ABC TECHNOLOGIES PRIVATE LIMITED",
+            },
+            {
+              title: "Date of Registration",
+              subTitle: "Date when company was registered",
+              type: "string",
+              value: "01/15/2025",
+            },
+            {
+              title: "Status",
+              subTitle: "Current status of the company",
+              type: "string",
+              value: "Active",
+            },
+            {
+              title: "PAN",
+              subTitle: "Permanent Account Number of the company",
+              type: "string",
+              value: "AABCD1234F",
+            },
+            {
+              title: "Authorized Capital",
+              subTitle: "Authorized share capital of the company",
+              type: "string",
+              value: "500000",
+            },
+            {
+              title: "Paidup Capital",
+              subTitle: "Paid-up capital of the company",
+              type: "string",
+              value: "500000",
+            },
+            {
+              title: "Email",
+              subTitle: "Registered company email",
+              type: "string",
+              value: "info@abctech.com",
+            },
+            {
+              title: "Mobile",
+              subTitle: "Registered company mobile number",
+              type: "string",
+              value: "9876543210",
+            },
             {
               title: "Multiple Addresses",
               subTitle: "Registered, Police Station, and Present Addresses",
@@ -451,14 +483,46 @@ export const CinDynamic = [
               items: {
                 type: "object",
                 fields: [
-                  { title: "City", subTitle: "City of the address", type: "string" },
-                  { title: "State", subTitle: "State of the address", type: "string" },
-                  { title: "Country", subTitle: "Country of the address", type: "string" },
-                  { title: "District", subTitle: "District of the address", type: "string" },
-                  { title: "Locality", subTitle: "Local area or locality", type: "string" },
-                  { title: "Postal Code", subTitle: "PIN or ZIP code", type: "string" },
-                  { title: "Address Type", subTitle: "Type of address", type: "string" },
-                  { title: "Street Address", subTitle: "Street or building address", type: "string" },
+                  {
+                    title: "City",
+                    subTitle: "City of the address",
+                    type: "string",
+                  },
+                  {
+                    title: "State",
+                    subTitle: "State of the address",
+                    type: "string",
+                  },
+                  {
+                    title: "Country",
+                    subTitle: "Country of the address",
+                    type: "string",
+                  },
+                  {
+                    title: "District",
+                    subTitle: "District of the address",
+                    type: "string",
+                  },
+                  {
+                    title: "Locality",
+                    subTitle: "Local area or locality",
+                    type: "string",
+                  },
+                  {
+                    title: "Postal Code",
+                    subTitle: "PIN or ZIP code",
+                    type: "string",
+                  },
+                  {
+                    title: "Address Type",
+                    subTitle: "Type of address",
+                    type: "string",
+                  },
+                  {
+                    title: "Street Address",
+                    subTitle: "Street or building address",
+                    type: "string",
+                  },
                 ],
               },
               value: [
@@ -470,7 +534,7 @@ export const CinDynamic = [
                   Locality: "Connaught Place",
                   "Postal Code": "110001",
                   "Address Type": "Registered Address",
-                  "Street Address": "Tech Park Tower, 3rd Floor"
+                  "Street Address": "Tech Park Tower, 3rd Floor",
                 },
                 {
                   City: "Noida",
@@ -480,7 +544,7 @@ export const CinDynamic = [
                   Locality: "Sector 62",
                   "Postal Code": "201301",
                   "Address Type": "Police Station Address",
-                  "Street Address": "IT Hub Complex"
+                  "Street Address": "IT Hub Complex",
                 },
                 {
                   City: "Gurugram",
@@ -490,9 +554,9 @@ export const CinDynamic = [
                   Locality: "Cyber City",
                   "Postal Code": "122002",
                   "Address Type": "Present Address",
-                  "Street Address": "DLF Phase 3, Building 14"
-                }
-              ]
+                  "Street Address": "DLF Phase 3, Building 14",
+                },
+              ],
             },
             {
               title: "NIC Codes",
@@ -501,13 +565,24 @@ export const CinDynamic = [
               items: {
                 type: "object",
                 fields: [
-                  { title: "NIC Code", subTitle: "2/4/5 digit NIC code", type: "string" },
-                  { title: "Description", subTitle: "Description of activity", type: "string" },
+                  {
+                    title: "NIC Code",
+                    subTitle: "2/4/5 digit NIC code",
+                    type: "string",
+                  },
+                  {
+                    title: "Description",
+                    subTitle: "Description of activity",
+                    type: "string",
+                  },
                 ],
               },
               value: [
-                { "NIC Code": "62020", Description: "Computer consultancy and IT-related services" }
-              ]
+                {
+                  "NIC Code": "62020",
+                  Description: "Computer consultancy and IT-related services",
+                },
+              ],
             },
             {
               title: "Annual Returns (3 Yrs)",
@@ -516,15 +591,32 @@ export const CinDynamic = [
               items: {
                 type: "object",
                 fields: [
-                  { title: "Financial Year", subTitle: "Financial year ending", type: "string" },
-                  { title: "Date of Filing", subTitle: "Filing date of the return", type: "string" },
+                  {
+                    title: "Financial Year",
+                    subTitle: "Financial year ending",
+                    type: "string",
+                  },
+                  {
+                    title: "Date of Filing",
+                    subTitle: "Filing date of the return",
+                    type: "string",
+                  },
                 ],
               },
               value: [
-                { "Financial Year": "31-03-2023", "Date of Filing": "10/10/2023" },
-                { "Financial Year": "31-03-2022", "Date of Filing": "10/11/2022" },
-                { "Financial Year": "31-03-2021", "Date of Filing": "10/10/2021" },
-              ]
+                {
+                  "Financial Year": "31-03-2023",
+                  "Date of Filing": "10/10/2023",
+                },
+                {
+                  "Financial Year": "31-03-2022",
+                  "Date of Filing": "10/11/2022",
+                },
+                {
+                  "Financial Year": "31-03-2021",
+                  "Date of Filing": "10/10/2021",
+                },
+              ],
             },
             {
               title: "Balance Sheets (3 Yrs)",
@@ -533,21 +625,38 @@ export const CinDynamic = [
               items: {
                 type: "object",
                 fields: [
-                  { title: "Financial Year", subTitle: "Financial year ending", type: "string" },
-                  { title: "Date of Filing", subTitle: "Filing date of balance sheet", type: "string" },
+                  {
+                    title: "Financial Year",
+                    subTitle: "Financial year ending",
+                    type: "string",
+                  },
+                  {
+                    title: "Date of Filing",
+                    subTitle: "Filing date of balance sheet",
+                    type: "string",
+                  },
                 ],
               },
               value: [
-                { "Financial Year": "31-03-2023", "Date of Filing": "09/27/2023" },
-                { "Financial Year": "31-03-2022", "Date of Filing": "09/28/2022" },
-                { "Financial Year": "31-03-2021", "Date of Filing": "09/25/2021" },
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  }
+                {
+                  "Financial Year": "31-03-2023",
+                  "Date of Filing": "09/27/2023",
+                },
+                {
+                  "Financial Year": "31-03-2022",
+                  "Date of Filing": "09/28/2022",
+                },
+                {
+                  "Financial Year": "31-03-2021",
+                  "Date of Filing": "09/25/2021",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];
 export const UdyamDynamic = [
   {
@@ -599,7 +708,8 @@ export const UdyamDynamic = [
             },
             {
               title: "Organisation Type",
-              subTitle: "Type of organization (Private, Public, Partnership, etc.)",
+              subTitle:
+                "Type of organization (Private, Public, Partnership, etc.)",
               type: "string",
             },
             {
@@ -672,16 +782,48 @@ export const UdyamDynamic = [
               subTitle: "Registered office address details",
               type: "object",
               fields: [
-                { title: "Flat/Door/Block No", subTitle: "Flat or door number", type: "string" },
-                { title: "Name of Premises/ Building", subTitle: "Name of the building or premises", type: "string" },
-                { title: "Village/Town", subTitle: "Village or town", type: "string" },
-                { title: "Block", subTitle: "Block name or number", type: "string" },
-                { title: "Road/Street/Lane", subTitle: "Road, street or lane name", type: "string" },
+                {
+                  title: "Flat/Door/Block No",
+                  subTitle: "Flat or door number",
+                  type: "string",
+                },
+                {
+                  title: "Name of Premises/ Building",
+                  subTitle: "Name of the building or premises",
+                  type: "string",
+                },
+                {
+                  title: "Village/Town",
+                  subTitle: "Village or town",
+                  type: "string",
+                },
+                {
+                  title: "Block",
+                  subTitle: "Block name or number",
+                  type: "string",
+                },
+                {
+                  title: "Road/Street/Lane",
+                  subTitle: "Road, street or lane name",
+                  type: "string",
+                },
                 { title: "City", subTitle: "City name", type: "string" },
                 { title: "State", subTitle: "State name", type: "string" },
-                { title: "District", subTitle: "District name", type: "string" },
-                { title: "Mobile", subTitle: "Registered mobile number", type: "string" },
-                { title: "Email", subTitle: "Registered email address", type: "string" },
+                {
+                  title: "District",
+                  subTitle: "District name",
+                  type: "string",
+                },
+                {
+                  title: "Mobile",
+                  subTitle: "Registered mobile number",
+                  type: "string",
+                },
+                {
+                  title: "Email",
+                  subTitle: "Registered email address",
+                  type: "string",
+                },
               ],
             },
           ],

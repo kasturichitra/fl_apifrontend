@@ -8,7 +8,7 @@ import Headers from "../../components/Headers/Headers";
 import { AiAndDeepfakeCheckDynamic, DATA } from "../../utils/apiSchema";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { FM, IV } from "../../utils/bodyParams";
+import { FM, IC } from "../../utils/bodyParams";
 import { GetAcc } from "../../utils/Language";
 
 export default function AiAndDeepfakeImageCheck() {
@@ -80,7 +80,7 @@ export default function AiAndDeepfakeImageCheck() {
             ⚠️ Make sure all required fields are included.
           </p>
           <BodyParams
-            bodyObj={IV}
+            bodyObj={IC}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />

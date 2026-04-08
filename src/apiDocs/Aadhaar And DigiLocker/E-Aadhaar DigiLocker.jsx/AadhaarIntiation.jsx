@@ -16,24 +16,24 @@ import { AI } from "../../../utils/bodyParams";
 export default function AadhaarIntiation() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-    const examplesList = GetAcc?.exampleCodes["AVI"] || [];
+  const examplesList = GetAcc?.exampleCodes["AVI"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -69,18 +69,19 @@ export default function AadhaarIntiation() {
       <div className="first_child hide-scrollbar">
         {/* HERO SECTION */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification With Digilocker</h1>
+          <h1 className="api_heading">Aadhaar Verification With Digilocker Initation</h1>
 
           <MethodLink
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link= "aadhaar/initiate"
+            link="aadhaar/initiate"
           />
 
           <p className="first_para">
-            The Aadhaar Number Verification API allows developers to verify
-            users’ Aadhaar numbers in real-time.
+            The Aadhaar Verification with Digilocker API enables developers to
+            securely verify users’ Aadhaar details by leveraging their
+            Digilocker accounts in real-time.
           </p>
         </div>
 
@@ -112,7 +113,10 @@ export default function AadhaarIntiation() {
         {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={AadhaarIntiateDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 

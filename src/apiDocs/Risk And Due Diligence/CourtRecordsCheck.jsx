@@ -9,31 +9,31 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic } from "../../utils/apiSchema";
 
-const PanNameMatch = () => {
+const CourtRecordsCheck = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["DV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -44,7 +44,7 @@ const PanNameMatch = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,16 +71,27 @@ const PanNameMatch = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Court Records Check</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="diligence/court/record"
           />
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The Court Records Check API allows developers to verify users’ court
+            records in real-time.
+          </p>
+          <p className="first_para">
+            Court records provide official information about legal cases.
+          </p>
+          <p className="first_para">
+            These records include details such as case status, judgments, and
+            filings related to individuals or entities.
+          </p>
+          <p className="first_para">
+            Useful for due diligence, background verification, and legal
+            compliance purposes.
           </p>
         </div>
 
@@ -112,7 +123,7 @@ const PanNameMatch = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -126,13 +137,12 @@ const PanNameMatch = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"courtRecordsCheck"}
+          examples={GetAcc?.exampleCodes["DV"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default PanNameMatch;
-
+export default CourtRecordsCheck;

@@ -10,7 +10,7 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
 
 const PassportVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -113,7 +113,7 @@ const PassportVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
         </div>
       </div>
 

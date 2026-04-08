@@ -1,39 +1,37 @@
 import React, { useState } from "react";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../components/Responses/ResponsesComponent";
+import Codes from "../../components/API Request/Codes";
+import Headers from "../../components/Headers/Headers";
+import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { AadhaarIntiateDynamic, DATA, DigilockerVerifyDynamic } from "../../utils/apiSchema";
+import { GetAcc } from "../../utils/Language";
+import { DAV } from "../../utils/bodyParams";
 
-import BodyParams from "../../../components/BodyParams/BodyParams";
-import MethodLink from "../../../components/MethodLink";
-import RequestHistoryTable from "../../../components/refernce_route_components/RequestHistoryTable";
-import ResponseComponent from "../../../components/Responses/ResponsesComponent";
-import Codes from "../../../components/API Request/Codes";
-import Headers from "../../../components/Headers/Headers";
-
-import { api_Headers } from "../../../utils/Api_Headers";
-import { FetchApi } from "../../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, DATA } from "../../../utils/apiSchema";
-import { GetAcc } from "../../../utils/Language";
-import { AI } from "../../../utils/bodyParams";
-
-export default function VehicleOwnerName() {
+export default function Digilockerverify() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-    const examplesList = GetAcc?.exampleCodes["AVI"] || [];
+  const examplesList = GetAcc?.exampleCodes["DAV"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -69,18 +67,19 @@ export default function VehicleOwnerName() {
       <div className="first_child hide-scrollbar">
         {/* HERO SECTION */}
         <div className="api_hero">
-          <h1 className="api_heading">Aadhaar Verification With Digilocker</h1>
+          <h1 className="api_heading">Digilocker Account Verification</h1>
 
           <MethodLink
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link= "aadhaar/initiate"
+            link="aadhaar/initiate"
           />
 
           <p className="first_para">
-            The Aadhaar Number Verification API allows developers to verify
-            users’ Aadhaar numbers in real-time.
+            The Digilocker Account Verification API allows developers to
+            securely verify and authenticate users’ Digilocker accounts in
+            real-time.
           </p>
         </div>
 
@@ -102,7 +101,7 @@ export default function VehicleOwnerName() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AI}
+            bodyObj={DAV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -112,7 +111,10 @@ export default function VehicleOwnerName() {
         {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AadhaarIntiateDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={DigilockerVerifyDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -126,8 +128,8 @@ export default function VehicleOwnerName() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"aadhaarInitiate"}
-          examples={GetAcc?.exampleCodes["AVI"] || []}
+          service={"digilockerVerify"}
+          examples={GetAcc?.exampleCodes["DAV"] || []}
         />
       </div>
     </div>

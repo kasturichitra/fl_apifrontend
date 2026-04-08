@@ -211,7 +211,6 @@ export const AI = [
     required: true,
   },
 ];
-
 // aadhaar status
 export const AS = [
   {
@@ -224,6 +223,11 @@ export const AS = [
     required: true,
   },
 ];
+// digilocker account verify
+export const DAV = [
+  
+]
+
 
 // mobile number
 
@@ -279,10 +283,10 @@ export const IC = [
   {
     title: "user image",
     type: "image",
-    fieldName: "userimage",
-    subTitle: "user image to be verified",
+    fieldName: "file",
+    subTitle: "image to be verified in png, webp, jpeg upto 5mb",
     inputTag: false,
-    example: "Dr.",
+    example: "",
     required: true,
   },
 ];

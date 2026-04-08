@@ -1,50 +1,47 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { AadhaarIntiateDynamic, AadhaarToMaskedPanDynamic, DATA } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { AI } from "../../utils/bodyParams";
 
-const PanNameMatch = () => {
+export default function AadhaarToMaskedPanVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["ATMP"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "/aadhaar/sentAadhaarotp",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -56,10 +53,9 @@ const PanNameMatch = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -69,25 +65,28 @@ const PanNameMatch = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* HERO SECTION */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Aadhaar To Masked Pan Verification</h1>
+
           <MethodLink
-            method="POST"
-            className="method_link"
-            LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            method={"POST"}
+            className={"method_link"}
+            LinkClass={"link_class"}
+            link="aadhaar/initiate"
           />
+
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The Aadhaar to Masked PAN Verification API enables developers to
+            securely verify and map a user’s Aadhaar number to their masked PAN
+            details in real-time.
           </p>
         </div>
 
-        {/* Request History Table */}
-        {/* <RequestHistoryTable TableClass="history_Table" /> */}
+        {/* Request History */}
+        <RequestHistoryTable TableClass={"history_Table"} />
 
-        {/* Headers */}
+        {/* HEADERS */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -102,37 +101,37 @@ const PanNameMatch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={AI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* Responses */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={AadhaarToMaskedPanDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
-      {/* Code / Example Section */}
+      {/* Right side: API test code panel */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"aadhaarToMaskedPan"}
+          examples={GetAcc?.exampleCodes["ATMP"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default PanNameMatch;
-
+}

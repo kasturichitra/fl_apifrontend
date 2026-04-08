@@ -8,7 +8,7 @@ import Headers from "../../components/Headers/Headers";
 import { DATA, ImageBlurrinessDynamic } from "../../utils/apiSchema";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { FM, IV } from "../../utils/bodyParams";
+import { IC } from "../../utils/bodyParams";
 import { GetAcc } from "../../utils/Language";
 
 export default function ImageBlurriness() {
@@ -114,7 +114,7 @@ export default function ImageBlurriness() {
           </p>
 
           <BodyParams
-            bodyObj={IV}
+            bodyObj={IC}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />

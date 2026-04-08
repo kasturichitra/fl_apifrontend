@@ -5,18 +5,18 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { BWI } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
 
-const PanNameMatch = () => {
+const DetailedRcVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -44,7 +44,7 @@ const PanNameMatch = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "bin/getBankDetails",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,16 +71,16 @@ const PanNameMatch = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Bank Details With Ifsc</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="bin/getBankDetails"
           />
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The Ifsc Verification API allows developers to verify users’
+            Ifsc in real-time to know about user bank.
           </p>
         </div>
 
@@ -102,7 +102,7 @@ const PanNameMatch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={BWI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -112,7 +112,7 @@ const PanNameMatch = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -126,13 +126,12 @@ const PanNameMatch = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"ifsc"}
+          examples={GetAcc?.exampleCodes["IFSC"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default PanNameMatch;
-
+export default DetailedRcVerification;

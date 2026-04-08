@@ -20,6 +20,7 @@ export const apiList = [
     url: "api/v1/client/generate/clientToken",
     params: {},
   },
+
   // 🔐 KYC APIs
   // pan services
   {
@@ -101,6 +102,7 @@ export const apiList = [
       otp: "",
     },
   },
+
   // aadhaar services
   {
     key: "aadhaarInitiate",
@@ -116,6 +118,21 @@ export const apiList = [
     url: "aadhaar/status",
     params: { tsTransId: "" },
   },
+  {
+    key: "aadhaarToMaskedPan",
+    name: "AADHAARTOMASKEDPAN",
+    category: "kyc",
+    url: "aadhaar/pan/maskedverify",
+    params: { aadharNumber: "" },
+  },
+  {
+    key: "digilockerVerify",
+    name: "DIGILOCKERVERIFYACCOUNT",
+    category: "kyc",
+    url: "aadhaar/digilocker/verify",
+    params: { mobileNumber: "" },
+  },
+
   // contact services
   {
     key: "mobileOtpGenration",
@@ -131,6 +148,7 @@ export const apiList = [
     url: "mobileNumber/otp_verification",
     params: { submittedOtp: "12XX" },
   },
+
   // business services
   {
     key: "gst",
@@ -350,6 +368,29 @@ export const apiList = [
     },
   },
 
+  // risk and due diligence
+  {
+    key: "courtRecordsCheck",
+    name: "COURTRECORDSCHECK",
+    category: "verification",
+    url: "diligence/court/record",
+    params: { tsTransId: "" },
+  },
+  {
+    key: "domainVerification",
+    name: "DOMAINVERIFICATION",
+    category: "verification",
+    url: "diligence/domain/verify",
+    params: { tsTransId: "" },
+  },
+  {
+    key: "profileAdvance",
+    name: "PROFILEADVANCE",
+    category: "profile",
+    url: "diligence/advance/profile",
+    params: { tsTransId: "" },
+  },
+
   // 🔁 Recharge APIs
   {
     key: "plans",
@@ -475,6 +516,12 @@ const commonErrorExamples = [
     message: { message: "Internal Server Error", httpCode: 500 },
   },
 ];
+
+const commonApiExample = {
+  success: true,
+  message: "Valid",
+  httpCode: 200,
+};
 
 const apiExamples = [
   // pan services
@@ -699,6 +746,21 @@ const apiExamples = [
       },
     ],
   },
+  {
+    name: "DAV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            registered: true,
+            digilockerid: "123e4567-e89b-12d3-a456-426655XXXXXX",
+          },
+        },
+      },
+    ],
+  },
 
   // contact and communication services
   // mobile otp genration
@@ -775,7 +837,7 @@ const apiExamples = [
       },
     ],
   },
-    // shop verification
+  // shop verification
   {
     name: "SHOP",
     examples: [
@@ -1427,7 +1489,7 @@ const apiExamples = [
       },
     ],
   },
-    // face verification
+  // face verification
   {
     name: "FACE",
     examples: [
