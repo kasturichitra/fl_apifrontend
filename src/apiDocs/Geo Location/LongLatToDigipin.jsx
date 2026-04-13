@@ -10,13 +10,14 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const LongLatToDigipin = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["LLD"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -86,6 +87,10 @@ const LongLatToDigipin = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -132,7 +137,7 @@ const LongLatToDigipin = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"latLongToDigipin"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          examples={GetAcc?.exampleCodes["LLD"] || []}
         />
       </div>
     </div>

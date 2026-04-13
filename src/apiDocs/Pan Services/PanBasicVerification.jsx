@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -11,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanBasicVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -24,17 +24,17 @@ const PanBasicVerification = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -89,8 +89,13 @@ const PanBasicVerification = () => {
             Tax Department of India.
           </p>
           <p className="first_para">
-            Used for tax-related identification for individuals and entities.{" "}
+            Used for tax-related identification for individuals and
+            entities.{" "}
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -144,4 +149,3 @@ const PanBasicVerification = () => {
 };
 
 export default PanBasicVerification;
-

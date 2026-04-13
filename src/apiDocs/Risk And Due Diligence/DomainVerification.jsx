@@ -5,11 +5,12 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { DV, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const DomainVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -92,6 +93,10 @@ const DomainVerification = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -109,8 +114,13 @@ const DomainVerification = () => {
         {/* Body Params */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
+          <p
+            style={{ color: "#f59e0b", fontSize: "12px", marginBottom: "10px" }}
+          >
+            Either <b>domain</b> or <b>emailAddress</b> is required
+          </p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={DV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

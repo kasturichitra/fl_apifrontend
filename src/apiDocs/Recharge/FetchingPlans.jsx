@@ -23,17 +23,17 @@ const FetchingPlans = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -79,8 +79,8 @@ const FetchingPlans = () => {
             link="Recharge/Plans"
           />
           <p className="first_para">
-            The FP Number Verification API allows developers to verify users’
-            FP numbers in real-time.
+            The FP Number Verification API allows developers to verify users’ FP
+            numbers in real-time.
           </p>
         </div>
 
@@ -112,7 +112,10 @@ const FetchingPlans = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargePlansDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={RechargePlansDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 

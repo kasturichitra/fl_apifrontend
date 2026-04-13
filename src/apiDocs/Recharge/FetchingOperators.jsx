@@ -23,17 +23,17 @@ const FetchingOperators = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -79,7 +79,8 @@ const FetchingOperators = () => {
             link="Recharge/Operators"
           />
           <p className="first_para">
-            The Fetching Operators API allows developers to verify get real time recahrge operators that are in market now!
+            The Fetching Operators API allows developers to verify get real time
+            recahrge operators that are in market now!
           </p>
         </div>
 
@@ -111,7 +112,10 @@ const FetchingOperators = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargeOperatorsDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={RechargeOperatorsDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -134,4 +138,3 @@ const FetchingOperators = () => {
 };
 
 export default FetchingOperators;
-

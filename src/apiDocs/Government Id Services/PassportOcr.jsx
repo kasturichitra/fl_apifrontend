@@ -5,35 +5,40 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BWI } from "../../utils/bodyParams";
+import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  PanDynamic,
+  PanToMaskedAadhaarDynamic,
+} from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const VehicleRcVerification = () => {
+const PassportOcr = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -44,7 +49,7 @@ const VehicleRcVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "bin/getBankDetails",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,20 +76,26 @@ const VehicleRcVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Details With Ifsc</h1>
+          <h1 className="api_heading">Passport Ocr</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getBankDetails"
+            link="government/passport_ocr/verify"
           />
           <p className="first_para">
-            The Ifsc Verification API allows developers to verify users’
-            Ifsc in real-time to know about user bank.
+            The Passport OCR API enables developers to automatically extract
+            text and personal details from passport images using optical
+            character recognition, delivering accurate and structured data in
+            real-time.
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
@@ -102,7 +113,7 @@ const VehicleRcVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BWI}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -112,7 +123,10 @@ const VehicleRcVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -126,12 +140,12 @@ const VehicleRcVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"ifsc"}
-          examples={GetAcc?.exampleCodes["IFSC"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default VehicleRcVerification;
+export default PassportOcr;

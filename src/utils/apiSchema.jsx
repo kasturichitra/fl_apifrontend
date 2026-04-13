@@ -191,7 +191,7 @@ export const DigilockerVerifyDynamic = [
           objectDetails: [
             {
               title: "registered",
-              type: "Boolean",
+              type: "boolean",
               subTitle: "registeration completed or not",
             },
             {
@@ -219,8 +219,14 @@ export const AadhaarToMaskedPanDynamic = [
           objectDetails: [
             {
               title: "result",
-              type: "string",
-              subTitle: "Blurriness status of the image (e.g., Clear, Blurry)",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "pan",
+                  type: "string",
+                  subTitle: "Masked pan of the given aadhaar number",
+                },
+              ],
             },
           ],
         },
@@ -332,24 +338,27 @@ export const AiAndDeepfakeCheckDynamic = [
 export const MobileOtpGenrateDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "OTP validation response",
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "access_token",
-          type: "string",
-          required: true,
-        },
-        {
-          title: "expires_in",
-          type: "integer",
-          required: true,
-        },
-        {
-          title: "token_type",
-          type: "string",
-          required: true,
+          title: "response",
+          subTitle: "Detailed OTP response data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "message",
+              subTitle: "OTP delivery message",
+              type: "string",
+            },
+            {
+              title: "success",
+              subTitle: "OTP delivery status message",
+              type: "string",
+            },
+          ],
         },
       ],
     },
@@ -358,29 +367,166 @@ export const MobileOtpGenrateDynamic = [
 export const MobileOtpValidateDynamic = [
   {
     status: 200,
-    summary: "Returns a paginated list of accounts",
+    summary: "OTP validation response",
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "access_token",
-          type: "string",
-          required: true,
-        },
-        {
-          title: "expires_in",
-          type: "integer",
-          required: true,
-        },
-        {
-          title: "token_type",
-          type: "string",
-          required: true,
+          title: "response",
+          subTitle: "Detailed OTP verification response",
+          type: "object",
+          objectDetails: [
+            {
+              title: "message",
+              subTitle: "OTP verification confirmation message",
+              type: "string",
+            },
+          ],
         },
       ],
     },
   },
 ];
+export const MobileToPanValidateDynamic = [
+  {
+    status: 200,
+    summary: "OTP validation and user details response",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          subTitle: "Wrapper for detailed response data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "address",
+              subTitle: "List of user addresses",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  {
+                    title: "city",
+                    subTitle: "City name",
+                    type: "string",
+                  },
+                  {
+                    title: "country_code",
+                    subTitle: "Country code",
+                    type: "string",
+                  },
+                  {
+                    title: "first_line_of_address",
+                    subTitle: "Primary address line",
+                    type: "string",
+                  },
+                  {
+                    title: "postal_code",
+                    subTitle: "Postal/ZIP code",
+                    type: "string",
+                  },
+                  {
+                    title: "reported_date",
+                    subTitle: "Date when address was reported",
+                    type: "string",
+                  },
+                  {
+                    title: "second_line_of_address",
+                    subTitle: "Secondary address details",
+                    type: "string",
+                  },
+                  {
+                    title: "state",
+                    subTitle: "State name",
+                    type: "string",
+                  },
+                  {
+                    title: "third_line_of_address",
+                    subTitle: "Additional address details",
+                    type: "string",
+                  },
+                ],
+              },
+            },
+            {
+              title: "age",
+              subTitle: "User age",
+              type: "string",
+            },
+            {
+              title: "alternate_emails",
+              subTitle: "List of alternate email addresses",
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            {
+              title: "alternate_mobile_numbers",
+              subTitle: "List of alternate mobile numbers",
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            {
+              title: "dob",
+              subTitle: "Date of birth",
+              type: "string",
+            },
+            {
+              title: "email",
+              subTitle: "Primary email address",
+              type: "string",
+            },
+            {
+              title: "gender",
+              subTitle: "Gender of the user",
+              type: "string",
+            },
+            {
+              title: "name",
+              subTitle: "Full name of the user",
+              type: "string",
+            },
+            {
+              title: "official_documents",
+              subTitle: "Official identification details",
+              type: "object",
+              fields: [
+                {
+                  title: "pan",
+                  subTitle: "PAN number",
+                  type: "string",
+                },
+                {
+                  title: "aadhaar_last4",
+                  subTitle: "Last 4 digits of Aadhaar",
+                  type: "string",
+                },
+              ],
+            },
+            {
+              title: "pan",
+              subtitle: "PAN number",
+              type: "string",
+            },
+            {
+              title: "score",
+              subtitle: "User credit/verification score",
+              type: "string",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// face and ai sevices
 export const FaceDynamic = [
   {
     status: 200,
@@ -408,6 +554,74 @@ export const FaceDynamic = [
   },
 ];
 
+// employment services
+export const BasicUanVerifyDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          subTitle: "basic uan verify Details",
+          type: "object",
+          objectDetails: [
+            {
+              title: "uan",
+              subTitle: "uan number that was tested",
+              type: "string",
+            },
+            {
+              title: "result",
+              subTitle: "basic uan verify Details",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "DateOfExitEpf",
+                  type: "string",
+                  subtitle: "Date when the member exited the EPF scheme",
+                },
+                {
+                  title: "Doj",
+                  type: "string",
+                  subtitle: "Date of joining the organization",
+                },
+                {
+                  title: "Establishment Name",
+                  type: "string",
+                  subtitle: "Name of the employer or company",
+                },
+                {
+                  title: "MemberId",
+                  type: "string",
+                  subtitle: "Unique EPF member identification number",
+                },
+                {
+                  title: "father or Husband Name",
+                  type: "string",
+                  subtitle: "Name of the member's father or husband",
+                },
+                {
+                  title: "name",
+                  type: "string",
+                  subtitle: "Full name of the EPF member",
+                },
+                {
+                  title: "uan",
+                  type: "string",
+                  subtitle: "Universal Account Number assigned to the member",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
 // business services
 export const CinDynamic = [
   {
@@ -418,7 +632,7 @@ export const CinDynamic = [
       fields: [
         ...BaseFields,
         {
-          title: "response",
+          title: "data",
           subTitle: "CIN Registration Details",
           type: "object",
           objectDetails: [
@@ -667,7 +881,7 @@ export const UdyamDynamic = [
       fields: [
         ...BaseFields,
         {
-          title: "response",
+          title: "data",
           subTitle: "Udyam Registration Details",
           type: "object",
           objectDetails: [
@@ -1260,6 +1474,195 @@ export const longLatGeofencingDynamic = [
     },
   },
 ];
+export const GeoTaggingDynamic = [
+  {
+    status: 200,
+    summary: "Returns Pincode details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          fields: [
+            {
+              title: "centerCode",
+              type: "string",
+              subTitle: "Center Code",
+            },
+            {
+              title: "district",
+              type: "string",
+              subTitle: "District name",
+            },
+            {
+              title: "pincode",
+              type: "string",
+              subTitle: "Postal PIN code",
+            },
+            {
+              title: "populationGroup",
+              type: "string",
+              subTitle: "Population Group",
+            },
+            {
+              title: "postOffice",
+              type: "string",
+              subTitle: "Name of the post office",
+            },
+            {
+              title: "revenueCenter",
+              type: "string",
+              subTitle: "Revenue Center",
+            },
+            {
+              title: "state",
+              type: "string",
+              subTitle: "State name",
+            },
+            {
+              title: "subdistrict",
+              type: "string",
+              subTitle: "Subdistrict or tehsil name",
+            },
+            {
+              title: "tier",
+              type: "string",
+              subTitle: "Tier",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const GeoTaggingDistanceCalculationDynamic = [
+  {
+    status: 200,
+    summary: "Returns Pincode details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          fields: [
+            {
+              title: "centerCode",
+              type: "string",
+              subTitle: "Center Code",
+            },
+            {
+              title: "district",
+              type: "string",
+              subTitle: "District name",
+            },
+            {
+              title: "pincode",
+              type: "string",
+              subTitle: "Postal PIN code",
+            },
+            {
+              title: "populationGroup",
+              type: "string",
+              subTitle: "Population Group",
+            },
+            {
+              title: "postOffice",
+              type: "string",
+              subTitle: "Name of the post office",
+            },
+            {
+              title: "revenueCenter",
+              type: "string",
+              subTitle: "Revenue Center",
+            },
+            {
+              title: "state",
+              type: "string",
+              subTitle: "State name",
+            },
+            {
+              title: "subdistrict",
+              type: "string",
+              subTitle: "Subdistrict or tehsil name",
+            },
+            {
+              title: "tier",
+              type: "string",
+              subTitle: "Tier",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const DigipinToLongLatDynamic = [
+  {
+    status: 200,
+    summary: "Returns Pincode details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          fields: [
+            {
+              title: "centerCode",
+              type: "string",
+              subTitle: "Center Code",
+            },
+            {
+              title: "district",
+              type: "string",
+              subTitle: "District name",
+            },
+            {
+              title: "pincode",
+              type: "string",
+              subTitle: "Postal PIN code",
+            },
+            {
+              title: "populationGroup",
+              type: "string",
+              subTitle: "Population Group",
+            },
+            {
+              title: "postOffice",
+              type: "string",
+              subTitle: "Name of the post office",
+            },
+            {
+              title: "revenueCenter",
+              type: "string",
+              subTitle: "Revenue Center",
+            },
+            {
+              title: "state",
+              type: "string",
+              subTitle: "State name",
+            },
+            {
+              title: "subdistrict",
+              type: "string",
+              subTitle: "Subdistrict or tehsil name",
+            },
+            {
+              title: "tier",
+              type: "string",
+              subTitle: "Tier",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
 
 // banking services
 export const BinDynamic = [
@@ -1574,6 +1977,196 @@ export const AccountDynamic = [
               title: "ifsc",
               type: "string",
               subTitle: "IFSC code of the bank branch",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// vehicle services
+export const drivingLicenseverifyDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+          objectDetails: [
+            {
+              title: "Address",
+              type: "string",
+              subTitle: "The Address of the person",
+            },
+            {
+              title: "Blood group",
+              type: "string",
+              subTitle: "The Blood group of the person",
+            },
+            {
+              title: "CovDetails",
+              type: "array",
+              subTitle: "List of vehicle registration details",
+              objectDetails: [
+                {
+                  title: "COV Issue Date",
+                  type: "string",
+                  subTitle: "Date of COV issue",
+                },
+                {
+                  title: "Vehicle Class",
+                  type: "string",
+                  subTitle: "Class of the vehicle",
+                },
+                {
+                  title: "Vehicle Type",
+                  type: "string",
+                  subTitle: "Type of the vehicle",
+                },
+              ],
+            },
+            {
+              title: "Date of Birth",
+              type: "string",
+              subTitle: "Date of birth of the person",
+            },
+            {
+              title: "Driving License Number",
+              type: "string",
+              subTitle: "Hashed driving license number",
+            },
+            {
+              title: "Father's Name",
+              type: "string",
+              subTitle: "Father's full name",
+            },
+            {
+              title: "Gender",
+              type: "string",
+              subTitle: "Gender of the person",
+            },
+            {
+              title: "LicenseDetails",
+              type: "array",
+              subTitle: "List of license types and issue dates",
+              objectDetails: [
+                {
+                  title: "Issue Date From",
+                  type: "string",
+                  subTitle: "License issue start date",
+                },
+                {
+                  title: "Issue Date To",
+                  type: "string",
+                  subTitle: "License expiry date",
+                },
+                {
+                  title: "License Type",
+                  type: "string",
+                  subTitle: "Type of the license",
+                },
+              ],
+            },
+            {
+              title: "Owner's Name",
+              type: "string",
+              subTitle: "Owner's full name",
+            },
+            {
+              title: "RTO (Issued At)",
+              type: "string",
+              subTitle: "RTO location",
+            },
+            { title: "State", type: "string", subTitle: "State of the person" },
+            { title: "Status", type: "string", subTitle: "Current status" },
+            {
+              title: "imgurl",
+              type: "string",
+              subTitle: "Base64 encoded image",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const challanViaRcDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+          objectDetails: [
+            {
+              title: "Accused Father Name",
+              type: "string",
+              subTitle: "Name of the accused person's father",
+            },
+            {
+              title: "Accused Name",
+              type: "string",
+              subTitle: "Name of the accused individual",
+            },
+            {
+              title: "Amount",
+              type: "number",
+              subTitle: "Fine amount imposed for the challan",
+            },
+            {
+              title: "Challan Date",
+              type: "string",
+              subTitle: "Date and time when the challan was issued",
+            },
+            {
+              title: "Challan Number",
+              type: "string",
+              subTitle: "Unique identification number of the challan",
+            },
+            {
+              title: "Challan Place",
+              type: "string",
+              subTitle: "Location where the challan was issued",
+            },
+            {
+              title: "Challan Status",
+              type: "string",
+              subTitle:
+                "Current status of the challan (e.g., pending, disposed)",
+            },
+            {
+              title: "DL No/Vehicle Number",
+              type: "string",
+              subTitle: "Driving license number or vehicle registration number",
+            },
+            {
+              title: "Offense Details",
+              type: "array",
+              subTitle: "List of offenses committed",
+            },
+            {
+              title: "RTO",
+              type: "string",
+              subTitle: "Regional Transport Office associated with the challan",
+            },
+            {
+              title: "Sl. No.",
+              type: "number",
+              subTitle: "Serial number of the record",
+            },
+            {
+              title: "State",
+              type: "string",
+              subTitle: "State where the challan was issued",
             },
           ],
         },
@@ -2048,6 +2641,11 @@ export const DATA = [
       type: "object",
       fields: [
         {
+          title: "success",
+          type: "boolean",
+          subTitle: "Whether the request was successful (true) or not (false).",
+        },
+        {
           title: "message",
           type: "string",
           subType: "",
@@ -2060,11 +2658,10 @@ export const DATA = [
           subTitle: "The HTTP status code representing the error (404).",
         },
         {
-          title: "response",
-          type: "string",
+          title: "data",
+          type: "object",
           subType: "",
-          subTitle:
-            "A human-readable response indicating the resource does not exist.",
+          subTitle: "the data that was sent to that request",
         },
       ],
     },

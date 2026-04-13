@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -10,9 +9,9 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
 
-const PassportVerification = () => {
+const PanNameDobVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -85,7 +84,11 @@ const PassportVerification = () => {
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
@@ -135,5 +138,5 @@ const PassportVerification = () => {
   );
 };
 
-export default PassportVerification;
+export default PanNameDobVerification;
 

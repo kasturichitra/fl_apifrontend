@@ -9,14 +9,20 @@ import { DTLL, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  DigipinToLongLatDynamic,
+  PanDynamic,
+  PanToMaskedAadhaarDynamic,
+} from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const DigipinToLongLat = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["DLL"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -86,6 +92,10 @@ const DigipinToLongLat = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -115,7 +125,7 @@ const DigipinToLongLat = () => {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={DigipinToLongLatDynamic}
             otherData={DATA}
           />
         </div>
@@ -132,7 +142,7 @@ const DigipinToLongLat = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"digipinToLatLong"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          examples={GetAcc?.exampleCodes["DLL"] || []}
         />
       </div>
     </div>

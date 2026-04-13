@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import BodyParams from "../../components/BodyParams/BodyParams.jsx";
-import MethodLink from "../../components/MethodLink.jsx";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { RO } from "../../utils/bodyParams";
+import { BWI, VRV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, RechargeOffersDynamic } from "../../utils/apiSchema";
+import { DATA, IfscDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const RechargeOffers = () => {
+const VehicleRcVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["RO"] || [];
+  const examplesList = GetAcc?.exampleCodes["VRV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -44,7 +45,7 @@ const RechargeOffers = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "Recharge/OffersPlans",
+        path: "bin/getBankDetails",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,17 +72,22 @@ const RechargeOffers = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Recharge Offers</h1>
+          <h1 className="api_heading">Vehicle Registeration Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="Recharge/OffersPlans"
+            link="vehicle/register"
           />
           <p className="first_para">
-            The Recharge Offers API allows developers to get offers for the
-            mobile numbers in real-time.
+            The Vehicle Registration Verification API allows developers to
+            verify vehicle registration details in real-time, helping to confirm
+            ownership, registration status, and essential vehicle information.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -102,7 +108,7 @@ const RechargeOffers = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={RO}
+            bodyObj={VRV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -112,10 +118,7 @@ const RechargeOffers = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent
-            dynamic200={RechargeOffersDynamic}
-            otherData={DATA}
-          />
+          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -129,12 +132,12 @@ const RechargeOffers = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"offers"}
-          examples={GetAcc?.exampleCodes["RO"] || []}
+          service={"vehicleRegisteration"}
+          examples={GetAcc?.exampleCodes["VRV"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default RechargeOffers;
+export default VehicleRcVerification;

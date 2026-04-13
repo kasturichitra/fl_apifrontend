@@ -11,6 +11,66 @@ export const MASTER_FIELDS = [
     optional: true,
   },
   {
+    key: "aadhaarNumber",
+    title: "Aadhaar Number",
+    type: "string",
+    fieldName: "aadhaarNumber",
+    subTitle: "Enter your Aadhaar Number",
+    inputTag: false,
+    example: "123412341234",
+    required: true,
+  },
+  {
+    key: "RegistrationNumber",
+    title: "Registration Number",
+    type: "string",
+    fieldName: "RegistrationNumber",
+    subTitle: "Enter your Registration Number",
+    inputTag: false,
+    example: "REG123456",
+    required: true,
+  },
+  {
+    key: "licenseNo",
+    title: "License Number",
+    type: "string",
+    fieldName: "licenseNo",
+    subTitle: "Enter your Driving License Number",
+    inputTag: false,
+    example: "DL1234567890123",
+    required: true,
+  },
+  {
+    key: "DateOfBirth",
+    title: "Date of Birth",
+    type: "string",
+    fieldName: "DateOfBirth",
+    subTitle: "Enter your Date of Birth",
+    inputTag: false,
+    example: "1990-01-01",
+    required: true,
+  },
+  {
+    key: "vehicleRegistrationNumber",
+    title: "Vehicle Registration Number",
+    type: "string",
+    fieldName: "vehicleRegistrationNumber",
+    subTitle: "Enter your Vehicle Registration Number",
+    inputTag: false,
+    example: "TN01AB1234",
+    required: true,
+  },
+  {
+    key: "rcNumber",
+    title: "RC Number",
+    type: "string",
+    fieldName: "rcNumber",
+    subTitle: "Enter your Vehicle RC number",
+    inputTag: false,
+    example: "TN01AB1234",
+    required: true,
+  },
+  {
     key: "pincode",
     title: "Pincode",
     type: "string",
@@ -93,6 +153,26 @@ export const MASTER_FIELDS = [
     example: 78.486671,
     required: true,
   },
+  {
+    key: "digipin",
+    title: "DigiPin",
+    type: "string",
+    fieldName: "digipin",
+    subTitle: "Enter your DigiPin",
+    inputTag: false,
+    example: "DPIN123456",
+    required: false,
+  },
+  {
+    key: "address",
+    title: "Address",
+    type: "string",
+    fieldName: "address",
+    subTitle: "Enter your full address",
+    inputTag: true,
+    example: "123, MG Road, Hyderabad, Telangana",
+    required: true,
+  },
 ];
 
 /* =========================================================
@@ -139,56 +219,106 @@ export const PNV = buildSchema([
 ]);
 
 // geo location services
+
 // pincode geofencing
 export const PG = buildSchema([
   { key: "pincode" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
 // longitude latitude geofencing
 export const LLG = buildSchema([
   { key: "latitude" },
   { key: "longitude" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
 // digipin to longitude latitude
 export const DTLL = buildSchema([
-  { key: "latitude" },
-  { key: "longitude" },
+  { key: "digipin" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
 // address to digipin
 export const ATD = buildSchema([
-  { key: "latitude" },
-  { key: "longitude" },
+  { key: "address" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
 // geo tagging search
 export const GTS = buildSchema([
   { key: "latitude" },
   { key: "longitude" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
 // geo tagging search and distance calculation
 export const GTSADC = buildSchema([
   { key: "latitude" },
   { key: "longitude" },
+  { key: "address" },
   { key: "mobileNumber" }, // optional by default
 ]);
-
+// latitude longitude to digipin
 export const LLTD = buildSchema([
   { key: "latitude" },
   { key: "longitude" },
   { key: "mobileNumber" }, // optional by default
 ]);
 
+// vehicle services
 
+// driving license verify
+export const DLV = buildSchema([
+  { key: "licenseNo" },
+  { key: "DateOfBirth" },
+  { key: "mobileNumber" },
+]);
+// challan via rc
+export const CVR = buildSchema([
+  { key: "rcNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
+// detailed rc verification
+export const DRV = buildSchema([
+  { key: "rcNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
+// vehicle registeration verification
+export const VRV = buildSchema([
+  { key: "RegistrationNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
+// stolen vehicle verification
+export const SVV = buildSchema([
+  { key: "vehicleRegistrationNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
 
-// aadhaar
+// risk and due diligence
+
+// domian verification
+export const DV = [
+  {
+    title: "domain",
+    type: "string",
+    fieldName: "domain",
+    subTitle: "Enter Your domain here",
+    inputTag: false,
+    example: "example.com",
+    required: true,
+    optional: false,
+    group: "domainOrEmail",
+  },
+  {
+    title: "emailAddress",
+    type: "string",
+    fieldName: "emailAddress",
+    subTitle: "Enter Your email address here",
+    inputTag: false,
+    example: "user@example.com",
+    required: true,
+    optional: false,
+    group: "domainOrEmail",
+  },
+];
+
+// aadhaar and digilocker services
 
 // aadhaar initiate
 export const AI = [
@@ -225,12 +355,27 @@ export const AS = [
 ];
 // digilocker account verify
 export const DAV = [
-  
-]
+  {
+    key: "mobileNumber",
+    title: "Mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "Enter Your Mobile Number",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: true,
+    optional: false,
+  },
+];
+// aadhaar to masked pan
+export const ATMP = buildSchema([
+  { key: "aadhaarNumber" },
+  { key: "mobileNumber" }, // optional by default
+]);
 
+// contact and communication
 
-// mobile number
-
+// mobile number verification - step1, step2
 // mobile otp generation
 export const MOG = [
   {
@@ -255,6 +400,75 @@ export const MOV = [
     required: true,
   },
 ];
+// mobile to uan
+export const MTU = [
+    {
+    key: "mobileNumber",
+    title: "Mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "Enter Your Mobile Number",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: true,
+    optional: false,
+  },
+];
+// mobile to pan
+export const MTP = [
+   {
+    key: "mobileNumber",
+    title: "Mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "Enter Your Mobile Number",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: true,
+    optional: false,
+  },
+];
+
+// employment services
+
+// dual employment check
+export const DEC = [
+  {
+    key: "employer",
+    title: "Employer",
+    type: "string",
+    fieldName: "employer",
+    subTitle: "Enter your employer or company name",
+    inputTag: false,
+    example: "TCS / Infosys / ABC Pvt Ltd",
+    required: false,
+  },
+  {
+    key: "uanNumber",
+    title: "UAN Number",
+    type: "string",
+    fieldName: "uanNumber",
+    subTitle: "Enter your UAN (Universal Account Number)",
+    inputTag: false,
+    example: "123456789012",
+    required: true,
+  },
+];
+// basic uan verification
+export const BUV = [
+  {
+    key: "uanNumber",
+    title: "UAN Number",
+    type: "string",
+    fieldName: "uanNumber",
+    subTitle: "Enter your UAN (Universal Account Number)",
+    inputTag: false,
+    example: "123456789012",
+    required: true,
+  },
+];
+
+// face and ai services
 
 // face match
 export const FM = [
@@ -277,7 +491,6 @@ export const FM = [
     required: true,
   },
 ];
-
 // image blurriness, ai image check, deepfake image check, ai and deepfake image check
 export const IC = [
   {
@@ -291,6 +504,8 @@ export const IC = [
   },
 ];
 
+// banking services
+
 // bank account verification
 export const BAV = buildSchema([
   {
@@ -299,30 +514,15 @@ export const BAV = buildSchema([
   { key: "ifsc" },
   { key: "mobileNumber" }, // optional
 ]);
-
 // bank with ifsc
-export const BWI = [
-  {
-    title: "ifsc",
-    type: "string",
-    fieldName: "ifsc",
-    subTitle: "user ifsc to be verified",
-    inputTag: false,
-    example: "SBINXXXXXXX",
-    required: true,
-  },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
-];
+export const BWI = buildSchema([
+  { key: "ifsc" },
+  { key: "mobileNumber" }, // optional
+]);
 
+// geo location services
+
+// pincode geofencing
 export const PCG = buildSchema([
   { key: "pincode" },
   { key: "mobileNumber" }, // optional by default
@@ -427,6 +627,8 @@ export const SEV = [
     optional: true,
   },
 ];
+
+// other services
 // name verification
 export const NM = [
   {
@@ -483,6 +685,7 @@ export const BIN = [
 ];
 
 // recharge
+
 // fetching operators
 export const FO = [
   {

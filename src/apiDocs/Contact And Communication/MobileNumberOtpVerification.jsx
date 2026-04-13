@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
 import { DATA, MobileOtpValidateDynamic } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 export default function MobileNumberOtpVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -20,17 +21,17 @@ export default function MobileNumberOtpVerification() {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -76,8 +77,14 @@ export default function MobileNumberOtpVerification() {
           />
 
           <p className="first_para">
-            Name Verification of the Account Holder Name
+            The Mobile OTP Verification API enables developers to authenticate
+            users by sending a one-time password (OTP) to their mobile number
+            and validating it in real-time for secure identity verification.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* REQ HISTORY TABLE */}
@@ -107,7 +114,10 @@ export default function MobileNumberOtpVerification() {
         {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={MobileOtpValidateDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={MobileOtpValidateDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 

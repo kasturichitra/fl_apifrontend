@@ -9,14 +9,20 @@ import { GTS, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  GeoTaggingDynamic,
+  PanDynamic,
+  PanToMaskedAadhaarDynamic,
+} from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const GeoTaggingSearch = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["GTS"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -85,6 +91,10 @@ const GeoTaggingSearch = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -114,7 +124,7 @@ const GeoTaggingSearch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={GeoTaggingDynamic}
             otherData={DATA}
           />
         </div>
@@ -131,7 +141,7 @@ const GeoTaggingSearch = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"geoTaggingSearch"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          examples={GetAcc?.exampleCodes["GTS"] || []}
         />
       </div>
     </div>

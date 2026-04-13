@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BIN } from "../../utils/bodyParams";
+import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const GSTFilingStatus = () => {
+const PanTanVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -72,18 +72,35 @@ const GSTFilingStatus = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bin Number Verification</h1>
+          <h1 className="api_heading">Pan Tan Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getCardDetails"
+            link="pan/tan/verify"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number
-            The Bin Number Verification API allows developers to verify users’
-            Bin numbers in real-time.
+            The Pan Tan Number Verification API allows developers to verify PAN
+            and TAN numbers in real-time, ensuring accurate identification of
+            individuals and entities for tax purposes.
           </p>
+          <p className="first_para">
+            PAN (Permanent Account Number) and TAN (Tax Deduction and Collection
+            Account Number)
+          </p>
+          <p className="first_para">
+            PAN is a 10-character alphanumeric identifier, and TAN is a
+            10-character alphanumeric code, both issued by the Income Tax
+            Department of India.
+          </p>
+          <p className="first_para">
+            These identifiers are used for tax-related identification,
+            reporting, and compliance for individuals and organizations.
+          </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -104,7 +121,7 @@ const GSTFilingStatus = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BIN}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -114,7 +131,7 @@ const GSTFilingStatus = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -128,12 +145,12 @@ const GSTFilingStatus = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bin"}
-          examples={GetAcc?.exampleCodes["BIN"] || []}
+          service={"pan"}
+          examples={GetAcc?.exampleCodes["PTV"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default GSTFilingStatus;
+export default PanTanVerification;

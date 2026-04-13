@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
+import { DEC } from "../../utils/bodyParams";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { DATA, MobileOtpValidateDynamic } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const PanToAadhaarVerification = () => {
+export default function DualEmploymentCheck() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["DEC"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -26,25 +24,24 @@ const PanToAadhaarVerification = () => {
         ? examplesList[0].statusCode
         : null;
   });
-
   const [isExampleChoosed, setIsExampleChoosed] = useState(
     () => !!choosedExample,
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -56,10 +53,9 @@ const PanToAadhaarVerification = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -69,25 +65,32 @@ const PanToAadhaarVerification = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Dual Employment Check</h1>
+
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="employee/dual_employment/check"
           />
+
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify
-            users’ PAN numbers and get the masked aadhaar numbers in real-time.
+            The Dual Employment Check API enables employers to verify whether an
+            individual is currently associated with multiple organizations,
+            helping detect overlapping employment records and ensuring
+            compliance in hiring processes.
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -98,43 +101,40 @@ const PanToAadhaarVerification = () => {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={DEC}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={MobileOtpValidateDynamic}
             otherData={DATA}
           />
         </div>
       </div>
 
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"dualEmploymentCheck"}
+          examples={GetAcc?.exampleCodes["DEC"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default PanToAadhaarVerification;
+}

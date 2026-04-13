@@ -7,9 +7,14 @@ import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, AadhaarToMaskedPanDynamic, DATA } from "../../utils/apiSchema";
+import {
+  AadhaarIntiateDynamic,
+  AadhaarToMaskedPanDynamic,
+  DATA,
+} from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import { AI } from "../../utils/bodyParams";
+import { AI, ATMP } from "../../utils/bodyParams";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 export default function AadhaarToMaskedPanVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -73,7 +78,7 @@ export default function AadhaarToMaskedPanVerification() {
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link="aadhaar/initiate"
+            link="aadhaar/pan/maskedverify"
           />
 
           <p className="first_para">
@@ -83,8 +88,12 @@ export default function AadhaarToMaskedPanVerification() {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}
         <div className="py-6">
@@ -101,7 +110,7 @@ export default function AadhaarToMaskedPanVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={AI}
+            bodyObj={ATMP}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

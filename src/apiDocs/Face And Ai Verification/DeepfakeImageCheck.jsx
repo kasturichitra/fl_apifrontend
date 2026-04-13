@@ -84,7 +84,7 @@ export default function DeepfakeImageCheck() {
           </p>
         </div>
 
-        {/* REQ History Table */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}

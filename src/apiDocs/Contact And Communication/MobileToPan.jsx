@@ -1,51 +1,47 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
+import { MTP } from "../../utils/bodyParams";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { DATA, MobileOtpValidateDynamic, MobileToPanValidateDynamic } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const EmailValidation = () => {
+export default function MobileToPan() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["MTP"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
-
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "pan/verify_to_aadhaar",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -57,10 +53,9 @@ const EmailValidation = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -70,25 +65,31 @@ const EmailValidation = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Mobile To Pan</h1>
+
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="contact/pan/verify"
           />
+
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The Mobile to PAN API enables developers to retrieve and verify PAN
+            details associated with a mobile number, providing accurate identity
+            mapping and real-time validation.
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -99,41 +100,40 @@ const EmailValidation = () => {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={MTP}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={MobileToPanValidateDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"mobileToPan"}
+          examples={GetAcc?.exampleCodes["MTP"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default EmailValidation;
-
+}

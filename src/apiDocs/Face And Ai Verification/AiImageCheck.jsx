@@ -84,7 +84,7 @@ export default function AiImageCheck() {
           </p>
         </div>
 
-        {/* REQ History Table */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}

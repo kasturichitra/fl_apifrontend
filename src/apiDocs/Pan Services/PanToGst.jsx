@@ -11,6 +11,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanToGst = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -24,17 +25,17 @@ const PanToGst = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -77,7 +78,7 @@ const PanToGst = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="pan/gst/with/pan"
           />
           <p className="first_para">
             The PAN Number Verification API allows developers to verify users’
@@ -89,8 +90,13 @@ const PanToGst = () => {
             Tax Department of India.
           </p>
           <p className="first_para">
-            Used for tax-related identification for individuals and entities.{" "}
+            Used for tax-related identification for individuals and
+            entities.{" "}
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -144,4 +150,3 @@ const PanToGst = () => {
 };
 
 export default PanToGst;
-

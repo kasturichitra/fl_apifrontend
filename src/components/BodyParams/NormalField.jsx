@@ -28,7 +28,7 @@ export default function NormalField({
     inputTag,
     example,
     readOnly,
-    optional
+    optional,
   } = field;
 
   // useEffect(() => {
@@ -77,14 +77,15 @@ export default function NormalField({
         <div className="field_info_head">
           <div className="field_body">
             {fieldName && <span className="field_title">{fieldName}</span>}
-
             {type && <span className="field_type_and_subtype">{type}</span>}
-
             {subType && (
               <span className="field_type_and_subtype">{subType}</span>
             )}
-
-            {required && <span className="required_fld ">required</span>}
+            {field.group === "domainOrEmail" ? (
+              <span className="required_fld">domain / email required</span>
+            ) : required ? (
+              <span className="required_fld">required</span>
+            ) : null}
             {optional && <span className="optional_fld ">optional</span>}
           </div>
           <p className="field_subT">{subTitle}</p>
@@ -101,7 +102,7 @@ export default function NormalField({
               onFocus={HandleFocus}
               value={faceMatchState?.[resType]?.[fieldName] || ""}
               name={fieldName}
-              readOnly={readOnly }
+              readOnly={readOnly}
             />
           )}
 

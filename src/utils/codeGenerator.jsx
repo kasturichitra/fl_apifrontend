@@ -1,7 +1,10 @@
 export function generateCode(url, params = {}) {
-  const formattedParams = Object.entries(params)
-    .map(([key, value]) => `      "${key}": "${value}"`)
-    .join(",\n");
+  const formattedParams = Object.hasOwn(params, "domain")
+    ? ` "domain": ""
+ (OR) 
+  "emailAddress": "" ` : Object.entries(params)
+        .map(([key, value]) => `      "${key}": "${value}"`)
+        .join(",\n");
 
   if (Object.keys(params).length == 1 && Object.hasOwn(params, "file")) {
     return {
@@ -83,9 +86,9 @@ axios.request(options)
     'content-type': 'application/json',
     access_token: 'YOUR_ACCESS_TOKEN'
   },
-  body: JSON.stringify({
+  body: {
 ${formattedParams}
-  })
+  }
 };
 
 fetch('${url}', options)

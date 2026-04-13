@@ -9,7 +9,13 @@ import { LLG, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  longLatGeofencingDynamic,
+  PanDynamic,
+  PanToMaskedAadhaarDynamic,
+} from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const LongLatGeofencing = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -86,6 +92,10 @@ const LongLatGeofencing = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -115,7 +125,7 @@ const LongLatGeofencing = () => {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={longLatGeofencingDynamic}
             otherData={DATA}
           />
         </div>

@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const CourtRecordsCheck = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -93,6 +94,10 @@ const CourtRecordsCheck = () => {
             Useful for due diligence, background verification, and legal
             compliance purposes.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}

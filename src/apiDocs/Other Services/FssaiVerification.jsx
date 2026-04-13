@@ -89,7 +89,11 @@ const FssaiVerification = () => {
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}

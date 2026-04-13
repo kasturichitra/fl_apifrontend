@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const ProfileAdvance = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -90,6 +91,10 @@ const ProfileAdvance = () => {
             Useful for onboarding, KYC, fraud prevention, and personalized
             services.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}

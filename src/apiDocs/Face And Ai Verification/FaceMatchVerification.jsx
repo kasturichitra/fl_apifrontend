@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
 import { FM } from "../../utils/bodyParams";
 import { GetAcc } from "../../utils/Language";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 export default function FaceMatchVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -71,7 +72,11 @@ export default function FaceMatchVerification() {
           </p>
         </div>
 
-        {/* REQ History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}

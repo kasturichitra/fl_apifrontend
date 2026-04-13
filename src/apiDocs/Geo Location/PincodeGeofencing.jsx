@@ -5,11 +5,12 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PG, } from "../../utils/bodyParams";
+import { PG } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, pincodeGeofencingDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PincodeGeofencing = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -84,6 +85,10 @@ const PincodeGeofencing = () => {
             validation of whether a location falls within a specific postal
             area.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}

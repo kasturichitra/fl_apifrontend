@@ -126,11 +126,73 @@ export const apiList = [
     params: { aadharNumber: "" },
   },
   {
-    key: "digilockerVerify",
+    key: "digilockerVerifyAccount",
     name: "DIGILOCKERVERIFYACCOUNT",
     category: "kyc",
     url: "aadhaar/digilocker/verify",
     params: { mobileNumber: "" },
+  },
+
+  // employment services
+  {
+    key: "dualEmploymentCheck",
+    name: "DUALEMPLOYMENTCHECK",
+    category: "kyc",
+    url: "employee/dual_employment/check",
+    params: { uanNumber: "", employer: "" },
+  },
+  {
+    key: "basicUanVerification",
+    name: "BASICUANVERIFICATION",
+    category: "kyc",
+    url: "employee/uan/basic",
+    params: { uanNumber: "" },
+  },
+
+  // vehicle service
+  {
+    key: "vehicleRegisteration",
+    name: "VEHICLEREGISTERATION",
+    category: "kyc",
+    url: "vehicle/register",
+    params: {
+      RegistrationNumber: "",
+    },
+  },
+  {
+    key: "detailedRcVerification",
+    name: "DETAILEDRCVERIFICATION",
+    category: "kyc",
+    url: "vehicle/rcverify",
+    params: {
+      rcNumber: "",
+    },
+  },
+  {
+    key: "stolenVehicleVerification",
+    name: "STOLENVEHICLEVERIFICATION",
+    category: "kyc",
+    url: "vehicle/stolen_vehicle/verification",
+    params: {
+      vehicleRegisterationNumber: "",
+    },
+  },
+  {
+    key: "drivingLicense",
+    name: "DRIVINGLICENSE",
+    category: "kyc",
+    url: "vehicle/driving_license/verify",
+    params: {
+      licenseNo: "",
+      DateOfBirth: "",
+    },
+  },
+  {
+    key: "challanViaRc",
+    name: "CHALLANVIARC",
+    category: "kyc",
+    url: "vehicle/challan_via_rc",
+    params: { rcNumber: "" },
   },
 
   // contact services
@@ -148,6 +210,20 @@ export const apiList = [
     url: "mobileNumber/otp_verification",
     params: { submittedOtp: "12XX" },
   },
+  {
+    key: "mobileToUan",
+    name: "MOBILETOUAN",
+    category: "kyc",
+    url: "contact/uan/verify",
+    params: { mobileNumber: "" },
+  },
+  {
+    key: "mobileToPan",
+    name: "MOBILETOPAN",
+    category: "kyc",
+    url: "contact/pan/verify",
+    params: { mobileNumber: "" },
+  },
 
   // business services
   {
@@ -161,7 +237,7 @@ export const apiList = [
     key: "gstToPan",
     name: "GSTTOPAN",
     category: "kyc",
-    url: "gst/Gstinverify",
+    url: "gst/Gstintopan/verify",
     params: { gstinNumber: "22ABCDEXXXXXXXX" },
   },
   {
@@ -238,7 +314,7 @@ export const apiList = [
     name: "NAME",
     category: "kyc",
     url: "name/compareNames",
-    params: { firstName: "RAXX", secondName: "RAXX" },
+    params: { firstName: "", secondName: "" },
   },
 
   // geo location
@@ -248,7 +324,6 @@ export const apiList = [
     category: "geo",
     url: "location/geo/tagging",
     params: {
-      pinCode: "",
       longitude: "",
       latitude: "",
     },
@@ -259,9 +334,9 @@ export const apiList = [
     category: "geo",
     url: "location/geo/tagging/distance_calculation",
     params: {
-      pinCode: "",
       longitude: "",
       latitude: "",
+      address: "",
     },
   },
   {
@@ -270,7 +345,6 @@ export const apiList = [
     category: "geo",
     url: "location/longLat/geofencing",
     params: {
-      pinCode: "",
       longitude: "",
       latitude: "",
     },
@@ -282,8 +356,6 @@ export const apiList = [
     url: "location/pincode/geofencing",
     params: {
       pinCode: "",
-      longitude: "",
-      latitude: "",
     },
   },
   {
@@ -292,7 +364,6 @@ export const apiList = [
     category: "geo",
     url: "location/longLat/digipin",
     params: {
-      pinCode: "",
       longitude: "",
       latitude: "",
     },
@@ -303,9 +374,7 @@ export const apiList = [
     category: "geo",
     url: "location/digipin/longLat",
     params: {
-      pinCode: "",
-      longitude: "",
-      latitude: "",
+      digipin: "",
     },
   },
   {
@@ -314,9 +383,7 @@ export const apiList = [
     category: "geo",
     url: "location/address/digipin",
     params: {
-      pinCode: "",
-      longitude: "",
-      latitude: "",
+      address: "",
     },
   },
 
@@ -372,23 +439,23 @@ export const apiList = [
   {
     key: "courtRecordsCheck",
     name: "COURTRECORDSCHECK",
-    category: "verification",
+    category: "kyc",
     url: "diligence/court/record",
-    params: { tsTransId: "" },
+    params: { address: "", name: "" },
   },
   {
     key: "domainVerification",
     name: "DOMAINVERIFICATION",
-    category: "verification",
+    category: "kyc",
     url: "diligence/domain/verify",
-    params: { tsTransId: "" },
+    params: { domain: "", emailAddress: "" },
   },
   {
     key: "profileAdvance",
     name: "PROFILEADVANCE",
-    category: "profile",
+    category: "kyc",
     url: "diligence/advance/profile",
-    params: { tsTransId: "" },
+    params: { mobileNumber: "" },
   },
 
   // 🔁 Recharge APIs
@@ -509,7 +576,7 @@ const commonErrorExamples = [
   },
   {
     statusCode: 404,
-    message: { message: "Not Found", httpCode: 404 },
+    message: { message: "Not Found / Invalid", httpCode: 404 },
   },
   {
     statusCode: 500,
@@ -532,8 +599,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             PAN: "ABCDE1234F",
             Name: "RAM BABU",
@@ -762,6 +828,51 @@ const apiExamples = [
     ],
   },
 
+  // employment services
+  // basic uan verification
+  {
+    name: "BUV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            uan: "105678912345",
+            result: [
+              {
+                DateOfExitEpf: "2026-03-15",
+                Doj: "2024-07-10",
+                "Establishment Name": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+                MemberId: "APSID35984520000020456",
+                "father or Husband Name": "RAMESH KUMAR",
+                name: "ANANYA SINGH",
+                uan: "105678912345",
+              },
+            ],
+          },
+        },
+      },
+    ],
+  },
+  // dual employment check
+  {
+    name: "DEC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            message: `OTP sent to 91XXXXXX78`,
+            success: `Otp sent to Your Mobile Number 91XXXXXX78`,
+          },
+        },
+      },
+    ],
+  },
+
   // contact and communication services
   // mobile otp genration
   {
@@ -791,6 +902,86 @@ const apiExamples = [
           message: "Valid",
           response: {
             message: "Mobile Number 91XXXXXX78 is Verified with OTP 23XX",
+          },
+        },
+      },
+    ],
+  },
+  // mobile to pan
+  {
+    name: "MTP",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            address: [
+              {
+                city: "Chirala",
+                country_code: "IN",
+                first_line_of_address: "H.NO 2-45, Main Road, Ram Nagar",
+                postal_code: "523157",
+                reported_date: "2024-06-12",
+                second_line_of_address: "Near ZP High School",
+                state: "Andhra Pradesh",
+                third_line_of_address: "Prakasam District",
+              },
+              {
+                city: "Ongole",
+                country_code: "IN",
+                first_line_of_address: "Plot No 18, Sai Colony",
+                postal_code: "523001",
+                reported_date: "2023-11-08",
+                second_line_of_address: "Beside RTC Bus Stand",
+                state: "Andhra Pradesh",
+                third_line_of_address: "Ongole Urban",
+              },
+              {
+                city: "Guntur",
+                country_code: "IN",
+                first_line_of_address: "3-21/5, Lakshmipuram",
+                postal_code: "522007",
+                reported_date: "2022-09-15",
+                second_line_of_address: "Near Kothapet Market",
+                state: "Andhra Pradesh",
+                third_line_of_address: "Guntur East",
+              },
+            ],
+            age: "28",
+            alternate_emails: [
+              "test.user.alt1@example.com",
+              "test.user.alt2@example.com",
+            ],
+            alternate_mobile_numbers: ["+91-9876543210", "+91-9123456780"],
+            dob: "10-03-1998",
+            email: "test.user@example.com",
+            gender: "Male",
+            name: "Ravi Teja Kumar",
+            official_documents: {
+              pan: "ABCDE1234F",
+              aadhaar_last4: "6789",
+            },
+            pan: "ABCDE1234F",
+            score: "742",
+          },
+        },
+      },
+    ],
+  },
+  // mobile to uan
+  {
+    name: "MTU",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            message: `OTP sent to 91XXXXXX78`,
+            success: `Otp sent to Your Mobile Number 91XXXXXX78`,
           },
         },
       },
@@ -1413,6 +1604,129 @@ const apiExamples = [
             place_id: "ChIJz6e_eDcq8jkRS-n7CnxoRig",
             types: ["premise", "street_address"],
             digipin: "25F-C2M-P2P7",
+          },
+        },
+      },
+    ],
+  },
+
+  // vehicle services
+  // driving license verify
+  {
+    name: "DLV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            "Driving License Number": "APXXXX",
+            "Owner's Name": "LOXXX",
+            "Father's Name": "NA",
+            "Date of Birth": "21-Nov-1990",
+            Address: "NA",
+            "Blood group": "NA",
+            Gender: "NA",
+            "RTO (Issued At)": "RTA RAJXXX",
+            LicenseDetails: [
+              {
+                "License Type": "Non Transport",
+                "Issue Date From": "NA",
+                "Issue Date To": "25\/06\/2034",
+              },
+              {
+                "License Type": "Transport",
+                "Issue Date From": "NA",
+                "Issue Date To": "00\/00\/0000",
+              },
+              {
+                "License Type": "Hazardous",
+                "Issue Date From": "NA",
+                "Issue Date To": "NA",
+              },
+              {
+                "License Type": "Hill",
+                "Issue Date From": "NA",
+                "Issue Date To": "NA",
+              },
+            ],
+            CovDetails: [
+              {
+                "Vehicle Type": "LMVNT",
+                "Vehicle Class": "NT",
+                "COV Issue Date": "NA",
+              },
+              {
+                "Vehicle Type": "MCWG",
+                "Vehicle Class": "NT",
+                "COV Issue Date": "NA",
+              },
+            ],
+            State: "National Capital Territory Of Delhi",
+            imgurl: "data:image/jpeg;base64",
+          },
+        },
+      },
+    ],
+  },
+  // stolen vehicle verification
+  {
+    name: "SVV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            "Phone Number": "9876543210",
+            Status: "STOLEN/THEFT",
+            "Chasis Number": "MH123456789012345",
+            Complaint: "John Doe s/o Richard Doe",
+            "Report Date & Time": "01/01/2023 10:15:00 AM",
+            "Police Station": "POLICE STATION 12",
+            District: "DELHI",
+            "Fir Date": "01/01/2023",
+            "Vehicle Color": "BLACK",
+            "Control Room": "O 01",
+            "Vehicle Make": "2W - HONDA CB500",
+            State: "DELHI",
+            "Registration Number": "DL01AB1234",
+            "Engine Number": "EN123456789012345",
+            Address: "C/o John Transport, Plot No. 10, Industrial Area, Delhi",
+            "Vehicle Model": "CB500X 2020",
+            "Stolen From":
+              "In front of John Transport, Plot No. 10, Industrial Area, Delhi",
+            "Vehicle Type": "TWO WHEELER",
+            "Fir number": "00123",
+          },
+        },
+      },
+    ],
+  },
+  // challan via rc
+  {
+    name: "CVR",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            "Accused Father Name": "LALIT KUMAR",
+            "Accused Name": "SUNIL KUMAR",
+            Amount: 1000,
+            "Challan Date": "2021-01-09 13:29:01",
+            "Challan Number": "BR8631210109132901",
+            "Challan Place": "JAUMUI",
+            "Challan Status": "Disposed",
+            "DL No/Vehicle Number": "BR46J2671",
+            "Offense Details": ["Without helmet"],
+            RTO: "",
+            "Sl. No.": 1,
+            State: "BR",
           },
         },
       },

@@ -11,6 +11,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const TradeLicenseLookup = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -24,17 +25,17 @@ const TradeLicenseLookup = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -80,10 +81,14 @@ const TradeLicenseLookup = () => {
             link="bin/getCardDetails"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number
-            The Bin Number Verification API allows developers to verify users’
-            Bin numbers in real-time.
+            The Bin Number means Bank Identification Number The Bin Number
+            Verification API allows developers to verify users’ Bin numbers in
+            real-time.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}

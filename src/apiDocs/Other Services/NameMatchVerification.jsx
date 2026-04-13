@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, NameDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const NameMatchVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -23,17 +24,17 @@ const NameMatchVerification = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -76,12 +77,16 @@ const NameMatchVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link= "name/compareNames"
+            link="name/compareNames"
           />
           <p className="first_para">
             The Name Match Verification API allows developers to verify users’
             Names in real-time.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}

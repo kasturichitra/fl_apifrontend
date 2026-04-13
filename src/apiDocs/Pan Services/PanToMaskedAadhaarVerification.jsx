@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -10,9 +9,10 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const PanToDobVerification = () => {
+const PanToMaskedAadhaarVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -24,17 +24,17 @@ const PanToDobVerification = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -80,9 +80,13 @@ const PanToDobVerification = () => {
             link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
+            The PAN Number to masked Aadhaar API allows developers to verify
+            users’ PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -113,7 +117,10 @@ const PanToDobVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -135,5 +142,4 @@ const PanToDobVerification = () => {
   );
 };
 
-export default PanToDobVerification;
-
+export default PanToMaskedAadhaarVerification;

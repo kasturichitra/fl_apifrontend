@@ -12,6 +12,7 @@ import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, AccountDynamic } from "../../utils/apiSchema";
 import AccessToken from "../../components/AccessToken";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const BankAccountPennyLessVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -25,17 +26,17 @@ const BankAccountPennyLessVerification = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -73,7 +74,9 @@ const BankAccountPennyLessVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Account Verification (Penny Less)</h1>
+          <h1 className="api_heading">
+            Bank Account Verification (Penny Less)
+          </h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -86,10 +89,14 @@ const BankAccountPennyLessVerification = () => {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History Table */}
         <RequestHistoryTable TableClass="history_Table" />
 
-        <AccessToken/>
+        <AccessToken />
 
         {/* Headers */}
         <div className="py-6">

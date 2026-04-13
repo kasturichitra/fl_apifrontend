@@ -1,40 +1,44 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BIN } from "../../utils/bodyParams";
+import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  PanDynamic,
+  PanToMaskedAadhaarDynamic,
+} from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const GSTReturnHistory = () => {
+const PassportMrz = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -45,7 +49,7 @@ const GSTReturnHistory = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -72,18 +76,22 @@ const GSTReturnHistory = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Gst Return History</h1>
+          <h1 className="api_heading">Passport Mrz</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getCardDetails"
+            link="government/passport/verify"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number
-            The Bin Number Verification API allows developers to verify users’
-            Bin numbers in real-time.
+            The Passport MRZ API enables developers to extract and verify data
+            from the Machine Readable Zone (MRZ) of passports, providing
+            accurate and structured information in real-time.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -104,7 +112,7 @@ const GSTReturnHistory = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BIN}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -114,7 +122,10 @@ const GSTReturnHistory = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -128,13 +139,12 @@ const GSTReturnHistory = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bin"}
-          examples={GetAcc?.exampleCodes["BIN"] || []}
+          service={"panToAadhaar"}
+          examples={GetAcc?.exampleCodes["PTA"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default GSTReturnHistory;
-
+export default PassportMrz;

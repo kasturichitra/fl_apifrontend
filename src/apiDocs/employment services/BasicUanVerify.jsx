@@ -1,51 +1,47 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
+import { BUV } from "../../utils/bodyParams";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { BasicUanVerifyDynamic, DATA } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, GstDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
-const GSTRegistrationDate = () => {
+export default function BasicUanVerify() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["BUV"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
-
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -57,10 +53,9 @@ const GSTRegistrationDate = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -70,33 +65,32 @@ const GSTRegistrationDate = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Gst Registeration Date</h1>
+          <h1 className="api_heading">Basic Uan Verification</h1>
+
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="employee/uan/basic"
           />
+
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
-          </p>
-          <p className="first_para">GST (Goods Service Tax)</p>
-          <p className="first_para">
-            PAN is a 10-character alphanumeric identifier issued by the Income
-            Tax Department of India.
-          </p>
-          <p className="first_para">
-            Used for tax-related identification for individuals and entities.{" "}
+            The Basic UAN Verification API enables developers to validate a
+            Universal Account Number (UAN) and fetch essential employee
+            provident fund details, ensuring quick and reliable identity
+            verification.
           </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -107,41 +101,40 @@ const GSTRegistrationDate = () => {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={BUV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={GstDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={BasicUanVerifyDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"basicUanVerification"}
+          examples={GetAcc?.exampleCodes["BUV"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default GSTRegistrationDate;
-
+}

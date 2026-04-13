@@ -18,7 +18,7 @@ export default function Examples({
   setChoosedExample,
 }) {
   const dropdownRef = useRef(null);
-  
+
   const handleClick = (e, status) => {
     e.stopPropagation();
     setIsExampleChoosed(true);
@@ -147,9 +147,10 @@ function DisplayExamplesContent({
   return (
     <div className=" text-center flex justify-between flex-col gap-5 p-7.5 w-full h-calc(100% - 48px)">
       <div className="text-sm">
-        click
+        {/* click
         <code className="px-1 mx-1 rounded text-medium border">Try It!</code>
-        to start a request and see the response here! Or choose an example:
+        to start a request and */}
+        see the response here! Or choose an example:
       </div>
       <div className="flex flex-col items-center gap-1.5">
         <span className="text-sm">application/json</span>
@@ -176,18 +177,29 @@ function DisplayExamplesContent({
   );
 }
 
-function RenderExampleCodes({ apiError, examples, choosedExample, setApiError}) {
-  let { statusCode= "", message= "" } =
+function RenderExampleCodes({
+  apiError,
+  examples,
+  choosedExample,
+  setApiError,
+}) {
+  let { statusCode = "", message = "" } =
     apiError || examples.filter((e) => e?.statusCode === choosedExample)[0];
 
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = async () => {
-    setIsCopied(true);
-    await navigator.clipboard.writeText(example);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    try {
+      const dataToCopy = JSON.stringify(truncated, null, 2); // copy formatted JSON
+      await navigator.clipboard.writeText(dataToCopy);
+      setIsCopied(true);
+
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (err) {
+      console.error("Copy failed:", err);
+    }
   };
 
   const truncated = truncateJson(message, 60);
@@ -241,7 +253,7 @@ const truncateJson = (data, charLimit = 60) => {
               return [key, truncateJson(value, charLimit)];
             }
             return [key, value];
-          })
+          }),
         );
   }
   return data;

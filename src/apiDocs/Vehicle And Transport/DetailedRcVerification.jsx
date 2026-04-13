@@ -5,35 +5,36 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BWI } from "../../utils/bodyParams";
+import { DRV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
+import { DATA, IfscDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const DetailedRcVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
+  const examplesList = GetAcc?.exampleCodes["DRV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -44,7 +45,7 @@ const DetailedRcVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "bin/getBankDetails",
+        path: "vehicle/rcverify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -71,17 +72,22 @@ const DetailedRcVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Details With Ifsc</h1>
+          <h1 className="api_heading">Detailed Rc Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getBankDetails"
+            link="vehicle/rcverify"
           />
           <p className="first_para">
-            The Ifsc Verification API allows developers to verify users’
-            Ifsc in real-time to know about user bank.
+            The Detailed RC Verification API allows developers to verify vehicle
+            registration certificate details in real-time to confirm ownership,
+            vehicle information, and registration status.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -102,7 +108,7 @@ const DetailedRcVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BWI}
+            bodyObj={DRV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -126,8 +132,8 @@ const DetailedRcVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"ifsc"}
-          examples={GetAcc?.exampleCodes["IFSC"] || []}
+          service={"detailedRcVerification"}
+          examples={GetAcc?.exampleCodes["DRV"] || []}
         />
       </div>
     </div>

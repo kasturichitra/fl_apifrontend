@@ -23,17 +23,17 @@ const PanNameMatch = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -71,20 +71,23 @@ const PanNameMatch = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number To Masked Aadhaar</h1>
+          <h1 className="api_heading">Pan Name Match</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="pan/panNameMatch"
           />
-          <p className="first_para">
-            The PAN Number to masked Aadhaar API allows developers to verify users’
-            PAN numbers and get the masked aadhaar numbers in real-time.
-          </p>
+      <p className="first_para">
+    The Pan Name Match API allows developers to verify whether a given PAN number matches the provided name in real-time, ensuring accurate identification of users.
+  </p>
         </div>
 
-        {/* Request History Table */}
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
+{/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
@@ -112,7 +115,10 @@ const PanNameMatch = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanToMaskedAadhaarDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -135,4 +141,3 @@ const PanNameMatch = () => {
 };
 
 export default PanNameMatch;
-

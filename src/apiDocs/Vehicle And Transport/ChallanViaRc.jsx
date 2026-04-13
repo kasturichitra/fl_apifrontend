@@ -5,35 +5,36 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BWI } from "../../utils/bodyParams";
+import { CVR } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, IfscDynamic, PanDynamic } from "../../utils/apiSchema";
+import { challanViaRcDynamic, DATA } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const ChallanViaRc = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["IFSC"] || [];
+  const examplesList = GetAcc?.exampleCodes["CVR"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -71,17 +72,22 @@ const ChallanViaRc = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bank Details With Ifsc</h1>
+          <h1 className="api_heading">Challan Via Rc</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getBankDetails"
+            link="vehicle/challan_via_rc"
           />
           <p className="first_para">
-            The Ifsc Verification API allows developers to verify users’
-            Ifsc in real-time to know about user bank.
+            The Challan Via RC API allows developers to fetch traffic challan
+            details associated with a vehicle registration number in real-time,
+            helping to check pending fines and violation history.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -102,7 +108,7 @@ const ChallanViaRc = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BWI}
+            bodyObj={CVR}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -112,7 +118,7 @@ const ChallanViaRc = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={IfscDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={challanViaRcDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -126,8 +132,8 @@ const ChallanViaRc = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"ifsc"}
-          examples={GetAcc?.exampleCodes["IFSC"] || []}
+          service={"challanViaRc"}
+          examples={GetAcc?.exampleCodes["CVR"] || []}
         />
       </div>
     </div>

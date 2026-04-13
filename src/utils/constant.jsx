@@ -79,21 +79,16 @@ export const ApiReferences = [
     ],
   },
   // Encryption And Decryption
-  // {
-  //   section: "ENCRYPT AND DECRYPT",
-  //   items: [
-  //     {
-  //       title: "Encryption",
-  //       link: "encrypt",
-  //       methods: [],
-  //     },
-  //     {
-  //       title: "Decryption",
-  //       link: "decrypt",
-  //       methods: [],
-  //     },
-  //   ],
-  // },
+  {
+    section: "ENCRYPT AND DECRYPT",
+    items: [
+      {
+        title: "Encryption And Decryption",
+        link: "encrypt_and_decryption",
+        methods: [],
+      },
+    ],
+  },
   {
     section: "API",
     items: [
@@ -103,9 +98,9 @@ export const ApiReferences = [
         link: "pan_basic_verification",
         methods: [
           {
-            title: "PAN",
+            title: "PAN Baic verification",
             type: "POST",
-            link: "pan",
+            link: "pan_basic_verification",
           },
           {
             title: "Know your GSTIN using PAN",
@@ -126,11 +121,6 @@ export const ApiReferences = [
             title: "PAN to GST",
             type: "POST",
             link: "pan_to_gst",
-          },
-          {
-            title: "PAN ITD Status",
-            type: "POST",
-            link: "pan_itd_status",
           },
           {
             title: "PAN Name DOB",
@@ -291,39 +281,29 @@ export const ApiReferences = [
         link: "gst_services",
         methods: [
           {
-            title: "GST Business Profile",
+            title: "Comprehensive GST Solution",
             type: "POST",
-            link: "gst_business_profile",
+            link: "comprehensive_gst_solution",
           },
           {
-            title: "Principal Place of Business",
+            title: "Comprehensive GST Solution Advanced",
             type: "POST",
-            link: "principal_place_of_business",
+            link: "comprehensive_gst_solution_advanced",
           },
           {
-            title: "GST Filing Status",
+            title: "GST Advanced Search",
             type: "POST",
-            link: "gst_filing_status",
+            link: "gst_advanced_search",
           },
           {
-            title: "GST Return History",
+            title: "GST Basis PAN",
             type: "POST",
-            link: "gst_return_history",
+            link: "gst_basis_pan",
           },
           {
-            title: "GST Compliance Score",
+            title: "GST Analytics",
             type: "POST",
-            link: "gst_compliance_score",
-          },
-          {
-            title: "GST Registration Date",
-            type: "POST",
-            link: "gst_registration_date",
-          },
-          {
-            title: "GST Amendment History",
-            type: "POST",
-            link: "gst_amendment_history",
+            link: "gst_analytics",
           },
         ],
       },
@@ -390,44 +370,14 @@ export const ApiReferences = [
         link: "employment_and_income",
         methods: [
           {
-            title: "Employment History",
+            title: "Basic UAN Verification",
             type: "POST",
-            link: "employment_history",
+            link: "basic_uan_verification",
           },
           {
-            title: "Employer Verification",
+            title: "Dual Employment Check",
             type: "POST",
-            link: "employer_verification",
-          },
-          {
-            title: "UAN Verification",
-            type: "POST",
-            link: "uan_verification",
-          },
-          {
-            title: "EPFO Employment Records",
-            type: "POST",
-            link: "epfo_employment_records",
-          },
-          {
-            title: "Salary Credit Verification",
-            type: "POST",
-            link: "salary_credit_verification",
-          },
-          {
-            title: "Income Range Estimation",
-            type: "POST",
-            link: "income_range_estimation",
-          },
-          {
-            title: "Form-16 Verification",
-            type: "POST",
-            link: "form_16_verification",
-          },
-          {
-            title: "26AS Tax Summary",
-            type: "POST",
-            link: "26as_tax_summary",
+            link: "dual_employment_check",
           },
         ],
       },
@@ -437,29 +387,29 @@ export const ApiReferences = [
         link: "vehicle_and_transport",
         methods: [
           {
-            title: "Vehicle RC",
+            title: "Vehicle Registeration",
             type: "POST",
-            link: "vehicle_rc_verification",
+            link: "vehicle_registeration",
           },
           {
             title: "Detailed RC Verification",
             type: "POST",
-            link: "vehicle_owner_name",
+            link: "detailed_rc_verification",
           },
           {
             title: "Stolen Vehicle Verification",
             type: "POST",
-            link: "driving_license_verification",
+            link: "stolen_vehicle_verification",
           },
           {
             title: "Driving License",
             type: "POST",
-            link: "driving_license_status",
+            link: "driving_license_verification",
           },
           {
             title: "Challan via RC",
             type: "POST",
-            link: "rto_details",
+            link: "challan_via_rc",
           },
         ],
       },
@@ -553,34 +503,34 @@ export const ApiReferences = [
         link: "government_id_services",
         methods: [
           {
-            title: "Passport Verification",
+            title: "Passport MRZ",
             type: "POST",
-            link: "passport_verification",
+            link: "passport_mrz",
           },
           {
-            title: "Passport Status",
+            title: "Passport Verification Using File No.",
             type: "POST",
-            link: "passport_status",
+            link: "passport_verification_file_no",
           },
           {
-            title: "Voter ID Verification",
+            title: "Passport (with OCR)",
             type: "POST",
-            link: "voter_id_verification",
+            link: "passport_ocr",
           },
           {
-            title: "Electoral Roll Lookup",
+            title: "Voter Id",
             type: "POST",
-            link: "electoral_roll_lookup",
+            link: "voter_id",
           },
           {
-            title: "Multi-ID Search",
+            title: "Electricity Bill",
             type: "POST",
-            link: "multi_id_search",
+            link: "electricity_bill",
           },
           {
-            title: "ID Cross-Match",
+            title: "TIN Verification",
             type: "POST",
-            link: "id_cross_match",
+            link: "tin_verification",
           },
         ],
       },
@@ -597,7 +547,7 @@ export const ApiReferences = [
               {
                 title: "STEP:1 Mobile Otp Genration",
                 type: "POST",
-                link: "mobile_otp_genration",
+                link: "mobile_otp_generation",
               },
               {
                 title: "STEP:2 Mobile Otp Validation",
@@ -615,16 +565,6 @@ export const ApiReferences = [
             title: "Mobile To Pan",
             type: "POST",
             link: "mobile_to_pan",
-          },
-          {
-            title: "Email Validation",
-            type: "POST",
-            link: "email_validation",
-          },
-          {
-            title: "Email Domain Risk",
-            type: "POST",
-            link: "email_domain_risk",
           },
         ],
       },

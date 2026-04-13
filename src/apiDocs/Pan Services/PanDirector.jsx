@@ -11,6 +11,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, PanDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanDirector = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -24,17 +25,17 @@ const PanDirector = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -72,16 +73,17 @@ const PanDirector = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Pan Director Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/panverifying"
+            link="pan/knowDirector"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The Pan Director Verification API allows developers to verify the
+            PAN details of company directors in real-time, ensuring accurate
+            identification and compliance.
           </p>
           <p className="first_para">PAN (Permanent Account Number)</p>
           <p className="first_para">
@@ -89,8 +91,13 @@ const PanDirector = () => {
             Tax Department of India.
           </p>
           <p className="first_para">
-            Used for tax-related identification for individuals and entities.{" "}
+            It is used for tax-related identification and compliance for
+            individuals, including company directors.
           </p>
+        </div>
+
+        <div className="py-6">
+          <EncryptionNotice />
         </div>
 
         {/* Request History Table */}
@@ -144,5 +151,3 @@ const PanDirector = () => {
 };
 
 export default PanDirector;
-
-

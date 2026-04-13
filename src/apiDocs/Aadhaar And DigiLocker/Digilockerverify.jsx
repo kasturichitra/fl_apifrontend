@@ -7,9 +7,14 @@ import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { AadhaarIntiateDynamic, DATA, DigilockerVerifyDynamic } from "../../utils/apiSchema";
+import {
+  AadhaarIntiateDynamic,
+  DATA,
+  DigilockerVerifyDynamic,
+} from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
 import { DAV } from "../../utils/bodyParams";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 export default function Digilockerverify() {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -73,7 +78,7 @@ export default function Digilockerverify() {
             method={"POST"}
             className={"method_link"}
             LinkClass={"link_class"}
-            link="aadhaar/initiate"
+            link="aadhaar/digilocker/verify"
           />
 
           <p className="first_para">
@@ -83,8 +88,12 @@ export default function Digilockerverify() {
           </p>
         </div>
 
+        <div className="py-6">
+          <EncryptionNotice />
+        </div>
+
         {/* Request History */}
-        <RequestHistoryTable TableClass={"history_Table"} />
+        {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}
         <div className="py-6">
@@ -128,7 +137,7 @@ export default function Digilockerverify() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"digilockerVerify"}
+          service={"digilockerVerifyAccount"}
           examples={GetAcc?.exampleCodes["DAV"] || []}
         />
       </div>

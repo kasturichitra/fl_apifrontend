@@ -23,17 +23,17 @@ const RechargePayment = () => {
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -79,8 +79,8 @@ const RechargePayment = () => {
             link="Recharge/RechargeURL"
           />
           <p className="first_para">
-            The RP Number Verification API allows developers to verify users’
-            RP numbers in real-time.
+            The RP Number Verification API allows developers to verify users’ RP
+            numbers in real-time.
           </p>
         </div>
 
@@ -112,7 +112,10 @@ const RechargePayment = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={RechargePaymentDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={RechargePaymentDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 

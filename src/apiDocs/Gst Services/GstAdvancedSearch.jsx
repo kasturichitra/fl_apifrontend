@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import BodyParams from "../../components/BodyParams/BodyParams.jsx";
-import MethodLink from "../../components/MethodLink.jsx";
+import BodyParams from "../../components/BodyParams/BodyParams";
+import MethodLink from "../../components/MethodLink";
+import RequestHistoryTable from "../../components/refernce_route_components/RequestHistoryTable";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
+import { MTP } from "../../utils/bodyParams";
 import Headers from "../../components/Headers/Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { RO } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
+import { FetchApi } from "../../utils/Custom_Api";
+import { DATA, MobileOtpValidateDynamic } from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
-import "../../styles/api_reference.css";
-import { DATA, RechargeOffersDynamic } from "../../utils/apiSchema";
 
-const RechargeOffers = () => {
+export default function GstAdvancedSearch() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const [allRequiredFields, setAllRequiredFields] = useState({});
-
-  const examplesList = GetAcc?.exampleCodes["RO"] || [];
-
+  const examplesList = GetAcc?.exampleCodes["MTP"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -26,25 +23,24 @@ const RechargeOffers = () => {
         ? examplesList[0].statusCode
         : null;
   });
-
   const [isExampleChoosed, setIsExampleChoosed] = useState(
     () => !!choosedExample,
   );
+  const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const makeFaceMatchApiCall = async () => {
+  const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
       (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
-      alert("Please enter all the required fields");
-      return;
+      return alert("Please enter all the Required Fields");
     }
 
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "Recharge/OffersPlans",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -56,10 +52,9 @@ const RechargeOffers = () => {
       });
       setIsExampleChoosed(true);
     } catch (error) {
-      const statusCode = error?.response?.data?.statusCode || 500;
-      setChoosedExample(statusCode);
+      setChoosedExample(error?.response?.data?.statusCode);
       setApiResponse({
-        statusCode,
+        statusCode: error?.response?.data?.statusCode,
         message: error?.response?.data,
       });
       setIsExampleChoosed(true);
@@ -69,25 +64,27 @@ const RechargeOffers = () => {
   return (
     <div className="main_parent">
       <div className="first_child hide-scrollbar">
-        {/* Header Section */}
+        {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Recharge Offers</h1>
+          <h1 className="api_heading">Mobile To Pan</h1>
+
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="Recharge/OffersPlans"
+            link="contact/pan/verify"
           />
+
           <p className="first_para">
-            The Recharge Offers API allows developers to get offers for the
-            mobile numbers in real-time.
+            The Mobile to PAN API enables developers to retrieve and verify PAN
+            details associated with a mobile number, providing accurate identity
+            mapping and real-time validation.
           </p>
         </div>
 
-        {/* Request History Table */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        {/* Headers */}
         <div className="py-6">
           <p className="text-xs font-medium">HEADERS</p>
           <Headers
@@ -98,43 +95,40 @@ const RechargeOffers = () => {
           />
         </div>
 
-        {/* Body Params */}
+        {/* BODY PARAMS */}
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={RO}
+            bodyObj={MTP}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
           />
         </div>
 
-        {/* Response */}
+        {/* RESPONSE COMPONENT */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={RechargeOffersDynamic}
+            dynamic200={MobileOtpValidateDynamic}
             otherData={DATA}
           />
         </div>
       </div>
 
-      {/* Code / Example Section */}
       <div className="second_child hide-scrollbar">
         <Codes
-          makeFaceMathcApiCall={makeFaceMatchApiCall}
+          makeFaceMathcApiCall={makeFaceMathcApiCall}
           apiError={apiResponse}
           isExampleChoosed={isExampleChoosed}
           setIsExampleChoosed={setIsExampleChoosed}
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"offers"}
-          examples={GetAcc?.exampleCodes["RO"] || []}
+          service={"mobileOtpVerify"}
+          examples={GetAcc?.exampleCodes["MTP"] || []}
         />
       </div>
     </div>
   );
-};
-
-export default RechargeOffers;
+}
