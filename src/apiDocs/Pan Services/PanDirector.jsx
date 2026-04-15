@@ -10,7 +10,7 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic } from "../../utils/apiSchema";
+import { DATA, PanDirectorDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanDirector = () => {
@@ -46,7 +46,7 @@ const PanDirector = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "/pan/knowDirector",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -128,7 +128,7 @@ const PanDirector = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDirectorDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -142,7 +142,7 @@ const PanDirector = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"panDirector"}
           examples={GetAcc?.exampleCodes["PAN_DIRECTOR"] || []}
         />
       </div>

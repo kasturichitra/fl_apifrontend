@@ -46,7 +46,7 @@ const PanToGst = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "/pan/gst/with/pan",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,7 +73,7 @@ const PanToGst = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Pan Number Verification</h1>
+          <h1 className="api_heading">Pan To Gst</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -81,8 +81,8 @@ const PanToGst = () => {
             link="pan/gst/with/pan"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The PAN to GST API allows developers to fetch GST details associated
+            with a given PAN number in real-time.
           </p>
           <p className="first_para">PAN (Permanent Account Number)</p>
           <p className="first_para">
@@ -90,8 +90,7 @@ const PanToGst = () => {
             Tax Department of India.
           </p>
           <p className="first_para">
-            Used for tax-related identification for individuals and
-            entities.{" "}
+            Used for tax-related identification for individuals and entities.
           </p>
         </div>
 
@@ -141,7 +140,7 @@ const PanToGst = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"panToGst"}
           examples={GetAcc?.exampleCodes["PTG"] || []}
         />
       </div>

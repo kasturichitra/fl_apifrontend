@@ -27,7 +27,7 @@ export const apiList = [
     key: "pan",
     name: "PAN",
     category: "kyc",
-    url: "pan/panverifying",
+    url: "pan/verify",
     params: { panNumber: "IROPXXXXXX" },
   },
   {
@@ -39,53 +39,74 @@ export const apiList = [
   },
   {
     key: "panNameMatch",
-    name: "PAN NAME MATCH",
+    name: "PANNAMEMATCH",
     category: "kyc",
-    url: "pan/pan",
+    url: "pan/panNameMatch",
+    params: {
+      panNumber: "",
+      nameToMatch: "",
+    },
+  },
+  {
+    key: "panTanVerification",
+    name: "PANTANVERIFICATION",
+    category: "kyc",
+    url: "pan/tan/verify",
+    params: {
+      panNumber: "",
+      tanNumber: "",
+    },
+  },
+  {
+    key: "panToGst",
+    name: "PANTOGST",
+    category: "kyc",
+    url: "pan/gst/with/pan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "knowGstinUsingPan",
+    name: "KNOWGSTINUSINGPAN",
+    category: "kyc",
+    url: "pan/getgst_in/withpan",
+    params: {
+      panNumber: "",
+    },
+  },
+  {
+    key: "panToFatherName",
+    name: "PANTOFATHERNAME",
+    category: "kyc",
+    url: "pan/know/fatherName",
     params: {
       panNumber: "",
     },
   },
   {
     key: "panNameDobValidation",
-    name: "PAN NAME DOB VALIDATION",
+    name: "PANNAMEDOBVALIDATION",
     category: "kyc",
-    url: "pan/pan",
+    url: "pan/panName/DobVerify",
     params: {
       panNumber: "",
       dob: "",
-    },
-  },
-  {
-    key: "panAadhaarSeeding",
-    name: "PAN AADHAAR SEEDING",
-    category: "kyc",
-    url: "pan/pan",
-    params: {
-      panNumber: "",
-    },
-  },
-  {
-    key: "panActiveInactiveStatus",
-    name: "PAN ACTIVE / INACTIVE STATUS",
-    category: "kyc",
-    url: "pan/pan",
-    params: {
-      panNumber: "",
+      fullName: "",
     },
   },
   {
     key: "panDirector",
-    name: "PAN DIRECTOR",
+    name: "PANDIRECTOR",
     category: "kyc",
-    url: "pan/pan",
+    url: "pan/knowDirector",
     params: {
       panNumber: "",
     },
   },
   {
     key: "panItdOtpSend",
-    name: "PAN ITD OTP SEND",
+    name: "PANITDOTPSEND",
     category: "kyc",
     url: "pan/pan",
     params: {
@@ -94,11 +115,10 @@ export const apiList = [
   },
   {
     key: "panItdOtpVerify",
-    name: "PAN ITD OTP VERIFY",
+    name: "PANITDOTPVERIFY",
     category: "kyc",
     url: "pan/pan",
     params: {
-      panNumber: "",
       otp: "",
     },
   },
@@ -315,6 +335,36 @@ export const apiList = [
     category: "kyc",
     url: "name/compareNames",
     params: { firstName: "", secondName: "" },
+  },
+
+  // government id services
+  {
+    key: "passportMrz",
+    name: "PASSPORT_MRZ",
+    category: "kyc",
+    url: "government/passport/verify",
+    params: { mrzLine1: "", mrzLine2: "" },
+  },
+  {
+    key: "passportFileNumberVerification",
+    name: "PASSPORT_FILE_NUMBER_VERIFICATION",
+    category: "kyc",
+    url: "government/passport_fileNo/verify",
+    params: { fileNumber: "", dateOfBirth: "", passportNumber: "" },
+  },
+  {
+    key: "passportOcr",
+    name: "PASSPORT_OCR",
+    category: "kyc",
+    url: "government/passport_ocr/verify",
+    params: { file: null },
+  },
+  {
+    key: "voterId",
+    name: "VOTER_ID",
+    category: "kyc",
+    url: "government/voterId/verify",
+    params: { epicNumber: "", name: "", state: "" },
   },
 
   // geo location
@@ -591,6 +641,24 @@ const commonApiExample = {
 };
 
 const apiExamples = [
+  // access token genration
+  {
+    name: "AT",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            secret_token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCIkpXVCJ9.eyJjbGllbnRJZCI6ImNsX0RZMkJnaVNRNUJkb1VvUW1tub1EiLCJjbGllbnRTZWNyZXQiOiI3VlpLZTNQVC1peVA4S19aWmpjQkdadzZ1WVpLWUlOZTRrZVViWHdIX2JEaGlGYWZrYUUwZE9fSzVYT1lNSkk1R0V5cHk5Sy1RWWhUaWxjcEduMlNMZyIsImVudmlyb25tZW50IjoiTElWRSIsIlZlcnNpb25LZXkiOjEwLCJpYXQiOjE3NzYyNTM5MjMsImV4cCI6MTc3ODg0NTkyM30.OYTj79BSueSUKryMn0VHg10IFuYHCys28d_hHc-n3X8",
+            environment: "LIVE",
+          },
+        },
+      },
+    ],
+  },
+
   // pan services
   // pan verification
   {
@@ -617,9 +685,8 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
-          response: {
+          ...commonApiExample,
+          data: {
             din: "ABCDEXXXXXXXX",
             name: "RAM",
           },
@@ -648,6 +715,122 @@ const apiExamples = [
   // pan to aadhaar
   {
     name: "PTA",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            code: 200,
+            message: "Data Found Successfully.",
+            result: {
+              aadhaar: "53XXXXXXXX11",
+            },
+          },
+        },
+      },
+    ],
+  },
+  // pan name match
+  {
+    name: "PNM",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            LastUpdate: "2025-01-10",
+            Name: "AMIT VERMA",
+            STATUS: "Active",
+            StatusDescription: "Existing and Valid",
+            name_match_score: {
+              score: "98.5%",
+              status: 1,
+              str1: "AMIT VERMA",
+              str2: "Verma Amit",
+            },
+            panNumber: "ABCDE1234F",
+          },
+        },
+      },
+    ],
+  },
+  // pan name dob
+  {
+    name: "PND",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            "Status of PAN": "Active",
+            "Given Name matches with the ITD Records": "Yes",
+            "Given DOB matches with the ITD Records": "Yes",
+          },
+        },
+      },
+    ],
+  },
+  // pan to father name
+  {
+    name: "PTFN",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            data: {
+              additional_check: [],
+              category: "company",
+              client_id: "CLNT123456",
+              dob: "1985-07-15",
+              dob_check: true,
+              dob_verified: true,
+              father_name: "SURESH KUMAR",
+              full_name: "RAHUL SHARMA",
+              less_info: false,
+              pan_number: "ABCDE1234F",
+            },
+            message: "ACTIVE",
+            message_code: "success",
+            status_code: 200,
+            success: true,
+            PAN: "ABCDE1234F",
+          },
+        },
+      },
+    ],
+  },
+  // pan to gst_in
+  {
+    name: "PTGN",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            code: 200,
+            message: "Data Found Successfully.",
+            result: {
+              aadhaar: "53XXXXXXXX11",
+            },
+          },
+        },
+      },
+    ],
+  },
+  // pan tan verify
+  {
+    name: "PTV",
     examples: [
       {
         statusCode: 200,
@@ -1269,6 +1452,64 @@ const apiExamples = [
       },
     ],
   },
+  // din verification
+  {
+    name: "DIN",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            address:
+              "123 Dummy Street, Sample Nagar, Test City, TS 500001, India",
+            companyDetail: [
+              {
+                cin: "U12345TS2024PTC000001",
+                company_address:
+                  "Flat No. 101, Plot 10, Example Hills, Sample Area, Hyderabad, Telangana, India, 500001",
+                company_category: "Company limited by shares",
+                company_name: "ABC TECH PRIVATE LIMITED",
+                date_of_incorporation: "2024-01-15",
+                email_id: "abc@example.com",
+                last_updated: "2025-01-01",
+                roc_code: "ROC Hyderabad",
+                status: "Active",
+              },
+              {
+                cin: "U12345TS2024PTC000002",
+                company_address:
+                  "Flat No. 202, Plot 11, Example Hills, Sample Area, Hyderabad, Telangana, India, 500002",
+                company_category: "Company limited by shares",
+                company_name: "XYZ SOLUTIONS PRIVATE LIMITED",
+                date_of_incorporation: "2024-03-10",
+                email_id: "xyz@example.com",
+                last_updated: "2025-02-01",
+                roc_code: "ROC Hyderabad",
+                status: "Active",
+              },
+              {
+                cin: "U12345TS2020PTC000003",
+                company_address:
+                  "Flat No. 303, Plot 12, Example Hills, Sample Area, Hyderabad, Telangana, India, 500003",
+                company_category: "Company limited by shares",
+                company_name: "DEMO ENTERPRISES PRIVATE LIMITED",
+                date_of_incorporation: "2020-07-20",
+                email_id: "demo@example.com",
+                last_updated: "2025-03-01",
+                roc_code: "ROC Hyderabad",
+                status: "Active",
+              },
+            ],
+            din: "12345678",
+            name: "JOHN DOE",
+            dinNumber: "dummyhash1234567890abcdef",
+          },
+        },
+      },
+    ],
+  },
 
   // banking services
   // bank penny drop
@@ -1727,6 +1968,75 @@ const apiExamples = [
             RTO: "",
             "Sl. No.": 1,
             State: "BR",
+          },
+        },
+      },
+    ],
+  },
+
+  // risk and due diligence
+  {
+    name: "CRC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            algoVersion: "v1",
+            data: [
+              {
+                address:
+                  "The State Rep By Range Inspector Ii,Acb,Vijayawada Range, Guntur Krishna Andhra Pradesh",
+                addressMatchPercentage: 100,
+                advocateName: null,
+                bothMatchPercentage: null,
+                caseActType: null,
+                caseCourtDetails: "III MM Court, Vijayawada",
+                caseId: "129153408",
+                caseSection: null,
+                case_code: "APKR090000512018",
+                case_disposed_date: "",
+                category: "Criminal",
+                courtDistid: "11",
+                courtId: null,
+                courtStateid: "2",
+                data_source: "DC",
+                fatherPercentage: null,
+                flagged_address: 1,
+                id: "129153408",
+                link: "https://vault-artifacts.authbridge.com/APIl2html/njdghtml.php?case_id=129153408&data_source=dc",
+                name: "Gorantla Seshasai",
+                nameMatchPercentage: 95,
+                partyAddress_highlighted:
+                  "The State Rep By Range Inspector Ii Acb Vijayawada Range <Strong>Guntur</Strong> Krishna Andhra Pradesh",
+                partyDistid: "5",
+                partyDistname: "guntur",
+                partyFather: null,
+                partyId: "322407059_DC",
+                partyName_highlighted:
+                  "Gorantla <Strong>Sesha</Strong> <Strong>Sai</Strong>",
+                partyStateid: "2",
+                partyStatename: "andhra pradesh",
+                partyType: "Respondent",
+                query_type: "Query1",
+                rank: 1,
+                registration_year: "2018",
+                score: 98.25,
+                solr_source: "vault_solr",
+                stageOfCase: "hearing",
+                weightedPercentage: 98.25,
+              },
+            ],
+            eliminated_data: [],
+            maxScore: null,
+            numFound: 100,
+            perPage: null,
+            perPaginQuery: null,
+            sendToVault: true,
+            sendToVp: false,
+            start: null,
+            totalResult: 100,
           },
         },
       },

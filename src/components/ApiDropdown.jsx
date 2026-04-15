@@ -73,8 +73,9 @@ const LinkComponent = ({
 }) => {
   const isOpen = openLevels[level] === item.link;
   const hasChildren = item.methods?.length > 0;
-  const isActive = location.pathname === `/reference/${item.link}`;
-
+  const isActive =
+    location.pathname === `/reference/${item.link}` ||
+    location.pathname.startsWith(`/reference/${item.link}/`);
   // ✅ Auto-open parent if a child route is active
   useEffect(() => {
     if (hasChildren) {
@@ -100,13 +101,13 @@ const LinkComponent = ({
   };
 
   return (
-    <li>
+    <li id={`sidebar-item-${item.link}`}>
       <Link
         to={`/reference/${item.link}`}
         onClick={handleClick}
         className={`api_nav_item flex justify-between items-center w-full px-2 py-1 cursor-pointer transition-all duration-200 ${
           isActive
-            ? "bg-gray-800 text-white font-semibold border-l-4 border-blue-500"
+            ? "active bg-gray-800 text-white font-semibold border-l-4 border-blue-500"
             : "text-gray-300 hover:bg-gray-700"
         }`}
       >

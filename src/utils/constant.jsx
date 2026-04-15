@@ -38,7 +38,6 @@ export const GuidesData = [
     title: "Params",
     pages: [
       { title: "Body Params", slug: "body_params" },
-      { title: "Category And Service", slug: "category_and_service" },
     ],
   },
   {
@@ -86,7 +85,7 @@ export const ApiReferences = [
         title: "Encryption And Decryption",
         link: "encrypt_and_decryption",
         methods: [],
-      },
+      }
     ],
   },
   {
@@ -101,6 +100,11 @@ export const ApiReferences = [
             title: "PAN Baic verification",
             type: "POST",
             link: "pan_basic_verification",
+          },
+          {
+            title: "PAN To Masked Aadhaar",
+            type: "POST",
+            link: "pan_to_masked_aadhaar",
           },
           {
             title: "Know your GSTIN using PAN",
@@ -137,22 +141,22 @@ export const ApiReferences = [
             type: "POST",
             link: "pan_director",
           },
-          {
-            title: "PAN ITD Status",
-            link: "pan_itd_status",
-            methods: [
-              {
-                title: "STEP: 1 PAN ITD OTP Send",
-                type: "POST",
-                link: "pan_itd_otp_send",
-              },
-              {
-                title: "STEP: 2 PAN ITD OTP Verify",
-                type: "POST",
-                link: "pan_itd_otp_verify",
-              },
-            ],
-          },
+          // {
+          //   title: "PAN ITD Status",
+          //   link: "pan_itd_status",
+          //   methods: [
+          //     {
+          //       title: "STEP: 1 PAN ITD OTP Send",
+          //       type: "POST",
+          //       link: "pan_itd_otp_send",
+          //     },
+          //     {
+          //       title: "STEP: 2 PAN ITD OTP Verify",
+          //       type: "POST",
+          //       link: "pan_itd_otp_verify",
+          //     },
+          //   ],
+          // },
         ],
       },
       // Aadhaar And Digilocker
@@ -181,16 +185,16 @@ export const ApiReferences = [
             type: "POST",
             link: "aadhaar_to_masked_pan",
           },
-          {
-            title: "Digilocker Issued Documents",
-            type: "POST",
-            link: "digilocker_issued_documents",
-          },
-          {
-            title: "Digilocker Pull Document",
-            type: "POST",
-            link: "digilocker_pull_document",
-          },
+          // {
+          //   title: "Digilocker Issued Documents",
+          //   type: "POST",
+          //   link: "digilocker_issued_documents",
+          // },
+          // {
+          //   title: "Digilocker Pull Document",
+          //   type: "POST",
+          //   link: "digilocker_pull_document",
+          // },
           {
             title: "Aadhaar Based eSign",
             type: "POST",
@@ -214,11 +218,6 @@ export const ApiReferences = [
         link: "banking_and_financial",
         methods: [
           {
-            title: "Bank Account Verification",
-            type: "POST",
-            link: "bank_account_verification",
-          },
-          {
             title: "Full card Verification",
             link: "full_card_verification",
             type: "POST",
@@ -227,16 +226,6 @@ export const ApiReferences = [
             title: "Bin Verification",
             link: "bin_verification",
             type: "POST",
-          },
-          {
-            title: "Account Holder Name Match",
-            type: "POST",
-            link: "account_holder_name_match",
-          },
-          {
-            title: "IFSC Lookup",
-            type: "POST",
-            link: "ifsc_lookup",
           },
           {
             title: "IFSC Verification",
@@ -254,24 +243,24 @@ export const ApiReferences = [
             link: "account_pennydrop_verification",
           },
           {
-            title: "Bank Branch Lookup",
+            title: "IFSC Code Check",
             type: "POST",
-            link: "bank_branch_lookup",
+            link: "ifsc_code_check",
           },
           {
-            title: "UPI / VPA Verification",
+            title: "Cheque Classification",
             type: "POST",
-            link: "upi_vpa_verification",
+            link: "cheque_classification",
           },
           {
-            title: "Cheque OCR",
+            title: "CIBIL",
             type: "POST",
-            link: "cheque_ocr",
+            link: "cibil",
           },
           {
-            title: "Bank Statement Analysis",
+            title: "Advance Bank Account Verification",
             type: "POST",
-            link: "bank_statement_analysis",
+            link: "advance_bank_account_verification",
           },
         ],
       },
@@ -285,11 +274,11 @@ export const ApiReferences = [
             type: "POST",
             link: "comprehensive_gst_solution",
           },
-          {
-            title: "Comprehensive GST Solution Advanced",
-            type: "POST",
-            link: "comprehensive_gst_solution_advanced",
-          },
+          // {
+          //   title: "Comprehensive GST Solution Advanced",
+          //   type: "POST",
+          //   link: "comprehensive_gst_solution_advanced",
+          // },
           {
             title: "GST Advanced Search",
             type: "POST",
@@ -300,11 +289,11 @@ export const ApiReferences = [
             type: "POST",
             link: "gst_basis_pan",
           },
-          {
-            title: "GST Analytics",
-            type: "POST",
-            link: "gst_analytics",
-          },
+          // {
+          //   title: "GST Analytics",
+          //   type: "POST",
+          //   link: "gst_analytics",
+          // },
         ],
       },
       // Business And Company
@@ -316,11 +305,6 @@ export const ApiReferences = [
             title: "GSTIN Verification",
             type: "POST",
             link: "gstin_verification",
-          },
-          {
-            title: "GSTIN Name Match",
-            type: "POST",
-            link: "gstin_name_match",
           },
           {
             title: "CIN Verification",
@@ -338,29 +322,59 @@ export const ApiReferences = [
             link: "udyam_verification",
           },
           {
-            title: "MSME Certificate Fetch",
-            type: "POST",
-            link: "msme_certificate_fetch",
-          },
-          {
             title: "Shop Esatblishment Verification",
             type: "POST",
             link: "shop_establishment_verification",
           },
           {
-            title: "Trade License Lookup",
+            title: "LEI Verification",
             type: "POST",
-            link: "trade_license_lookup",
+            link: "lei_verification",
           },
           {
-            title: "Director Details",
+            title: "Udyog Aadhaar Using Phone",
             type: "POST",
-            link: "director_details",
+            link: "udyog_aadhaar_using_phone",
           },
           {
-            title: "Shareholding Pattern",
+            title: "Know your PAN using GSTIN",
             type: "POST",
-            link: "shareholding_pattern",
+            link: "pan_using_gstin",
+          },
+          {
+            title: "GSTIN Taxpayer",
+            type: "POST",
+            link: "gstin_taxpayer",
+          },
+          {
+            title: "GSTIN View and Track Return",
+            type: "POST",
+            link: "gstin_view_track_return",
+          },
+          {
+            title: "CIN Based Company Search",
+            type: "POST",
+            link: "cin_based_company_search",
+          },
+          {
+            title: "Company Name Search",
+            type: "POST",
+            link: "company_name_search",
+          },
+          {
+            title: "Udyog Aadhaar",
+            type: "POST",
+            link: "udyog_aadhaar",
+          },
+          {
+            title: "Import Export Certificate / IEC",
+            type: "POST",
+            link: "iec_certificate",
+          },
+          {
+            title: "DGFT Verification",
+            type: "POST",
+            link: "dgft_verification",
           },
         ],
       },
@@ -456,44 +470,24 @@ export const ApiReferences = [
         link: "ocr_and_document_ai",
         methods: [
           {
-            title: "PAN OCR",
+            title: "New Doc Classification",
             type: "POST",
-            link: "pan_ocr",
+            link: "new_doc_classification",
           },
           {
-            title: "Aadhaar OCR",
+            title: "Comprehensive NID (OCR)",
             type: "POST",
-            link: "aadhaar_ocr",
+            link: "comprehensive_nid_ocr",
           },
           {
-            title: "Bank Statement OCR",
+            title: "PAN OCR (with Managed Service)",
             type: "POST",
-            link: "bank_statement_ocr",
+            link: "pan_ocr_managed",
           },
           {
-            title: "Salary Slip OCR",
+            title: "DL OCR (with Managed Service)",
             type: "POST",
-            link: "salary_slip_ocr",
-          },
-          {
-            title: "Utility Bill OCR",
-            type: "POST",
-            link: "utility_bill_ocr",
-          },
-          {
-            title: "Rental Agreement OCR",
-            type: "POST",
-            link: "rental_agreement_ocr",
-          },
-          {
-            title: "Structured Data Extraction",
-            type: "POST",
-            link: "structured_data_extraction",
-          },
-          {
-            title: "Table Extraction",
-            type: "POST",
-            link: "table_extraction",
+            link: "dl_ocr_managed",
           },
         ],
       },
@@ -522,16 +516,16 @@ export const ApiReferences = [
             type: "POST",
             link: "voter_id",
           },
-          {
-            title: "Electricity Bill",
-            type: "POST",
-            link: "electricity_bill",
-          },
-          {
-            title: "TIN Verification",
-            type: "POST",
-            link: "tin_verification",
-          },
+          // {
+          //   title: "Electricity Bill",
+          //   type: "POST",
+          //   link: "electricity_bill",
+          // },
+          // {
+          //   title: "TIN Verification",
+          //   type: "POST",
+          //   link: "tin_verification",
+          // },
         ],
       },
       // Contact And Communication

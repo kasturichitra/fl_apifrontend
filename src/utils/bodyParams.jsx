@@ -15,7 +15,17 @@ export const MASTER_FIELDS = [
     title: "Aadhaar Number",
     type: "string",
     fieldName: "aadhaarNumber",
-    subTitle: "Enter your Aadhaar Number",
+    subTitle: "Enter the Aadhaar Number whom you want to check",
+    inputTag: false,
+    example: "123412341234",
+    required: true,
+  },
+  {
+    key: "recordName",
+    title: "name",
+    type: "string",
+    fieldName: "recordName",
+    subTitle: "Enter the name whom you want to check",
     inputTag: false,
     example: "123412341234",
     required: true,
@@ -25,7 +35,7 @@ export const MASTER_FIELDS = [
     title: "Registration Number",
     type: "string",
     fieldName: "RegistrationNumber",
-    subTitle: "Enter your Registration Number",
+    subTitle: "Enter the Registration Number whom you want to check",
     inputTag: false,
     example: "REG123456",
     required: true,
@@ -35,7 +45,7 @@ export const MASTER_FIELDS = [
     title: "License Number",
     type: "string",
     fieldName: "licenseNo",
-    subTitle: "Enter your Driving License Number",
+    subTitle: "Enter the Driving License Number whom you want to check",
     inputTag: false,
     example: "DL1234567890123",
     required: true,
@@ -168,8 +178,8 @@ export const MASTER_FIELDS = [
     title: "Address",
     type: "string",
     fieldName: "address",
-    subTitle: "Enter your full address",
-    inputTag: true,
+    subTitle: "Enter the full address of the person whom you want to check",
+    inputTag: false,
     example: "123, MG Road, Hyderabad, Telangana",
     required: true,
   },
@@ -212,25 +222,61 @@ export const buildSchema = (schemaKeys = []) => {
    SCHEMAS
    ========================================================= */
 
-// panToAadhaar
-export const PNV = buildSchema([
+const baseSchema = buildSchema([
   { key: "panNumber" },
-  { key: "mobileNumber" }, // optional by default
+  { key: "mobileNumber" },
+  { key: "pincode" },
+  { key: "latitude" },
+  { key: "longitude" },
 ]);
+
+// pan services
+// panToAadhaar
+export const PNV = [baseSchema[0], baseSchema[1]];
+// pan name match
+export const PNM = [
+  baseSchema[0],
+  {
+    title: "nameToMatch",
+    type: "string",
+    fieldName: "nameToMatch",
+    subTitle: "Enter the Name to be verified",
+    inputTag: false,
+    example: "John Doe",
+    required: true,
+  },
+  baseSchema[1],
+];
+// pan name dob
+export const PND = [
+  baseSchema[0],
+    {
+    title: "fullName",
+    type: "string",
+    fieldName: "fullName",
+    subTitle: "Enter the full Name of the person that need to be verified",
+    inputTag: false,
+    example: "John Doe",
+    required: true,
+  },
+  {
+    title: "dateOfBirth",
+    type: "string",
+    fieldName: "dateOfBirth",
+    subTitle: "Enter the dateOfBirth of the person that need to be verified",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  baseSchema[1],
+];
 
 // geo location services
 
 // pincode geofencing
-export const PG = buildSchema([
-  { key: "pincode" },
-  { key: "mobileNumber" }, // optional by default
-]);
+export const PG = [baseSchema[2], baseSchema[1]];
 // longitude latitude geofencing
-export const LLG = buildSchema([
-  { key: "latitude" },
-  { key: "longitude" },
-  { key: "mobileNumber" }, // optional by default
-]);
+export const LLG = [baseSchema[3], baseSchema[4], baseSchema[1]];
 // digipin to longitude latitude
 export const DTLL = buildSchema([
   { key: "digipin" },
@@ -317,6 +363,23 @@ export const DV = [
     group: "domainOrEmail",
   },
 ];
+// profile advance
+export const PA = [
+  {
+    title: "Mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "Enter Your Mobile Number",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+];
+// court record check
+export const CRC = buildSchema([
+  { key: "address" },
+  { key: "recordName" }, // optional by default
+]);
 
 // aadhaar and digilocker services
 
@@ -402,7 +465,7 @@ export const MOV = [
 ];
 // mobile to uan
 export const MTU = [
-    {
+  {
     key: "mobileNumber",
     title: "Mobile Number",
     type: "string",
@@ -416,7 +479,7 @@ export const MTU = [
 ];
 // mobile to pan
 export const MTP = [
-   {
+  {
     key: "mobileNumber",
     title: "Mobile Number",
     type: "string",

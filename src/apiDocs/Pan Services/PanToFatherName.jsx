@@ -9,7 +9,7 @@ import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic } from "../../utils/apiSchema";
+import { DATA, PanToFatherNameDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanToFatherName = () => {
@@ -17,7 +17,7 @@ const PanToFatherName = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["PTFN"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -127,7 +127,7 @@ const PanToFatherName = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanToFatherNameDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -141,8 +141,8 @@ const PanToFatherName = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
-          examples={GetAcc?.exampleCodes["PAN"] || []}
+          service={"panToFatherName"}
+          examples={GetAcc?.exampleCodes["PTFN"] || []}
         />
       </div>
     </div>

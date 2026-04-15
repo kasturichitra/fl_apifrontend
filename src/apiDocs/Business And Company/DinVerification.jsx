@@ -14,7 +14,7 @@ import { CinDynamic, DATA } from "../../utils/apiSchema";
 export default function DinVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-   const examplesList = GetAcc?.exampleCodes["CIN"] || [];
+   const examplesList = GetAcc?.exampleCodes["DIN"] || [];
   
     const [choosedExample, setChoosedExample] = useState(() => {
       const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -81,6 +81,10 @@ export default function DinVerification() {
           </p>
         </div>
 
+        <div className="py-6">
+                  <EncryptionNotice />
+                </div>
+
         {/* REQUEST HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
@@ -124,7 +128,7 @@ export default function DinVerification() {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"cin"}
-          examples={GetAcc?.exampleCodes["CIN"] || []}
+          examples={GetAcc?.exampleCodes["DIN"] || []}
         />
       </div>
     </div>

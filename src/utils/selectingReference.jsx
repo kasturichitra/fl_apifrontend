@@ -3,6 +3,9 @@
 // access token
 import AccessTokenGenration from "../apiDocs/AccessTokenGenration";
 
+// encryption and decryption
+import EncryptionAndDecryption from "../apiDocs/EncryptionAndDecryption";
+
 // pan services
 import PanVerification from "../apiDocs/Pan Services/PanBasicVerification";
 import PanNameMatch from "../apiDocs/Pan Services/PanNameMatch";
@@ -11,10 +14,14 @@ import PanToMaskedAadhaarVerification from "../apiDocs/Pan Services/PanToMaskedA
 import PanNameDobVerification from "../apiDocs/Pan Services/PanNameDobVerification";
 import PanToFatherName from "../apiDocs/Pan Services/PanToFatherName";
 import PanToGst from "../apiDocs/Pan Services/PanToGst";
+import PanTanVerification from "../apiDocs/Pan Services/PanTanVerification";
+import PanToGst_in from "../apiDocs/Pan Services/PanToGst_in";
 
 // contact and communication services
 import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
 import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/MobileNumberOtpVerification";
+import MobileToPan from "../apiDocs/Contact And Communication/MobileToPan";
+import MobileToUan from "../apiDocs/Contact And Communication/MobileToUan";
 
 // aadhaar services
 import AadhaarIntiation from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/AadhaarIntiation";
@@ -35,6 +42,10 @@ import CinVerification from "../apiDocs/Business And Company/CinVerification";
 import ShopVerification from "../apiDocs/Business And Company/ShopEstablishmentVerification";
 import UdyamVerification from "../apiDocs/Business And Company/UdhyamVerification";
 import DinVerification from "../apiDocs/Business And Company/DinVerification";
+import LeiVerification from "../apiDocs/Business And Company/LeiVerification";
+
+// gst services
+import GstAdvancedSearch from "../apiDocs/Gst Services/GstAdvancedSearch";
 
 // other services
 import NameMatchVerification from "../apiDocs/Other Services/NameMatchVerification";
@@ -55,6 +66,10 @@ import ChallanViaRc from "../apiDocs/Vehicle And Transport/ChallanViaRc";
 import DetailedRcVerification from "../apiDocs/Vehicle And Transport/DetailedRcVerification";
 import StolenVehicleVerification from "../apiDocs/Vehicle And Transport/StolenVehicleVerification";
 
+// employment services
+import DualEmploymentCheck from "../apiDocs/employment services/DualEmploymentCheck";
+import BasicUanVerify from "../apiDocs/employment services/BasicUanVerify";
+
 // geo and location
 import GeoTaggingSearch from "../apiDocs/Geo Location/GeoTaggingSearch";
 import GeoTaggingDistanceCalculation from "../apiDocs/Geo Location/GeoTaggingDistanceCalculation";
@@ -68,6 +83,14 @@ import AddressToDigipin from "../apiDocs/Geo Location/AddressToDigipin";
 import CourtRecordsCheck from "../apiDocs/Risk And Due Diligence/CourtRecordsCheck";
 import DomainVerification from "../apiDocs/Risk And Due Diligence/DomainVerification";
 import ProfileAdvance from "../apiDocs/Risk And Due Diligence/ProfileAdvance";
+
+// government services
+import TinVerification from "../apiDocs/Government Id Services/TinVerification";
+import ElectricityBill from "../apiDocs/Government Id Services/ElectricityBill";
+import VoterIdVerify from "../apiDocs/Government Id Services/VoterIdVerify";
+import PassportOcr from "../apiDocs/Government Id Services/PassportOcr";
+import PassportVerificationUsingFileNo from "../apiDocs/Government Id Services/PassportVerificationUsingFileNo";
+import PassportMrz from "../apiDocs/Government Id Services/PassportMrz";
 
 // Mobile Recharge
 import FetchingOperators from "../apiDocs/Recharge/FetchingOperators";
@@ -84,39 +107,26 @@ import BillpayDetails from "../apiDocs/BillPayments/BillpayDetails";
 import BillValidationDetails from "../apiDocs/BillPayments/BillValidation";
 import QuickPayDetails from "../apiDocs/BillPayments/BillQuickpay";
 
-import Decryption from "../apiDocs/Decryption";
-import Encryption from "../apiDocs/Encryption";
 import ComingSoon from "../components/ComingSoon";
-import PanTanVerification from "../apiDocs/Pan Services/PanTanVerification";
-import TinVerification from "../apiDocs/Government Id Services/TinVerification";
-import ElectricityBill from "../apiDocs/Government Id Services/ElectricityBill";
-import VoterIdVerify from "../apiDocs/Government Id Services/VoterIdVerify";
-import PassportOcr from "../apiDocs/Government Id Services/PassportOcr";
-import PassportVerificationUsingFileNo from "../apiDocs/Government Id Services/PassportVerificationUsingFileNo";
-import PassportMrz from "../apiDocs/Government Id Services/PassportMrz";
-import MobileToPan from "../apiDocs/Contact And Communication/MobileToPan";
-import MobileToUan from "../apiDocs/Contact And Communication/MobileToUan";
-import DualEmploymentCheck from "../apiDocs/employment services/DualEmploymentCheck";
-import BasicUanVerify from "../apiDocs/employment services/BasicUanVerify";
-import GstAdvancedSearch from "../apiDocs/Gst Services/GstAdvancedSearch";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
   accessToken: AccessTokenGenration,
 
   // ---------------- ENCRYPTION ----------------
-  encrypt: Encryption,
-  decrypt: Decryption,
+  encrypt_and_decryption: EncryptionAndDecryption,
+  
 
   // ---------------- PAN SERVICES ----------------
   pan_basic_verification: PanVerification,
   pan_name_match: PanNameMatch,
-  pan_name_dob_validation: PanNameDobVerification,
+  pan_name_dob: PanNameDobVerification,
   pan_to_masked_aadhaar: PanToMaskedAadhaarVerification,
   pan_to_gst: PanToGst,
   pan_director: PanDirector,
   pan_to_father_name: PanToFatherName,
   pan_tan_verification: PanTanVerification,
+  know_your_gstin_using_pan: PanToGst_in,
 
   // ---------------- AADHAAR & DIGILOCKER ----------------]
   aadhaar_to_masked_pan: AadhaarToMaskedPanVerification,
@@ -154,11 +164,15 @@ const apiComponentMap = {
   gstin_verification: GSTINVerification,
   din_verification: DinVerification,
   udyam_verification: UdyamVerification,
-  msme_certificate_fetch: ComingSoon,
   shop_act_verification: ShopVerification,
-  trade_license_lookup: ComingSoon,
-  director_details: ComingSoon,
-  shareholding_pattern: ComingSoon,
+  lei_verification: LeiVerification,
+  udyog_aadhaar_using_phone: ComingSoon,
+  pan_using_gstin: ComingSoon,
+  company_name_search: ComingSoon,
+  cin_based_company_search: ComingSoon,
+  gstin_view_track_return: ComingSoon,
+  gstin_taxpayer: ComingSoon,
+
 
   /* ================= EMPLOYMENT & INCOME ================= */
   dual_employment_check: DualEmploymentCheck,

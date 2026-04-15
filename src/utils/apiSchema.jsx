@@ -96,6 +96,359 @@ export const PanToMaskedAadhaarDynamic = [
     },
   },
 ];
+export const PanToGstDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "code",
+              type: "number",
+              subTitle: "The success code",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "The success message",
+            },
+            {
+              title: "result",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "aadhaar",
+                  type: "string",
+                  subTitle: "The Requested Masked Aadhaar Number",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanToGst_inDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "code",
+              type: "number",
+              subTitle: "The success code",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "The success message",
+            },
+            {
+              title: "result",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "aadhaar",
+                  type: "string",
+                  subTitle: "The Requested Masked Aadhaar Number",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanToFatherNameDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "data",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "additional_check",
+                  type: "array",
+                  subTitle: "Extra verification checks",
+                },
+                {
+                  title: "category",
+                  type: "string",
+                  subTitle: "Entity category (individual/company)",
+                },
+                {
+                  title: "client_id",
+                  type: "string",
+                  subTitle: "Client reference ID",
+                },
+                {
+                  title: "dob",
+                  type: "string",
+                  subTitle: "Date of birth",
+                },
+                {
+                  title: "dob_check",
+                  type: "boolean",
+                  subTitle: "DOB match flag",
+                },
+                {
+                  title: "dob_verified",
+                  type: "boolean",
+                  subTitle: "DOB verification status",
+                },
+                {
+                  title: "father_name",
+                  type: "string",
+                  subTitle: "Father's name",
+                },
+                {
+                  title: "full_name",
+                  type: "string",
+                  subTitle: "Full PAN holder name",
+                },
+                {
+                  title: "less_info",
+                  type: "boolean",
+                  subTitle: "Indicates reduced response info",
+                },
+                {
+                  title: "pan_number",
+                  type: "string",
+                  subTitle: "PAN number from data object",
+                },
+              ],
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "Response message (e.g. ACTIVE)",
+            },
+            {
+              title: "message_code",
+              type: "string",
+              subTitle: "API message code",
+            },
+            {
+              title: "status_code",
+              type: "number",
+              subTitle: "HTTP status code",
+            },
+            {
+              title: "success",
+              type: "boolean",
+              subTitle: "Request success flag",
+            },
+            {
+              title: "PAN",
+              type: "string",
+              subTitle: "PAN number (top-level duplicate field)",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanTanVerifyDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "code",
+              type: "number",
+              subTitle: "The success code",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "The success message",
+            },
+            {
+              title: "result",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "aadhaar",
+                  type: "string",
+                  subTitle: "The Requested Masked Aadhaar Number",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanNameMatchDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+
+          objectDetails: [
+            {
+              title: "LastUpdate",
+              type: "string",
+              subTitle: "Last update date of PAN record",
+            },
+            {
+              title: "Name",
+              type: "string",
+              subTitle: "Name as per PAN records",
+            },
+            {
+              title: "STATUS",
+              type: "string",
+              subTitle: "PAN status (Active / Inactive etc.)",
+            },
+            {
+              title: "StatusDescription",
+              type: "string",
+              subTitle: "Detailed PAN status description",
+            },
+            {
+              title: "panNumber",
+              type: "string",
+              subTitle: "PAN number",
+            },
+            {
+              title: "name_match_score",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "score",
+                  type: "string",
+                  subTitle: "Name match percentage score",
+                },
+                {
+                  title: "status",
+                  type: "number",
+                  subTitle: "Match status flag (0/1)",
+                },
+                {
+                  title: "str1",
+                  type: "string",
+                  subTitle: "Name from PAN record",
+                },
+                {
+                  title: "str2",
+                  type: "string",
+                  subTitle: "Input name used for matching",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanNameDObDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "Status of PAN",
+              type: "string",
+              subTitle: "PAN current status (e.g., Active / Inactive)",
+            },
+            {
+              title: "Given Name matches with the ITD Records",
+              type: "string",
+              subTitle:
+                "Whether the provided name matches ITD records (Yes/No)",
+            },
+            {
+              title: "Given DOB matches with the ITD Records",
+              type: "string",
+              subTitle: "Whether the provided DOB matches ITD records (Yes/No)",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const PanDirectorDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "din",
+              type: "string",
+              subTitle: "Director Identification Number",
+            },
+            {
+              title: "name",
+              type: "string",
+              subTitle: "Name of the director",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
 // aadhaar services
 export const AadhaarIntiateDynamic = [
   {
@@ -959,10 +1312,10 @@ export const UdyamDynamic = [
             {
               title: "National Industry Classification Code(S)",
               subTitle: "NIC codes representing enterprise activities",
-              type: "array",
+              type: "array of objects",
               items: {
                 type: "object",
-                fields: [
+                objectDetails: [
                   {
                     title: "Activity",
                     subTitle: "Description of the activity",
@@ -1316,6 +1669,264 @@ export const GstDynamic = [
               ],
             },
           ],
+        },
+      ],
+    },
+  },
+];
+
+// risk and due diligence
+export const courtRecordDynamic = [
+  {
+    status: 200,
+    summary: "Returns court case matching results with ranking and metadata",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+
+        {
+          title: "algoVersion",
+          type: "string",
+          subTitle: "Algorithm version used for scoring/matching",
+        },
+
+        {
+          title: "data",
+          type: "array of objects",
+          objectDetails: [
+            {
+              title: "address",
+              type: "string",
+              subTitle: "Full party or case address",
+            },
+            {
+              title: "addressMatchPercentage",
+              type: "number",
+              subTitle: "Match percentage for address",
+            },
+            {
+              title: "advocateName",
+              type: "string",
+              subTitle: "Name of the advocate (nullable)",
+            },
+            {
+              title: "bothMatchPercentage",
+              type: "number",
+              subTitle: "Combined match percentage (nullable)",
+            },
+            {
+              title: "caseActType",
+              type: "string",
+              subTitle: "Type of act applicable to case",
+            },
+            {
+              title: "caseCourtDetails",
+              type: "string",
+              subTitle: "Court details where case is registered",
+            },
+            {
+              title: "caseId",
+              type: "string",
+              subTitle: "Unique case identifier",
+            },
+            {
+              title: "caseSection",
+              type: "string",
+              subTitle: "Section of law applied in the case",
+            },
+            {
+              title: "case_code",
+              type: "string",
+              subTitle: "Internal case code",
+            },
+            {
+              title: "case_disposed_date",
+              type: "string",
+              subTitle: "Case disposal date if available",
+            },
+            {
+              title: "category",
+              type: "string",
+              subTitle: "Case category (e.g., Criminal, Civil)",
+            },
+            {
+              title: "courtDistid",
+              type: "string",
+              subTitle: "Court district ID",
+            },
+            {
+              title: "courtId",
+              type: "string",
+              subTitle: "Court ID (nullable)",
+            },
+            {
+              title: "courtStateid",
+              type: "string",
+              subTitle: "Court state ID",
+            },
+            {
+              title: "data_source",
+              type: "string",
+              subTitle: "Source of data",
+            },
+            {
+              title: "fatherPercentage",
+              type: "number",
+              subTitle: "Father name match percentage (nullable)",
+            },
+            {
+              title: "flagged_address",
+              type: "number",
+              subTitle: "Flag indicating address issue",
+            },
+            {
+              title: "id",
+              type: "string",
+              subTitle: "Record ID",
+            },
+            {
+              title: "link",
+              type: "string",
+              subTitle: "External case details link",
+            },
+            {
+              title: "name",
+              type: "string",
+              subTitle: "Party name",
+            },
+            {
+              title: "nameMatchPercentage",
+              type: "number",
+              subTitle: "Name match score",
+            },
+            {
+              title: "partyAddress_highlighted",
+              type: "string",
+              subTitle: "Highlighted party address text",
+            },
+            {
+              title: "partyDistid",
+              type: "string",
+              subTitle: "Party district ID",
+            },
+            {
+              title: "partyDistname",
+              type: "string",
+              subTitle: "Party district name",
+            },
+            {
+              title: "partyFather",
+              type: "string",
+              subTitle: "Father name of party (nullable)",
+            },
+            {
+              title: "partyId",
+              type: "string",
+              subTitle: "Party unique ID",
+            },
+            {
+              title: "partyName_highlighted",
+              type: "string",
+              subTitle: "Highlighted party name",
+            },
+            {
+              title: "partyStateid",
+              type: "string",
+              subTitle: "Party state ID",
+            },
+            {
+              title: "partyStatename",
+              type: "string",
+              subTitle: "Party state name",
+            },
+            {
+              title: "partyType",
+              type: "string",
+              subTitle: "Role of party in case (e.g., Respondent)",
+            },
+            {
+              title: "query_type",
+              type: "string",
+              subTitle: "Query type used for search",
+            },
+            {
+              title: "rank",
+              type: "number",
+              subTitle: "Ranking of result",
+            },
+            {
+              title: "registration_year",
+              type: "string",
+              subTitle: "Year of case registration",
+            },
+            {
+              title: "score",
+              type: "number",
+              subTitle: "Relevance score",
+            },
+            {
+              title: "solr_source",
+              type: "string",
+              subTitle: "Search index source",
+            },
+            {
+              title: "stageOfCase",
+              type: "string",
+              subTitle: "Current stage of case",
+            },
+            {
+              title: "weightedPercentage",
+              type: "number",
+              subTitle: "Final weighted match score",
+            },
+          ],
+        },
+
+        {
+          title: "eliminated_data",
+          type: "array of objects",
+          subTitle: "Filtered out or eliminated results",
+        },
+        {
+          title: "maxScore",
+          type: "number",
+          subTitle: "Maximum score in result set (nullable)",
+        },
+        {
+          title: "numFound",
+          type: "number",
+          subTitle: "Total number of results found",
+        },
+        {
+          title: "perPage",
+          type: "number",
+          subTitle: "Results per page (nullable)",
+        },
+        {
+          title: "perPaginQuery",
+          type: "string",
+          subTitle: "Pagination query info (nullable)",
+        },
+        {
+          title: "sendToVault",
+          type: "boolean",
+          subTitle: "Flag to send data to vault",
+        },
+        {
+          title: "sendToVp",
+          type: "boolean",
+          subTitle: "Flag to send data to VP system",
+        },
+        {
+          title: "start",
+          type: "number",
+          subTitle: "Pagination start index (nullable)",
+        },
+        {
+          title: "totalResult",
+          type: "number",
+          subTitle: "Total results count",
         },
       ],
     },
@@ -2010,7 +2621,7 @@ export const drivingLicenseverifyDynamic = [
             },
             {
               title: "CovDetails",
-              type: "array",
+              type: "array of objects",
               subTitle: "List of vehicle registration details",
               objectDetails: [
                 {
@@ -2052,7 +2663,7 @@ export const drivingLicenseverifyDynamic = [
             },
             {
               title: "LicenseDetails",
-              type: "array",
+              type: "array of objects",
               subTitle: "List of license types and issue dates",
               objectDetails: [
                 {
@@ -2150,7 +2761,7 @@ export const challanViaRcDynamic = [
             },
             {
               title: "Offense Details",
-              type: "array",
+              type: "array of objects",
               subTitle: "List of offenses committed",
             },
             {

@@ -9,9 +9,13 @@ const MainDashboard = () => {
   const location = useLocation();
 
   useEffect(() => {
-  setShowSuggestions(false);
-  setSearchTermQuery("")
-}, [location]);
+    setShowSuggestions(false);
+    setSearchTermQuery("");
+  }, [location]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   return (
     <div className="main_dashboard">

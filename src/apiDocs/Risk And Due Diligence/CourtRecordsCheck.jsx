@@ -5,11 +5,11 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { CRC } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanDynamic } from "../../utils/apiSchema";
+import { courtRecordDynamic, DATA } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const CourtRecordsCheck = () => {
@@ -17,7 +17,7 @@ const CourtRecordsCheck = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["DV"] || [];
+  const examplesList = GetAcc?.exampleCodes["CRC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -118,7 +118,7 @@ const CourtRecordsCheck = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={CRC}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -128,7 +128,7 @@ const CourtRecordsCheck = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={courtRecordDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -143,7 +143,7 @@ const CourtRecordsCheck = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"courtRecordsCheck"}
-          examples={GetAcc?.exampleCodes["DV"] || []}
+          examples={GetAcc?.exampleCodes["CRC"] || []}
         />
       </div>
     </div>

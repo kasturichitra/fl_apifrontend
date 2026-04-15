@@ -10,6 +10,7 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, NameDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const FssaiVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -93,7 +94,7 @@ const FssaiVerification = () => {
           <EncryptionNotice />
         </div>
 
-{/* Request History Table */}
+        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}

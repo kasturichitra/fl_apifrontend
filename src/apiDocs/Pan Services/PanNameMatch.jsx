@@ -5,18 +5,19 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { PNM } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
+import { DATA, PanNameMatchDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const PanNameMatch = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PTA"] || [];
+  const examplesList = GetAcc?.exampleCodes["PNM"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -78,16 +79,18 @@ const PanNameMatch = () => {
             LinkClass="link_class"
             link="pan/panNameMatch"
           />
-      <p className="first_para">
-    The Pan Name Match API allows developers to verify whether a given PAN number matches the provided name in real-time, ensuring accurate identification of users.
-  </p>
+          <p className="first_para">
+            The Pan Name Match API allows developers to verify whether a given
+            PAN number matches the provided name in real-time, ensuring accurate
+            identification of users.
+          </p>
         </div>
 
         <div className="py-6">
           <EncryptionNotice />
         </div>
 
-{/* Request History Table */}
+        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
@@ -105,7 +108,7 @@ const PanNameMatch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={PNM}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -116,7 +119,7 @@ const PanNameMatch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={PanNameMatchDynamic}
             otherData={DATA}
           />
         </div>
@@ -132,8 +135,8 @@ const PanNameMatch = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"panToAadhaar"}
-          examples={GetAcc?.exampleCodes["PTA"] || []}
+          service={"panNameMatch"}
+          examples={GetAcc?.exampleCodes["PNM"] || []}
         />
       </div>
     </div>

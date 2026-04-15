@@ -145,7 +145,7 @@ const PanTanVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"pan"}
+          service={"panTanVerification"}
           examples={GetAcc?.exampleCodes["PTV"] || []}
         />
       </div>

@@ -4,9 +4,13 @@ import { ApiReferences, images } from "../utils/constant";
 import "../styles/api_reference.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenMenu, setPageTitle } from "../redux/slice/headerSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const SideBarApi = ({ setSelectedSlug, setShowSuggestions, setSearchTermQuery }) => {
+const SideBarApi = ({
+  setSelectedSlug,
+  setShowSuggestions,
+  setSearchTermQuery,
+}) => {
   const [headTitle, setHeadTitle] = useState(null);
   const [openIndex, setOpenIndex] = useState(null);
   const [openFilter, setOpenFilter] = useState(false);
@@ -14,6 +18,24 @@ const SideBarApi = ({ setSelectedSlug, setShowSuggestions, setSearchTermQuery })
   const pageTitle = useSelector((state) => state.header.pageTitle);
   const openMenu = useSelector((state) => state.header.openMenu);
   const navigate = useNavigate();
+  const sidebarRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const container = sidebarRef.current;
+    if (!container) return;
+
+    requestAnimationFrame(() => {
+      const activeItem = container.querySelector(".active");
+
+      if (activeItem) {
+        activeItem.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    });
+  }, [location.pathname, pageTitle]);
 
   const handleCloseFilterMenu = () => {
     setOpenFilter(false);
@@ -47,7 +69,10 @@ const SideBarApi = ({ setSelectedSlug, setShowSuggestions, setSearchTermQuery })
         <div className="bring_cover" onClick={() => setOpenMenu(false)}></div>
       )}
 
-      <aside className={`document_aside_menu ${openMenu ? "increase" : ""}`}>
+      <aside
+        ref={sidebarRef}
+        className={`document_aside_menu ${openMenu ? "increase" : ""}`}
+      >
         <JumpButton setOpenFilter={setOpenFilter} />
 
         {/* SIDEBAR OPTIONS */}
@@ -156,11 +181,11 @@ function PopFilter({
     <div
       className="bluring"
       onMouseDown={handleOutsideClick}
-      // onClick={closeFilter} 
+      // onClick={closeFilter}
     >
       <div
         className="api_fltr_head"
-              ref={popupRef}
+        ref={popupRef}
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
         <div className="filter_cpt">

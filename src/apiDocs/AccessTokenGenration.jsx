@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import BodyParams from "../components/BodyParams/BodyParams";
 import MethodLink from "../components/MethodLink";
 import Codes from "../components/API Request/Codes";
 import Headers from "../components/Headers/Headers";
@@ -112,7 +111,7 @@ const AccessTokenGenration = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"access"}
-          examples={GetAcc?.exampleCodes["InstantPay"] || []}
+          examples={GetAcc?.exampleCodes["AT"] || []}
         />
       </div>
     </div>
