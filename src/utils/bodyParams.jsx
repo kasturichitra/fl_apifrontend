@@ -10,6 +10,16 @@ export const MASTER_FIELDS = [
     required: false,
     optional: true,
   },
+   {
+        key: "gstinNumber",
+    title: "GST_IN Number",
+    type: "string",
+    fieldName: "gstinNumber",
+    subTitle: "GSTIN Number to be verified",
+    inputTag: false,
+    example: "ABCXXXXXXXXX",
+    required: true,
+  },
   {
     key: "aadhaarNumber",
     title: "Aadhaar Number",
@@ -38,6 +48,16 @@ export const MASTER_FIELDS = [
     subTitle: "Enter the Registration Number whom you want to check",
     inputTag: false,
     example: "REG123456",
+    required: true,
+  },
+  {
+    key: "state",
+    title: "State",
+    type: "string",
+    fieldName: "state",
+    subTitle: "Enter the state name",
+    inputTag: false,
+    example: "Telangana",
     required: true,
   },
   {
@@ -171,7 +191,7 @@ export const MASTER_FIELDS = [
     subTitle: "Enter your DigiPin",
     inputTag: false,
     example: "DPIN123456",
-    required: false,
+    required: true,
   },
   {
     key: "address",
@@ -228,6 +248,9 @@ const baseSchema = buildSchema([
   { key: "pincode" },
   { key: "latitude" },
   { key: "longitude" },
+  { key: "RegistrationNumber" },
+  { key: "state" },
+  { key: "gstinNumber" },
 ]);
 
 // pan services
@@ -250,7 +273,7 @@ export const PNM = [
 // pan name dob
 export const PND = [
   baseSchema[0],
-    {
+  {
     title: "fullName",
     type: "string",
     fieldName: "fullName",
@@ -582,14 +605,54 @@ export const BWI = buildSchema([
   { key: "ifsc" },
   { key: "mobileNumber" }, // optional
 ]);
-
-// geo location services
-
-// pincode geofencing
-export const PCG = buildSchema([
-  { key: "pincode" },
-  { key: "mobileNumber" }, // optional by default
-]);
+// full card verify
+export const FCV = [
+  {
+    title: "creditCardNumber",
+    type: "string",
+    fieldName: "creditCardNumber",
+    subTitle: "user creditCardNumber that want to be verified",
+    inputTag: false,
+    example: "15XXXXXXXXXXXX78",
+    required: true,
+  },
+  baseSchema[1],
+];
+// bin
+export const BIN = [
+  {
+    title: "Bin Verification",
+    type: "string",
+    fieldName: "bin",
+    subTitle: "Enter Starting 6 Digit of Card Number",
+    inputTag: false,
+    example: "45XXXX",
+    required: true,
+  },
+  baseSchema[1]
+];
+//cibil
+export const CB = [
+  baseSchema[0],
+  {
+    title: "customerMobile",
+    type: "string",
+    fieldName: "customerMobile",
+    subTitle: "the mobile number that belongs to the user details that has given to be verified",
+    inputTag: false,
+    example: "87XXXXXXXX",
+    required: true,
+  },
+  {
+    title: "customerName",
+    type: "string",
+    fieldName: "customerName",
+    subTitle: "the name that belongs to the user details that has given to be verified",
+    inputTag: false,
+    example: "RAM",
+    required: true,
+  }
+]
 
 // business services
 
@@ -604,38 +667,25 @@ export const UDYAM = [
     example: "AXER07FRGV",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 // gst verification
 export const GSTIN = [
-  {
-    title: "GST_IN Number",
+  baseSchema[7],
+  baseSchema[1],
+];
+export const GSTINVAR = [
+  baseSchema[7],
+   {
+    title: "Financialyear",
     type: "string",
-    fieldName: "gstinNumber",
-    subTitle: "GSTIN Number to be verified",
+    fieldName: "Financialyear",
+    subTitle: "Financialyear that to be verified",
     inputTag: false,
-    example: "ABCXXXXXXXXX",
+    example: "20XX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 // cin verification
 export const CIN = [
@@ -648,16 +698,7 @@ export const CIN = [
     example: "XXXXXXXXXXXX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 // shop establishment
 export const SEV = [
@@ -679,17 +720,15 @@ export const SEV = [
     example: "XXXXXXXXXXXX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
+
+// professional verification
+
+// doctor verification
+export const DOV = [baseSchema[5], baseSchema[6], baseSchema[1]];
+// dentist verification
+export const DEV = [baseSchema[5], baseSchema[6], baseSchema[1]];
 
 // other services
 // name verification
@@ -723,16 +762,36 @@ export const NM = [
     optional: true,
   },
 ];
-
-// bin
-export const BIN = [
+export const FV = [
   {
-    title: "Bin Verification",
+    title: "FSSAINumber",
     type: "string",
-    fieldName: "bin",
-    subTitle: "Enter Starting 6 Digit of Card Number",
+    fieldName: "FSSAINumber",
+    subTitle: "FSSAINumber that should be verified",
     inputTag: false,
-    example: "45XXXX",
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  {
+    title: "mobile Number",
+    type: "string",
+    fieldName: "mobileNumber",
+    subTitle: "mobile number of the given pan",
+    inputTag: false,
+    example: "98XXXXXX54",
+    required: false,
+    optional: true,
+  },
+];
+export const TV = [];
+export const IT = [
+  {
+    title: "Cin Number",
+    type: "string",
+    fieldName: "CIN",
+    subTitle: "Cin Number that should be verified",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
     required: true,
   },
   {

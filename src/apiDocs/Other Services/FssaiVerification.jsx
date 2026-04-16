@@ -17,7 +17,7 @@ const FssaiVerification = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["NM"] || [];
+  const examplesList = GetAcc?.exampleCodes["FV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -112,7 +112,7 @@ const FssaiVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={NM}
+            bodyObj={FV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -136,8 +136,8 @@ const FssaiVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"name"}
-          examples={GetAcc?.exampleCodes["NM"] || []}
+          service={"fssaiVerification"}
+          examples={GetAcc?.exampleCodes["FV"] || []}
         />
       </div>
     </div>

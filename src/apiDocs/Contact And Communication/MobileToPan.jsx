@@ -8,7 +8,11 @@ import { MTP } from "../../utils/bodyParams";
 import Headers from "../../components/Headers/Headers";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { DATA, MobileOtpValidateDynamic, MobileToPanValidateDynamic } from "../../utils/apiSchema";
+import {
+  DATA,
+  MobileOtpValidateDynamic,
+  MobileToPanValidateDynamic,
+} from "../../utils/apiSchema";
 import { GetAcc } from "../../utils/Language";
 import EncryptionNotice from "../../components/EncryptionNotice";
 

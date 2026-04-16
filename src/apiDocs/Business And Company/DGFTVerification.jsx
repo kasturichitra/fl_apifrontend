@@ -13,7 +13,7 @@ import "../../styles/api_reference.css";
 import { DATA, UdyamDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const UdyamVerification = () => {
+const DGFTVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -73,16 +73,18 @@ const UdyamVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">DGFT Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/udyam/verify"
+            link="business/DGFT/verify"
           />
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The DGFT Verification API enables developers to verify the
+            authenticity of Import Export Code (IEC) and related details issued
+            by DGFT in real-time, ensuring valid business credentials for trade
+            operations.
           </p>
         </div>
 
@@ -132,7 +134,7 @@ const UdyamVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"udyam"}
+          service={"dgftVerification"}
           examples={GetAcc?.exampleCodes["UDYAM"] || []}
         />
       </div>
@@ -140,4 +142,4 @@ const UdyamVerification = () => {
   );
 };
 
-export default UdyamVerification;
+export default DGFTVerification;

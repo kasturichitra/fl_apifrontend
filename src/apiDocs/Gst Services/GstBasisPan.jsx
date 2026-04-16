@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -13,7 +12,7 @@ import "../../styles/api_reference.css";
 import { DATA, UdyamDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const UdyamVerification = () => {
+const GstBasisPan = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
@@ -78,7 +77,7 @@ const UdyamVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/udyam/verify"
+            link="udyam/verify"
           />
           <p className="first_para">
             The UDYAM Number Verification API allows developers to verify users’
@@ -140,4 +139,4 @@ const UdyamVerification = () => {
   );
 };
 
-export default UdyamVerification;
+export default GstBasisPan;

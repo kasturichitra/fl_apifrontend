@@ -1,0 +1,85 @@
+/* Layout wrapper */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--body_background);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Content container */
+.doc-container {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 35px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Title */
+.doc-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+/* Paragraph */
+.doc-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+/* Section heading */
+.doc-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  color: #111827;
+}
+
+/* List styling */
+.doc-list {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.doc-list li {
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Code block */
+.doc-code {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+/* Button */
+.doc-button {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.doc-button:hover {
+  background: #1d4ed8;
+}

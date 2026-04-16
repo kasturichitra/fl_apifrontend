@@ -82,7 +82,7 @@ const DigipinToLongLat = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="location/digipin/longLat"
           />
           <p className="first_para">
             The Digipin to Longitude and Latitude API enables developers to

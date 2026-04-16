@@ -36,9 +36,7 @@ export const GuidesData = [
   },
   {
     title: "Params",
-    pages: [
-      { title: "Body Params", slug: "body_params" },
-    ],
+    pages: [{ title: "Body Params", slug: "body_params" }],
   },
   {
     title: "Error Handling",
@@ -85,7 +83,7 @@ export const ApiReferences = [
         title: "Encryption And Decryption",
         link: "encrypt_and_decryption",
         methods: [],
-      }
+      },
     ],
   },
   {
@@ -94,7 +92,7 @@ export const ApiReferences = [
       // Pan Services
       {
         title: "Pan Services",
-        link: "pan_basic_verification",
+        link: "pan_info",
         methods: [
           {
             title: "PAN Baic verification",
@@ -162,7 +160,7 @@ export const ApiReferences = [
       // Aadhaar And Digilocker
       {
         title: "Aadhaar & DigiLocker",
-        link: "aadhaar_to_masked_pan",
+        link: "aadhaar_info",
         methods: [
           {
             title: "E-Aadhaar DigiLocker",
@@ -241,11 +239,6 @@ export const ApiReferences = [
             title: "Account Penny Drop Verification",
             type: "POST",
             link: "account_pennydrop_verification",
-          },
-          {
-            title: "IFSC Code Check",
-            type: "POST",
-            link: "ifsc_code_check",
           },
           {
             title: "Cheque Classification",
@@ -626,6 +619,38 @@ export const ApiReferences = [
           },
         ],
       },
+      // professional verification
+      {
+        title: "Professional Verification",
+        link: "professional_verification",
+        methods: [
+          {
+            title: "Insurance Agent Verification",
+            type: "POST",
+            link: "insurance_agent_verification",
+          },
+          {
+            title: "CA Verification",
+            type: "POST",
+            link: "ca_verification",
+          },
+          {
+            title: "Doctor Verification",
+            type: "POST",
+            link: "doctor_verification",
+          },
+          {
+            title: "Dentist Verification",
+            type: "POST",
+            link: "dentist_verification",
+          },
+          {
+            title: "eSign Aadhaar Based",
+            type: "POST",
+            link: "esign_aadhaar_based",
+          },
+        ],
+      },
       // Other Services
       {
         title: "Other Services",
@@ -688,11 +713,11 @@ export const ApiReferences = [
             type: "POST",
             link: "quick_pay",
           },
-          {
-            title: "BillStatusCheck",
-            type: "POST",
-            link: "bbps_get_biller_list",
-          },
+          // {
+          //   title: "BillStatusCheck",
+          //   type: "POST",
+          //   link: "bbps_get_biller_list",
+          // },
         ],
       },
       // {

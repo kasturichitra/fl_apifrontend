@@ -82,7 +82,7 @@ const GeoTaggingSearch = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="location/geo/tagging"
           />
           <p className="first_para">
             The Geo Tagging Search API enables developers to perform

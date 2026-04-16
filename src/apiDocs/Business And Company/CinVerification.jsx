@@ -74,7 +74,7 @@ export default function CinVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/CinNumberverify"
+            link="business/Cin/verify"
           />
           <p className="first_para">
             Enter your CIN number to verify the company details.

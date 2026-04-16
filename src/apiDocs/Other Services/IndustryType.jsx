@@ -5,11 +5,12 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { NM } from "../../utils/bodyParams";
+import { IT } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, NameDynamic } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 const IndustryType = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -93,7 +94,7 @@ const IndustryType = () => {
           <EncryptionNotice />
         </div>
 
-{/* Request History Table */}
+        {/* Request History Table */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         {/* Headers */}
@@ -111,7 +112,7 @@ const IndustryType = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={NM}
+            bodyObj={IT}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

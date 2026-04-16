@@ -80,8 +80,9 @@ const FetchingOldRechargePlans = () => {
             link="Recharge/OldPlans"
           />
           <p className="first_para">
-            The PAN Number Verification API allows developers to verify users’
-            PAN numbers in real-time.
+            The Old Recharge Plans Fetching API enables developers to retrieve
+            previously available recharge plans in real-time, helping users
+            compare and reference past plan offerings.
           </p>
         </div>
 

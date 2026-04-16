@@ -16,6 +16,7 @@ import PanToFatherName from "../apiDocs/Pan Services/PanToFatherName";
 import PanToGst from "../apiDocs/Pan Services/PanToGst";
 import PanTanVerification from "../apiDocs/Pan Services/PanTanVerification";
 import PanToGst_in from "../apiDocs/Pan Services/PanToGst_in";
+import PanServicesInfo from "../apiDocs/Pan Services/PanServicesInfo";
 
 // contact and communication services
 import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
@@ -28,6 +29,7 @@ import AadhaarIntiation from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLo
 import AadhaarStatus from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/AadhaarStatus";
 import Digilockerverify from "../apiDocs/Aadhaar And DigiLocker/Digilockerverify";
 import AadhaarToMaskedPanVerification from "../apiDocs/Aadhaar And DigiLocker/AadhaarToMaskedPanVerification";
+import AadhaarServicesInfo from "../apiDocs/Aadhaar And DigiLocker/AadhaarInfo";
 
 // banking services
 import BankAccountPennyDropVerification from "../apiDocs/Banking And Financial/BankAccountPennyDropVerification";
@@ -35,6 +37,10 @@ import BankAccountPennyLessVerification from "../apiDocs/Banking And Financial/B
 import IfscBankDetailsVerification from "../apiDocs/Banking And Financial/IfscBankDetailsVerification";
 import BinVerification from "../apiDocs/Banking And Financial/BinVerification";
 import FullCreditCardVerification from "../apiDocs/Banking And Financial/FullCreditCardVerification";
+import ChequeClassification from "../apiDocs/Banking And Financial/ChequeClassification";
+import AdvanceBankAccountVerification from "../apiDocs/Banking And Financial/AdvanceBankAccountVerification";
+import Cibil from "../apiDocs/Banking And Financial/Cibil";
+import BankingServicesInfo from "../apiDocs/Banking And Financial/BankingInfo";
 
 // business services
 import GSTINVerification from "../apiDocs/Business And Company/GstInVerification";
@@ -43,9 +49,19 @@ import ShopVerification from "../apiDocs/Business And Company/ShopEstablishmentV
 import UdyamVerification from "../apiDocs/Business And Company/UdhyamVerification";
 import DinVerification from "../apiDocs/Business And Company/DinVerification";
 import LeiVerification from "../apiDocs/Business And Company/LeiVerification";
+import CompanyNameSearch from "../apiDocs/Business And Company/CompanyNameSearch";
+import UdhyogAadhaar from "../apiDocs/Business And Company/UdhyogAadhaar";
+import IecVerification from "../apiDocs/Business And Company/IecVerification";
+import UdyogAadhaarUsingPhone from "../apiDocs/Business And Company/UdyogAadhaarUsingPhone";
+import KnowPanUsingGstin from "../apiDocs/Business And Company/KnowPanUsingGstin";
+import GstInTaxpayer from "../apiDocs/Business And Company/GstInTaxpayer";
+import GstInViewAndReturn from "../apiDocs/Business And Company/GstInViewAndReturn";
+import CinBasedCompanySearch from "../apiDocs/Business And Company/CinBasedCompanySearch";
 
 // gst services
 import GstAdvancedSearch from "../apiDocs/Gst Services/GstAdvancedSearch";
+import ComprehensiveGstSolution from "../apiDocs/Gst Services/ComprehensiveGstSolution";
+import GstBasisPan from "../apiDocs/Gst Services/GstBasisPan";
 
 // other services
 import NameMatchVerification from "../apiDocs/Other Services/NameMatchVerification";
@@ -84,6 +100,13 @@ import CourtRecordsCheck from "../apiDocs/Risk And Due Diligence/CourtRecordsChe
 import DomainVerification from "../apiDocs/Risk And Due Diligence/DomainVerification";
 import ProfileAdvance from "../apiDocs/Risk And Due Diligence/ProfileAdvance";
 
+// professional verification
+import ESignAadhaarBased from "../apiDocs/ProfessionalVerification/ESignAadhaarBased";
+import DentistVerification from "../apiDocs/ProfessionalVerification/DentistVerification";
+import DoctorVerification from "../apiDocs/ProfessionalVerification/DoctorVerification";
+import CaVerification from "../apiDocs/ProfessionalVerification/CaVerification";
+import InsuranceAgentVerification from "../apiDocs/ProfessionalVerification/InsuranceAgentVerification";
+
 // government services
 import TinVerification from "../apiDocs/Government Id Services/TinVerification";
 import ElectricityBill from "../apiDocs/Government Id Services/ElectricityBill";
@@ -108,6 +131,10 @@ import BillValidationDetails from "../apiDocs/BillPayments/BillValidation";
 import QuickPayDetails from "../apiDocs/BillPayments/BillQuickpay";
 
 import ComingSoon from "../components/ComingSoon";
+import DGFTVerification from "../apiDocs/Business And Company/DGFTVerification";
+import GovernmentServicesInfo from "../apiDocs/Government Id Services/GovernmentInfo";
+import LocationServicesInfo from "../apiDocs/Geo Location/GeoLocationInfo";
+import ContactServicesInfo from "../apiDocs/Contact And Communication/ContactInfo";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -115,7 +142,6 @@ const apiComponentMap = {
 
   // ---------------- ENCRYPTION ----------------
   encrypt_and_decryption: EncryptionAndDecryption,
-  
 
   // ---------------- PAN SERVICES ----------------
   pan_basic_verification: PanVerification,
@@ -127,12 +153,15 @@ const apiComponentMap = {
   pan_to_father_name: PanToFatherName,
   pan_tan_verification: PanTanVerification,
   know_your_gstin_using_pan: PanToGst_in,
+  pan_info: PanServicesInfo,
 
   // ---------------- AADHAAR & DIGILOCKER ----------------]
-  aadhaar_to_masked_pan: AadhaarToMaskedPanVerification,
+  // aadhaar verify digilocker
   aadhaar_initiate: AadhaarIntiation,
   aadhaar_status: AadhaarStatus,
+  aadhaar_to_masked_pan: AadhaarToMaskedPanVerification,
   digilocker_verify_account: Digilockerverify,
+  aadhaar_info: AadhaarServicesInfo,
 
   // ---------------- FACE AND AI SERVICES ----------------
   face_match: FaceMatchVerification,
@@ -142,37 +171,38 @@ const apiComponentMap = {
   ai_and_deepfake_detection: AiAndDeepfakeImageCheck,
 
   // ---------------- BANKING & FINANCIAL ----------------
-  bank_account_verification: BankAccountPennyDropVerification,
-  account_holder_name_match: NameMatchVerification,
+  advance_bank_account_verification: AdvanceBankAccountVerification,
   account_pennyless_verfication: BankAccountPennyDropVerification,
   account_pennydrop_verification: BankAccountPennyLessVerification,
-  ifsc_lookup: IfscBankDetailsVerification,
-  bank_branch_lookup: IfscBankDetailsVerification,
-  upi_vpa_verification: ComingSoon,
-  cheque_ocr: ComingSoon,
-  bank_statement_analysis: ComingSoon,
-
-  // ---------------- CREDIT CARD ----------------
+  ifsc_verification: IfscBankDetailsVerification,
+  cheque_classification: ChequeClassification,
+  cibil: Cibil,
+  banking_and_financial: BankingServicesInfo,
+  //  CREDIT CARD
   bin_verification: BinVerification,
   full_card_verification: FullCreditCardVerification,
 
   /* ================= GST SERVICES ================= */
   gst_advanced_search: GstAdvancedSearch,
-  
+  comprehensive_gst_solution: ComprehensiveGstSolution,
+  gst_basis_pan: GstBasisPan,
+
   /* ================= BUSINESS & COMPANY ================= */
   cin_verification: CinVerification,
-  gstin_verification: GSTINVerification,
-  din_verification: DinVerification,
+  cin_based_company_search: CinBasedCompanySearch,
+  company_name_search: CompanyNameSearch,
+  udyog_aadhaar: UdhyogAadhaar,
   udyam_verification: UdyamVerification,
-  shop_act_verification: ShopVerification,
+  dgft_verification: DGFTVerification,
+  iec_certificate: IecVerification,
+  din_verification: DinVerification,
   lei_verification: LeiVerification,
-  udyog_aadhaar_using_phone: ComingSoon,
-  pan_using_gstin: ComingSoon,
-  company_name_search: ComingSoon,
-  cin_based_company_search: ComingSoon,
-  gstin_view_track_return: ComingSoon,
-  gstin_taxpayer: ComingSoon,
-
+  udyog_aadhaar_using_phone: UdyogAadhaarUsingPhone,
+  gstin_verification: GSTINVerification,
+  pan_using_gstin: KnowPanUsingGstin,
+  gstin_taxpayer: GstInTaxpayer,
+  gstin_view_track_return: GstInViewAndReturn,
+  shop_act_verification: ShopVerification,
 
   /* ================= EMPLOYMENT & INCOME ================= */
   dual_employment_check: DualEmploymentCheck,
@@ -185,13 +215,14 @@ const apiComponentMap = {
   driving_license_verification: DrivingLicenseVerify,
   challan_via_rc: ChallanViaRc,
 
-    /* ================= GOVERNMENT ID SERVICES ================= */
+  /* ================= GOVERNMENT ID SERVICES ================= */
   tin_verification: TinVerification,
   electricity_bill: ElectricityBill,
   voter_id: VoterIdVerify,
   passport_ocr: PassportOcr,
   passport_verification_file_no: PassportVerificationUsingFileNo,
   passport_mrz: PassportMrz,
+  government_id_services: GovernmentServicesInfo,
 
   /* ================= CONTACT & COMMUNICATION ================= */
   // mobile_number_validation
@@ -199,6 +230,7 @@ const apiComponentMap = {
   mobile_otp_validation: MobileNumberOtpVerification,
   mobile_to_pan: MobileToPan,
   mobile_to_uan: MobileToUan,
+  contact_and_communication: ContactServicesInfo,
 
   /* ================= GEO & LOCATION ================= */
   geo_tagging_search: GeoTaggingSearch,
@@ -208,18 +240,26 @@ const apiComponentMap = {
   digipin_to_lat_long: DigipinToLongLat,
   longitude_latitude_geofencing: LongLatGeofencing,
   address_to_digipin: AddressToDigipin,
+  geo_and_location: LocationServicesInfo,
 
   /* ================= RISK & DUE DILIGENCE ================= */
   court_records_check_diy: CourtRecordsCheck,
   domain_verification: DomainVerification,
   profile_advance: ProfileAdvance,
 
+  /* ================= PROFESSIONAL VERIFICATION ================= */
+  esign_aadhaar_based: ESignAadhaarBased,
+  dentist_verification: DentistVerification,
+  doctor_verification: DoctorVerification,
+  ca_verification: CaVerification,
+  insurance_agent_verification: InsuranceAgentVerification,
+
   /* ================= OTHER SERVICES ================= */
   name_match_verification: NameMatchVerification,
   industry_type: IndustryType,
   fssai_verification: FssaiVerification,
 
-    // ---------------- BBPS ----------------
+  // ---------------- BBPS ----------------
   bbps_Doc: BbpsTheory,
   fetching_verification: BillerinfoDetails,
   bill_fetch: BillFetchDetails,

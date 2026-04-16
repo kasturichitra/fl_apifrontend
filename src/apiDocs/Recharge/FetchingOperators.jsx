@@ -80,7 +80,7 @@ const FetchingOperators = () => {
           />
           <p className="first_para">
             The Fetching Operators API allows developers to verify get real time
-            recahrge operators that are in market now!
+            recharge operators that are in market now!
           </p>
         </div>
 

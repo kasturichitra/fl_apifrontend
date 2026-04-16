@@ -284,6 +284,76 @@ export const apiList = [
     url: "udyam/verify",
     params: { udyamNumber: "123456789" },
   },
+  {
+    key: "cinCompanySearch",
+    name: "CINCompanySearch",
+    category: "kyc",
+    url: "company/searchByCIN",
+    params: { cin: "" },
+  },
+  {
+    key: "companyNameSearch",
+    name: "CompanyNameSearch",
+    category: "kyc",
+    url: "company/searchByName",
+    params: { companyName: "" },
+  },
+  {
+    key: "udyogAadhaar",
+    name: "UdyogAadhaar",
+    category: "kyc",
+    url: "business/udyogAadhaar/verify",
+    params: { UAMNumber: "" },
+  },
+  {
+    key: "iecVerification",
+    name: "iecVerification",
+    category: "kyc",
+    url: "dgft/iecVerify",
+    params: { iecCode: "" },
+  },
+  {
+    key: "dgftVerification",
+    name: "DGFTVerification",
+    category: "kyc",
+    url: "business/DGFT/verify",
+    params: { DGFT: "" },
+  },
+  {
+    key: "dinVerification",
+    name: "DINVerification",
+    category: "kyc",
+    url: "business/din/verify",
+    params: { din: "" },
+  },
+  {
+    key: "leiVerification",
+    name: "LEIVerification",
+    category: "kyc",
+    url: "business/LEI/verify",
+    params: { CompanyName: "" },
+  },
+  {
+    key: "udyogAadhaarUsingPhone",
+    name: "UdyogAadhaarUsingPhone",
+    category: "kyc",
+    url: "business/udyog/phoneAadhaar/verify",
+    params: { UAMNumber: "" },
+  },
+  {
+    key: "gstinTaxpayer",
+    name: "GSTINTaxpayer",
+    category: "kyc",
+    url: "business/GstIn/TaxPayer/verify",
+    params: { gstinNumber: "" },
+  },
+  {
+    key: "gstinViewAndTrackReturn",
+    name: "GSTINViewandTrackReturn",
+    category: "kyc",
+    url: "business/Gstin/ViewAndTrack/verify",
+    params: { gstinNumber: "", Financialyear: "" },
+  },
 
   // banking and financial
   {
@@ -327,6 +397,27 @@ export const apiList = [
     url: "bin/getCardDetails",
     params: { bin: "45XXXX" },
   },
+  {
+    key: "advanceBankAccountVerification",
+    name: "AdvanceBankAccountVerification",
+    category: "kyc",
+    url: "bank/verifyAdvanced",
+    params: { accountNumber: "", ifsc: "" },
+  },
+  {
+    key: "chequeClassification",
+    name: "ChequeClassification",
+    category: "kyc",
+    url: "cheque/classify",
+    params: { chequeImage: "" },
+  },
+  {
+    key: "cibil",
+    name: "CIBIL",
+    category: "kyc",
+    url: "credit/cibil",
+    params: { pan: "" },
+  },
 
   // other services
   {
@@ -336,32 +427,46 @@ export const apiList = [
     url: "name/compareNames",
     params: { firstName: "", secondName: "" },
   },
+  {
+    key: "fssaiVerification",
+    name: "FSSAIVerification",
+    category: "kyc",
+    url: "fssai/verify",
+    params: { licenseNumber: "" },
+  },
+  {
+    key: "industryType",
+    name: "INDUSTRYTYPE",
+    category: "kyc",
+    url: "industry/getType",
+    params: { businessName: "" },
+  },
 
   // government id services
   {
     key: "passportMrz",
-    name: "PASSPORT_MRZ",
+    name: "PASSPORTMRZ",
     category: "kyc",
     url: "government/passport/verify",
     params: { mrzLine1: "", mrzLine2: "" },
   },
   {
     key: "passportFileNumberVerification",
-    name: "PASSPORT_FILE_NUMBER_VERIFICATION",
+    name: "PASSPORTFILENUMBERVERIFICATION",
     category: "kyc",
     url: "government/passport_fileNo/verify",
     params: { fileNumber: "", dateOfBirth: "", passportNumber: "" },
   },
   {
     key: "passportOcr",
-    name: "PASSPORT_OCR",
+    name: "PASSPORTOCR",
     category: "kyc",
     url: "government/passport_ocr/verify",
     params: { file: null },
   },
   {
     key: "voterId",
-    name: "VOTER_ID",
+    name: "VOTERID",
     category: "kyc",
     url: "government/voterId/verify",
     params: { epicNumber: "", name: "", state: "" },
@@ -370,8 +475,8 @@ export const apiList = [
   // geo location
   {
     key: "geoTaggingSearch",
-    name: "GEO TAGGING SEARCH",
-    category: "geo",
+    name: "GEOTAGGINGSEARCH",
+    category: "kyc",
     url: "location/geo/tagging",
     params: {
       longitude: "",
@@ -380,8 +485,8 @@ export const apiList = [
   },
   {
     key: "geoTaggingDistanceCalculation",
-    name: "GEO TAGGING DISTANCE CALCULATION",
-    category: "geo",
+    name: "GEOTAGGINGDISTANCECALCULATION",
+    category: "kyc",
     url: "location/geo/tagging/distance_calculation",
     params: {
       longitude: "",
@@ -391,8 +496,8 @@ export const apiList = [
   },
   {
     key: "longitudeLatitudeGeofencing",
-    name: "LONGITUDE LATITUDE GEOFENCING",
-    category: "geo",
+    name: "LONGITUDELATITUDEGEOFENCING",
+    category: "kyc",
     url: "location/longLat/geofencing",
     params: {
       longitude: "",
@@ -401,8 +506,8 @@ export const apiList = [
   },
   {
     key: "pincodeGeofencing",
-    name: "PINCODE GEOFENCING",
-    category: "geo",
+    name: "PINCODEGEOFENCING",
+    category: "kyc",
     url: "location/pincode/geofencing",
     params: {
       pinCode: "",
@@ -410,8 +515,8 @@ export const apiList = [
   },
   {
     key: "latLongToDigipin",
-    name: "LAT LONG TO DIGIPIN",
-    category: "geo",
+    name: "LATLONGTODIGIPIN",
+    category: "kyc",
     url: "location/longLat/digipin",
     params: {
       longitude: "",
@@ -420,8 +525,8 @@ export const apiList = [
   },
   {
     key: "digipinToLatLong",
-    name: "DIGIPIN TO LAT LONG",
-    category: "geo",
+    name: "DIGIPINTOLATLONG",
+    category: "kyc",
     url: "location/digipin/longLat",
     params: {
       digipin: "",
@@ -429,12 +534,49 @@ export const apiList = [
   },
   {
     key: "addressToDigipin",
-    name: "ADDRESS TO DIGIPIN",
-    category: "geo",
+    name: "ADDRESSTODIGIPIN",
+    category: "kyc",
     url: "location/address/digipin",
     params: {
       address: "",
     },
+  },
+
+  // professional verification
+  {
+    key: "insuranceAgentVerification",
+    name: "INSURANCEAGENTVERIFICATION",
+    category: "kyc",
+    url: "professional/Insurance/verify",
+    params: { panNumber: "" },
+  },
+  {
+    key: "caVerification",
+    name: "CAVERIFICATION",
+    category: "kyc",
+    url: "professional/charteredAccount/verify",
+    params: { MembershipNumber: "" },
+  },
+  {
+    key: "doctorVerification",
+    name: "DoctorVerification",
+    category: "kyc",
+    url: "professional/docter/verify",
+    params: { registrationNumber: "", state: "" },
+  },
+  {
+    key: "dentistVerification",
+    name: "DentistVerification",
+    category: "kyc",
+    url: "professional/dentist/verify",
+    params: { registrationNumber: "", state: "" },
+  },
+  {
+    key: "esignAadhaarBased",
+    name: "eSignAadhaarBased",
+    category: "kyc",
+    url: "professional/esignAadhaar/verify",
+    params: { aadhaarNumber: "" },
   },
 
   // face and ai services
@@ -818,10 +960,65 @@ const apiExamples = [
           success: true,
           message: "Valid",
           response: {
-            code: 200,
-            message: "Data Found Successfully.",
-            result: {
-              aadhaar: "53XXXXXXXX11",
+            gstin: "27ABCDE1234F1Z5",
+            authStatus: "Active",
+            stateCd: "27",
+            gstinDetails: {
+              "GSTIN/ UIN": "27ABCDE1234F1Z5",
+              "Legal Name of Business":
+                "SUNRISE TECH SOLUTIONS PRIVATE LIMITED",
+              "Centre Jurisdiction": "R-2",
+              "State Jurisdiction": "HYDERABAD (NORTH) ZONE 1 (HYDERABAD CITY)",
+              "Date of registration": "12/03/2018",
+              "Constitution of Business": "Private Limited Company",
+              "Taxpayer Type": "Regular",
+              "GSTIN / UIN Status": "Active",
+              "Date of Cancellation": "NA",
+              NatureOfBusinessActivities:
+                "Software Development / IT Services, Consulting, Data Processing",
+              proprietor_name: "RAHUL SHARMA, ANITA SHARMA",
+              "Gross Income": "Not Available (For FY 2019-2020)",
+              AggreTurnOver: "Slab: Rs. 50-100 Cr.",
+              field_visit_conducted: "No",
+              company_name: "SUNRISE TECH SOLUTIONS PRIVATE LIMITED",
+              division: "INFORMATION TECHNOLOGY AND RELATED SERVICES",
+              segment: "SOFTWARE DEVELOPMENT AND IT CONSULTING",
+              sub_segment: "APPLICATION DEVELOPMENT AND SUPPORT SERVICES",
+              placeOfBusinessData: [
+                {
+                  type: "Principal",
+                  nature_of_business_activities:
+                    "Software Development, IT Consulting, Cloud Services",
+                  address:
+                    "Plot No 12, Tech Park Road, Madhapur, Hyderabad, Telangana",
+                  contact_details: "9876543210 support@sunrisetech.com",
+                  address1: "Building No 12, Tech Park Phase 1",
+                  address2: "Madhapur, Hyderabad",
+                  city: "Hyderabad",
+                  state: "Telangana",
+                  pin: "500081",
+                },
+                {
+                  type: "Additional",
+                  nature_of_business_activities:
+                    "Data Analytics, IT Support Services",
+                  address: "Block B, IT Hub, Gachibowli, Hyderabad, Telangana",
+                  contact_details: "9876543211 info@sunrisetech.com",
+                  city: "Hyderabad",
+                  state: "Telangana",
+                  pin: "500032",
+                },
+                {
+                  type: "Additional",
+                  nature_of_business_activities:
+                    "Training and Development Services",
+                  address: "Survey No 45, Hitech City, Hyderabad, Telangana",
+                  contact_details: "9876543212 training@sunrisetech.com",
+                  city: "Hyderabad",
+                  state: "Telangana",
+                  pin: "500081",
+                },
+              ],
             },
           },
         },
@@ -995,6 +1192,7 @@ const apiExamples = [
       },
     ],
   },
+  // digilocker account verify
   {
     name: "DAV",
     examples: [
@@ -1510,6 +1708,192 @@ const apiExamples = [
       },
     ],
   },
+  // gstin tax payer
+  {
+    name: "GST_TAX_PAY",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            "Principal Place of Business Address":
+              "Plot No. 12, Tech Park, Sector 5, Bengaluru, Karnataka - 560100",
+            address: {
+              building_name: "Tech Towers",
+              door_number: "H.No. 12-34/5/A, Plot No. 12",
+              floor_number: "5th Floor",
+              lattitude: "12.9715987",
+              location: "Bengaluru",
+              longitude: "77.5945627",
+              pin_code: "560100",
+              state_name: "Karnataka",
+              street: "Electronic City Phase 1",
+            },
+            centre_jurisdiction: "BENGALURU SOUTH",
+            centre_jurisdiction_code: "BLR001",
+            constitution_of_business: "Private Limited Company",
+            date_of_cancellation: "",
+            date_of_registration: "15/06/2022",
+            frequency_type: "MONTHLY",
+            gstin: "29ABCDE1234F1Z5",
+            gstin_status: "Active",
+            last_updated_date: "10/02/2026",
+            legal_name_of_business: "ABC TECHNOLOGIES PRIVATE LIMITED",
+            nature_of_pricipal_place_of_business: "Supplier of Services",
+            state_jurisdiction: "Bangalore Urban STU - 1",
+            state_jurisdiction_code: "KA101",
+            taxpayer_type: "Regular",
+            trade_name: "ABC TECH",
+            gstinNumber: "dummyhash1234567890abcdef",
+          },
+        },
+      },
+    ],
+  },
+  // gstin view and track return
+  {
+    name: "GST_TAX_RETURN",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            0: {
+              "ARN Number": "AA3601000000001",
+              "Date of File": "21-01-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "122024",
+              "Return Type": "GSTR1",
+              Status: "Filed",
+            },
+            1: {
+              "ARN Number": "AA3601000000002",
+              "Date of File": "21-01-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "122024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            2: {
+              "ARN Number": "AA3601000000003",
+              "Date of File": "20-12-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "112024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            3: {
+              "ARN Number": "AA3601000000004",
+              "Date of File": "20-08-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "072024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            4: {
+              "ARN Number": "AA3601000000005",
+              "Date of File": "20-05-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "042024",
+              "Return Type": "GSTR1",
+              Status: "Filed",
+            },
+            5: {
+              "ARN Number": "AA3601000000006",
+              "Date of File": "20-05-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "042024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            6: {
+              "ARN Number": "AA3601000000007",
+              "Date of File": "20-03-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "022025",
+              "Return Type": "GSTR1",
+              Status: "Filed",
+            },
+            7: {
+              "ARN Number": "AA3601000000008",
+              "Date of File": "20-03-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "022025",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            8: {
+              "ARN Number": "AA3601000000009",
+              "Date of File": "20-02-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "012025",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            9: {
+              "ARN Number": "AA3601000000010",
+              "Date of File": "19-11-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "102024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            10: {
+              "ARN Number": "AA3601000000011",
+              "Date of File": "19-09-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "082024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            11: {
+              "ARN Number": "AA3601000000012",
+              "Date of File": "19-06-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "052024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            12: {
+              "ARN Number": "AA3601000000013",
+              "Date of File": "19-04-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "032025",
+              "Return Type": "GSTR1",
+              Status: "Filed",
+            },
+            13: {
+              "ARN Number": "AA3601000000014",
+              "Date of File": "19-04-2025",
+              "Mode of File": "ONLINE",
+              "Return Period": "032025",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            14: {
+              "ARN Number": "AA3601000000015",
+              "Date of File": "18-07-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "062024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            15: {
+              "ARN Number": "AA3601000000016",
+              "Date of File": "17-10-2024",
+              "Mode of File": "ONLINE",
+              "Return Period": "092024",
+              "Return Type": "GSTR3B",
+              Status: "Filed",
+            },
+            gstinNumber: "dummyhash123456789abcdef",
+          },
+        },
+      },
+    ],
+  },
 
   // banking services
   // bank penny drop
@@ -1557,6 +1941,70 @@ const apiExamples = [
   // bank details with ifsc
   {
     name: "IFSC",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            BRANCH: "Demo Branch",
+            ADDRESS: "123 Demo Street, Demo Area, Demo City - 000000",
+            STATE: "Demo State",
+            MICR: "123456789",
+            CONTACT: "0123456789",
+            UPI: true,
+            RTGS: true,
+            CITY: "Demo City",
+            CENTRE: "Demo Centre",
+            DISTRICT: "Demo District",
+            NEFT: true,
+            IMPS: true,
+            SWIFT: "DEMOXX12345",
+            ISO3166: "IN-DM",
+            BANK: "Demo Bank Ltd",
+            BANKCODE: "DMBC",
+            IFSC: "DMBC0001234",
+          },
+        },
+      },
+    ],
+  },
+  // cibil
+  {
+    name: "CB",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            BRANCH: "Demo Branch",
+            ADDRESS: "123 Demo Street, Demo Area, Demo City - 000000",
+            STATE: "Demo State",
+            MICR: "123456789",
+            CONTACT: "0123456789",
+            UPI: true,
+            RTGS: true,
+            CITY: "Demo City",
+            CENTRE: "Demo Centre",
+            DISTRICT: "Demo District",
+            NEFT: true,
+            IMPS: true,
+            SWIFT: "DEMOXX12345",
+            ISO3166: "IN-DM",
+            BANK: "Demo Bank Ltd",
+            BANKCODE: "DMBC",
+            IFSC: "DMBC0001234",
+          },
+        },
+      },
+    ],
+  },
+  // advance bank account verification
+  {
+    name: "ABAV",
     examples: [
       {
         statusCode: 200,
@@ -1975,6 +2423,7 @@ const apiExamples = [
   },
 
   // risk and due diligence
+  // court record check
   {
     name: "CRC",
     examples: [
@@ -2028,6 +2477,104 @@ const apiExamples = [
                 weightedPercentage: 98.25,
               },
             ],
+            eliminated_data: [],
+            maxScore: null,
+            numFound: 100,
+            perPage: null,
+            perPaginQuery: null,
+            sendToVault: true,
+            sendToVp: false,
+            start: null,
+            totalResult: 100,
+          },
+        },
+      },
+    ],
+  },
+  // profile advance
+  {
+    name: "PA",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            algoVersion: "v1",
+            eliminated_data: [],
+            maxScore: null,
+            numFound: 100,
+            perPage: null,
+            perPaginQuery: null,
+            sendToVault: true,
+            sendToVp: false,
+            start: null,
+            totalResult: 100,
+          },
+        },
+      },
+    ],
+  },
+  // domain verification
+  {
+    name: "DV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            algoVersion: "v1",
+            eliminated_data: [],
+            maxScore: null,
+            numFound: 100,
+            perPage: null,
+            perPaginQuery: null,
+            sendToVault: true,
+            sendToVp: false,
+            start: null,
+            totalResult: 100,
+          },
+        },
+      },
+    ],
+  },
+
+  // professional verification
+  // doctor verification
+  {
+    name: "DOV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            algoVersion: "v1",
+            eliminated_data: [],
+            maxScore: null,
+            numFound: 100,
+            perPage: null,
+            perPaginQuery: null,
+            sendToVault: true,
+            sendToVp: false,
+            start: null,
+            totalResult: 100,
+          },
+        },
+      },
+    ],
+  },
+  // dentist verification
+  {
+    name: "DEV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            algoVersion: "v1",
             eliminated_data: [],
             maxScore: null,
             numFound: 100,

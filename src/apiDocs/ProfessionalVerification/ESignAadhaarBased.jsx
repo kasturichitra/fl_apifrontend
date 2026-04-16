@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { UDYAM } from "../../utils/bodyParams";
+import { PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../../utils/apiSchema";
+import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const UdyamVerification = () => {
+const ESignAadhaarBased = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
+  const examplesList = GetAcc?.exampleCodes["ESAB"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +45,7 @@ const UdyamVerification = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/udyam/verify",
+        path: "professional/esignAadhaar/verify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,16 +72,17 @@ const UdyamVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">E Sign Aadhaar Based</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/udyam/verify"
+            link="pan/verify_to_aadhaar"
           />
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The Aadhaar-based E-Sign API enables developers to securely sign
+            documents electronically using Aadhaar authentication, ensuring
+            fast, legally compliant, and paperless digital signing.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ const UdyamVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={PNV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -118,7 +118,10 @@ const UdyamVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -132,12 +135,12 @@ const UdyamVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"udyam"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          service={"esignAadhaarBased"}
+          examples={GetAcc?.exampleCodes["ESAB"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default UdyamVerification;
+export default ESignAadhaarBased;

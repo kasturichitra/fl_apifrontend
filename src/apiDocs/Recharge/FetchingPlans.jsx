@@ -79,8 +79,9 @@ const FetchingPlans = () => {
             link="Recharge/Plans"
           />
           <p className="first_para">
-            The FP Number Verification API allows developers to verify users’ FP
-            numbers in real-time.
+            The Recharge Plans Fetching API enables developers to retrieve
+            available recharge plans in real-time based on operator or service,
+            helping users choose the most suitable plan.
           </p>
         </div>
 

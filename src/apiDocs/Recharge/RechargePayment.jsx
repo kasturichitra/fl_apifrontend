@@ -79,8 +79,9 @@ const RechargePayment = () => {
             link="Recharge/RechargeURL"
           />
           <p className="first_para">
-            The RP Number Verification API allows developers to verify users’ RP
-            numbers in real-time.
+            The Recharge Payment API enables developers to initiate and process
+            mobile or utility recharge transactions securely in real-time,
+            ensuring fast and reliable payment completion.
           </p>
         </div>
 

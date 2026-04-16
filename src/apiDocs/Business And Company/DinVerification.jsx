@@ -10,29 +10,30 @@ import { CIN } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
 import { CinDynamic, DATA } from "../../utils/apiSchema";
+import EncryptionNotice from "../../components/EncryptionNotice";
 
 export default function DinVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-   const examplesList = GetAcc?.exampleCodes["DIN"] || [];
-  
-    const [choosedExample, setChoosedExample] = useState(() => {
-      const successExample = examplesList.find((e) => e.statusCode === 200);
-      return successExample
-        ? 200
-        : examplesList.length > 0
+  const examplesList = GetAcc?.exampleCodes["DIN"] || [];
+
+  const [choosedExample, setChoosedExample] = useState(() => {
+    const successExample = examplesList.find((e) => e.statusCode === 200);
+    return successExample
+      ? 200
+      : examplesList.length > 0
         ? examplesList[0].statusCode
         : null;
-    });
-  
-    const [isExampleChoosed, setIsExampleChoosed] = useState(
-      () => !!choosedExample
-    );
+  });
+
+  const [isExampleChoosed, setIsExampleChoosed] = useState(
+    () => !!choosedExample,
+  );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -74,7 +75,7 @@ export default function DinVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/CinNumberverify"
+            link="business/din/verify"
           />
           <p className="first_para">
             Enter your CIN number to verify the company details.
@@ -82,8 +83,8 @@ export default function DinVerification() {
         </div>
 
         <div className="py-6">
-                  <EncryptionNotice />
-                </div>
+          <EncryptionNotice />
+        </div>
 
         {/* REQUEST HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
@@ -127,7 +128,7 @@ export default function DinVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"cin"}
+          service={"dinVerification"}
           examples={GetAcc?.exampleCodes["DIN"] || []}
         />
       </div>

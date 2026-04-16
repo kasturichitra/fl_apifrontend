@@ -81,7 +81,7 @@ const AddressToDigipin = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="location/address/digipin"
           />
           <p className="first_para">
             The Address to Digipin API enables developers to convert a physical

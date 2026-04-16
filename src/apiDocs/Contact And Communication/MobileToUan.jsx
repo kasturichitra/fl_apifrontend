@@ -87,7 +87,7 @@ export default function MobileToUan() {
           <EncryptionNotice />
         </div>
 
-{/* REQ HISTORY TABLE */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
         <div className="py-6">

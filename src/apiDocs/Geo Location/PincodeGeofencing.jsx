@@ -77,7 +77,7 @@ const PincodeGeofencing = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="location/pincode/geofencing"
           />
           <p className="first_para">
             The Pincode Geofencing API allows developers to define and manage

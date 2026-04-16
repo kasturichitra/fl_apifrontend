@@ -16,6 +16,36 @@ export const BaseFields = [
   },
 ];
 
+// access token
+export const accessTokenDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "secret_token",
+              type: "string",
+              subTitle: "JWT authentication token",
+            },
+            {
+              title: "environment",
+              type: "string",
+              subTitle: "Execution environment (LIVE/TEST)",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+
 // pan services
 export const PanDynamic = [
   {
@@ -110,25 +140,19 @@ export const PanToGstDynamic = [
 
           objectDetails: [
             {
-              title: "code",
-              type: "number",
-              subTitle: "The success code",
-            },
-            {
-              title: "message",
+              title: "gstin",
               type: "string",
-              subTitle: "The success message",
+              subTitle: "GST Identification Number",
             },
             {
-              title: "result",
-              type: "object",
-              objectDetails: [
-                {
-                  title: "aadhaar",
-                  type: "string",
-                  subTitle: "The Requested Masked Aadhaar Number",
-                },
-              ],
+              title: "authStatus",
+              type: "string",
+              subTitle: "GST authentication status",
+            },
+            {
+              title: "stateCd",
+              type: "string",
+              subTitle: "State code of GST registration",
             },
           ],
         },
@@ -150,23 +174,164 @@ export const PanToGst_inDynamic = [
 
           objectDetails: [
             {
-              title: "code",
-              type: "number",
-              subTitle: "The success code",
-            },
-            {
-              title: "message",
+              title: "gstin",
               type: "string",
-              subTitle: "The success message",
+              subTitle: "GST Identification Number",
             },
             {
-              title: "result",
+              title: "authStatus",
+              type: "string",
+              subTitle: "GST authentication status",
+            },
+            {
+              title: "stateCd",
+              type: "string",
+              subTitle: "State code",
+            },
+            {
+              title: "gstinDetails",
               type: "object",
               objectDetails: [
                 {
-                  title: "aadhaar",
+                  title: "GSTIN/ UIN",
                   type: "string",
-                  subTitle: "The Requested Masked Aadhaar Number",
+                  subTitle: "GSTIN/UIN number",
+                },
+                {
+                  title: "Legal Name of Business",
+                  type: "string",
+                  subTitle: "Registered legal business name",
+                },
+                {
+                  title: "Centre Jurisdiction",
+                  type: "string",
+                  subTitle: "Central tax jurisdiction",
+                },
+                {
+                  title: "State Jurisdiction",
+                  type: "string",
+                  subTitle: "State tax jurisdiction",
+                },
+                {
+                  title: "Date of registration",
+                  type: "string",
+                  subTitle: "GST registration date",
+                },
+                {
+                  title: "Constitution of Business",
+                  type: "string",
+                  subTitle: "Type of business entity",
+                },
+                {
+                  title: "Taxpayer Type",
+                  type: "string",
+                  subTitle: "Type of taxpayer",
+                },
+                {
+                  title: "GSTIN / UIN Status",
+                  type: "string",
+                  subTitle: "Current GST status",
+                },
+                {
+                  title: "Date of Cancellation",
+                  type: "string",
+                  subTitle: "Cancellation date if any",
+                },
+                {
+                  title: "NatureOfBusinessActivities",
+                  type: "string",
+                  subTitle: "Business activities description",
+                },
+                {
+                  title: "proprietor_name",
+                  type: "string",
+                  subTitle: "Names of proprietors",
+                },
+                {
+                  title: "Gross Income",
+                  type: "string",
+                  subTitle: "Gross income details",
+                },
+                {
+                  title: "AggreTurnOver",
+                  type: "string",
+                  subTitle: "Aggregate turnover slab",
+                },
+                {
+                  title: "field_visit_conducted",
+                  type: "string",
+                  subTitle: "Whether field visit conducted",
+                },
+                {
+                  title: "company_name",
+                  type: "string",
+                  subTitle: "Company name",
+                },
+                {
+                  title: "division",
+                  type: "string",
+                  subTitle: "Tax division",
+                },
+                {
+                  title: "segment",
+                  type: "string",
+                  subTitle: "Business segment",
+                },
+                {
+                  title: "sub_segment",
+                  type: "string",
+                  subTitle: "Business sub-segment",
+                },
+                {
+                  title: "placeOfBusinessData",
+                  type: "array",
+                  objectDetails: [
+                    {
+                      title: "type",
+                      type: "string",
+                      subTitle: "Business place type (Principal/Additional)",
+                    },
+                    {
+                      title: "nature_of_business_activities",
+                      type: "string",
+                      subTitle: "Activities at this location",
+                    },
+                    {
+                      title: "address",
+                      type: "string",
+                      subTitle: "Full address",
+                    },
+                    {
+                      title: "contact_details",
+                      type: "string",
+                      subTitle: "Contact information",
+                    },
+                    {
+                      title: "address1",
+                      type: "string",
+                      subTitle: "Address line 1",
+                    },
+                    {
+                      title: "address2",
+                      type: "string",
+                      subTitle: "Address line 2",
+                    },
+                    {
+                      title: "city",
+                      type: "string",
+                      subTitle: "City",
+                    },
+                    {
+                      title: "state",
+                      type: "string",
+                      subTitle: "State",
+                    },
+                    {
+                      title: "pin",
+                      type: "string",
+                      subTitle: "PIN code",
+                    },
+                  ],
                 },
               ],
             },
@@ -2033,7 +2198,7 @@ export const longLatGeofencingDynamic = [
         {
           title: "data",
           type: "object",
-          fields: [
+          objectDetails: [
             {
               title: "centerCode",
               type: "string",
@@ -2096,7 +2261,7 @@ export const GeoTaggingDynamic = [
         {
           title: "data",
           type: "object",
-          fields: [
+          objectDetails: [
             {
               title: "centerCode",
               type: "string",
@@ -2222,7 +2387,7 @@ export const DigipinToLongLatDynamic = [
         {
           title: "data",
           type: "object",
-          fields: [
+          objectDetails: [
             {
               title: "centerCode",
               type: "string",

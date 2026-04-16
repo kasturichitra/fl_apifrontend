@@ -21,7 +21,7 @@ export default function FaceMatchVerification() {
 
   const makeFaceMatchApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -76,7 +76,7 @@ export default function FaceMatchVerification() {
           <EncryptionNotice />
         </div>
 
-{/* REQ HISTORY TABLE */}
+        {/* REQ HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass={"history_Table"} /> */}
 
         {/* HEADERS */}

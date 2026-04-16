@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BIN } from "../../utils/bodyParams";
+import { DEV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
+import { DATA, PanToMaskedAadhaarDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const IfscLookup = () => {
+const DentistVerification = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["DEV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +45,7 @@ const IfscLookup = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "pan/verify_to_aadhaar",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,17 +72,16 @@ const IfscLookup = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bin Number Verification</h1>
+          <h1 className="api_heading">Dentist Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getCardDetails"
+            link="professional/dentist/verify"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number The Bin Number
-            Verification API allows developers to verify users’ Bin numbers in
-            real-time.
+            The PAN Number to masked Aadhaar API allows developers to verify
+            users’ PAN numbers and get the masked aadhaar numbers in real-time.
           </p>
         </div>
 
@@ -109,7 +107,7 @@ const IfscLookup = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BIN}
+            bodyObj={DEV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -119,7 +117,10 @@ const IfscLookup = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
+          <ResponseComponent
+            dynamic200={PanToMaskedAadhaarDynamic}
+            otherData={DATA}
+          />
         </div>
       </div>
 
@@ -133,12 +134,12 @@ const IfscLookup = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bin"}
-          examples={GetAcc?.exampleCodes["BIN"] || []}
+          service={"dentistVerification"}
+          examples={GetAcc?.exampleCodes["DEV"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default IfscLookup;
+export default DentistVerification;

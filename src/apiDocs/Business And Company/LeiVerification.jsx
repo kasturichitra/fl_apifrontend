@@ -15,25 +15,25 @@ import EncryptionNotice from "../../components/EncryptionNotice";
 export default function LeiVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
- const examplesList = GetAcc?.exampleCodes["GST"] || [];
+  const examplesList = GetAcc?.exampleCodes["GST"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
       ? 200
       : examplesList.length > 0
-      ? examplesList[0].statusCode
-      : null;
+        ? examplesList[0].statusCode
+        : null;
   });
 
   const [isExampleChoosed, setIsExampleChoosed] = useState(
-    () => !!choosedExample
+    () => !!choosedExample,
   );
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
   const makeFaceMathcApiCall = async () => {
     const isAllRequiredFieldEntered = Object.values(allRequiredFields).every(
-      (status) => !status
+      (status) => !status,
     );
 
     if (!isAllRequiredFieldEntered) {
@@ -70,21 +70,24 @@ export default function LeiVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">GSTIN Verification</h1>
+          <h1 className="api_heading">LEI Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/Gstinverify"
+            link="business/LEI/verify"
           />
           <p className="first_para">
-            Enter the GSTIN number of the company you want to verify.
+            The LEI Verification API enables developers to validate the
+            authenticity of a Legal Entity Identifier (LEI) in real-time,
+            helping ensure accurate identification of businesses in financial
+            transactions.
           </p>
         </div>
 
         <div className="py-6">
-                  <EncryptionNotice />
-                </div>
+          <EncryptionNotice />
+        </div>
 
         {/* REQUEST HISTORY TABLE */}
         {/* <RequestHistoryTable TableClass="history_Table" /> */}
@@ -128,7 +131,7 @@ export default function LeiVerification() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"gst"}
+          service={"leiVerification"}
           examples={GetAcc?.exampleCodes["GST"] || []}
         />
       </div>

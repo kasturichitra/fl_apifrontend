@@ -74,7 +74,7 @@ export default function ShopVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="shop/shopest"
+            link="business/shopest/verify"
           />
           <p className="first_para">
             Shop Establishmentr Verification is used to verify the shop names and addresses of the merchants in real

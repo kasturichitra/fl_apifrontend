@@ -50,187 +50,130 @@ const Reference = () => {
             <h2>Welcome to the API Reference Center</h2>
 
             <p>
-              This platform provides a complete suite of powerful APIs that help
-              businesses automate KYC, verify identities, validate businesses,
-              process financial transactions, handle bill payments, perform
-              mobile recharges, and more. All APIs are designed to be secure,
-              fast, highly scalable, and easy to integrate.
+              This platform provides a comprehensive suite of APIs designed to
+              help businesses automate identity verification, financial
+              operations, utility payments, recharges, compliance, and digital
+              onboarding. All APIs are secure, scalable, and built for
+              production use.
             </p>
 
-            <h3>🔹 KYC Verification APIs</h3>
+            <h3>🔹 PAN Services</h3>
             <p>
-              Our KYC APIs help businesses validate the identity of their
-              customers using government-backed and AI-driven verification
-              systems. These APIs reduce fraud, streamline onboarding, and help
-              you meet compliance (KYC/AML) requirements.
-            </p>
-            <ul>
-              <li>
-                PAN Number Verification – Validate PAN details directly from
-                government sources.
-              </li>
-              <li>
-                PAN to Aadhaar Verification – Check if a PAN is linked with
-                Aadhaar.
-              </li>
-              <li>
-                Aadhaar OTP Services – Generate OTP & fetch Aadhaar verification
-                status.
-              </li>
-              <li>Mobile OTP Verification – Verify phone number ownership.</li>
-              <li>
-                Face Match Verification – Compare two faces using AI-based
-                facial similarity.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Fintech onboarding, credit apps,
-              insurance, digital KYC, fraud prevention.
+              APIs in this category help validate PAN identity and support tax
+              compliance and customer onboarding processes.
             </p>
 
-            <h3>🔹 Business Verification APIs</h3>
+            <h3>🔹 GST Service</h3>
             <p>
-              These APIs validate the legal existence of businesses and verify
-              their registration details from official government databases.
-            </p>
-            <ul>
-              <li>
-                GSTIN Verification – Fetch business name, status, and
-                registration details.
-              </li>
-              <li>
-                CIN/Company Verification – Validate companies registered under
-                MCA.
-              </li>
-              <li>
-                Shop & Establishment Verification – Verify small businesses &
-                shops.
-              </li>
-              <li>
-                Udyam Verification – Validate MSME (Udyam) certificate details.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Vendor onboarding, merchant
-              onboarding, B2B platforms, underwriting.
+              These APIs enable GST registration verification and help confirm
+              business tax compliance details for merchants and vendors.
             </p>
 
-            <h3>🔹 Bank Account & Financial Verification APIs</h3>
+            <h3>🔹 Aadhaar & DigiLocker</h3>
             <p>
-              Financial verification APIs ensure payments are sent to the
-              correct person or business. They eliminate transaction failures
-              and reduce risk.
-            </p>
-            <ul>
-              <li>
-                Penny Drop Verification – Deposit a small amount to confirm
-                account ownership.
-              </li>
-              <li>
-                Penny-less Verification – Verify account details without fund
-                transfer.
-              </li>
-              <li>
-                IFSC & Bank Details – Fetch branch details, address, and bank
-                identifiers.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Payout systems, payroll, refunds,
-              lending, KYC for bank accounts.
+              This category provides Aadhaar-based identity verification and
+              secure access to government-issued digital documents through
+              DigiLocker integration.
             </p>
 
-            <h3>🔹 Common Utility APIs</h3>
+            <h3>🔹 Banking & Financial</h3>
             <p>
-              These helper APIs improve accuracy by cross-checking user
-              information.
-            </p>
-            <ul>
-              <li>
-                Name Match Verification – Compare names across documents using
-                fuzzy matching.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Identity matching, document
-              verification, automated KYC flows.
+              Financial verification APIs ensure secure transactions by
+              validating bank accounts, IFSC details, and account ownership.
             </p>
 
-            <h3>🔹 BBPS (Bharat Bill Payment System) APIs</h3>
+            <h3>🔹 Business & Company</h3>
             <p>
-              BBPS APIs enable your application to conduct nationwide utility
-              bill payments with secure and real-time confirmation. These APIs
-              follow NPCI standards.
-            </p>
-            <ul>
-              <li>Biller Information – Fetch list of supported billers.</li>
-              <li>
-                Bill Fetch – Get bill amount, due date, and consumer details.
-              </li>
-              <li>
-                Bill Validation – Validate consumer number before payment.
-              </li>
-              <li>Bill Payment – Pay bills instantly with receipt.</li>
-              <li>Quick Pay – Fast bill payment without full fetch.</li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Payment apps, agent apps,
-              multi-service portals, fintech wallets.
+              These APIs verify company registrations, business legitimacy, and
+              government records to support onboarding and compliance workflows.
             </p>
 
-            <h3>🔹 Mobile Recharge APIs</h3>
+            <h3>🔹 Employment & Income</h3>
             <p>
-              Mobile recharge APIs allow you to offer seamless prepaid and
-              postpaid recharge features within your application.
-            </p>
-            <ul>
-              <li>
-                Fetch Operators – Auto-detect operator from mobile number.
-              </li>
-              <li>Fetch Plans – Get data, SMS, and talk-time plans.</li>
-              <li>
-                Recharge Payment – Recharge instantly across all networks.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Recharge apps, retail POS systems,
-              agents, fintech super apps.
+              APIs that help validate employment status and income-related
+              information for lending, underwriting, and risk assessment
+              systems.
             </p>
 
-            <h3>🔹 Credit Card & BIN Verification APIs</h3>
+            <h3>🔹 Vehicle & Transport</h3>
             <p>
-              These APIs help you verify card data before processing payments,
-              reducing fraud and failed transactions.
-            </p>
-            <ul>
-              <li>
-                BIN Verification – Identify issuing bank, card type, and
-                network.
-              </li>
-              <li>
-                Full Credit Card Verification – Detect invalid or risky card
-                numbers.
-              </li>
-            </ul>
-            <p>
-              <strong>Use Cases:</strong> Payments, checkout systems, fraud
-              detection platforms.
+              This category provides vehicle and driving license verification
+              for transport, insurance, and compliance applications.
             </p>
 
-            <h3>📌 What You’ll Find in Each Documentation Page</h3>
-            <ul>
-              <li>Clear API endpoints</li>
-              <li>Request & response formats</li>
-              <li>Authentication details</li>
-              <li>Error codes & solutions</li>
-              <li>Integration flow diagrams</li>
-              <li>Real-world examples</li>
-            </ul>
-
+            <h3>🔹 Face & AI Verification</h3>
             <p>
-              Use the sidebar on the left to explore each API in detail. Every
-              section contains complete technical documentation to help you
-              integrate smoothly.
+              AI-powered identity verification APIs using facial recognition,
+              liveness detection, and image matching technologies.
+            </p>
+
+            <h3>🔹 OCR & Document AI</h3>
+            <p>
+              Intelligent document processing APIs that extract and structure
+              data from images, IDs, invoices, and official documents.
+            </p>
+
+            <h3>🔹 Government ID Services</h3>
+            <p>
+              APIs that validate various government-issued identity documents to
+              ensure authenticity and compliance.
+            </p>
+
+            <h3>🔹 Contact & Communication</h3>
+            <p>
+              Communication verification APIs including mobile, email, and
+              messaging channels for secure user validation.
+            </p>
+
+            <h3>🔹 Geo & Location</h3>
+            <p>
+              Location intelligence APIs for address validation, PIN code
+              lookup, and geocoding services.
+            </p>
+
+            <h3>🔹 Risk & Due Diligence</h3>
+            <p>
+              APIs designed for fraud detection, blacklist screening, and AML
+              compliance checks for secure business operations.
+            </p>
+
+            <h3>🔹 Professional Verification</h3>
+            <p>
+              Verification APIs for validating professional credentials such as
+              education, certifications, and licensed professionals.
+            </p>
+
+            {/* NEW ADDITIONS */}
+
+            <h3>🔹 BBPS (Bharat Bill Payment System)</h3>
+            <p>
+              BBPS APIs enable secure and real-time bill payment processing for
+              utilities such as electricity, water, gas, and other recurring
+              payments under NPCI standards.
+            </p>
+
+            <h3>🔹 Mobile Recharge Services</h3>
+            <p>
+              Recharge APIs allow seamless prepaid and postpaid mobile recharge
+              services across all major telecom operators with real-time
+              processing and confirmation.
+            </p>
+
+            <h3>🔹 Other Services</h3>
+            <p>
+              Additional utility APIs including payment support, validation
+              tools, and supplementary fintech services that enhance platform
+              capabilities.
+            </p>
+
+            <hr />
+
+            <h3>📌 Documentation Overview</h3>
+            <p>
+              Each API section contains detailed technical documentation
+              including endpoints, authentication methods, request-response
+              formats, error handling, and integration guidelines. Use the
+              navigation menu to explore specific API capabilities.
             </p>
           </div>
         )}

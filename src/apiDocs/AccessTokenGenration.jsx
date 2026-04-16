@@ -7,6 +7,7 @@ import { GetAcc } from "../utils/Language";
 import "../styles/api_reference.css";
 import { toekn_api_Headers } from "../utils/Api_Headers";
 import ResponseComponent from "../components/Responses/ResponsesComponent";
+import { accessTokenDynamic, DATA } from "../utils/apiSchema";
 
 const AccessTokenGenration = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
@@ -98,7 +99,7 @@ const AccessTokenGenration = () => {
         </div> */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={[]} otherData={[]} />
+          <ResponseComponent dynamic200={accessTokenDynamic} otherData={DATA} />
         </div>
       </div>
       <div className="second_child hide-scrollbar">

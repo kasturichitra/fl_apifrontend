@@ -75,7 +75,7 @@ export default function GSTINVerification() {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/Gstinverify"
+            link="business/Gstin/verify"
           />
           <p className="first_para">
             Enter the GSTIN number of the company you want to verify.

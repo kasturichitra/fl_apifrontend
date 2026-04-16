@@ -6,19 +6,19 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BIN } from "../../utils/bodyParams";
+import { CB } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { BinDynamic, DATA, PanDynamic } from "../../utils/apiSchema";
+import { DATA, AccountDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const TradeLicenseLookup = () => {
+const Cibil = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["CB"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +46,7 @@ const TradeLicenseLookup = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "accounts/verify/penny-drop",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,17 +73,18 @@ const TradeLicenseLookup = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bin Number Verification</h1>
+          <h1 className="api_heading">CIBIL</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getCardDetails"
+            link="bank/cibil/verify"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number The Bin Number
-            Verification API allows developers to verify users’ Bin numbers in
-            real-time.
+            The CIBIL Verification API enables developers to check an
+            individual’s credit information in real-time, helping assess
+            creditworthiness and financial reliability based on credit bureau
+            data.
           </p>
         </div>
 
@@ -109,7 +110,7 @@ const TradeLicenseLookup = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BIN}
+            bodyObj={CB}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -119,7 +120,7 @@ const TradeLicenseLookup = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -133,12 +134,12 @@ const TradeLicenseLookup = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bin"}
-          examples={GetAcc?.exampleCodes["BIN"] || []}
+          service={"cibil"}
+          examples={GetAcc?.exampleCodes["CB"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default TradeLicenseLookup;
+export default Cibil;

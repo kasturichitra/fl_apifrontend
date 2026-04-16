@@ -82,7 +82,7 @@ const LongLatGeofencing = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="location/longLat/geofencing"
           />
           <p className="first_para">
             The Longitude Latitude Geofencing API allows developers to define

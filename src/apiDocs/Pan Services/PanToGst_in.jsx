@@ -77,7 +77,7 @@ const PanToGst_in = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/know/fatherName"
+            link="pan/getgst_in/withpan"
           />
           <p className="first_para">
             The Pan To GSTIN API allows developers to fetch the GSTIN (Goods and

@@ -6,19 +6,19 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BIN } from "../../utils/bodyParams";
+import { UDYAM } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { BinDynamic, DATA } from "../../utils/apiSchema";
+import { DATA, UdyamDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const BankBranchLookup = () => {
+const ComprehensiveGstSolution = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["PAN"] || [];
+  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +46,7 @@ const BankBranchLookup = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/pan/panverifying",
+        path: "/udyam/verify",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,17 +73,16 @@ const BankBranchLookup = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Bin Number Verification</h1>
+          <h1 className="api_heading">Udyam Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="bin/getCardDetails"
+            link="udyam/verify"
           />
           <p className="first_para">
-            The Bin Number means Bank Identification Number The Bin Number
-            Verification API allows developers to verify users’ Bin numbers in
-            real-time.
+            The UDYAM Number Verification API allows developers to verify users’
+            Udyam numbers in real-time.
           </p>
         </div>
 
@@ -109,7 +108,7 @@ const BankBranchLookup = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BIN}
+            bodyObj={UDYAM}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -119,7 +118,7 @@ const BankBranchLookup = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={BinDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -133,12 +132,12 @@ const BankBranchLookup = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bin"}
-          examples={GetAcc?.exampleCodes["BIN"] || []}
+          service={"udyam"}
+          examples={GetAcc?.exampleCodes["UDYAM"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default BankBranchLookup;
+export default ComprehensiveGstSolution;
