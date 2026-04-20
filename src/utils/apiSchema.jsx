@@ -1839,6 +1839,191 @@ export const GstDynamic = [
     },
   },
 ];
+export const DinDynamic = [
+  {
+    status: 200,
+    summary: "Returns DIN Registration Details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          subTitle: "DIN Registration Details",
+          type: "object",
+          objectDetails: [
+            {
+              title: "DIN",
+              subTitle: "Director Identification Number",
+              description:
+                "A unique 8-digit identifier assigned to a director by the Ministry of Corporate Affairs (MCA).",
+              type: "string",
+              value: "12345678",
+            },
+            {
+              title: "Name",
+              subTitle: "Director Name",
+              description:
+                "Full legal name of the director associated with the DIN.",
+              type: "string",
+              value: "JOHN DOE",
+            },
+            {
+              title: "DIN Hash",
+              subTitle: "Encrypted DIN Reference",
+              description:
+                "A hashed or encrypted version of the DIN used for secure referencing and masking sensitive identity data.",
+              type: "string",
+              value: "dummyhash1234567890abcdef",
+            },
+            {
+              title: "Address",
+              subTitle: "Primary Address of Director",
+              description:
+                "Registered residential or correspondence address of the director.",
+              type: "string",
+              value:
+                "123 Dummy Street, Sample Nagar, Test City, TS 500001, India",
+            },
+
+            {
+              title: "Company Details",
+              subTitle: "List of companies associated with DIN",
+              description:
+                "List of companies where the director is currently or previously associated as a director.",
+              type: "array",
+              items: {
+                type: "object",
+                fields: [
+                  {
+                    title: "CIN",
+                    subTitle: "Corporate Identification Number",
+                    description:
+                      "A unique identification number assigned to a company registered in India.",
+                    type: "string",
+                  },
+                  {
+                    title: "Company Name",
+                    subTitle: "Registered Company Name",
+                    description:
+                      "Official registered name of the company as per MCA records.",
+                    type: "string",
+                  },
+                  {
+                    title: "Company Address",
+                    subTitle: "Registered Address of Company",
+                    description:
+                      "Official registered office address of the company.",
+                    type: "string",
+                  },
+                  {
+                    title: "Company Category",
+                    subTitle: "Type of Company",
+                    description:
+                      "Legal structure/category of the company (e.g., private limited, public limited).",
+                    type: "string",
+                  },
+                  {
+                    title: "Date of Incorporation",
+                    subTitle: "Incorporation Date",
+                    description:
+                      "The date on which the company was legally registered under the Companies Act.",
+                    type: "string",
+                  },
+                  {
+                    title: "Email",
+                    subTitle: "Registered Email ID",
+                    description:
+                      "Official email ID of the company used for communication and filings.",
+                    type: "string",
+                  },
+                  {
+                    title: "ROC Code",
+                    subTitle: "Registrar of Companies Office",
+                    description:
+                      "The regional ROC office under which the company is registered.",
+                    type: "string",
+                  },
+                  {
+                    title: "Status",
+                    subTitle: "Current Company Status",
+                    description:
+                      "Indicates whether the company is active, inactive, or under compliance action.",
+                    type: "string",
+                  },
+                  {
+                    title: "Last Updated",
+                    subTitle: "Last Updated Date",
+                    description:
+                      "The most recent date when the company record was updated in the registry.",
+                    type: "string",
+                  },
+                ],
+              },
+              value: [
+                {
+                  CIN: {
+                    title: "CIN",
+                    description:
+                      "Corporate Identification Number — a unique identifier assigned to a company registered with the Ministry of Corporate Affairs in India.",
+                  },
+
+                  "Company Name": {
+                    title: "Company Name",
+                    description:
+                      "Official registered name of the company as per government records.",
+                  },
+
+                  "Company Address": {
+                    title: "Company Address",
+                    description:
+                      "Registered office address of the company used for legal and official communication.",
+                  },
+
+                  "Company Category": {
+                    title: "Company Category",
+                    description:
+                      "Legal classification of the company (e.g., Company limited by shares, LLP, etc.).",
+                  },
+
+                  "Date of Incorporation": {
+                    title: "Date of Incorporation",
+                    description:
+                      "The date on which the company was legally registered under the Companies Act.",
+                  },
+
+                  Email: {
+                    title: "Email",
+                    description:
+                      "Registered official email ID of the company used for communication and filings.",
+                  },
+
+                  "ROC Code": {
+                    title: "ROC Code",
+                    description:
+                      "Registrar of Companies office under which the company is registered and regulated.",
+                  },
+
+                  Status: {
+                    title: "Status",
+                    description:
+                      "Current operational status of the company such as Active, Inactive, or Strike Off.",
+                  },
+
+                  "Last Updated": {
+                    title: "Last Updated",
+                    description:
+                      "The most recent date when the company information was updated in official records.",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
 
 // risk and due diligence
 export const courtRecordDynamic = [

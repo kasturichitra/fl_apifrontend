@@ -10,8 +10,8 @@ export const MASTER_FIELDS = [
     required: false,
     optional: true,
   },
-   {
-        key: "gstinNumber",
+  {
+    key: "gstinNumber",
     title: "GST_IN Number",
     type: "string",
     fieldName: "gstinNumber",
@@ -254,7 +254,8 @@ const baseSchema = buildSchema([
 ]);
 
 // pan services
-// panToAadhaar
+
+// panToAadhaar // pan basic //pan to father name // pan director
 export const PNV = [baseSchema[0], baseSchema[1]];
 // pan name match
 export const PNM = [
@@ -287,6 +288,20 @@ export const PND = [
     type: "string",
     fieldName: "dateOfBirth",
     subTitle: "Enter the dateOfBirth of the person that need to be verified",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  baseSchema[1],
+];
+// pan tan verification
+export const PTV = [
+  baseSchema[0],
+  {
+    title: "tanNumber",
+    type: "string",
+    fieldName: "tanNumber",
+    subTitle: "Enter tanNumber that need to be verifies",
     inputTag: false,
     example: "XXXXXXXXXXXX",
     required: true,
@@ -629,7 +644,7 @@ export const BIN = [
     example: "45XXXX",
     required: true,
   },
-  baseSchema[1]
+  baseSchema[1],
 ];
 //cibil
 export const CB = [
@@ -638,7 +653,8 @@ export const CB = [
     title: "customerMobile",
     type: "string",
     fieldName: "customerMobile",
-    subTitle: "the mobile number that belongs to the user details that has given to be verified",
+    subTitle:
+      "the mobile number that belongs to the user details that has given to be verified",
     inputTag: false,
     example: "87XXXXXXXX",
     required: true,
@@ -647,12 +663,13 @@ export const CB = [
     title: "customerName",
     type: "string",
     fieldName: "customerName",
-    subTitle: "the name that belongs to the user details that has given to be verified",
+    subTitle:
+      "the name that belongs to the user details that has given to be verified",
     inputTag: false,
     example: "RAM",
     required: true,
-  }
-]
+  },
+];
 
 // business services
 
@@ -670,13 +687,10 @@ export const UDYAM = [
   baseSchema[1],
 ];
 // gst verification
-export const GSTIN = [
-  baseSchema[7],
-  baseSchema[1],
-];
+export const GSTIN = [baseSchema[7], baseSchema[1]];
 export const GSTINVAR = [
   baseSchema[7],
-   {
+  {
     title: "Financialyear",
     type: "string",
     fieldName: "Financialyear",
@@ -694,6 +708,19 @@ export const CIN = [
     type: "string",
     fieldName: "CIN",
     subTitle: "Cin Number that should be verified",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  baseSchema[1],
+];
+// din verification
+export const DIN = [
+  {
+    title: "dinNumber",
+    type: "string",
+    fieldName: "dinNumber",
+    subTitle: "dinNumber that should be verified",
     inputTag: false,
     example: "XXXXXXXXXXXX",
     required: true,
@@ -729,6 +756,19 @@ export const SEV = [
 export const DOV = [baseSchema[5], baseSchema[6], baseSchema[1]];
 // dentist verification
 export const DEV = [baseSchema[5], baseSchema[6], baseSchema[1]];
+// ca verification
+export const CAV = [
+  {
+    title: "MembershipNumber",
+    type: "string",
+    fieldName: "MembershipNumber",
+    subTitle: "Enter MembershipNumber that need to be verify",
+    inputTag: false,
+    example: "RAXX",
+    required: true,
+  },
+  baseSchema[1],
+];
 
 // other services
 // name verification
@@ -751,16 +791,7 @@ export const NM = [
     example: "RAXX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 export const FV = [
   {
@@ -772,16 +803,7 @@ export const FV = [
     example: "XXXXXXXXXXXX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 export const TV = [];
 export const IT = [
@@ -794,16 +816,7 @@ export const IT = [
     example: "XXXXXXXXXXXX",
     required: true,
   },
-  {
-    title: "mobile Number",
-    type: "string",
-    fieldName: "mobileNumber",
-    subTitle: "mobile number of the given pan",
-    inputTag: false,
-    example: "98XXXXXX54",
-    required: false,
-    optional: true,
-  },
+  baseSchema[1],
 ];
 
 // recharge

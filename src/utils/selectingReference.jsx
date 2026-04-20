@@ -19,8 +19,8 @@ import PanToGst_in from "../apiDocs/Pan Services/PanToGst_in";
 import PanServicesInfo from "../apiDocs/Pan Services/PanServicesInfo";
 
 // contact and communication services
-import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/MobileNumberOtpGenration";
-import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/MobileNumberOtpVerification";
+import MobileNumberOtpGenration from "../apiDocs/Contact And Communication/Mobile Number Otp Verification/MobileNumberOtpGenration";
+import MobileNumberOtpVerification from "../apiDocs/Contact And Communication/Mobile Number Otp Verification/MobileNumberOtpVerification";
 import MobileToPan from "../apiDocs/Contact And Communication/MobileToPan";
 import MobileToUan from "../apiDocs/Contact And Communication/MobileToUan";
 
@@ -135,6 +135,18 @@ import DGFTVerification from "../apiDocs/Business And Company/DGFTVerification";
 import GovernmentServicesInfo from "../apiDocs/Government Id Services/GovernmentInfo";
 import LocationServicesInfo from "../apiDocs/Geo Location/GeoLocationInfo";
 import ContactServicesInfo from "../apiDocs/Contact And Communication/ContactInfo";
+import RiskAndDueDiligenceInfo from "../apiDocs/Risk And Due Diligence/RiskInfo";
+import OtherServicesInfo from "../apiDocs/Other Services/otherInfo";
+import ProfessionalVerificationInfo from "../apiDocs/ProfessionalVerification/ProfessionalInfo";
+import EmploymentServicesInfo from "../apiDocs/employment services/EmploymentInfo";
+import BusinessServicesInfo from "../apiDocs/Business And Company/BusinessInfo";
+import FaceAIServicesInfo from "../apiDocs/Face And Ai Verification/FaceInfo";
+import VehicleServicesInfo from "../apiDocs/Vehicle And Transport/VehicleInfo";
+import OCRServicesInfo from "../apiDocs/Ocr Services/OcrInfo";
+import GSTServicesInfo from "../apiDocs/Gst Services/GstServiceInfo";
+import RechargeServicesInfo from "../apiDocs/Recharge/RechargeInfo";
+import AadhaarDigiLockerVerificationInfo from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/DigilockerInfo";
+import MobileOTPInfo from "../apiDocs/Contact And Communication/Mobile Number Otp Verification/MobileOtpInfo";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -162,6 +174,7 @@ const apiComponentMap = {
   aadhaar_to_masked_pan: AadhaarToMaskedPanVerification,
   digilocker_verify_account: Digilockerverify,
   aadhaar_info: AadhaarServicesInfo,
+  e_aadhaar_digiLocker: AadhaarDigiLockerVerificationInfo,
 
   // ---------------- FACE AND AI SERVICES ----------------
   face_match: FaceMatchVerification,
@@ -169,6 +182,7 @@ const apiComponentMap = {
   ai_detection: AiImageCheck,
   deepfake_detection: DeepfakeImageCheck,
   ai_and_deepfake_detection: AiAndDeepfakeImageCheck,
+  face_and_ai_verification: FaceAIServicesInfo,
 
   // ---------------- BANKING & FINANCIAL ----------------
   advance_bank_account_verification: AdvanceBankAccountVerification,
@@ -186,6 +200,7 @@ const apiComponentMap = {
   gst_advanced_search: GstAdvancedSearch,
   comprehensive_gst_solution: ComprehensiveGstSolution,
   gst_basis_pan: GstBasisPan,
+  gst_services: GSTServicesInfo,
 
   /* ================= BUSINESS & COMPANY ================= */
   cin_verification: CinVerification,
@@ -203,10 +218,12 @@ const apiComponentMap = {
   gstin_taxpayer: GstInTaxpayer,
   gstin_view_track_return: GstInViewAndReturn,
   shop_act_verification: ShopVerification,
+  business_and_company: BusinessServicesInfo,
 
   /* ================= EMPLOYMENT & INCOME ================= */
   dual_employment_check: DualEmploymentCheck,
   basic_uan_verification: BasicUanVerify,
+  employment_and_income: EmploymentServicesInfo,
 
   /* ================= VEHICLE & TRANSPORT ================= */
   vehicle_registeration: VehicleRcVerification,
@@ -214,6 +231,7 @@ const apiComponentMap = {
   stolen_vehicle_verification: StolenVehicleVerification,
   driving_license_verification: DrivingLicenseVerify,
   challan_via_rc: ChallanViaRc,
+  vehicle_and_transport: VehicleServicesInfo,
 
   /* ================= GOVERNMENT ID SERVICES ================= */
   tin_verification: TinVerification,
@@ -231,6 +249,7 @@ const apiComponentMap = {
   mobile_to_pan: MobileToPan,
   mobile_to_uan: MobileToUan,
   contact_and_communication: ContactServicesInfo,
+  mobile_number_validation: MobileOTPInfo,
 
   /* ================= GEO & LOCATION ================= */
   geo_tagging_search: GeoTaggingSearch,
@@ -246,6 +265,7 @@ const apiComponentMap = {
   court_records_check_diy: CourtRecordsCheck,
   domain_verification: DomainVerification,
   profile_advance: ProfileAdvance,
+  risk_and_due_diligence: RiskAndDueDiligenceInfo,
 
   /* ================= PROFESSIONAL VERIFICATION ================= */
   esign_aadhaar_based: ESignAadhaarBased,
@@ -253,11 +273,16 @@ const apiComponentMap = {
   doctor_verification: DoctorVerification,
   ca_verification: CaVerification,
   insurance_agent_verification: InsuranceAgentVerification,
+  professional_verification: ProfessionalVerificationInfo,
+
+  /* ================= OTHER SERVICES ================= */
+  ocr_and_document_ai: OCRServicesInfo,
 
   /* ================= OTHER SERVICES ================= */
   name_match_verification: NameMatchVerification,
   industry_type: IndustryType,
   fssai_verification: FssaiVerification,
+  other_services: OtherServicesInfo,
 
   // ---------------- BBPS ----------------
   bbps_Doc: BbpsTheory,
@@ -273,6 +298,7 @@ const apiComponentMap = {
   recharge_payment: RechargePayment,
   recharge_payment_offers: RechargeOffers,
   fetching_old_plans: FetchingOldRechargePlans,
+  recharge_plans: RechargeServicesInfo
 };
 
 export const selectingActiveRefernce = (selectedApi) => {

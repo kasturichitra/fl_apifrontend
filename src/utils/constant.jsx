@@ -193,16 +193,16 @@ export const ApiReferences = [
           //   type: "POST",
           //   link: "digilocker_pull_document",
           // },
-          {
-            title: "Aadhaar Based eSign",
-            type: "POST",
-            link: "aadhaar_based_esign",
-          },
-          {
-            title: "E-Aadhaar Upload (pdf)",
-            type: "POST",
-            link: "e_aadhaar_upload_pdf",
-          },
+          // {
+          //   title: "Aadhaar Based eSign",
+          //   type: "POST",
+          //   link: "aadhaar_based_esign",
+          // },
+          // {
+          //   title: "E-Aadhaar Upload (pdf)",
+          //   type: "POST",
+          //   link: "e_aadhaar_upload_pdf",
+          // },
           {
             title: "Digilocker Verify Account",
             type: "POST",
@@ -528,7 +528,6 @@ export const ApiReferences = [
         methods: [
           {
             title: "Mobile Number Validation",
-            type: "POST",
             link: "mobile_number_validation",
             methods: [
               {
@@ -654,7 +653,7 @@ export const ApiReferences = [
       // Other Services
       {
         title: "Other Services",
-        link: "professional_license_verification",
+        link: "other_services",
         methods: [
           {
             title: "Know your TAN",
@@ -778,8 +777,7 @@ export const ApiReferences = [
       },
       {
         title: "Recharge Plans",
-        link: "fetching_plans",
-        type: "POST",
+        link: "recharge_plans",
         methods: [
           {
             title: "Fetching Plans",

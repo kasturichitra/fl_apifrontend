@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import BodyParams from "../../components/BodyParams/BodyParams";
-import MethodLink from "../../components/MethodLink";
-import ResponseComponent from "../../components/Responses/ResponsesComponent";
-import Codes from "../../components/API Request/Codes";
-import { MOG } from "../../utils/bodyParams";
-import Headers from "../../components/Headers/Headers";
-import { api_Headers } from "../../utils/Api_Headers";
-import { FetchApi } from "../../utils/Custom_Api";
-import { DATA, MobileOtpGenrateDynamic } from "../../utils/apiSchema";
-import { GetAcc } from "../../utils/Language";
-import EncryptionNotice from "../../components/EncryptionNotice";
+import BodyParams from "../../../components/BodyParams/BodyParams";
+import MethodLink from "../../../components/MethodLink";
+import RequestHistoryTable from "../../../components/refernce_route_components/RequestHistoryTable";
+import ResponseComponent from "../../../components/Responses/ResponsesComponent";
+import Codes from "../../../components/API Request/Codes";
+import { MOV } from "../../../utils/bodyParams";
+import Headers from "../../../components/Headers/Headers";
+import { api_Headers } from "../../../utils/Api_Headers";
+import { FetchApi } from "../../../utils/Custom_Api";
+import { DATA, MobileOtpValidateDynamic } from "../../../utils/apiSchema";
+import { GetAcc } from "../../../utils/Language";
+import EncryptionNotice from "../../../components/EncryptionNotice";
 
-export default function MobileNumberOtpGenration() {
+export default function MobileNumberOtpVerification() {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
-  const examplesList = GetAcc?.exampleCodes["MOG"] || [];
+  const examplesList = GetAcc?.exampleCodes["MOV"] || [];
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
     return successExample
@@ -40,7 +41,7 @@ export default function MobileNumberOtpGenration() {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "mobileNumber/otp_generation",
+        path: "mobileNumber/otp_verification",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -66,19 +67,19 @@ export default function MobileNumberOtpGenration() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">Mobile Otp Generation</h1>
+          <h1 className="api_heading">Mobile Otp Verification</h1>
 
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="mobileNumber/otp_generation"
+            link="mobileNumber/otp_verification"
           />
 
           <p className="first_para">
-            The Mobile OTP Generation API enables developers to generate and
-            send a one-time password (OTP) to a user’s mobile number for secure
-            authentication and verification processes.
+            The Mobile OTP Verification API enables developers to authenticate
+            users by sending a one-time password (OTP) to their mobile number
+            and validating it in real-time for secure identity verification.
           </p>
         </div>
 
@@ -103,7 +104,7 @@ export default function MobileNumberOtpGenration() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={MOG}
+            bodyObj={MOV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -114,7 +115,7 @@ export default function MobileNumberOtpGenration() {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={MobileOtpGenrateDynamic}
+            dynamic200={MobileOtpValidateDynamic}
             otherData={DATA}
           />
         </div>
@@ -129,8 +130,8 @@ export default function MobileNumberOtpGenration() {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"mobileOtpGenration"}
-          examples={GetAcc?.exampleCodes["MOG"] || []}
+          service={"mobileOtpVerify"}
+          examples={GetAcc?.exampleCodes["MOV"] || []}
         />
       </div>
     </div>

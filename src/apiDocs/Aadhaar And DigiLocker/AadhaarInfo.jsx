@@ -8,9 +8,9 @@ const AadhaarServicesInfo = () => {
 
       <p className="service-description">
         Aadhaar Services provide secure identity verification, document
-        authentication, and digital signing capabilities using Aadhaar-based
+        authentication, and digital onboarding capabilities using Aadhaar-based
         systems and DigiLocker integration. These services are widely used in
-        KYC, onboarding, and digital compliance workflows.
+        KYC, compliance, and identity verification workflows.
       </p>
 
       <h3 className="service-subtitle">Available Services</h3>
@@ -22,23 +22,23 @@ const AadhaarServicesInfo = () => {
         </li>
 
         <li>
-          <strong>E Aadhaar Verification (DigiLocker):</strong> Validates e-Aadhaar
-          document using DigiLocker API integration.
+          <strong>E Aadhaar Verification (DigiLocker):</strong> Verifies e-Aadhaar
+          through DigiLocker integration in two steps:
+          <ul>
+            <li>
+              <strong>1. Aadhaar Initiate:</strong> The verification request is
+              initiated and securely sent to DigiLocker for authentication.
+            </li>
+            <li>
+              <strong>2. Aadhaar Status:</strong> The system checks and returns
+              the verification status after successful authentication.
+            </li>
+          </ul>
         </li>
 
         <li>
           <strong>Aadhaar to PAN:</strong> Links and verifies PAN details using
           Aadhaar number mapping.
-        </li>
-
-        <li>
-          <strong>Aadhaar Based eSign:</strong> Provides digital signature
-          authentication using Aadhaar-based OTP verification.
-        </li>
-
-        <li>
-          <strong>E-Aadhaar Upload (PDF):</strong> Allows secure upload and
-          validation of e-Aadhaar PDF documents.
         </li>
       </ul>
 

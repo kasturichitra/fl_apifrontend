@@ -12,23 +12,66 @@ function ApiDropdown({
   const { section, items } = ApiData;
   const location = useLocation();
 
-  // ✅ Start with ALL dropdowns closed
   const [openLevels, setOpenLevels] = useState({});
 
+  /* --------------------------------------------------
+     FIXED: Supports unlimited nested levels
+     Refresh + route + child route selection
+  -------------------------------------------------- */
+  useEffect(() => {
+    const path = location.pathname;
+    const levels = {};
+
+    const walkTree = (nodes, level = 0) => {
+      for (const node of nodes) {
+        const currentPath = `/reference/${node.link}`;
+
+        const selfMatch =
+          path === currentPath || path.startsWith(currentPath + "/");
+
+        if (selfMatch) {
+          levels[level] = node.link;
+
+          if (node.methods?.length) {
+            walkTree(node.methods, level + 1);
+          }
+
+          return true;
+        }
+
+        if (node.methods?.length) {
+          const childFound = walkTree(node.methods, level + 1);
+
+          if (childFound) {
+            levels[level] = node.link;
+            return true;
+          }
+        }
+      }
+
+      return false;
+    };
+
+    walkTree(items, 0);
+    setOpenLevels(levels);
+  }, [location.pathname, items]);
+
+  /* -------------------------------------------------- */
   const toggleItem = (key, level) => {
     setOpenLevels((prev) => {
       const updated = { ...prev };
 
       if (updated[level] === key) {
-        delete updated[level];
+        Object.keys(updated).forEach((lvl) => {
+          if (Number(lvl) >= level) delete updated[lvl];
+        });
       } else {
         updated[level] = key;
-      }
 
-      // Close deeper levels when parent changes
-      Object.keys(updated).forEach((lvl) => {
-        if (Number(lvl) > level) delete updated[lvl];
-      });
+        Object.keys(updated).forEach((lvl) => {
+          if (Number(lvl) > level) delete updated[lvl];
+        });
+      }
 
       return updated;
     });
@@ -37,7 +80,9 @@ function ApiDropdown({
   return (
     <div className="w-full mt-4">
       {section && (
-        <h1 className="pb-4 pt-2 pl-2 font-bold">{section.toUpperCase()}</h1>
+        <h1 className="pb-4 pt-2 pl-2 font-bold">
+          {section.toUpperCase()}
+        </h1>
       )}
 
       <ul>
@@ -60,6 +105,7 @@ function ApiDropdown({
   );
 }
 
+/* ================================================== */
 const LinkComponent = ({
   item,
   level,
@@ -71,29 +117,21 @@ const LinkComponent = ({
   setShowSuggestions,
   setSearchTermQuery,
 }) => {
-  const isOpen = openLevels[level] === item.link;
   const hasChildren = item.methods?.length > 0;
+
+  const currentPath = `/reference/${item.link}`;
+
   const isActive =
-    location.pathname === `/reference/${item.link}` ||
-    location.pathname.startsWith(`/reference/${item.link}/`);
-  // ✅ Auto-open parent if a child route is active
-  useEffect(() => {
-    if (hasChildren) {
-      const childActive = item.methods.some((child) =>
-        location.pathname.startsWith(`/reference/${child.link}`),
-      );
+    location.pathname === currentPath ||
+    location.pathname.startsWith(currentPath + "/");
 
-      if (childActive && openLevels[level] !== item.link) {
-        toggleItem(item.link, level);
-      }
-    }
-  }, [location.pathname]);
+  const isOpen = openLevels[level] === item.link;
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setShowSuggestions(false);
     setSearchTermQuery("");
+
     if (hasChildren) {
-      // e.preventDefault();
       toggleItem(item.link, level);
     } else {
       setPageTitle(item.title);
@@ -103,7 +141,7 @@ const LinkComponent = ({
   return (
     <li id={`sidebar-item-${item.link}`}>
       <Link
-        to={`/reference/${item.link}`}
+        to={currentPath}
         onClick={handleClick}
         className={`api_nav_item flex justify-between items-center w-full px-2 py-1 cursor-pointer transition-all duration-200 ${
           isActive
@@ -113,6 +151,7 @@ const LinkComponent = ({
       >
         <div className="flex items-center gap-2">
           <span>{item.title}</span>
+
           {item.type && (
             <span className={`${color(item.type)} api_nav_link_spn`}>
               {item.type}
@@ -131,13 +170,12 @@ const LinkComponent = ({
         )}
       </Link>
 
-      {/* Nested items render only when open */}
       {hasChildren && isOpen && (
         <ul className="ml-4 py-1 border-l border-gray-700">
-          {item.methods.map((method) => (
+          {item.methods.map((child) => (
             <LinkComponent
-              key={method.link}
-              item={method}
+              key={child.link}
+              item={child}
               level={level + 1}
               pageTitle={pageTitle}
               setPageTitle={setPageTitle}

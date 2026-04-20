@@ -77,7 +77,7 @@ const ESignAadhaarBased = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="pan/verify_to_aadhaar"
+            link="professional/esignAadhaar/verify"
           />
           <p className="first_para">
             The Aadhaar-based E-Sign API enables developers to securely sign
