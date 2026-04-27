@@ -5,7 +5,7 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { UDYAM } from "../../utils/bodyParams";
+import { LEI, UDYAM } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
@@ -17,7 +17,7 @@ const CompanyNameSearch = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
+  const examplesList = GetAcc?.exampleCodes["CNS"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -72,16 +72,16 @@ const CompanyNameSearch = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Udyam Number Verification</h1>
+          <h1 className="api_heading">Company Name Search</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="udyam/verify"
+            link="business/companylist/verify"
           />
           <p className="first_para">
-            The UDYAM Number Verification API allows developers to verify users’
-            Udyam numbers in real-time.
+            The Company Name Search API allows developers to search and retrieve
+            company details based on the registered company name in real-time.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ const CompanyNameSearch = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={LEI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -132,7 +132,7 @@ const CompanyNameSearch = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"companyNameSearch"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          examples={GetAcc?.exampleCodes["CNS"] || []}
         />
       </div>
     </div>

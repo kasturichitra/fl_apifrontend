@@ -77,7 +77,7 @@ const NameMatchVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="name/compareNames"
+            link="common/compareNames"
           />
           <p className="first_para">
             The Name Match Verification API allows developers to verify users’

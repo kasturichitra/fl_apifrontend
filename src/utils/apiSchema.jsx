@@ -658,38 +658,169 @@ export const AadhaarIntiateDynamic = [
 export const AadhaarStatusDynamic = [
   {
     status: 200,
-    summary: "DigiLocker link generated successfully",
+    summary: "Aadhaar retrieved and verified successfully",
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "success",
-          subTitle:
-            "Indicates whether the DigiLocker link generation was successful",
-          type: "boolean",
-        },
-        {
-          title: "message",
-          subTitle:
-            "Response message describing the result of the DigiLocker link request",
-          type: "string",
-        },
-        {
-          title: "transId",
-          subTitle:
-            "Unique transaction ID generated for this DigiLocker request",
-          type: "string",
-        },
-        {
-          title: "ts_trans_id",
-          subTitle: "TruthScreen system transaction reference ID",
-          type: "string",
-        },
-        {
-          title: "link",
-          subTitle:
-            "Generated DigiLocker authentication URL for Aadhaar verification",
-          type: "string",
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "status",
+              type: "number",
+              subTitle: "Status of the response",
+            },
+            {
+              title: "msg",
+              type: "string",
+              subTitle: "Digilocker status API message",
+            },
+            {
+              title: "data",
+              type: "object",
+              subTitle: "Container for transaction data",
+              objectDetails: [
+                {
+                  title: "DV-ABC-123456",
+                  type: "object",
+                  subTitle: "Transaction ID object",
+                  objectDetails: [
+                    {
+                      title: "final_status",
+                      type: "string",
+                      subTitle: "Final status of the request",
+                    },
+                    {
+                      title: "msg",
+                      type: "array of objects",
+                      subTitle: "List of document details",
+                      arrayDetails: {
+                        type: "object",
+                        objectDetails: [
+                          {
+                            title: "doc_type",
+                            type: "string",
+                            subTitle: "Type of document",
+                          },
+                          {
+                            title: "file_type",
+                            type: "string",
+                            subTitle: "File type of the document",
+                          },
+                          {
+                            title: "doc_name",
+                            type: "string",
+                            subTitle: "Name of the document",
+                          },
+                          {
+                            title: "doc_issuer",
+                            type: "string",
+                            subTitle: "Issuer of the document",
+                          },
+                          {
+                            title: "s3_file_url",
+                            type: "string",
+                            subTitle: "S3 URL of the document",
+                          },
+                          {
+                            title: "data",
+                            type: "object",
+                            subTitle: "Extracted Aadhaar data",
+                            objectDetails: [
+                              {
+                                title: "name",
+                                type: "string",
+                                subTitle: "Name of the individual",
+                              },
+                              {
+                                title: "Father Name",
+                                type: "string",
+                                subTitle: "Father name",
+                              },
+                              {
+                                title: "dob",
+                                type: "string",
+                                subTitle: "Date of birth",
+                              },
+                              {
+                                title: "aadhar_number",
+                                type: "string",
+                                subTitle: "Masked Aadhaar number",
+                              },
+                              {
+                                title: "gender",
+                                type: "string",
+                                subTitle: "Gender",
+                              },
+                              {
+                                title: "address",
+                                type: "object",
+                                subTitle: "Address details",
+                                objectDetails: [
+                                  {
+                                    title: "house",
+                                    type: "string",
+                                    subTitle: "House number",
+                                  },
+                                  {
+                                    title: "loc",
+                                    type: "string",
+                                    subTitle: "Locality",
+                                  },
+                                  {
+                                    title: "vtc",
+                                    type: "string",
+                                    subTitle: "Village/Town/City",
+                                  },
+                                  {
+                                    title: "lm",
+                                    type: "string",
+                                    subTitle: "Landmark",
+                                  },
+                                  {
+                                    title: "dist",
+                                    type: "string",
+                                    subTitle: "District",
+                                  },
+                                  {
+                                    title: "state",
+                                    type: "string",
+                                    subTitle: "State",
+                                  },
+                                  {
+                                    title: "country",
+                                    type: "string",
+                                    subTitle: "Country",
+                                  },
+                                  {
+                                    title: "pc",
+                                    type: "string",
+                                    subTitle: "Postal code",
+                                  },
+                                ],
+                              },
+                              {
+                                title: "co",
+                                type: "string",
+                                subTitle: "Care of details",
+                              },
+                              {
+                                title: "photo",
+                                type: "string",
+                                subTitle: "Base64 encoded photo",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -1099,37 +1230,37 @@ export const BasicUanVerifyDynamic = [
                 {
                   title: "DateOfExitEpf",
                   type: "string",
-                  subtitle: "Date when the member exited the EPF scheme",
+                  subTitle: "Date when the member exited the EPF scheme",
                 },
                 {
                   title: "Doj",
                   type: "string",
-                  subtitle: "Date of joining the organization",
+                  subTitle: "Date of joining the organization",
                 },
                 {
                   title: "Establishment Name",
                   type: "string",
-                  subtitle: "Name of the employer or company",
+                  subTitle: "Name of the employer or company",
                 },
                 {
                   title: "MemberId",
                   type: "string",
-                  subtitle: "Unique EPF member identification number",
+                  subTitle: "Unique EPF member identification number",
                 },
                 {
                   title: "father or Husband Name",
                   type: "string",
-                  subtitle: "Name of the member's father or husband",
+                  subTitle: "Name of the member's father or husband",
                 },
                 {
                   title: "name",
                   type: "string",
-                  subtitle: "Full name of the EPF member",
+                  subTitle: "Full name of the EPF member",
                 },
                 {
                   title: "uan",
                   type: "string",
-                  subtitle: "Universal Account Number assigned to the member",
+                  subTitle: "Universal Account Number assigned to the member",
                 },
               ],
             },
@@ -1478,7 +1609,7 @@ export const UdyamDynamic = [
               title: "National Industry Classification Code(S)",
               subTitle: "NIC codes representing enterprise activities",
               type: "array of objects",
-              items: {
+              arrayDetails: {
                 type: "object",
                 objectDetails: [
                   {
@@ -2015,6 +2146,392 @@ export const DinDynamic = [
                     description:
                       "The most recent date when the company information was updated in official records.",
                   },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const GstTaxPayer = [
+  {
+    status: 200,
+    summary: "Returns GST validation details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          subTitle: "Contains detailed GST information",
+          objectDetails: [
+            {
+              title: "Principal Place of Business Address",
+              type: "string",
+              subTitle: "Primary business address",
+            },
+            {
+              title: "address",
+              type: "object",
+              subTitle: "Detailed address breakdown",
+              objectDetails: [
+                {
+                  title: "building_name",
+                  type: "string",
+                  subTitle: "Building name",
+                },
+                {
+                  title: "door_number",
+                  type: "string",
+                  subTitle: "Door or plot number",
+                },
+                {
+                  title: "floor_number",
+                  type: "string",
+                  subTitle: "Floor number",
+                },
+                {
+                  title: "lattitude",
+                  type: "string",
+                  subTitle: "Latitude coordinate",
+                },
+                {
+                  title: "location",
+                  type: "string",
+                  subTitle: "City or locality",
+                },
+                {
+                  title: "longitude",
+                  type: "string",
+                  subTitle: "Longitude coordinate",
+                },
+                {
+                  title: "pin_code",
+                  type: "string",
+                  subTitle: "Postal code",
+                },
+                {
+                  title: "state_name",
+                  type: "string",
+                  subTitle: "State name",
+                },
+                {
+                  title: "street",
+                  type: "string",
+                  subTitle: "Street name",
+                },
+              ],
+            },
+            {
+              title: "centre_jurisdiction",
+              type: "string",
+              subTitle: "Central jurisdiction",
+            },
+            {
+              title: "centre_jurisdiction_code",
+              type: "string",
+              subTitle: "Central jurisdiction code",
+            },
+            {
+              title: "constitution_of_business",
+              type: "string",
+              subTitle: "Type of business constitution",
+            },
+            {
+              title: "date_of_cancellation",
+              type: "string",
+              subTitle: "Cancellation date if applicable",
+            },
+            {
+              title: "date_of_registration",
+              type: "string",
+              subTitle: "GST registration date",
+            },
+            {
+              title: "frequency_type",
+              type: "string",
+              subTitle: "Return filing frequency",
+            },
+            {
+              title: "gstin",
+              type: "string",
+              subTitle: "GST identification number",
+            },
+            {
+              title: "gstin_status",
+              type: "string",
+              subTitle: "Current GST status",
+            },
+            {
+              title: "last_updated_date",
+              type: "string",
+              subTitle: "Last updated date",
+            },
+            {
+              title: "legal_name_of_business",
+              type: "string",
+              subTitle: "Registered legal name",
+            },
+            {
+              title: "nature_of_pricipal_place_of_business",
+              type: "string",
+              subTitle: "Nature of principal business activity",
+            },
+            {
+              title: "state_jurisdiction",
+              type: "string",
+              subTitle: "State jurisdiction",
+            },
+            {
+              title: "state_jurisdiction_code",
+              type: "string",
+              subTitle: "State jurisdiction code",
+            },
+            {
+              title: "taxpayer_type",
+              type: "string",
+              subTitle: "Type of taxpayer",
+            },
+            {
+              title: "trade_name",
+              type: "string",
+              subTitle: "Trade name of the business",
+            },
+            {
+              title: "gstinNumber",
+              type: "string",
+              subTitle: "Hashed GSTIN identifier",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const GstViewAndReturn = [
+  {
+    status: 200,
+    summary: "Returns GST return filing history",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "array of objects",
+          subTitle: "List of GST return records",
+          arrayDetails: {
+            type: "object",
+            objectDetails: [
+              {
+                title: "ARN Number",
+                type: "string",
+                subTitle: "Acknowledgement Reference Number",
+              },
+              {
+                title: "Date of File",
+                type: "string",
+                subTitle: "Date when the return was filed",
+              },
+              {
+                title: "Mode of File",
+                type: "string",
+                subTitle: "Mode of filing (e.g., ONLINE)",
+              },
+              {
+                title: "Return Period",
+                type: "string",
+                subTitle: "Return period in MMYYYY format",
+              },
+              {
+                title: "Return Type",
+                type: "string",
+                subTitle: "Type of GST return (e.g., GSTR1, GSTR3B)",
+              },
+              {
+                title: "Status",
+                type: "string",
+                subTitle: "Filing status",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
+];
+export const dgftDynamic = [
+  {
+    status: 200,
+    summary: "Returns GST return filing history",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+      ],
+    },
+  },
+];
+
+// government services
+export const VoterIdDynamic = [
+  {
+    status: 200,
+    summary: "Returns a paginated list of accounts",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "response",
+          type: "object",
+          objectDetails: [
+            {
+              title: "code",
+              type: "number",
+              subTitle: "The success code",
+            },
+            {
+              title: "message",
+              type: "string",
+              subTitle: "The success message",
+            },
+            {
+              title: "result",
+              type: "object",
+              objectDetails: [
+                {
+                  title: "aadhaar",
+                  type: "string",
+                  subTitle: "The requested masked Aadhaar number",
+                },
+                {
+                  title: "Age",
+                  type: "number",
+                  subTitle: "Age of the individual",
+                },
+                {
+                  title: "Assembly Constituency",
+                  type: "string",
+                  subTitle: "Name of the assembly constituency",
+                },
+                {
+                  title: "Assembly Constituency Number",
+                  type: "string",
+                  subTitle: "Assembly constituency number",
+                },
+                {
+                  title: "District",
+                  type: "string",
+                  subTitle: "District name",
+                },
+                {
+                  title: "Email",
+                  type: "string",
+                  subTitle: "Email address of the individual",
+                },
+                {
+                  title: "Father",
+                  type: "string",
+                  subTitle: "Father's name",
+                },
+                {
+                  title: "Father(Regional Language)",
+                  type: "string",
+                  subTitle: "Father's name in regional language",
+                },
+                {
+                  title: "Fathers Name",
+                  type: "string",
+                  subTitle: "Alternate field for father's name",
+                },
+                {
+                  title: "Gender",
+                  type: "string",
+                  subTitle: "Gender of the individual",
+                },
+                {
+                  title: "Husband",
+                  type: "string",
+                  subTitle: "Husband's name",
+                },
+                {
+                  title: "Husband Name",
+                  type: "string",
+                  subTitle: "Alternate field for husband's name",
+                },
+                {
+                  title: "Last of Date",
+                  type: "string",
+                  subTitle: "Last updated date or record date",
+                },
+                {
+                  title: "Name",
+                  type: "string",
+                  subTitle: "Full name of the individual",
+                },
+                {
+                  title: "Name (Regional Language)",
+                  type: "string",
+                  subTitle: "Name in regional language",
+                },
+                {
+                  title: "Parliamentary Constituency",
+                  type: "string",
+                  subTitle: "Name of the parliamentary constituency",
+                },
+                {
+                  title: "Parliamentary Constituency lat long",
+                  type: "string",
+                  subTitle: "Latitude and longitude of the parliamentary constituency",
+                },
+                {
+                  title: "Part Name",
+                  type: "string",
+                  subTitle: "Name of the electoral part",
+                },
+                {
+                  title: "Part No",
+                  type: "string",
+                  subTitle: "Part number of the electoral roll",
+                },
+                {
+                  title: "Polling Station",
+                  type: "string",
+                  subTitle: "Polling station details",
+                },
+                {
+                  title: "Relative Name",
+                  type: "string",
+                  subTitle: "Name of the relative",
+                },
+                {
+                  title: "Relative Type",
+                  type: "string",
+                  subTitle: "Type of relation (e.g., Father, Husband)",
+                },
+                {
+                  title: "Serial No",
+                  type: "string",
+                  subTitle: "Serial number in the electoral roll",
+                },
+                {
+                  title: "State",
+                  type: "string",
+                  subTitle: "State name",
+                },
+                {
+                  title: "Voter Id",
+                  type: "string",
+                  subTitle: "Unique voter ID",
+                },
+                {
+                  title: "status",
+                  type: "number",
+                  subTitle: "Status of the response",
                 },
               ],
             },
@@ -2894,18 +3411,9 @@ export const AccountDynamic = [
     body: {
       type: "object",
       fields: [
+        ...BaseFields,
         {
-          title: "message",
-          type: "string",
-          subTitle: "Overall response message from the server",
-        },
-        {
-          title: "success",
-          type: "boolean",
-          subTitle: "Indicates whether the API request was successful",
-        },
-        {
-          title: "response",
+          title: "data",
           type: "object",
           subTitle: "Contains detailed account validation information",
           objectDetails: [
@@ -2938,6 +3446,29 @@ export const AccountDynamic = [
               title: "ifsc",
               type: "string",
               subTitle: "IFSC code of the bank branch",
+            },
+          ],
+        },
+      ],
+    },
+  },
+];
+export const CibilDynamic = [
+  {
+    status: 200,
+    summary: "Returns account validation details",
+    body: {
+      type: "object",
+      fields: [
+        ...BaseFields,
+        {
+          title: "data",
+          type: "object",
+          objectDetails: [
+            {
+              title: "report_url",
+              type: "string",
+              subTitle: "url to see cibil report associated with the bank accounts",
             },
           ],
         },

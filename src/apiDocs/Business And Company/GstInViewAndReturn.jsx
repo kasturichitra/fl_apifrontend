@@ -10,7 +10,7 @@ import { BAV, GSTINVAR } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../../utils/apiSchema";
+import { DATA, AccountDynamic, GstViewAndReturn } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const GstInViewAndReturn = () => {
@@ -73,18 +73,17 @@ const GstInViewAndReturn = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">
-            Bank Account Verification (Penny Drop)
-          </h1>
+          <h1 className="api_heading">Gst_in View and return</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="accounts/verify/penny-drop"
+            link="business/Gstin/ViewAndTrack/verify"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Bank Account numbers in real-time.
+            The GSTIN View and Return API allows developers to access and
+            retrieve GST return details and filing status associated with a GST
+            Identification Number (GSTIN) in real-time.
           </p>
         </div>
 
@@ -120,7 +119,7 @@ const GstInViewAndReturn = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={GstViewAndReturn} otherData={DATA} />
         </div>
       </div>
 
@@ -134,7 +133,7 @@ const GstInViewAndReturn = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"gstinReturnTrack"}
+          service={"gstinViewAndTrackReturn"}
           examples={GetAcc?.exampleCodes["GST_TAX_RETURN"] || []}
         />
       </div>

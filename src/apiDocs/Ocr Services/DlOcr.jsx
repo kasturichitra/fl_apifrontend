@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { GSTIN, UDYAM } from "../../utils/bodyParams";
+import { DLOCR, PNV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../../utils/apiSchema";
+import { DATA, PanDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
-const KnowPanUsingGstin = () => {
+const DlOcr = () => {
   const [faceMatchState, setFaceMatchState] = useState({});
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["GTP"] || [];
+  const examplesList = GetAcc?.exampleCodes["DLOCR"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -46,7 +45,7 @@ const KnowPanUsingGstin = () => {
     try {
       const res = await FetchApi({
         method: "POST",
-        path: "/udyam/verify",
+        path: "/pan/panverifying",
         headers: faceMatchState?.headers,
         body: faceMatchState?.bodyParameters,
       });
@@ -73,17 +72,23 @@ const KnowPanUsingGstin = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">Gstin to Pan</h1>
+          <h1 className="api_heading">Driving License Ocr</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="business/Gstintopan/verify"
+            link="ocr/dl/verify"
           />
           <p className="first_para">
-            The GSTIN to PAN API enables developers to extract and verify the
-            PAN details linked to a given GST Identification Number (GSTIN) in
-            real-time.
+            The Driving License OCR API allows developers to extract details
+            from driving license images or scanned documents in real-time.
+          </p>
+          <p className="first_para">
+            A driving license is an official document issued by the transport
+            authority that permits an individual to operate motor vehicles.
+          </p>
+          <p className="first_para">
+            It serves as both an identity proof and authorization for driving.
           </p>
         </div>
 
@@ -109,7 +114,7 @@ const KnowPanUsingGstin = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={GSTIN}
+            bodyObj={DLOCR}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -119,7 +124,7 @@ const KnowPanUsingGstin = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={PanDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -133,12 +138,12 @@ const KnowPanUsingGstin = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"gstToPan"}
-          examples={GetAcc?.exampleCodes["GTP"] || []}
+          service={"pan"}
+          examples={GetAcc?.exampleCodes["DLOCR"] || []}
         />
       </div>
     </div>
   );
 };
 
-export default KnowPanUsingGstin;
+export default DlOcr;

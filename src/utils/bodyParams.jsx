@@ -205,13 +205,10 @@ export const MASTER_FIELDS = [
   },
 ];
 
-/* =========================================================
-   COMMON FIELD KEYS (not full objects)
-   ========================================================= */
+// ====================== COMMON FIELD KEYS (not full objects)
 
-/* =========================================================
-   SCHEMA BUILDER
-   ========================================================= */
+// ====================== SCHEMA BUILDER
+
 
 export const buildSchema = (schemaKeys = []) => {
   const usedKeys = new Set();
@@ -238,9 +235,7 @@ export const buildSchema = (schemaKeys = []) => {
   }, []);
 };
 
-/* =========================================================
-   SCHEMAS
-   ========================================================= */
+// ====================== SCHEMAS
 
 const baseSchema = buildSchema([
   { key: "panNumber" },
@@ -251,6 +246,9 @@ const baseSchema = buildSchema([
   { key: "RegistrationNumber" },
   { key: "state" },
   { key: "gstinNumber" },
+  {
+    key: "accountNumber",
+  },
 ]);
 
 // pan services
@@ -345,6 +343,23 @@ export const LLTD = buildSchema([
   { key: "mobileNumber" }, // optional by default
 ]);
 
+// government services
+export const VV = [
+   {
+    key: "voterId",
+    title: "voterId",
+    type: "number",
+    fieldName: "voterId",
+    subTitle: "voterId to be verified",
+    inputTag: false,
+    example: "",
+    readOnly: true,
+    required: true,
+  },
+  baseSchema[1]
+]
+
+
 // vehicle services
 
 // driving license verify
@@ -373,6 +388,12 @@ export const SVV = buildSchema([
   { key: "vehicleRegistrationNumber" },
   { key: "mobileNumber" }, // optional by default
 ]);
+
+// ocr services
+// pan ocr 
+export const POCR = [baseSchema[1]];
+// driving license ocr
+export const DLOCR = [baseSchema[1]];
 
 // risk and due diligence
 
@@ -615,6 +636,45 @@ export const BAV = buildSchema([
   { key: "ifsc" },
   { key: "mobileNumber" }, // optional
 ]);
+// advance bank account verify
+export const ABAV = [
+  baseSchema[8],
+  {
+    key: "ifscCode",
+    title: "ifscCode",
+    type: "string",
+    fieldName: "ifscCode",
+    subTitle: "ifscCode of the bank account that need to be verify",
+    inputTag: false,
+    example: "SBINXXXXXXX",
+    required: true,
+  },
+  baseSchema[1],
+];
+// cheque classification
+export const CC = [
+  {
+    key: "file_name",
+    title: "file_name",
+    type: "string",
+    fieldName: "file_name",
+    subTitle: "file_name of the photo where the cheque in it",
+    inputTag: false,
+    example: "SBINXXXXXXX",
+    required: true,
+  },
+  {
+    key: "ifsc",
+    title: "file",
+    type: "string",
+    fieldName: "file",
+    subTitle: "file of the photo in base 64",
+    inputTag: false,
+    example: "SBINXXXXXXX",
+    required: true,
+  },
+  baseSchema[1], // optional
+];
 // bank with ifsc
 export const BWI = buildSchema([
   { key: "ifsc" },
@@ -678,8 +738,43 @@ export const UDYAM = [
   {
     title: "udyam Number",
     type: "string",
-    fieldName: "panNumber",
+    fieldName: "udyamNumber",
     subTitle: "user Udyam number to be verified",
+    inputTag: false,
+    example: "AXER07FRGV",
+    required: true,
+  },
+  baseSchema[1],
+];
+// udyog aadhaar
+export const UDYOG = [
+  {
+    title: "UAMNumber",
+    type: "string",
+    fieldName: "UAMNumber",
+    subTitle: "user UAMNumber to be verified",
+    inputTag: false,
+    example: "AXER07FRGV",
+    required: true,
+  },
+  baseSchema[1],
+];
+// udyog aadhaar with phone
+export const UDYOGWITHPHONE = [
+  {
+    title: "UAMNumber",
+    type: "string",
+    fieldName: "UAMNumber",
+    subTitle: "user UAMNumber to be verified",
+    inputTag: false,
+    example: "AXER07FRGV",
+    required: true,
+  },
+    {
+    title: "customerNumber",
+    type: "string",
+    fieldName: "customerNumber",
+    subTitle: "user number to be verified",
     inputTag: false,
     example: "AXER07FRGV",
     required: true,
@@ -688,6 +783,33 @@ export const UDYAM = [
 ];
 // gst verification
 export const GSTIN = [baseSchema[7], baseSchema[1]];
+// lei verification
+export const LEI = [
+    {
+    title: "CompanyName",
+    type: "string",
+    fieldName: "CompanyName",
+    subTitle: "CompanyName that to be verified",
+    inputTag: false,
+    example: "DEMOXXXXX",
+    required: true,
+  },
+  baseSchema[1]
+]
+// iec verification
+export const IEC = [
+    {
+    title: "IEC",
+    type: "string",
+    fieldName: "IEC",
+    subTitle: "IEC that to be verified",
+    inputTag: false,
+    example: "SHLXXXXX",
+    required: true,
+  },
+  baseSchema[1]
+]
+// gst view and return
 export const GSTINVAR = [
   baseSchema[7],
   {
@@ -749,6 +871,19 @@ export const SEV = [
   },
   baseSchema[1],
 ];
+// dgft verification
+export const DGFT = [
+  {
+    title: "DGFT",
+    type: "string",
+    fieldName: "DGFT",
+    subTitle: "DGFT that need to be verified",
+    inputTag: false,
+    example: "XXXXXXXXXXXX",
+    required: true,
+  },
+  baseSchema[1],
+];
 
 // professional verification
 
@@ -793,6 +928,7 @@ export const NM = [
   },
   baseSchema[1],
 ];
+// fssai verification
 export const FV = [
   {
     title: "FSSAINumber",
@@ -805,7 +941,9 @@ export const FV = [
   },
   baseSchema[1],
 ];
+// know your tan
 export const TV = [];
+// insurance agent verification
 export const IT = [
   {
     title: "Cin Number",

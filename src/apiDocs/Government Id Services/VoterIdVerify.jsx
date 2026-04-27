@@ -5,7 +5,7 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { PNV } from "../../utils/bodyParams";
+import { VV } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
@@ -13,6 +13,7 @@ import {
   DATA,
   PanDynamic,
   PanToMaskedAadhaarDynamic,
+  VoterIdDynamic,
 } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
@@ -112,7 +113,7 @@ const VoterIdVerify = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={PNV}
+            bodyObj={VV}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -123,7 +124,7 @@ const VoterIdVerify = () => {
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
           <ResponseComponent
-            dynamic200={PanToMaskedAadhaarDynamic}
+            dynamic200={VoterIdDynamic}
             otherData={DATA}
           />
         </div>

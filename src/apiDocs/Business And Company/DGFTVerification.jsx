@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { UDYAM } from "../../utils/bodyParams";
+import { DGFT, UDYAM } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, UdyamDynamic } from "../../utils/apiSchema";
+import { DATA, dgftDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const DGFTVerification = () => {
@@ -18,7 +17,7 @@ const DGFTVerification = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["UDYAM"] || [];
+  const examplesList = GetAcc?.exampleCodes["DGFTV"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -110,7 +109,7 @@ const DGFTVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={UDYAM}
+            bodyObj={DGFT}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -120,7 +119,7 @@ const DGFTVerification = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={UdyamDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={dgftDynamic} otherData={DATA} />
         </div>
       </div>
 
@@ -135,7 +134,7 @@ const DGFTVerification = () => {
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
           service={"dgftVerification"}
-          examples={GetAcc?.exampleCodes["UDYAM"] || []}
+          examples={GetAcc?.exampleCodes["DGFTV"] || []}
         />
       </div>
     </div>

@@ -9,7 +9,7 @@ import { BAV, GSTIN } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../../utils/apiSchema";
+import { DATA, AccountDynamic, GstTaxPayer } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const GstInTaxpayer = () => {
@@ -72,18 +72,17 @@ const GstInTaxpayer = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">
-            Bank Account Verification (Penny Drop)
-          </h1>
+          <h1 className="api_heading">Gst_in Taxpayer</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="accounts/verify/penny-drop"
+            link="business/GstIn/TaxPayer/verify"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Bank Account numbers in real-time.
+            The GSTIN Taxpayer API enables developers to validate and retrieve
+            taxpayer details associated with a GST Identification Number (GSTIN)
+            in real-time.
           </p>
         </div>
 
@@ -119,7 +118,7 @@ const GstInTaxpayer = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={GstTaxPayer} otherData={DATA} />
         </div>
       </div>
 

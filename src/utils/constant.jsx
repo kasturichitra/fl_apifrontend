@@ -430,11 +430,11 @@ export const ApiReferences = [
             type: "POST",
             link: "face_match",
           },
-          {
-            title: "Liveness",
-            type: "POST",
-            link: "liveness",
-          },
+          // {
+          //   title: "Liveness",
+          //   type: "POST",
+          //   link: "liveness",
+          // },
           {
             title: "Deepfake Detection",
             type: "POST",
@@ -473,12 +473,12 @@ export const ApiReferences = [
             link: "comprehensive_nid_ocr",
           },
           {
-            title: "PAN OCR (with Managed Service)",
+            title: "PAN OCR",
             type: "POST",
             link: "pan_ocr_managed",
           },
           {
-            title: "DL OCR (with Managed Service)",
+            title: "DL OCR",
             type: "POST",
             link: "dl_ocr_managed",
           },
@@ -643,11 +643,11 @@ export const ApiReferences = [
             type: "POST",
             link: "dentist_verification",
           },
-          {
-            title: "eSign Aadhaar Based",
-            type: "POST",
-            link: "esign_aadhaar_based",
-          },
+          // {
+          //   title: "eSign Aadhaar Based",
+          //   type: "POST",
+          //   link: "esign_aadhaar_based",
+          // },
         ],
       },
       // Other Services
@@ -655,11 +655,11 @@ export const ApiReferences = [
         title: "Other Services",
         link: "other_services",
         methods: [
-          {
-            title: "Know your TAN",
-            type: "POST",
-            link: "know_your_tan",
-          },
+          // {
+          //   title: "Know your TAN",
+          //   type: "POST",
+          //   link: "know_your_tan",
+          // },
           {
             title: "FSSAI Verification",
             type: "POST",

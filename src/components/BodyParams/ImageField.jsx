@@ -47,7 +47,7 @@ export default function ImageField({
       <div className="field_head">
         <div className="field_info_head">
           <div className="field_body">
-            {title && <span className="field_title">{title}</span>}
+            {fieldName && <span className="field_title">{fieldName}</span>}
 
             {type && <span className="field_type_and_subtype">{type}</span>}
 

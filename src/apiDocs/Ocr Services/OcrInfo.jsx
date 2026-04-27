@@ -29,13 +29,13 @@ const OCRServicesInfo = () => {
         </li>
 
         <li>
-          <strong>PAN OCR (with Managed Service):</strong> Captures and validates
+          <strong>PAN OCR:</strong> Captures and validates
           PAN card details using OCR, combined with managed services for enhanced
           accuracy and reliability.
         </li>
 
         <li>
-          <strong>DL OCR (with Managed Service):</strong> Extracts driving license
+          <strong>DL OCR:</strong> Extracts driving license
           information from images and documents, supported by managed services
           to ensure precise data extraction and validation.
         </li>

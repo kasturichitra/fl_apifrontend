@@ -147,6 +147,10 @@ import GSTServicesInfo from "../apiDocs/Gst Services/GstServiceInfo";
 import RechargeServicesInfo from "../apiDocs/Recharge/RechargeInfo";
 import AadhaarDigiLockerVerificationInfo from "../apiDocs/Aadhaar And DigiLocker/E-Aadhaar DigiLocker.jsx/DigilockerInfo";
 import MobileOTPInfo from "../apiDocs/Contact And Communication/Mobile Number Otp Verification/MobileOtpInfo";
+import ComprehensiveNid from "../apiDocs/Ocr Services/ComprehensiveNid";
+import NewDocClassification from "../apiDocs/Ocr Services/NewDocClassification";
+import PanOcr from "../apiDocs/Ocr Services/PanOcr";
+import DlOcr from "../apiDocs/Ocr Services/DlOcr";
 
 const apiComponentMap = {
   // ---------------- ACCESS TOKEN ----------------
@@ -186,8 +190,8 @@ const apiComponentMap = {
 
   // ---------------- BANKING & FINANCIAL ----------------
   advance_bank_account_verification: AdvanceBankAccountVerification,
-  account_pennyless_verfication: BankAccountPennyDropVerification,
-  account_pennydrop_verification: BankAccountPennyLessVerification,
+  account_pennyless_verfication: BankAccountPennyLessVerification,
+  account_pennydrop_verification: BankAccountPennyDropVerification,
   ifsc_verification: IfscBankDetailsVerification,
   cheque_classification: ChequeClassification,
   cibil: Cibil,
@@ -217,7 +221,7 @@ const apiComponentMap = {
   pan_using_gstin: KnowPanUsingGstin,
   gstin_taxpayer: GstInTaxpayer,
   gstin_view_track_return: GstInViewAndReturn,
-  shop_act_verification: ShopVerification,
+  shop_establishment_verification: ShopVerification,
   business_and_company: BusinessServicesInfo,
 
   /* ================= EMPLOYMENT & INCOME ================= */
@@ -277,6 +281,10 @@ const apiComponentMap = {
 
   /* ================= OTHER SERVICES ================= */
   ocr_and_document_ai: OCRServicesInfo,
+  comprehensive_nid_ocr: ComprehensiveNid,
+  new_doc_classification: NewDocClassification,
+  dl_ocr_managed: DlOcr,
+  pan_ocr_managed: PanOcr,
 
   /* ================= OTHER SERVICES ================= */
   name_match_verification: NameMatchVerification,

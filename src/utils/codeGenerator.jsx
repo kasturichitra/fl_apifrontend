@@ -2,7 +2,8 @@ export function generateCode(url, params = {}) {
   const formattedParams = Object.hasOwn(params, "domain")
     ? ` "domain": ""
  (OR) 
-  "emailAddress": "" ` : Object.entries(params)
+  "emailAddress": "" `
+    : Object.entries(params)
         .map(([key, value]) => `      "${key}": "${value}"`)
         .join(",\n");
 
@@ -12,8 +13,7 @@ export function generateCode(url, params = {}) {
   method: 'POST',
   headers: {
     accept: 'application/json',    
-    client_id: 'Your_CLIENT_ID',   
-    secret_key: 'Your_SECRET_KEY' 
+    access_token: 'YOUR_ACCESS_TOKEN' 
   },
   body: formData.append('file', 'image')
 };
@@ -30,9 +30,8 @@ const options = {
   url: '${url}',
   headers: {
     accept: 'application/json',
-    'content-type': 'application/json',
-    client_id: 'Your_CLIENT_ID',
-    secret_key: 'Your_SECRET_KEY'
+    'content-type': 'multipart/formData',
+    access_token: 'YOUR_ACCESS_TOKEN'
   },
     body: formData.append('file', 'image')
 };

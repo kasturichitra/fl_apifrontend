@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BodyParams from "../../components/BodyParams/BodyParams";
 import MethodLink from "../../components/MethodLink";
-
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
@@ -11,7 +10,6 @@ import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
 import { DATA, AccountDynamic } from "../../utils/apiSchema";
-import AccessToken from "../../components/AccessToken";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const BankAccountPennyLessVerification = () => {
@@ -81,7 +79,7 @@ const BankAccountPennyLessVerification = () => {
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="account/pl/verifyBankAccount"
+            link="account/verify/penny-less"
           />
           <p className="first_para">
             The Bank Account Verification API allows developers to verify users’
@@ -94,9 +92,8 @@ const BankAccountPennyLessVerification = () => {
         </div>
 
         {/* Request History Table */}
-        <RequestHistoryTable TableClass="history_Table" />
+        {/* <RequestHistoryTable TableClass="history_Table" /> */}
 
-        <AccessToken />
 
         {/* Headers */}
         <div className="py-6">

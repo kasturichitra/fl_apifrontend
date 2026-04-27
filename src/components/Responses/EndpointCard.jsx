@@ -10,6 +10,8 @@ export default function EndpointCard({
 }) {
   const { status, summary, body } = endpoint;
 
+  console.log("body ====>>", body)
+
   return (
     <div className="bg-[#303B42]">
       {/* STATUS COMPONENT HEADING */}

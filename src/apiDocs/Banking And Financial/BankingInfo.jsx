@@ -27,7 +27,7 @@ const BankingServicesInfo = () => {
           validation of bank account details for fraud prevention and accuracy.
         </li>
 
-        <li>
+        {/* <li>
           <strong>Bank Statement Analysis Advance:</strong> Analyzes uploaded bank
           statements to extract financial insights and transaction patterns.
         </li>
@@ -35,7 +35,7 @@ const BankingServicesInfo = () => {
         <li>
           <strong>Bank Statement Analysis - Via Netbanking:</strong> Securely
           fetches and analyzes bank statements through netbanking authentication.
-        </li>
+        </li> */}
 
         <li>
           <strong>IFSC Code Check:</strong> Validates IFSC codes and retrieves

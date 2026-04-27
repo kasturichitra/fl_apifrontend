@@ -250,14 +250,14 @@ export const apiList = [
     key: "gst",
     name: "GST",
     category: "kyc",
-    url: "gst/Gstinverify",
+    url: "business/Gstin/verify",
     params: { gstinNumber: "22ABCDEXXXXXXXX" },
   },
   {
     key: "gstToPan",
     name: "GSTTOPAN",
     category: "kyc",
-    url: "gst/Gstintopan/verify",
+    url: "business/Gstintopan/verify",
     params: { gstinNumber: "22ABCDEXXXXXXXX" },
   },
   {
@@ -271,7 +271,7 @@ export const apiList = [
     key: "shop",
     name: "SHOP",
     category: "kyc",
-    url: "shop/shopest",
+    url: "business/shopest/verify",
     params: {
       registrationNumber: "AB78XXXXXXX",
       state: "TELANXXXX",
@@ -281,21 +281,21 @@ export const apiList = [
     key: "udyam",
     name: "UDYAM",
     category: "kyc",
-    url: "udyam/verify",
+    url: "business/udyam/verify",
     params: { udyamNumber: "123456789" },
   },
   {
     key: "cinCompanySearch",
     name: "CINCompanySearch",
     category: "kyc",
-    url: "company/searchByCIN",
-    params: { cin: "" },
+    url: "business/cinbased/company/search",
+    params: { companyName: "" },
   },
   {
     key: "companyNameSearch",
     name: "CompanyNameSearch",
     category: "kyc",
-    url: "company/searchByName",
+    url: "business/companylist/verify",
     params: { companyName: "" },
   },
   {
@@ -309,8 +309,8 @@ export const apiList = [
     key: "iecVerification",
     name: "iecVerification",
     category: "kyc",
-    url: "dgft/iecVerify",
-    params: { iecCode: "" },
+    url: "business/IEC/verify",
+    params: { IEC: "" },
   },
   {
     key: "dgftVerification",
@@ -324,7 +324,7 @@ export const apiList = [
     name: "DINVerification",
     category: "kyc",
     url: "business/din/verify",
-    params: { din: "" },
+    params: { dinNumber: "" },
   },
   {
     key: "leiVerification",
@@ -401,22 +401,22 @@ export const apiList = [
     key: "advanceBankAccountVerification",
     name: "AdvanceBankAccountVerification",
     category: "kyc",
-    url: "bank/verifyAdvanced",
-    params: { accountNumber: "", ifsc: "" },
+    url: "bank/bankAccount/Verify",
+    params: { accountNumber: "", ifscCode: "" },
   },
   {
     key: "chequeClassification",
     name: "ChequeClassification",
     category: "kyc",
-    url: "cheque/classify",
-    params: { chequeImage: "" },
+    url: "bank/cheque/verify",
+    params: { file_name: "", file: "" },
   },
   {
     key: "cibil",
     name: "CIBIL",
     category: "kyc",
-    url: "credit/cibil",
-    params: { pan: "" },
+    url: "bank/cibil/verify",
+    params: { panNumber: "", customerName: "", customerMobile: "" },
   },
 
   // other services
@@ -424,22 +424,22 @@ export const apiList = [
     key: "name",
     name: "NAME",
     category: "kyc",
-    url: "name/compareNames",
+    url: "common/compareNames",
     params: { firstName: "", secondName: "" },
   },
   {
     key: "fssaiVerification",
     name: "FSSAIVerification",
     category: "kyc",
-    url: "fssai/verify",
-    params: { licenseNumber: "" },
+    url: "common/FSSAI/Verify",
+    params: { FSSAINumber: "" },
   },
   {
     key: "industryType",
     name: "INDUSTRYTYPE",
     category: "kyc",
-    url: "industry/getType",
-    params: { businessName: "" },
+    url: "common/know/industryType",
+    params: { CIN: "" },
   },
 
   // government id services
@@ -469,7 +469,7 @@ export const apiList = [
     name: "VOTERID",
     category: "kyc",
     url: "government/voterId/verify",
-    params: { epicNumber: "", name: "", state: "" },
+    params: { voterId: "" },
   },
 
   // geo location
@@ -540,6 +540,36 @@ export const apiList = [
     params: {
       address: "",
     },
+  },
+
+  // ocr services
+  {
+    key: "newDocClassification",
+    name: "NewDocClassification",
+    category: "kyc",
+    url: "common/NewDoc/Classification",
+    params: {},
+  },
+  {
+    key: "comprehensiveNidOcr",
+    name: "ComprehensiveNIDOCR",
+    category: "kyc",
+    url: "common/NID/OCR",
+    params: {},
+  },
+  {
+    key: "panOcr",
+    name: "PANOCR",
+    category: "kyc",
+    url: "common/PAN/OCR",
+    params: {},
+  },
+  {
+    key: "dlOcr",
+    name: "DLOCR",
+    category: "kyc",
+    url: "common/DL/OCR",
+    params: {},
   },
 
   // professional verification
@@ -843,8 +873,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             gstin: "ABCDXXXXXXXX",
             authStatus: "",
@@ -861,8 +890,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             code: 200,
             message: "Data Found Successfully.",
@@ -881,8 +909,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             LastUpdate: "2025-01-10",
             Name: "AMIT VERMA",
@@ -907,8 +934,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             "Status of PAN": "Active",
             "Given Name matches with the ITD Records": "Yes",
@@ -925,8 +951,7 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
             data: {
               additional_check: [],
@@ -1060,60 +1085,6 @@ const apiExamples = [
             firstName: "SAI BABA",
             secondName: "RAM BABU",
             result: 100,
-          },
-        },
-      },
-    ],
-  },
-
-  // banking services
-  // full card verification
-  {
-    name: "FCV",
-    examples: [
-      {
-        statusCode: 200,
-        message: {
-          success: true,
-          message: "Valid",
-          response: {
-            card_number: "7854XXXXXXXX8569",
-            is_valid: true,
-            issuer_info: {
-              Brand: "visa",
-              Category: "platinum/Business",
-              CountryName: "India",
-              Issuer: "Sbi Cards And Payment Services, Ltd.",
-              IssuerPhone: "",
-              IssuerUrl: "",
-              Type: "Credit/Debit",
-              isoCode2: "In",
-              isoCode3: "Ind",
-            },
-          },
-        },
-      },
-    ],
-  },
-  // bin verification
-  {
-    name: "BIN",
-    examples: [
-      {
-        statusCode: 200,
-        message: {
-          success: true,
-          message: "Valid",
-          response: {
-            Brand: "visa",
-            Category: "platinum/Business",
-            CountryName: "India",
-            Issuer: "Sbi Cards And Payment Services, Ltd.",
-            IssuerPhone: "",
-            IssuerUrl: "",
-            Type: "Credit/Debit",
-            isoCode2: "In",
-            isoCode3: "Ind",
           },
         },
       },
@@ -1759,8 +1730,8 @@ const apiExamples = [
         statusCode: 200,
         message: {
           ...commonApiExample,
-          data: {
-            0: {
+          data: [
+            {
               "ARN Number": "AA3601000000001",
               "Date of File": "21-01-2025",
               "Mode of File": "ONLINE",
@@ -1768,7 +1739,7 @@ const apiExamples = [
               "Return Type": "GSTR1",
               Status: "Filed",
             },
-            1: {
+             {
               "ARN Number": "AA3601000000002",
               "Date of File": "21-01-2025",
               "Mode of File": "ONLINE",
@@ -1776,7 +1747,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            2: {
+             {
               "ARN Number": "AA3601000000003",
               "Date of File": "20-12-2024",
               "Mode of File": "ONLINE",
@@ -1784,7 +1755,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            3: {
+            {
               "ARN Number": "AA3601000000004",
               "Date of File": "20-08-2024",
               "Mode of File": "ONLINE",
@@ -1792,7 +1763,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            4: {
+             {
               "ARN Number": "AA3601000000005",
               "Date of File": "20-05-2024",
               "Mode of File": "ONLINE",
@@ -1800,7 +1771,7 @@ const apiExamples = [
               "Return Type": "GSTR1",
               Status: "Filed",
             },
-            5: {
+             {
               "ARN Number": "AA3601000000006",
               "Date of File": "20-05-2024",
               "Mode of File": "ONLINE",
@@ -1808,7 +1779,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            6: {
+             {
               "ARN Number": "AA3601000000007",
               "Date of File": "20-03-2025",
               "Mode of File": "ONLINE",
@@ -1816,7 +1787,7 @@ const apiExamples = [
               "Return Type": "GSTR1",
               Status: "Filed",
             },
-            7: {
+             {
               "ARN Number": "AA3601000000008",
               "Date of File": "20-03-2025",
               "Mode of File": "ONLINE",
@@ -1824,7 +1795,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            8: {
+             {
               "ARN Number": "AA3601000000009",
               "Date of File": "20-02-2025",
               "Mode of File": "ONLINE",
@@ -1832,7 +1803,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            9: {
+             {
               "ARN Number": "AA3601000000010",
               "Date of File": "19-11-2024",
               "Mode of File": "ONLINE",
@@ -1840,7 +1811,7 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            10: {
+             {
               "ARN Number": "AA3601000000011",
               "Date of File": "19-09-2024",
               "Mode of File": "ONLINE",
@@ -1848,48 +1819,64 @@ const apiExamples = [
               "Return Type": "GSTR3B",
               Status: "Filed",
             },
-            11: {
-              "ARN Number": "AA3601000000012",
-              "Date of File": "19-06-2024",
-              "Mode of File": "ONLINE",
-              "Return Period": "052024",
-              "Return Type": "GSTR3B",
-              Status: "Filed",
-            },
-            12: {
-              "ARN Number": "AA3601000000013",
-              "Date of File": "19-04-2025",
-              "Mode of File": "ONLINE",
-              "Return Period": "032025",
-              "Return Type": "GSTR1",
-              Status: "Filed",
-            },
-            13: {
-              "ARN Number": "AA3601000000014",
-              "Date of File": "19-04-2025",
-              "Mode of File": "ONLINE",
-              "Return Period": "032025",
-              "Return Type": "GSTR3B",
-              Status: "Filed",
-            },
-            14: {
-              "ARN Number": "AA3601000000015",
-              "Date of File": "18-07-2024",
-              "Mode of File": "ONLINE",
-              "Return Period": "062024",
-              "Return Type": "GSTR3B",
-              Status: "Filed",
-            },
-            15: {
-              "ARN Number": "AA3601000000016",
-              "Date of File": "17-10-2024",
-              "Mode of File": "ONLINE",
-              "Return Period": "092024",
-              "Return Type": "GSTR3B",
-              Status: "Filed",
-            },
-            gstinNumber: "dummyhash123456789abcdef",
+          ],
+        },
+      },
+    ],
+  },
+  // cin based company search
+  {
+    name: "CBCS",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: {
+            cin: "",
+            company_name: "XYZ PRIVATE LIMITED",
           },
+        },
+      },
+    ],
+  },
+  // company name search
+  {
+    name: "CNS",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: [{
+            id: "12327498",
+            cin: "XXXXXXXXXXXXXX856",
+            city: "",
+            email: "XYZ@gmail.com",
+            state: "Telangana",
+            status: "Active",
+            country: "India",
+            pincode: "",
+            address1: "",
+            address2: null,
+            company_name: "ABC PRIVATE LIMITED",
+            directorDetail: [],
+            date_of_incorporation: "",
+          }],
+        },
+      },
+    ],
+  },
+  // dfgt verification
+  {
+    name: "DGFTV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          data: [{
+          }],
         },
       },
     ],
@@ -1977,26 +1964,10 @@ const apiExamples = [
       {
         statusCode: 200,
         message: {
-          success: true,
-          message: "Valid",
+          ...commonApiExample,
           response: {
-            BRANCH: "Demo Branch",
-            ADDRESS: "123 Demo Street, Demo Area, Demo City - 000000",
-            STATE: "Demo State",
-            MICR: "123456789",
-            CONTACT: "0123456789",
-            UPI: true,
-            RTGS: true,
-            CITY: "Demo City",
-            CENTRE: "Demo Centre",
-            DISTRICT: "Demo District",
-            NEFT: true,
-            IMPS: true,
-            SWIFT: "DEMOXX12345",
-            ISO3166: "IN-DM",
-            BANK: "Demo Bank Ltd",
-            BANKCODE: "DMBC",
-            IFSC: "DMBC0001234",
+            report_url:
+              "https://ab-mum-prod-test-ranjan.s3.ap-south-1.amazonaws.com/cibil_files/TXN1500428fe03b4d95871f7b4022148d53.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256X-Amz-Signature=37935f41faa562a9bdf3ba596c7fbb7112f48ea5582e1de3b2ef61606ebab45c",
           },
         },
       },
@@ -2029,6 +2000,98 @@ const apiExamples = [
             BANK: "Demo Bank Ltd",
             BANKCODE: "DMBC",
             IFSC: "DMBC0001234",
+          },
+        },
+      },
+    ],
+  },
+  // full card verification
+  {
+    name: "FCV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          success: true,
+          message: "Valid",
+          response: {
+            card_number: "7854XXXXXXXX8569",
+            is_valid: true,
+            issuer_info: {
+              Brand: "visa",
+              Category: "platinum/Business",
+              CountryName: "India",
+              Issuer: "Sbi Cards And Payment Services, Ltd.",
+              IssuerPhone: "",
+              IssuerUrl: "",
+              Type: "Credit/Debit",
+              isoCode2: "In",
+              isoCode3: "Ind",
+            },
+          },
+        },
+      },
+    ],
+  },
+  // bin verification
+  {
+    name: "BIN",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          response: {
+            Brand: "visa",
+            Category: "platinum/Business",
+            CountryName: "India",
+            Issuer: "Sbi Cards And Payment Services, Ltd.",
+            IssuerPhone: "",
+            IssuerUrl: "",
+            Type: "Credit/Debit",
+            isoCode2: "In",
+            isoCode3: "Ind",
+          },
+        },
+      },
+    ],
+  },
+
+  // government services
+  {
+    name: "VIV",
+    examples: [
+      {
+        statusCode: 200,
+        message: {
+          ...commonApiExample,
+          response: {
+            Age: 29,
+            "Assembly Constituency": "Chilakaluripet",
+            "Assembly Constituency Number": "106",
+            District: "Guntur",
+            Email: "example.user29@mail.com",
+            Father: "Srinivas Rao Kothapalli",
+            "Father(Regional Language)": "శ్రీనివాస్ రావు కొత్తపల్లి",
+            "Fathers Name": "",
+            Gender: "Male",
+            Husband: "",
+            "Husband Name": "",
+            "Last of Date": "NA",
+            Name: "rahul kumar kothapalli",
+            "Name (Regional Language)": "రాహుల్ కుమార్ కొత్తపల్లి",
+            "Parliamentary Constituency": "Narasaraopet",
+            "Parliamentary Constituency lat long": "16.234567-80.123456",
+            "Part Name": "RAMAPURAM",
+            "Part No": "115",
+            "Polling Station":
+              "Zilla Parishad High School, Ramapuram - Main Building",
+            "Relative Name": "Srinivas Rao Kothapalli",
+            "Relative Type": "Father",
+            "Serial No": "256",
+            State: "Andhra Pradesh",
+            "Voter Id": "a1b2c3d4e5f67890123456789abcdef0",
+            status: 1,
           },
         },
       },

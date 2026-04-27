@@ -2,7 +2,12 @@ import React from "react";
 import { getComponent } from "./NonArrayOfObjects";
 
 export default function GrayObjectComponent({ obj, bodyType }) {
-  const { objectDetails, required, subTitle, title, type } = obj;
+  const { objectDetails, required, subTitle, title, type, arrayDetails } = obj;
+
+  const fields =
+    type === "array of objects"
+      ? arrayDetails?.objectDetails
+      : objectDetails;
 
   return (
     <div className="p-3 not-last:border-b border-gray-200/20">
@@ -21,7 +26,7 @@ export default function GrayObjectComponent({ obj, bodyType }) {
         <p className="p-2 text-sm text-gray-400 border-b border-gray-100/20 ">
           object
         </p>
-        {objectDetails?.map((d, i) => {
+        {fields?.map((d, i) => {
           return (
             <React.Fragment key={i}>{getComponent(d, bodyType)}</React.Fragment>
           );

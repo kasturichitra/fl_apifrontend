@@ -136,7 +136,7 @@ const IndustryType = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"name"}
+          service={"industryType"}
           examples={GetAcc?.exampleCodes["NM"] || []}
         />
       </div>

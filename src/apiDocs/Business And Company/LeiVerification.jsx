@@ -5,7 +5,7 @@ import MethodLink from "../../components/MethodLink";
 import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
-import { GSTIN } from "../../utils/bodyParams";
+import { LEI } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { FetchApi } from "../../utils/Custom_Api";
 import { GetAcc } from "../../utils/Language";
@@ -107,7 +107,7 @@ export default function LeiVerification() {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={GSTIN}
+            bodyObj={LEI}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}

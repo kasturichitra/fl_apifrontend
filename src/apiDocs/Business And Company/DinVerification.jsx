@@ -70,7 +70,7 @@ export default function DinVerification() {
       <div className="first_child hide-scrollbar">
         {/* MAIN HERO ELEMENT */}
         <div className="api_hero">
-          <h1 className="api_heading">CIN Number Verification</h1>
+          <h1 className="api_heading">DIN Number Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
@@ -78,7 +78,7 @@ export default function DinVerification() {
             link="business/din/verify"
           />
           <p className="first_para">
-            Enter your CIN number to verify the company details.
+            Enter your DIN number to get the details of that number
           </p>
         </div>
 

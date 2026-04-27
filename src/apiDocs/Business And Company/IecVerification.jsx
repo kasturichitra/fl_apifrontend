@@ -6,7 +6,7 @@ import ResponseComponent from "../../components/Responses/ResponsesComponent";
 import Codes from "../../components/API Request/Codes";
 import Headers from "../../components/Headers/Headers";
 import { FetchApi } from "../../utils/Custom_Api";
-import { BAV } from "../../utils/bodyParams";
+import { BAV, IEC } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
@@ -18,7 +18,7 @@ const IecVerification = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [allRequiredFields, setAllRequiredFields] = useState({});
 
-  const examplesList = GetAcc?.exampleCodes["BPD"] || [];
+  const examplesList = GetAcc?.exampleCodes["IEC"] || [];
 
   const [choosedExample, setChoosedExample] = useState(() => {
     const successExample = examplesList.find((e) => e.statusCode === 200);
@@ -73,18 +73,16 @@ const IecVerification = () => {
       <div className="first_child hide-scrollbar">
         {/* Header Section */}
         <div className="api_hero">
-          <h1 className="api_heading">
-            Bank Account Verification (Penny Drop)
-          </h1>
+          <h1 className="api_heading">Iec Verification</h1>
           <MethodLink
             method="POST"
             className="method_link"
             LinkClass="link_class"
-            link="accounts/verify/penny-drop"
+            link="business/IEC/verify"
           />
           <p className="first_para">
-            The Bank Account Verification API allows developers to verify users’
-            Bank Account numbers in real-time.
+            The IEC Verification API allows developers to validate and retrieve
+            details associated with an Import Export Code (IEC) in real-time.
           </p>
         </div>
 
@@ -110,7 +108,7 @@ const IecVerification = () => {
         <div className="py-6">
           <p className="text-xs font-medium">BODY PARAMS</p>
           <BodyParams
-            bodyObj={BAV}
+            bodyObj={IEC}
             faceMatchState={faceMatchState}
             setFaceMatchState={setFaceMatchState}
             setAllRequiredFields={setAllRequiredFields}
@@ -134,8 +132,8 @@ const IecVerification = () => {
           setApiError={setApiResponse}
           choosedExample={choosedExample}
           setChoosedExample={setChoosedExample}
-          service={"bpd"}
-          examples={GetAcc?.exampleCodes["BPD"] || []}
+          service={"iecVerification"}
+          examples={GetAcc?.exampleCodes["IEC"] || []}
         />
       </div>
     </div>

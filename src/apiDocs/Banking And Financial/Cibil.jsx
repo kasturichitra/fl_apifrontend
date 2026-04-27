@@ -10,7 +10,7 @@ import { CB } from "../../utils/bodyParams";
 import { api_Headers } from "../../utils/Api_Headers";
 import { GetAcc } from "../../utils/Language";
 import "../../styles/api_reference.css";
-import { DATA, AccountDynamic } from "../../utils/apiSchema";
+import { DATA, CibilDynamic } from "../../utils/apiSchema";
 import EncryptionNotice from "../../components/EncryptionNotice";
 
 const Cibil = () => {
@@ -120,7 +120,7 @@ const Cibil = () => {
         {/* Response */}
         <div className="py-6">
           <p className="text-xs font-medium">RESPONSES</p>
-          <ResponseComponent dynamic200={AccountDynamic} otherData={DATA} />
+          <ResponseComponent dynamic200={CibilDynamic} otherData={DATA} />
         </div>
       </div>
 
